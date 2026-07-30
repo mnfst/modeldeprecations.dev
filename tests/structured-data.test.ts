@@ -43,6 +43,13 @@ describe("buildHomeStructuredData", () => {
     expect(json).toContain("https://modelparams.dev");
     expect(json).toContain("https://github.com/mnfst/modeldeprecations.dev");
   });
+
+  // Google ignores SVG when it extracts a publisher logo, so the node has to
+  // point at the raster icon rather than the favicon the browser uses.
+  it("gives the Organization a raster logo", () => {
+    const org = nodes(json).find((node) => node["@type"] === "Organization");
+    expect(org?.logo).toBe(`${SITE}/assets/apple-touch-icon.png`);
+  });
 });
 
 describe("buildModelStructuredData", () => {

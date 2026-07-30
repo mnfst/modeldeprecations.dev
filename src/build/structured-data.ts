@@ -44,6 +44,9 @@ function organizationNode(siteUrl: string) {
     name: SITE_NAME,
     url: `${siteUrl}/`,
     description: SITE_DESCRIPTION,
+    // The square PNG rather than the SVG favicon: Google's logo extraction wants a
+    // raster it can crop, and ignores SVG.
+    logo: `${siteUrl}/assets/apple-touch-icon.png`,
     sameAs: [REPO_URL, SIBLING_URL],
   };
 }

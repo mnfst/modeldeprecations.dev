@@ -140,7 +140,21 @@ function setupTableFilter(): void {
     if (empty) empty.hidden = visible > 0;
   };
 
-  search?.addEventListener("input", apply);
+  // ?q= is the search endpoint the WebSite SearchAction advertises, so it has to
+  // actually work: seed the box from the URL on load, and write the query back as
+  // the user types so a filtered view is a shareable link.
+  if (search) {
+    const initial = new URLSearchParams(location.search).get("q");
+    if (initial) search.value = initial;
+    search.addEventListener("input", () => {
+      const url = new URL(location.href);
+      const query = search.value.trim();
+      if (query) url.searchParams.set("q", query);
+      else url.searchParams.delete("q");
+      history.replaceState(null, "", url);
+      apply();
+    });
+  }
   for (const button of buttons) {
     button.addEventListener("click", () => {
       status = button.dataset.statusFilter ?? "all";
