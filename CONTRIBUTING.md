@@ -53,6 +53,18 @@ that GPT-4o made it pointless.
 A test asserts every description is unique and at least 120 characters. That is a
 floor, not a target.
 
+## Naming a model
+
+`name` is what the h1, the page title and the social card all render, so keep it
+to the spelling the provider uses in its own docs — that is what people search
+for.
+
+Stick to plain characters. Social cards are rasterized with a vendored Outfit
+subset and no system-font fallback, so a curly quote, an en dash or a CJK
+character in a `name` renders as an empty box on the shared image. A test parses
+the font's cmap and fails the build if a card would draw a character the font
+does not have, but it is easier to avoid than to debug.
+
 ## Aliases
 
 Dated snapshots fold into the canonical page. `gpt-4-32k-0613` is an alias of

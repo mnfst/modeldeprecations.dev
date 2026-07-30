@@ -172,7 +172,7 @@ documented as deprecated but carries no dates and is invitation-only.
 | `changelog.png`        | `/changelog` — dated events with RSS                                  |
 | `model-mobile.png`     | a model page at 390px                                                 |
 
-## Three bugs found and fixed during the build
+## Five bugs found and fixed during the build
 
 - **Dev server never recompiled Tailwind when a view changed.** Only
   `src/client/**` triggered a CSS rebuild, so any utility class used for the first
@@ -186,3 +186,13 @@ documented as deprecated but carries no dates and is invitation-only.
 - **`/sitemap.xml` 404'd in dev** — it was written by the static build only. The
   builder now lives in `src/data/sitemap.ts` and both surfaces share it, with a
   test asserting the sitemap lists every model page and nothing marked noindex.
+- **Social cards contradicted their own status pill.** `modelCard` branched on the
+  shutdown date before the status, so a retired model with no recoverable date
+  fell through to the active wording — the Gemini 1.0 cards shipped a red
+  **RETIRED** pill directly above the words "Not deprecated". Same root cause as
+  the answer-builder bug, in a second renderer.
+- **Every card with a successor drew a tofu box.** The chip read `→ gpt-4o`, but
+  cards are rasterized with the vendored Outfit subset and
+  `loadSystemFonts: false` — 223 glyphs, no U+2192 and no fallback. The chip is
+  now worded (`Use gpt-4o`), and a test parses the font's cmap and asserts every
+  character on every card is one the font can actually draw.

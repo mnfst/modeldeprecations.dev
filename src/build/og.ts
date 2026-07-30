@@ -51,25 +51,42 @@ export function modelCard(model: Model, catalog: Model[], today: string): OgCard
   const life = lifecycle(model, today);
   const recommended = recommendedReplacement(model, catalog);
 
+  // Branch on status first, then on whether a date exists. Leading with the date
+  // let a retired model with no recoverable shutdown day fall through to the
+  // active wording, which put "Not deprecated" next to a red RETIRED pill on the
+  // one image that gets shared into a feed.
   let subline: string;
-  if (life.shutdown && life.status === "retired") {
-    subline = `Shut down ${formatDate(life.shutdown)}`;
+  if (life.status === "retired") {
+    subline = life.shutdown
+      ? `Shut down ${formatDate(life.shutdown)}`
+      : "Retired · shutdown date not published";
+  } else if (life.status === "deprecated") {
+    subline = life.shutdown
+      ? `${life.soft ? "Shutdown no sooner than" : "Shuts down"} ${formatDate(life.shutdown)}${
+          life.daysToShutdown === undefined ? "" : ` · ${relativeDays(life.daysToShutdown)}`
+        }`
+      : "Deprecated · no shutdown date published";
   } else if (life.shutdown) {
-    subline = `${life.soft ? "Shutdown no sooner than" : "Shuts down"} ${formatDate(life.shutdown)}${
+    subline = `Shutdown no sooner than ${formatDate(life.shutdown)}${
       life.daysToShutdown === undefined ? "" : ` · ${relativeDays(life.daysToShutdown)}`
     }`;
-  } else if (life.status === "deprecated") {
-    subline = "Deprecated · no shutdown date published";
   } else {
     subline = `Not deprecated · verified ${formatDate(model.last_verified)}`;
   }
+
+  // The chip is worded, not glyphed: cards are rasterized with the vendored
+  // Outfit subset and `loadSystemFonts: false`, and that subset has no U+2192,
+  // so an arrow renders as a tofu box on every card that has a successor.
+  // Shown only when it really is a successor — an alternative listed on a live
+  // model must not read as a migration instruction.
+  const showSuccessor = recommended && (life.status !== "active" || recommended.ref.recommended);
 
   return {
     eyebrow: providerLabel(model.provider),
     headline: model.name,
     status: STATUS_LABELS[life.status],
     subline,
-    chips: recommended ? [`→ ${recommended.ref.model}`] : [],
+    chips: showSuccessor ? [`Use ${recommended!.ref.model}`] : [],
   };
 }
 
