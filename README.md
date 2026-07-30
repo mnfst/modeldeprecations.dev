@@ -1,20 +1,50 @@
+<div align="center">
+  <img width="900" alt="modeldeprecations.dev" src="docs/screenshots/banner.png" />
+</div>
+<hr>
+
 # modeldeprecations.dev
 
-**Is this model deprecated? When does it shut down? What replaces it?**
+> An open, community-maintained catalog of AI model deprecations.
 
-One page per AI model, answering those three questions with a date and a link to
-the provider documentation that states it. Sibling of
-[modelparams.dev](https://modelparams.dev), which catalogues the parameters each
-model accepts.
+[![CI](https://github.com/mnfst/modeldeprecations.dev/actions/workflows/ci.yml/badge.svg)](https://github.com/mnfst/modeldeprecations.dev/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-- **Site** — https://modeldeprecations.dev
-- **JSON API** — https://modeldeprecations.dev/api/v1/models.json
-- **Calendar** — https://modeldeprecations.dev/calendar.ics
-- **Changelog RSS** — https://modeldeprecations.dev/changelog.xml
+One page per model, answering the same three questions: is it deprecated, when does it shut down, and what replaces it. OpenAI, Anthropic and Google. Every date is cited to the provider's own docs and stamped with the day we last checked it.
 
-## Lifecycle states
+Sibling of [modelparams.dev](https://modelparams.dev), which catalogues the parameters each model accepts. We use both at [Manifest](https://manifest.build/).
 
-The three states match the vocabulary the providers themselves publish:
+## Badges
+
+Put a model's status in your own README. Green while it works, amber once the provider announces it is going away, red once it stops answering.
+
+```markdown
+![](https://img.shields.io/endpoint?url=https://modeldeprecations.dev/badge/openai/gpt-4-32k.json)
+```
+
+Status is recomputed against the build date, so the badge turns red on the day the shutdown actually lands. Nobody has to remember to edit a file.
+
+## API
+
+Prefer raw JSON?
+
+```bash
+curl https://modeldeprecations.dev/api/v1/models.json
+curl https://modeldeprecations.dev/api/v1/models/openai/gpt-4-32k.json
+curl https://modeldeprecations.dev/openai/gpt-4-32k.md   # the same page, as Markdown
+```
+
+Static files off the edge, CORS enabled, no key and no rate limit. Schema at `https://modeldeprecations.dev/api/v1/schema.json`. Ids are `provider/model`, and dated snapshots like `gpt-4-32k-0613` resolve as aliases of their canonical entry rather than duplicate records.
+
+There is also a [shutdown calendar](https://modeldeprecations.dev/calendar.ics) you can subscribe to in your own calendar app, and a [changelog feed](https://modeldeprecations.dev/changelog.xml).
+
+## For agents
+
+`llms.txt` and `llms-full.txt` live at the site root, every model page is also served as Markdown (append `.md`), and the site exposes four [WebMCP](https://github.com/webmachinelearning/webmcp) tools in the browser: `check_model_deprecation`, `list_shutdowns`, `find_replacement` and `get_usage_guide`.
+
+## Lifecycle
+
+The three states use the same words the providers do.
 
 | Status       | Meaning                                                        |
 | ------------ | -------------------------------------------------------------- |
@@ -22,52 +52,11 @@ The three states match the vocabulary the providers themselves publish:
 | `deprecated` | The provider has announced it is going away. It still answers. |
 | `retired`    | API access is gone. Requests fail.                             |
 
-A model can be **active and carry a shutdown date**. Anthropic publishes a "not
-sooner than" date and Google publishes an earliest shutdown date for models that
-are current and fully supported. Those go in `earliest_shutdown_on` and are shown
-as _scheduled shutdowns_, not deprecations — because that is what the provider
-actually committed to. A firm date goes in `shutdown_on`.
+A model can be active and still carry a shutdown date. Anthropic publishes a "not sooner than" date, and Google publishes an earliest possible retirement date, for models that are current and fully supported. Those go in `earliest_shutdown_on` and render as a scheduled shutdown rather than a deprecation, because that is what the provider actually committed to. A firm date goes in `shutdown_on`.
 
-The status a page renders is recomputed against the build date, so a model flips
-to `retired` on the day its shutdown lands without anyone editing a file.
+## Adding a model
 
-## API
-
-```bash
-# One model
-curl https://modeldeprecations.dev/api/v1/models/openai/gpt-4-32k.json
-
-# The same page as Markdown — the answer, the dates, the sources
-curl https://modeldeprecations.dev/openai/gpt-4-32k.md
-
-# Everything
-curl https://modeldeprecations.dev/api/v1/models.json
-```
-
-Static JSON from the edge, CORS-enabled, no key and no rate limit. Ids are
-`provider/model`; dated snapshots such as `gpt-4-32k-0613` are listed as
-`aliases` of their canonical entry rather than duplicated as separate records.
-
-### README badges
-
-A [shields.io](https://shields.io) endpoint per model. Green while it works,
-amber once deprecated, red once it is gone — and it changes on its own.
-
-```markdown
-![](https://img.shields.io/endpoint?url=https://modeldeprecations.dev/badge/openai/gpt-4-32k.json)
-```
-
-### For agents
-
-- `llms.txt` and `llms-full.txt` at the site root
-- Every model page also served as Markdown (append `.md`)
-- In-browser [WebMCP](https://github.com/webmachinelearning/webmcp) tools:
-  `check_model_deprecation`, `list_shutdowns`, `find_replacement`,
-  `get_usage_guide`
-
-## Data
-
-One YAML file per model under `models/{provider}/{model}.yaml`:
+One YAML file per model under `models/<provider>/`, then open a PR. CI validates it against the schema.
 
 ```yaml
 # yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
@@ -94,46 +83,24 @@ sources:
 last_verified: 2026-07-30
 ```
 
-### The rule
+**Never invent a date.** Every `deprecated_on`, `shutdown_on` and `earliest_shutdown_on` has to be verifiable at a URL you list in `sources`. If you cannot find the date, leave the field out and the page will say so honestly. A page that admits it has no shutdown date is useful; a page with a plausible wrong date is worse than nothing, because someone will plan a migration around it.
 
-**Never invent a date.** Every `deprecated_on`, `shutdown_on` and
-`earliest_shutdown_on` must be verifiable at a URL in `sources`. If a date cannot
-be sourced, omit the field — the page will say so honestly rather than guess. CI
-rejects a date without a citation.
+CI enforces that, and a second workflow guards against quieter regressions: deleting a page, dropping an alias that used to resolve, pulling sources out from under a date, or changing a date without moving `last_verified` forward. Maintainers can override it with the `allow-data-regression` label.
 
-## Contributing
+Sources are the provider's own deprecation pages. The four Gemini 1.x entries are the one exception: Google deleted those rows from its tables, so they also cite the community [`llm-model-deprecation`](https://github.com/techdevsynergy/llm-model-deprecation) registry, and the page says so. Where that registry and a provider page disagree, the provider page wins.
+
+Found a wrong date? [File an issue](https://github.com/mnfst/modeldeprecations.dev/issues/new/choose) with the provider URL that proves it, or edit the YAML directly. There is a link to it on every model page. Full conventions are in [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Local development
 
 ```bash
 npm install
-npm run dev        # http://localhost:3000, watches models/ and views/
-npm run validate   # schema + cross-file checks
+npm run dev          # http://localhost:3000, reloads on changes to models/ and views/
+npm run build        # → dist/
+npm run validate     # check every YAML
 npm test
-npm run build      # static site into dist/
 ```
-
-Two CI workflows run on every PR:
-
-- **CI** — lint, typecheck, validate, test, build.
-- **Data guard** — rejects removing a page, removing an alias that used to
-  resolve, stripping sources out from under a date, or editing a date without
-  moving `last_verified` forward. A maintainer can override with the
-  `allow-data-regression` label.
-
-Found a wrong date? Open an issue with the provider URL that proves it, or edit
-the YAML directly — there is a link on every model page.
-
-### Where the data comes from
-
-Every date is cited to the provider's own deprecation page. The four Gemini 1.x
-entries are the one exception: Google has removed those rows from its tables, so
-they additionally cite the community
-[`llm-model-deprecation`](https://github.com/techdevsynergy/llm-model-deprecation)
-registry, and say so on the page. Where that registry and a provider page
-disagree, the provider page wins.
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the full data conventions.
 
 ## License
 
-MIT. The data is free to use, including commercially. Made by
-[Manifest](https://manifest.build).
+MIT. The data is free to use, including commercially.
