@@ -21,6 +21,24 @@ function replacementClause(model: Model, catalog: Model[]): string {
   return ` The recommended replacement is ${replacementName(model, recommended)}.`;
 }
 
+/**
+ * The equivalent clause for a model that is *not* going away.
+ *
+ * An active model can still list a successor — a newer, cheaper model worth
+ * considering. Calling that "the recommended replacement" would imply the model
+ * is being retired, which is the exact misreading this site exists to prevent.
+ * So it is only stated when the provider actually flagged it, and it is phrased
+ * as an option rather than a migration.
+ */
+function alternativeClause(model: Model, catalog: Model[]): string {
+  const alternative = recommendedReplacement(model, catalog);
+  if (!alternative) return "";
+  const name = replacementName(model, alternative);
+  return alternative.ref.recommended
+    ? ` ${providerLabel(model.provider)} points new work at ${name}.`
+    : ` ${name} is a newer alternative, but this model is not being retired.`;
+}
+
 // The subject is the bare model name, not the provider-qualified label: every
 // answer names the provider in the very next clause, and "OpenAI GPT-4 32k is
 // retired. OpenAI deprecated it…" reads like a template. The full label still
@@ -62,14 +80,14 @@ function activeAnswer(model: Model, catalog: Model[], today: string): string {
   const verdict = `No — ${model.name} is not deprecated as of ${formatDate(model.last_verified)}.`;
 
   if (!life.shutdown) {
-    return `${verdict} ${provider} has announced neither a deprecation nor a shutdown date for it.${replacementClause(model, catalog)}`;
+    return `${verdict} ${provider} has announced neither a deprecation nor a shutdown date for it.${alternativeClause(model, catalog)}`;
   }
   const countdown =
     life.daysToShutdown === undefined ? "" : ` (${relativeDays(life.daysToShutdown)})`;
   const qualifier = life.soft
     ? `${provider} has not deprecated it, but publishes ${formatDate(life.shutdown)}${countdown} as the earliest date it could be retired`
     : `${provider} has scheduled its shutdown for ${formatDate(life.shutdown)}${countdown}`;
-  return `${verdict} ${qualifier}.${replacementClause(model, catalog)}`;
+  return `${verdict} ${qualifier}.${alternativeClause(model, catalog)}`;
 }
 
 /**
@@ -106,7 +124,7 @@ export function answerCompact(model: Model, catalog: Model[], today: string): st
   }
   return `No — ${model.name} is not deprecated${
     life.shutdown ? `, but shutdown is scheduled for ${formatDate(life.shutdown)}` : ""
-  }.${use}`;
+  }.${recommended?.ref.recommended ? use : ""}`;
 }
 
 /**

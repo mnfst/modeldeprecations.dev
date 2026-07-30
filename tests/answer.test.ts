@@ -98,6 +98,33 @@ describe("answerParagraph", () => {
     expect(answer).toContain("earliest date it could be retired");
   });
 
+  // An active model may list a newer alternative. Describing that as "the
+  // recommended replacement" would imply it is being retired — the exact
+  // misreading this site exists to prevent.
+  it("never calls an unflagged alternative a replacement on an active model", () => {
+    const active = model({
+      status: "active",
+      deprecated_on: undefined,
+      shutdown_on: undefined,
+      replacements: [{ provider: "openai", model: "gpt-4o", recommended: false, external: false }],
+    });
+    const answer = answerParagraph(active, [active, successor], TODAY);
+    expect(answer).not.toContain("recommended replacement");
+    expect(answer).toContain("is a newer alternative, but this model is not being retired");
+  });
+
+  it("still names a flagged successor on an active model, without implying retirement", () => {
+    const active = model({
+      status: "active",
+      deprecated_on: undefined,
+      shutdown_on: undefined,
+      replacements: [{ provider: "openai", model: "gpt-4o", recommended: true, external: false }],
+    });
+    const answer = answerParagraph(active, [active, successor], TODAY);
+    expect(answer).toContain("points new work at");
+    expect(answer).not.toContain("recommended replacement");
+  });
+
   it("does not stutter the provider name", () => {
     for (const subject of [model(), successor]) {
       expect(answerParagraph(subject, [subject], TODAY)).not.toMatch(
