@@ -2,6 +2,7 @@
 provider: anthropic
 model: claude-opus-4-20250514
 name: Claude Opus 4
+aliases: [claude-opus-4-0]
 description: >-
   The Opus that launched the Claude 4 generation and introduced extended
   thinking with tool use. It was retired in June 2026 on two months notice,

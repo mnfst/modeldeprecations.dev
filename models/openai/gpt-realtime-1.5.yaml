@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-realtime-1.5
+name: GPT Realtime 1.5
+description: >-
+  The speech-to-speech model that replaced the gpt-4o realtime previews when
+  those were shut down in May 2026. Realtime models use a WebSocket session
+  rather than a request/response call, so migrating between them is a protocol
+  change as much as an id change.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

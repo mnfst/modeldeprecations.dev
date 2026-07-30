@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: text-embedding-ada-002
+name: text-embedding-ada-002
+description: >-
+  The embedding model behind most retrieval systems built between 2022 and 2024,
+  and one of the most commonly assumed-dead ids on the platform. It is not on
+  OpenAI's deprecations page: re-embedding a corpus is expensive enough that the
+  old vectors have to keep working, so this one has outlived every chat model of
+  its era.
+released_on: 2022-12-15
+status: active
+replacements:
+  - provider: openai
+    model: text-embedding-3-small
+    recommended: false
+    note: >-
+      Not a deprecation — but 3-small is cheaper and scores better. Only worth
+      it if you can afford to re-embed everything, since vectors from the two
+      models are not comparable.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-image-1-mini
+name: GPT Image 1 mini
+description: >-
+  The cost tier of the first GPT image generation, for thumbnails and drafts
+  where a cheaper picture is the right answer. Deprecated in June 2026 with a
+  December shutdown, two months after its larger sibling goes.
+deprecated_on: 2026-06-02
+shutdown_on: 2026-12-01
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-image-2
+    recommended: true
+    note: >-
+      There is no mini id in the gpt-image-2 generation. Cost control moves to
+      the size and quality parameters instead of a separate model.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

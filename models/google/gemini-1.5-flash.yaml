@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-1.5-flash
+name: Gemini 1.5 Flash
+aliases: [gemini-1.5-flash-002]
+description: >-
+  The cheap, fast half of the 1.5 generation, and the model that pushed
+  long-context pricing down across the whole market. As with 1.5 Pro, Google has
+  removed it from its published deprecation tables, so the shutdown date here is
+  sourced from the community llm-model-deprecation registry.
+released_on: 2024-05-14
+shutdown_on: 2026-06-17
+status: retired
+replacements:
+  - provider: google
+    model: gemini-2.5-flash
+    recommended: true
+    note: >-
+      2.5 Flash is the direct successor, but note it carries its own shutdown
+      date of October 16, 2026 — migrating here buys about a year, not a decade.
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-07-30
+  - url: https://github.com/techdevsynergy/llm-model-deprecation
+    title: llm-model-deprecation registry (third-party)
+    accessed: 2026-07-30
+last_verified: 2026-07-30

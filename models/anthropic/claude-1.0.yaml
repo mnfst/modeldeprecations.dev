@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-1.0
+name: Claude 1.0
+description: >-
+  The first Claude released to developers, in March 2023, and the model that
+  introduced Constitutional AI to a public API. It used the text-completion
+  endpoint with literal "Human:" and "Assistant:" turn markers rather than a
+  structured message list — a shape that reads as archaeology now.
+deprecated_on: 2024-09-04
+shutdown_on: 2024-11-06
+status: retired
+replacements:
+  - provider: anthropic
+    model: claude-haiku-4-5-20251001
+    recommended: true
+    note: >-
+      Two generations and a whole API separate these. Claude 1 predates the
+      Messages API, so a migration means moving off /v1/complete and its
+      "\n\nHuman:"/"\n\nAssistant:" prompt format entirely.
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

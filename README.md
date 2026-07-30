@@ -122,6 +122,15 @@ Two CI workflows run on every PR:
 Found a wrong date? Open an issue with the provider URL that proves it, or edit
 the YAML directly — there is a link on every model page.
 
+### Where the data comes from
+
+Every date is cited to the provider's own deprecation page. The four Gemini 1.x
+entries are the one exception: Google has removed those rows from its tables, so
+they additionally cite the community
+[`llm-model-deprecation`](https://github.com/techdevsynergy/llm-model-deprecation)
+registry, and say so on the page. Where that registry and a provider page
+disagree, the provider page wins.
+
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the full data conventions.
 
 ## License

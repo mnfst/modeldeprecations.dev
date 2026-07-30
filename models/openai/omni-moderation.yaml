@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: omni-moderation
+name: omni-moderation
+description: >-
+  The multimodal moderation endpoint that replaced the text-moderation family in
+  October 2025. It scores images as well as text, and it is free — which is why
+  the older text-only ids had no reason to survive.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

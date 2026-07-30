@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: text-embedding-3-small
+name: text-embedding-3-small
+description: >-
+  The small embedding model, cheaper and stronger than the ada-002 it succeeded,
+  with configurable output dimensions. Embedding models age differently from
+  chat models: changing one invalidates every vector already in your index, so
+  OpenAI has kept this line stable far longer than the chat line.
+released_on: 2024-01-25
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

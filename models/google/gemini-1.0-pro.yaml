@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-1.0-pro
+name: Gemini 1.0 Pro
+description: >-
+  The first Gemini available through an API, launched in December 2023 as
+  Googles answer to GPT-4. It shipped before Google settled on the model naming
+  and lifecycle conventions used since, and no shutdown date was ever published
+  for it — the registry that tracks it records the model as superseded with no
+  retirement date on file.
+released_on: 2023-12-13
+status: retired
+replacements:
+  - provider: google
+    model: gemini-2.5-pro
+    recommended: true
+    note: >-
+      Nothing about a 1.0-era integration survives unchanged: the SDK, the
+      request shape and the safety-setting enums have all been replaced since.
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-07-30
+  - url: https://github.com/techdevsynergy/llm-model-deprecation
+    title: llm-model-deprecation registry (third-party)
+    accessed: 2026-07-30
+last_verified: 2026-07-30

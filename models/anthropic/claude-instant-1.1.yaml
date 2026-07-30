@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-instant-1.1
+name: Claude Instant 1.1
+description: >-
+  The middle Instant release, and the one that widened the context window enough
+  to make document summarisation practical at Instant pricing. Retired alongside
+  the whole Claude 1 generation in November 2024.
+deprecated_on: 2024-09-04
+shutdown_on: 2024-11-06
+status: retired
+replacements:
+  - provider: anthropic
+    model: claude-haiku-4-5-20251001
+    recommended: true
+    note: >-
+      Two generations and a whole API separate these. Claude 1 predates the
+      Messages API, so a migration means moving off /v1/complete and its
+      "\n\nHuman:"/"\n\nAssistant:" prompt format entirely.
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: text-curie-001
+name: text-curie-001
+description: >-
+  The mid-tier InstructGPT model, and for a while the sweet spot on price and
+  quality for summarisation before GPT-3.5 Turbo undercut the whole ladder at
+  once. Retired January 2024.
+deprecated_on: 2023-07-06
+shutdown_on: 2024-01-04
+status: retired
+replacements:
+  - provider: openai
+    model: gpt-3.5-turbo-instruct
+    recommended: true
+    note: >-
+      The named successor kept the completions endpoint alive, but it is
+      deprecated too, shutting down September 28, 2026. After that no
+      completions-style model remains on the platform.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-realtime-mini-2025-10-06
+name: GPT Realtime mini (2025-10-06)
+description: >-
+  The pinned October 2025 snapshot of the realtime mini model. It was retired in
+  July 2026, six months ahead of the floating gpt-realtime-mini id it sat
+  behind — pinning a snapshot bought less time here, not more.
+released_on: 2025-10-06
+deprecated_on: 2026-04-22
+shutdown_on: 2026-07-23
+status: retired
+replacements:
+  - provider: openai
+    model: gpt-realtime-2.1-mini
+    recommended: true
+    note: >-
+      Skip the floating gpt-realtime-mini id, which is itself deprecated with a
+      January 2027 shutdown.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

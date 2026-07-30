@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-realtime-2.1-mini
+name: GPT Realtime 2.1 mini
+description: >-
+  The cost tier of the current realtime generation, for voice applications where
+  per-minute audio pricing dominates the bill. It replaces gpt-realtime-mini,
+  which is deprecated with a January 2027 shutdown.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

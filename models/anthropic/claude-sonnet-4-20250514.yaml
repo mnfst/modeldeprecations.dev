@@ -2,6 +2,7 @@
 provider: anthropic
 model: claude-sonnet-4-20250514
 name: Claude Sonnet 4
+aliases: [claude-sonnet-4-0]
 description: >-
   The workhorse of the Claude 4 generation, and for a year the default in Claude
   Code. Retired June 15, 2026 in the same announcement as Opus 4.

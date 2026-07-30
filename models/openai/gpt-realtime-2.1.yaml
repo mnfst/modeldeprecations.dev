@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-realtime-2.1
+name: GPT Realtime 2.1
+description: >-
+  The current realtime model, named as the successor when OpenAI deprecated the
+  entire gpt-realtime and gpt-audio generation in July 2026. It is the third
+  realtime id in under two years.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

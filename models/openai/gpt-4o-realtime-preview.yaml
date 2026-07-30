@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-4o-realtime-preview
+name: GPT-4o Realtime preview
+aliases: [gpt-4o-realtime-preview-2025-06-03, gpt-4o-realtime-preview-2024-12-17]
+description: >-
+  The model that introduced speech-to-speech over a WebSocket, with interruption
+  handling and sub-second response — the first time a voice agent could be built
+  without stitching together transcription, a chat model and text-to-speech. It
+  stayed a preview for its entire eighteen-month life.
+released_on: 2024-10-01
+deprecated_on: 2025-09-15
+shutdown_on: 2026-05-07
+status: retired
+replacements:
+  - provider: openai
+    model: gpt-realtime-1.5
+    recommended: true
+    note: >-
+      The session event schema changed between preview and GA. Expect to update
+      event handlers, not just the model id.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

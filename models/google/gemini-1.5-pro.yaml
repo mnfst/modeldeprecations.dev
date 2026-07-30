@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-1.5-pro
+name: Gemini 1.5 Pro
+aliases: [gemini-1.5-pro-002]
+description: >-
+  The model that made a million-token context window a mainstream expectation,
+  and for a year the reason teams chose Gemini at all. Google no longer lists it
+  on its deprecations page — rows are removed once a model is long gone — so the
+  shutdown date here comes from the community llm-model-deprecation registry
+  rather than a Google page, and should be treated as less firm than the rest of
+  this site.
+released_on: 2024-02-15
+shutdown_on: 2026-06-17
+status: retired
+replacements:
+  - provider: google
+    model: gemini-2.5-pro
+    recommended: true
+    note: >-
+      The 2.5 generation thinks before answering by default, which changes both
+      latency and token cost. Budget with thinkingConfig rather than assuming
+      1.5-era numbers carry over.
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-07-30
+  - url: https://github.com/techdevsynergy/llm-model-deprecation
+    title: llm-model-deprecation registry (third-party)
+    accessed: 2026-07-30
+last_verified: 2026-07-30

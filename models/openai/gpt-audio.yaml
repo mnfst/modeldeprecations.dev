@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-audio
+name: GPT Audio
+description: >-
+  The GA audio model for Chat Completions, successor to the gpt-4o audio
+  previews. Deprecated in July 2026 with a six-month runway, alongside the whole
+  realtime and audio generation it belonged to.
+deprecated_on: 2026-07-20
+shutdown_on: 2027-01-20
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-audio-1.5
+    recommended: true
+    note: >-
+      A point upgrade within the same family — the closest thing to a drop-in in
+      the audio line.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: text-davinci-001
+name: text-davinci-001
+description: >-
+  The first instruction-tuned davinci, and the model that demonstrated that
+  following an instruction beat completing a pattern. It was quickly overtaken
+  by text-davinci-002 and -003, but the id survived in tutorials for years after
+  it stopped being the right choice.
+deprecated_on: 2023-07-06
+shutdown_on: 2024-01-04
+status: retired
+replacements:
+  - provider: openai
+    model: gpt-3.5-turbo-instruct
+    recommended: true
+    note: >-
+      The named successor kept the completions endpoint alive, but it is
+      deprecated too, shutting down September 28, 2026. After that no
+      completions-style model remains on the platform.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

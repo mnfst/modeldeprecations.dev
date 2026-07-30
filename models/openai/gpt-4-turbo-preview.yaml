@@ -2,6 +2,7 @@
 provider: openai
 model: gpt-4-turbo-preview
 name: GPT-4 Turbo preview
+aliases: [gpt-4-turbo-preview-completions]
 description: >-
   A floating pointer that resolved to whichever GPT-4 Turbo preview snapshot was
   current, which meant its behaviour changed underneath anyone who used it. It

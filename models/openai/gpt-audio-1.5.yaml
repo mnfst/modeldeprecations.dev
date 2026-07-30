@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-audio-1.5
+name: GPT Audio 1.5
+description: >-
+  The current audio-in/audio-out model on Chat Completions, and the target
+  OpenAI names for every deprecated audio id — the gpt-4o audio previews,
+  gpt-audio and gpt-audio-mini all point here. Unlike the realtime models it is
+  a normal request/response call.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30
