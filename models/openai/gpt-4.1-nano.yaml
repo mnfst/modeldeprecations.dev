@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-4.1-nano
+name: GPT-4.1 nano
+aliases: [gpt-4.1-nano-2025-04-14]
+description: >-
+  The cheapest model of the GPT-4.1 generation, and the only member of that
+  family to be deprecated so far — gpt-4.1 and gpt-4.1-mini remain active. It was
+  a common choice for classification and routing at high volume.
+released_on: 2025-04-14
+deprecated_on: 2026-04-22
+shutdown_on: 2026-10-23
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-5.6-luna
+    recommended: true
+    note: >-
+      Fine-tuned gpt-4.1-nano deployments are directed to gpt-5.4-nano instead;
+      a fine-tune does not transfer and has to be re-run on the new base.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

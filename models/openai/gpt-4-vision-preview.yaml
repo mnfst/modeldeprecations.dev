@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-4-vision-preview
+name: GPT-4 Vision preview
+aliases: [gpt-4-1106-vision-preview]
+description: >-
+  The first GPT-4 that could see, and for a few months the only way to get image
+  understanding from OpenAI. It was a separate id with its own rate limits and no
+  function calling — constraints that disappeared when GPT-4o folded vision into
+  the main model. Retired December 2024.
+released_on: 2023-11-06
+deprecated_on: 2024-06-06
+shutdown_on: 2024-12-06
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-4o,
+      recommended: true,
+      note: "Vision is no longer a separate id. The image_url content block carries over unchanged, and function calling now works alongside it.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

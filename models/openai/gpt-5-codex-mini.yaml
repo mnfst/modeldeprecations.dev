@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-5-codex-mini
+name: GPT-5 Codex mini
+description: >-
+  The small coding model that replaced codex-mini-latest when that pointer was
+  retired in February 2026. It kept the shell-tool integration the Codex line was
+  built around, at a size that suits editor-loop completions rather than
+  long-running agent work.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

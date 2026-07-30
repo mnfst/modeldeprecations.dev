@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-5.4-nano
+name: GPT-5.4 nano
+description: >-
+  The smallest model of the GPT-5.4 generation, and the successor OpenAI names
+  for fine-tuned gpt-4.1-nano deployments. Nano-class models are where cost
+  pressure is sharpest, which is also why they turn over faster than the tiers
+  above them.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: text-embedding-3-large
+name: text-embedding-3-large
+description: >-
+  The large embedding model, and the strongest retrieval quality OpenAI offers.
+  Like its smaller sibling it is absent from the deprecations page: an embedding
+  model cannot be retired on a chat-model schedule, because doing so would
+  invalidate every vector index built against it.
+released_on: 2024-01-25
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

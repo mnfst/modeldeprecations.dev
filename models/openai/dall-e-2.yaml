@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: dall-e-2
+name: DALL·E 2
+description: >-
+  The model that put text-to-image generation in front of a general audience in
+  2022, complete with the waitlist that made it feel like an event. By the time
+  it was retired in May 2026 it had been outclassed for years — it survived on
+  inertia and on the inpainting API that had no direct successor for a while.
+released_on: 2022-04-06
+deprecated_on: 2025-11-14
+shutdown_on: 2026-05-12
+status: retired
+replacements:
+  - provider: openai
+    model: gpt-image-2
+    recommended: true
+    note: >-
+      The request shape differs: gpt-image models are called through the images
+      endpoint with a different parameter set, and there is no direct equivalent
+      of the DALL·E 2 variations call.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

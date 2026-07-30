@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-5.3-chat-latest
+name: GPT-5.3 chat-latest
+description: >-
+  The successor pointer to gpt-5.2-chat-latest, deprecated on the same day and
+  the same shutdown date as the id it replaced. Chat-latest pointers move with
+  ChatGPT rather than with the API, which is exactly why pinning one is risky:
+  the behaviour underneath can change without the id changing.
+deprecated_on: 2026-05-08
+shutdown_on: 2026-08-10
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-5.6-sol
+    recommended: true
+    note: >-
+      Sol is a pinned model rather than a moving pointer, so output stays stable
+      between deploys. That is the main behavioural difference to plan for.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

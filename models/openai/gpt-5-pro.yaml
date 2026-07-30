@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-5-pro
+name: GPT-5 Pro
+aliases: [gpt-5-pro-2025-10-06]
+description: >-
+  The extended-compute tier of GPT-5, which spent far longer per request to buy
+  accuracy on hard problems. It shipped two months after the base model and was
+  deprecated on the same date, which is the useful lesson: a Pro tier does not
+  get a longer life than the generation it belongs to.
+released_on: 2025-10-06
+deprecated_on: 2026-06-11
+shutdown_on: 2026-12-11
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-5.6-sol
+    recommended: true
+    note: >-
+      Sol at a high reasoning_effort is the closest equivalent. There is no
+      separate "-pro" id in the 5.6 generation — the compute dial moved into the
+      request instead of the model name.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

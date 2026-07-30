@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: o1-pro
+name: o1-pro
+aliases: [o1-pro-2025-03-19]
+description: >-
+  The long-compute variant of o1, available only through the Responses API and
+  priced for problems where minutes of thinking are worth it. Deprecated in April
+  2026 with an October shutdown.
+released_on: 2025-03-19
+deprecated_on: 2026-04-22
+shutdown_on: 2026-10-23
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-5.6-sol
+    recommended: true
+    note: >-
+      OpenAI directs o1-pro traffic to Sol with reasoning set to its pro mode
+      rather than to a separate model id. The dial moved from the id into the
+      request body.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

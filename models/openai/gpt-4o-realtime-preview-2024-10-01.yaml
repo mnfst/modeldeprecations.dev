@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-4o-realtime-preview-2024-10-01
+name: GPT-4o Realtime preview (2024-10-01)
+description: >-
+  The original realtime snapshot from the October 2024 launch, deprecated eight
+  months later on a four-month notice. Realtime previews were versioned by date
+  and turned over faster than anything else on the platform at the time.
+released_on: 2024-10-01
+deprecated_on: 2025-06-10
+shutdown_on: 2025-10-10
+status: retired
+replacements:
+  - provider: openai
+    model: gpt-realtime-1.5
+    recommended: true
+    note: >-
+      Two protocol revisions separate this snapshot from the current realtime
+      model; treat the voice pipeline as a rewrite.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

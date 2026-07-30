@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: o4-mini
+name: o4-mini
+aliases: [o4-mini-2025-04-16]
+description: >-
+  The last of the mini reasoning models, and the named successor when o1-mini was
+  retired in 2025 — which makes it the second stop on a migration path that now
+  needs a third. Deprecated April 2026, shutting down October 2026.
+released_on: 2025-04-16
+deprecated_on: 2026-04-22
+shutdown_on: 2026-10-23
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-5.6-terra
+    recommended: true
+    note: >-
+      Note that OpenAI points o4-mini at Terra, not at Sol: the replacement for a
+      small reasoning model is now a general model, not a smaller reasoner.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

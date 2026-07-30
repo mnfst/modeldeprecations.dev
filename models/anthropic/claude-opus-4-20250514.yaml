@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-opus-4-20250514
+name: Claude Opus 4
+aliases: [claude-opus-4-0]
+description: >-
+  The Opus that launched the Claude 4 generation and introduced extended
+  thinking with tool use. It was retired in June 2026 on two months notice,
+  alongside Sonnet 4 — the first time Anthropic retired an entire generation in
+  one announcement.
+released_on: 2025-05-14
+deprecated_on: 2026-04-14
+shutdown_on: 2026-06-15
+status: retired
+replacements:
+  - provider: anthropic
+    model: claude-opus-4-8
+    recommended: true
+    note: >-
+      Opus 4.7 and later reject temperature, top_p and top_k with a 400 error when set to a non-default value. Remove them from the request rather than tuning them down. Extended thinking has also been replaced by adaptive thinking:
+      thinking.type: enabled is no longer accepted on Opus 4.7 and later.
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

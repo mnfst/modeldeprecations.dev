@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: chatgpt-image-latest
+name: ChatGPT Image latest
+description: >-
+  A floating pointer to whichever image model ChatGPT was using, for products
+  that wanted to match what users saw in the app. Like every other -latest
+  pointer OpenAI has shipped, it was retired on a shorter notice than the pinned
+  ids it pointed at.
+deprecated_on: 2026-06-02
+shutdown_on: 2026-12-01
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-image-2
+    recommended: true
+    note: >-
+      Move to a pinned id. Every floating pointer in this catalog — chat, codex
+      and image alike — has now been deprecated at least once.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

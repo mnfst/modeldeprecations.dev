@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-3.5-turbo-1106
+name: GPT-3.5 Turbo (1106)
+description: >-
+  The November 2023 GPT-3.5 snapshot, the first to support JSON mode and parallel
+  function calling. It is deprecated with a September 2026 shutdown, a month
+  before the undated gpt-3.5-turbo pointer follows it.
+released_on: 2023-11-06
+deprecated_on: 2025-09-26
+shutdown_on: 2026-09-28
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-5.4-mini
+    recommended: true
+    note: >-
+      Swap max_tokens for max_completion_tokens, and replace JSON mode with
+      structured outputs, which enforce your schema rather than only valid JSON.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

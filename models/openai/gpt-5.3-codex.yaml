@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-5.3-codex
+name: GPT-5.3 Codex
+description: >-
+  The current hosted Codex model, after gpt-5-codex, gpt-5.1-codex,
+  gpt-5.1-codex-max and gpt-5.2-codex were all retired together in July 2026.
+  The Codex line turns over faster than any other family on the platform, which
+  is the single most useful thing to know when pinning one of these ids.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

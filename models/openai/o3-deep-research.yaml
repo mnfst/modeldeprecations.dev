@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: o3-deep-research
+name: o3-deep-research
+aliases: [o3-deep-research-2025-06-26]
+description: >-
+  A research-agent model that ran multi-step web investigations autonomously and
+  returned a cited report. It was only ever available on the Responses API with
+  the web-search tool enabled, and was retired in July 2026 with its o4-mini
+  sibling.
+released_on: 2025-06-26
+deprecated_on: 2026-04-22
+shutdown_on: 2026-07-23
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-5.6-sol,
+      recommended: true,
+      note: "Sol plus the web-search tool covers the same ground, but you now orchestrate the research loop yourself rather than getting it built into the model.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

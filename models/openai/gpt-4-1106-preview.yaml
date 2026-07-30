@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-4-1106-preview
+name: GPT-4 Turbo preview (1106)
+description: >-
+  The November 2023 preview that introduced 128k context and JSON mode, and the
+  one entry on this site with two conflicting shutdown dates: OpenAI first set it
+  for March 26, 2026, then listed the same id again in the April 2026
+  announcement with a new date of October 23, 2026. The later announcement is the
+  one that stands.
+released_on: 2023-11-06
+deprecated_on: 2025-09-26
+shutdown_on: 2026-10-23
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-5.6-sol
+    recommended: true
+    note: >-
+      JSON mode has been superseded by structured outputs, which enforce a schema
+      rather than only guaranteeing valid JSON. Worth adopting during the move
+      instead of after it.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

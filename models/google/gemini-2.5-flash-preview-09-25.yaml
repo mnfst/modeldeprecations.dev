@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-2.5-flash-preview-09-25
+name: Gemini 2.5 Flash (preview 09-25)
+description: >-
+  The September 2025 preview snapshot of 2.5 Flash, released to test changes
+  ahead of the stable model. Shut down February 2026.
+released_on: 2025-09-25
+shutdown_on: 2026-02-17
+status: retired
+replacements:
+  - provider: google
+    model: gemini-3.6-flash
+    recommended: true
+    note: >-
+      Google points this snapshot past the stable 2.5 Flash id straight to 3.6
+      Flash, so there is no reason to migrate to 2.5 Flash as an interim step.
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

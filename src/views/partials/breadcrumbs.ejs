@@ -1,0 +1,14 @@
+<nav aria-label="Breadcrumb" class="pt-6">
+  <ol class="flex flex-wrap items-center gap-1.5 text-xs text-slate-500">
+    <% items.forEach(function (item, i) { %>
+    <li class="flex items-center gap-1.5">
+      <% if (item.href && i < items.length - 1) { %>
+      <a href="<%= item.href %>" class="hover:text-slate-700"><%= item.name %></a>
+      <% } else { %>
+      <span aria-current="page" class="font-medium text-slate-700"><%= item.name %></span>
+      <% } %>
+      <% if (i < items.length - 1) { %><span aria-hidden="true" class="text-slate-300">/</span><% } %>
+    </li>
+    <% }) %>
+  </ol>
+</nav>

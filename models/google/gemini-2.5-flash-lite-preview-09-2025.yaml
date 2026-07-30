@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-2.5-flash-lite-preview-09-2025
+name: Gemini 2.5 Flash-Lite (preview 09-2025)
+description: >-
+  A September 2025 preview of the Flash-Lite tier, notable mainly for its id
+  format: it used a four-digit year where every other Gemini preview uses two.
+  Shut down March 2026.
+released_on: 2025-09-25
+shutdown_on: 2026-03-31
+status: retired
+replacements:
+  - provider: google
+    model: gemini-3.1-flash-lite
+    recommended: true
+    note: >-
+      Google routes this straight to the 3.1 Lite tier rather than to the stable
+      2.5 Flash-Lite, which is itself scheduled for October 2026.
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-3.5-turbo-instruct
+name: GPT-3.5 Turbo Instruct
+description: >-
+  The last completions-endpoint model OpenAI shipped, kept alive years past the
+  rest of the /v1/completions family because logprobs and raw continuation
+  behaviour had no equivalent in chat. Its September 2026 shutdown closes out the
+  completions era entirely.
+released_on: 2023-09-18
+deprecated_on: 2025-09-26
+shutdown_on: 2026-09-28
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-5.4-mini
+    recommended: true
+    note: >-
+      This is an endpoint change, not just an id change: /v1/completions gives
+      way to chat completions, prompts become messages, and raw continuation
+      behaviour has no direct equivalent.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

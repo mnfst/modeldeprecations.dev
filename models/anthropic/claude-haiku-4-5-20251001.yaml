@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-haiku-4-5-20251001
+name: Claude Haiku 4.5
+aliases: [claude-haiku-4-5]
+description: >-
+  The fastest Claude with near-frontier quality, and the named replacement for
+  every retired Haiku and Instant model going back to 2024. Active, with an
+  earliest retirement date of October 2026.
+released_on: 2025-10-01
+earliest_shutdown_on: 2026-10-15
+status: active
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

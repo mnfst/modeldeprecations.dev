@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-image-1.5
+name: GPT Image 1.5
+description: >-
+  A late refresh of the first GPT image generation, deprecated barely after it
+  landed — it and gpt-image-2 were announced close enough together that many
+  teams never migrated onto it at all.
+deprecated_on: 2026-06-02
+shutdown_on: 2026-12-01
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-image-2
+    recommended: true
+    note: >-
+      If you are still on gpt-image-1, skip 1.5 entirely and go straight to
+      gpt-image-2 — 1.5 shuts down first.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

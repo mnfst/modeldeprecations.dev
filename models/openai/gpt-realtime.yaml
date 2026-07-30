@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-realtime
+name: GPT Realtime
+description: >-
+  The first realtime model to leave preview, in late 2025 — and deprecated less
+  than a year later. Voice models have the shortest lifecycles on the platform,
+  which matters more than usual because a realtime integration is a protocol,
+  not just an id.
+deprecated_on: 2026-07-20
+shutdown_on: 2027-01-20
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-realtime-2.1
+    recommended: true
+    note: >-
+      Six months of notice, which is the most generous window in the current
+      OpenAI deprecation wave. Use it — realtime migrations touch session
+      handling, not just a model string.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-4-0314
+name: GPT-4 (0314)
+description: >-
+  The launch snapshot of GPT-4, from March 2023. It was scheduled for removal
+  twice — first for June 2024, then extended — before finally going in March
+  2026, which made it one of the longest-lived pinned snapshots OpenAI ever
+  shipped.
+released_on: 2023-03-14
+deprecated_on: 2025-09-26
+shutdown_on: 2026-03-26
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-4,
+      recommended: true,
+      note: "The undated gpt-4 id is the smallest change, though it is itself deprecated with an October 2026 shutdown. For a migration that lasts, go to gpt-5.6-sol.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

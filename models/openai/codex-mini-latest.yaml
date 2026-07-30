@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: codex-mini-latest
+name: codex-mini-latest
+description: >-
+  The small coding model behind the first Codex CLI, and a floating pointer
+  rather than a pinned snapshot. Retired February 2026, a day short of three
+  months after the announcement.
+deprecated_on: 2025-11-17
+shutdown_on: 2026-02-12
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-5-codex-mini,
+      recommended: true,
+      note: "gpt-5-codex-mini keeps the shell-tool integration this model was built around, so agent scaffolding usually transfers unchanged.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

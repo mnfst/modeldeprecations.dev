@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-2.1
+name: Claude 2.1
+description: >-
+  The model that took Claude to a 200k context window in late 2023, when the rest
+  of the field was at 8k to 32k. Long context was Anthropic's clearest
+  differentiator for most of a year. Retired July 2025.
+released_on: 2023-11-21
+deprecated_on: 2025-01-21
+shutdown_on: 2025-07-21
+status: retired
+replacements:
+  - provider: anthropic
+    model: claude-opus-4-8
+    recommended: true
+    note: >-
+      Claude 2.1 predates the Messages API. Migrating means moving off the legacy
+      completions endpoint and its Human/Assistant prompt format entirely.
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

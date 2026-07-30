@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-4o
+name: GPT-4o
+description: >-
+  The omni model that made multimodal input routine and halved the price of
+  GPT-4 Turbo at the same time. It is still the default many production stacks
+  reach for, and OpenAI has kept the floating gpt-4o pointer alive even as the
+  dated snapshot behind it changed. The May 2024 snapshot is deprecated; the
+  pointer itself is not.
+released_on: 2024-05-13
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

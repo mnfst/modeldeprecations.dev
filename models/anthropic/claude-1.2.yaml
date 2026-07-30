@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-1.2
+name: Claude 1.2
+description: >-
+  The third Claude 1 point release, and the one many early integrations pinned
+  because it was the current default when the API opened more widely. Retired
+  November 2024 with the rest of the line.
+deprecated_on: 2024-09-04
+shutdown_on: 2024-11-06
+status: retired
+replacements:
+  - provider: anthropic
+    model: claude-haiku-4-5-20251001
+    recommended: true
+    note: >-
+      Two generations and a whole API separate these. Claude 1 predates the
+      Messages API, so a migration means moving off /v1/complete and its
+      "\n\nHuman:"/"\n\nAssistant:" prompt format entirely.
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

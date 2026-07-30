@@ -1,0 +1,68 @@
+<%
+  const sortedProviders = (providerHubs || []).slice().sort((a, b) => a.label.localeCompare(b.label));
+%>
+<header class="relative border-b border-slate-200">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+    <a href="/" class="flex items-center gap-2 font-semibold tracking-tight">
+      <span class="logo-gradient inline-flex h-7 w-7 items-center justify-center rounded-md" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round">
+          <path d="M4 7h13M4 12h9" />
+          <path d="M4 17h13" opacity="0.55" />
+          <path d="M15 15.5l5 3.5" opacity="0.55" />
+        </svg>
+      </span>
+      <span class="text-base sm:text-lg">modeldeprecations.dev</span>
+    </a>
+    <div class="flex items-center gap-1">
+      <nav class="hidden items-center gap-1 text-sm sm:flex" aria-label="Main">
+        <div class="relative" data-providers-dropdown>
+          <button type="button" data-providers-toggle aria-expanded="false" class="inline-flex items-center gap-1 rounded-md px-3 py-1.5 text-slate-600 hover:bg-warm-hover hover:text-slate-900">
+            Providers
+            <svg viewBox="0 0 16 16" class="h-3 w-3 transition-transform" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" data-providers-chevron aria-hidden="true"><path d="M4 6l4 4 4-4" /></svg>
+          </button>
+        </div>
+        <a href="/calendar" class="rounded-md px-3 py-1.5 text-slate-600 hover:bg-warm-hover hover:text-slate-900">Calendar</a>
+        <a href="/changelog" class="rounded-md px-3 py-1.5 text-slate-600 hover:bg-warm-hover hover:text-slate-900">Changelog</a>
+        <a href="/api" class="rounded-md px-3 py-1.5 text-slate-600 hover:bg-warm-hover hover:text-slate-900">API</a>
+        <a href="https://github.com/mnfst/modeldeprecations.dev" target="_blank" rel="noopener noreferrer" class="rounded-md px-3 py-1.5 text-slate-600 hover:bg-warm-hover hover:text-slate-900">GitHub</a>
+      </nav>
+      <details class="group relative sm:hidden" data-mobile-menu>
+        <summary class="inline-flex h-9 w-9 cursor-pointer list-none items-center justify-center rounded-md text-slate-600 hover:bg-warm-hover" aria-label="Open menu">
+          <svg class="h-5 w-5 group-open:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" /></svg>
+          <svg class="hidden h-5 w-5 group-open:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M18 6 6 18M6 6l12 12" /></svg>
+        </summary>
+        <div class="absolute right-0 top-full z-30 mt-2 w-56 overflow-hidden border border-slate-200 bg-white py-1 text-sm shadow-lg">
+          <a href="/calendar" class="block px-4 py-2 text-slate-600 hover:bg-warm-hover hover:text-slate-900">Calendar</a>
+          <a href="/changelog" class="block px-4 py-2 text-slate-600 hover:bg-warm-hover hover:text-slate-900">Changelog</a>
+          <a href="/api" class="block px-4 py-2 text-slate-600 hover:bg-warm-hover hover:text-slate-900">API</a>
+          <a href="https://github.com/mnfst/modeldeprecations.dev" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-slate-600 hover:bg-warm-hover hover:text-slate-900">GitHub</a>
+          <div class="my-1 border-t border-slate-200"></div>
+          <p class="px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Providers</p>
+          <% for (const hub of sortedProviders) { %>
+          <% const mLogo = helpers.logoFor(hub.provider); %>
+          <a href="<%= hub.href %>" class="flex items-center gap-2 px-4 py-2 text-slate-600 hover:bg-warm-hover hover:text-slate-900">
+            <% if (mLogo) { %><span class="provider-logo inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center" aria-hidden="true"><%- mLogo %></span><% } %>
+            <%= hub.label %>
+          </a>
+          <% } %>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div data-providers-menu class="providers-menu-hidden absolute left-0 right-0 z-30 border-b border-slate-200 bg-white shadow-lg">
+    <div class="mx-auto max-w-6xl px-4 py-6 sm:px-6 lg:px-8">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">Providers</p>
+      <div class="grid grid-cols-2 gap-x-4 gap-y-1 sm:grid-cols-3 lg:grid-cols-4">
+        <% for (const hub of sortedProviders) { %>
+        <% const pLogo = helpers.logoFor(hub.provider); %>
+        <a href="<%= hub.href %>" class="flex items-center gap-2.5 rounded px-3 py-2.5 text-sm text-slate-700 hover:bg-warm-hover">
+          <% if (pLogo) { %><span class="provider-logo inline-flex h-4 w-4 shrink-0 items-center justify-center" aria-hidden="true"><%- pLogo %></span><% } %>
+          <span><%= hub.label %></span>
+          <span class="ml-auto text-xs tabular-nums text-slate-400"><%= hub.count %></span>
+        </a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</header>

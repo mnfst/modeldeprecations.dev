@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-3.1-flash-lite-preview
+name: Gemini 3.1 Flash-Lite (preview)
+description: >-
+  The preview that became gemini-3.1-flash-lite. It ran for under three months
+  before being shut down in favour of the stable id — the standard Gemini pattern,
+  and the reason preview ids should never reach production config.
+released_on: 2026-03-03
+shutdown_on: 2026-05-25
+status: retired
+replacements:
+  - provider: google
+    model: gemini-3.1-flash-lite
+    recommended: true
+    note: >-
+      Dropping the "-preview" suffix is the entire migration. Behaviour is
+      unchanged.
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

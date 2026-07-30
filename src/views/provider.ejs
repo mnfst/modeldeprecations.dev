@@ -1,0 +1,71 @@
+<%
+  const logo = helpers.logoFor(provider);
+  const tables = [
+    { key: "shuttingSoon", title: "Shutting down", rows: sections.shuttingSoon,
+      blurb: "Announced shutdown dates, soonest first. These still answer requests until the date lands." },
+    { key: "deprecated", title: "Deprecated, date unconfirmed", rows: sections.deprecated,
+      blurb: "Deprecated with no shutdown date published. Treat them as at risk." },
+    { key: "retired", title: "Retired", rows: sections.retired,
+      blurb: "Already removed. Requests to these models fail." },
+    { key: "active", title: "Active", rows: sections.active,
+      blurb: "No deprecation and no shutdown date announced as of the last check." },
+  ].filter((table) => table.rows.length > 0);
+%>
+<%- include("partials/breadcrumbs", { items: [
+  { name: "Home", href: "/" },
+  { name: providerName }
+] }) %>
+
+<section class="pt-6">
+  <div class="flex items-center gap-3">
+    <% if (logo) { %><span class="provider-logo inline-flex h-8 w-8 shrink-0 items-center justify-center" aria-hidden="true"><%- logo %></span><% } %>
+    <h1 class="text-balance font-bold tracking-tight"><%= providerName %> deprecated models</h1>
+  </div>
+  <p class="mt-4 max-w-3xl text-pretty text-base text-slate-700">
+    Every <%= providerName %> model we track, split by where it is in its life: what is shutting
+    down and when, what has already gone, and what is still safe to build on. <%= total %> models,
+    current as of <%= helpers.formatDate(today) %>.
+  </p>
+  <div class="mt-4 flex flex-wrap gap-2 text-sm">
+    <% for (const table of tables) { %>
+    <a href="#<%= table.key %>" class="border border-slate-300 px-3 py-1.5 text-slate-600 hover:bg-warm-hover"><%= table.title %> (<%= table.rows.length %>)</a>
+    <% } %>
+  </div>
+</section>
+
+<% for (const table of tables) { %>
+<section class="mt-10" aria-labelledby="<%= table.key %>">
+  <h2 id="<%= table.key %>" class="text-slate-900"><%= table.title %></h2>
+  <p class="mt-2 max-w-2xl text-sm text-slate-600"><%= table.blurb %></p>
+  <div class="mt-4 overflow-x-auto border border-slate-200">
+    <table class="w-full min-w-[40rem] text-left text-sm">
+      <thead class="bg-warm-tag text-xs uppercase tracking-[0.06em] text-slate-500">
+        <tr>
+          <th scope="col" class="px-3 py-2 font-semibold">Model</th>
+          <th scope="col" class="px-3 py-2 font-semibold">Status</th>
+          <th scope="col" class="px-3 py-2 font-semibold">Shutdown</th>
+          <th scope="col" class="px-3 py-2 font-semibold">Replacement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (const row of table.rows) { %>
+        <%- include("partials/model_row", { row: row, helpers: helpers, showProvider: false }) %>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</section>
+<% } %>
+
+<section class="mt-12 border-t border-slate-200 pt-8">
+  <h2 class="text-slate-900">Keep up with <%= providerName %> deprecations</h2>
+  <p class="mt-2 max-w-2xl text-sm text-slate-700">
+    Shutdown dates land with months of notice and then arrive all at once. Subscribe to the
+    calendar and they show up alongside everything else you plan around.
+  </p>
+  <div class="mt-4 flex flex-wrap gap-3 text-sm">
+    <a href="/calendar.ics" rel="nofollow" class="inline-flex items-center gap-2 bg-slate-900 px-4 py-2 font-medium text-white hover:bg-slate-800">Subscribe (.ics)</a>
+    <a href="/changelog.xml" rel="nofollow" class="inline-flex items-center gap-2 border border-slate-300 px-4 py-2 font-medium text-slate-700 hover:bg-warm-hover">RSS</a>
+    <a href="/calendar" class="inline-flex items-center gap-2 border border-slate-300 px-4 py-2 font-medium text-slate-700 hover:bg-warm-hover">Full calendar</a>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+<%
+  const kindClasses = {
+    deprecated: "bg-amber-100 text-amber-900 ring-amber-200",
+    shutdown: "bg-rose-100 text-rose-900 ring-rose-200",
+    scheduled: "bg-slate-100 text-slate-700 ring-slate-200",
+  };
+%>
+<%- include("partials/breadcrumbs", { items: [
+  { name: "Home", href: "/" },
+  { name: "Changelog" }
+] }) %>
+
+<section class="pt-6">
+  <h1 class="text-balance font-bold tracking-tight">Model deprecation changelog</h1>
+  <p class="mt-4 max-w-3xl text-pretty text-base text-slate-700">
+    Every deprecation announcement and every shutdown, dated. <%= total %> events across the
+    catalog. Entries dated in the future are shutdowns already on the books — they are news now,
+    not on the day they land.
+  </p>
+  <div class="mt-5 flex flex-wrap gap-3 text-sm">
+    <a href="<%= rssPath %>" rel="nofollow" class="inline-flex items-center gap-2 bg-slate-900 px-4 py-2 font-medium text-white hover:bg-slate-800">
+      <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M6.18 15.64a2.18 2.18 0 1 1 0 4.36 2.18 2.18 0 0 1 0-4.36M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83C19.56 11.4 12.6 4.44 4 4.44m0 5.66v2.83c3.9 0 7.07 3.16 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9"/></svg>
+      RSS
+    </a>
+    <a href="/calendar" class="inline-flex items-center gap-2 border border-slate-300 px-4 py-2 font-medium text-slate-700 hover:bg-warm-hover">Shutdown calendar</a>
+  </div>
+</section>
+
+<div class="mt-10 space-y-8">
+  <% for (const group of groups) { %>
+  <section aria-labelledby="day-<%= group.date %>">
+    <h2 id="day-<%= group.date %>" class="text-slate-900"><%= helpers.formatDate(group.date) %></h2>
+    <ul class="mt-3 divide-y divide-slate-100 border border-slate-200">
+      <% for (const entry of group.entries) { %>
+      <li class="flex flex-wrap items-start gap-x-3 gap-y-2 px-4 py-3">
+        <span class="inline-flex shrink-0 items-center rounded-full px-2 py-0.5 text-xs font-medium ring-1 ring-inset <%= kindClasses[entry.kind] %>"><%= changeKindLabel(entry.kind) %></span>
+        <div class="min-w-0 flex-1">
+          <a href="<%= entry.path %>" class="font-medium text-slate-900 hover:text-accent"><%= helpers.modelFullLabel(entry.model) %></a>
+          <span class="ml-1.5 font-mono text-xs text-slate-500"><%= entry.model.model %></span>
+          <p class="mt-1 text-sm text-slate-700"><%= entry.summary %></p>
+        </div>
+      </li>
+      <% } %>
+    </ul>
+  </section>
+  <% } %>
+</div>

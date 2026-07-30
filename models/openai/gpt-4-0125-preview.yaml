@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-4-0125-preview
+name: GPT-4 Turbo preview (0125)
+description: >-
+  The January 2024 preview snapshot, released to fix a "laziness" regression
+  where the model truncated long code generations. Retired in March 2026.
+released_on: 2024-01-25
+deprecated_on: 2025-09-26
+shutdown_on: 2026-03-26
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-5.6-sol,
+      recommended: true,
+      note: "Nothing about the preview snapshots carries forward; the response-truncation behaviour they existed to fix has not recurred.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

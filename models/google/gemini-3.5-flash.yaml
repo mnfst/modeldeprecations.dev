@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-3.5-flash
+name: Gemini 3.5 Flash
+description: >-
+  The Flash release between 3.1 and 3.6, still active with no shutdown date
+  published. Gemini Flash models have historically run about sixteen months from
+  release to shutdown, which is the useful planning number if you are pinning one.
+released_on: 2026-05-19
+status: active
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

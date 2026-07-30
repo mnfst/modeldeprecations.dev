@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-5.5-pro
+name: GPT-5.5 Pro
+description: >-
+  The extended-compute variant of GPT-5.5, which spends much longer per request
+  in exchange for accuracy on problems where a wrong answer is expensive. Pro
+  tiers have historically been deprecated on the same schedule as the base model
+  they derive from, so its lifecycle is worth watching alongside GPT-5.5.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

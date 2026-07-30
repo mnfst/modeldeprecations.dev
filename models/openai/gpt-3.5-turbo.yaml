@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-3.5-turbo
+name: GPT-3.5 Turbo
+aliases: [gpt-3.5-turbo-0125, gpt-3.5-turbo-completions]
+description: >-
+  The model that made the chat completions API a commodity: cheap enough to put
+  behind a free product, good enough that most people stopped writing prompt
+  chains. It survived every deprecation wave from 2023 to 2026 because so much
+  code was written against it — and it is finally going in October 2026.
+released_on: 2023-03-01
+deprecated_on: 2026-04-22
+shutdown_on: 2026-10-23
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-5.6-terra
+    recommended: true
+    note: >-
+      The biggest gotcha is max_tokens: current models use max_completion_tokens
+      and reject the old parameter. Prompts tuned for GPT-3.5 are usually far
+      more verbose than a 5.6-generation model needs.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

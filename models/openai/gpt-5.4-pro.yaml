@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-5.4-pro
+name: GPT-5.4 Pro
+description: >-
+  The extended-compute variant of GPT-5.4, positioned for problems worth minutes
+  rather than seconds. OpenAI retired the earlier gpt-5-pro snapshot on the same
+  announcement as the rest of the GPT-5 family, so a Pro tier is no guarantee of
+  a longer life than the base model.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

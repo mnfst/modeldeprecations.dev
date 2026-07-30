@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-1.0-flash
+name: Gemini 1.0 Flash
+description: >-
+  The low-latency tier of the first Gemini generation, and the start of the
+  Flash naming that Google still uses. Like 1.0 Pro it left the API without a
+  published retirement date, which is why this page carries a status but no
+  shutdown day.
+status: retired
+replacements:
+  - provider: google
+    model: gemini-2.5-flash
+    recommended: true
+    note: >-
+      Flash has stayed the name for the fast tier across four generations, so
+      this is the natural target — but check the current Flash id, since 2.5
+      Flash is itself scheduled for retirement.
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-07-30
+  - url: https://github.com/techdevsynergy/llm-model-deprecation
+    title: llm-model-deprecation registry (third-party)
+    accessed: 2026-07-30
+last_verified: 2026-07-30

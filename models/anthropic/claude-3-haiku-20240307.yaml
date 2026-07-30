@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-3-haiku-20240307
+name: Claude Haiku 3
+description: >-
+  The cheapest Claude ever shipped, and the reason a lot of high-volume pipelines
+  chose Anthropic at all. It outlived Haiku 3.5 by two months — Anthropic retired
+  the newer model first, which is rarer than it sounds and caught out anyone who
+  had migrated forward.
+released_on: 2024-03-07
+deprecated_on: 2026-02-19
+shutdown_on: 2026-04-20
+status: retired
+replacements:
+  - provider: anthropic
+    model: claude-haiku-4-5-20251001
+    recommended: true
+    note: >-
+      Haiku 4.5 costs more per token than Haiku 3 did. For pipelines chosen on
+      price alone, re-run the unit economics before assuming this is a drop-in.
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

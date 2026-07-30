@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: o3-pro
+name: o3-pro
+aliases: [o3-pro-2025-06-10]
+description: >-
+  The long-compute variant of o3, aimed at problems where an answer is worth
+  minutes of thinking. It only ever ran on the Responses API, so migrations off
+  it are usually simpler than they look — the calling code is already shaped for
+  the successor.
+released_on: 2025-06-10
+deprecated_on: 2026-06-11
+shutdown_on: 2026-12-11
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-5.6-sol
+    recommended: true
+    note: >-
+      Raise reasoning_effort on Sol to recover o3-pro-like depth. Expect
+      different latency characteristics: Sol returns sooner at equivalent effort
+      than o3-pro did.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

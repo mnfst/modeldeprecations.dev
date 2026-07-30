@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-3.5-flash-lite
+name: Gemini 3.5 Flash-Lite
+description: >-
+  The cheapest tier of the current Gemini generation, and the named successor to
+  gemini-3.1-flash-lite. No shutdown date published yet.
+released_on: 2026-07-21
+status: active
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

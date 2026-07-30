@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-opus-4-1-20250805
+name: Claude Opus 4.1
+aliases: [claude-opus-4-1]
+description: >-
+  The August 2025 Opus, and the last Anthropic model priced at $15/$75 per
+  million tokens — three times what Opus costs today. It is the only deprecated
+  Anthropic model still answering requests, and it has days left.
+released_on: 2025-08-05
+deprecated_on: 2026-06-05
+shutdown_on: 2026-08-05
+status: deprecated
+replacements:
+  - provider: anthropic
+    model: claude-opus-4-8
+    recommended: true
+    note: >-
+      Opus 4.7 and later reject temperature, top_p and top_k with a 400 error when set to a non-default value. Remove them from the request rather than tuning them down. Opus 4.8 also defaults effort to high on every surface, so set it
+      explicitly if you were relying on a cheaper default.
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

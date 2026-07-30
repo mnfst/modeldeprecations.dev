@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-3-5-haiku-20241022
+name: Claude Haiku 3.5
+aliases: [claude-3-5-haiku-latest]
+description: >-
+  The fast, cheap Claude that handled classification and routing work for most of
+  2025, and the last Haiku before the 4.5 generation. Retired February 2026.
+released_on: 2024-10-22
+deprecated_on: 2025-12-19
+shutdown_on: 2026-02-19
+status: retired
+replacements:
+  - provider: anthropic
+    model: claude-haiku-4-5-20251001
+    recommended: true
+    note: >-
+      Haiku 4.5 is substantially more capable at a similar price point, and
+      supports extended thinking, which Haiku 3.5 did not.
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: text-ada-001
+name: text-ada-001
+description: >-
+  The smallest InstructGPT model, fast and nearly free, used for classification
+  and simple extraction where a wrong answer was cheap. It was the bottom rung
+  of the ladder that ran ada, babbage, curie, davinci — a naming scheme retired
+  along with the models themselves.
+deprecated_on: 2023-07-06
+shutdown_on: 2024-01-04
+status: retired
+replacements:
+  - provider: openai
+    model: gpt-3.5-turbo-instruct
+    recommended: true
+    note: >-
+      The named successor kept the completions endpoint alive, but it is
+      deprecated too, shutting down September 28, 2026. After that no
+      completions-style model remains on the platform.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

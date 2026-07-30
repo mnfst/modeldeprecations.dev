@@ -1,0 +1,37 @@
+name: Add a model
+description: A model is missing from the catalog.
+title: "[add] "
+labels: ["data", "new model"]
+body:
+  - type: input
+    id: model
+    attributes:
+      label: Model id
+      description: Exactly as the provider's API expects it.
+      placeholder: gemini-2.5-pro
+    validations:
+      required: true
+  - type: input
+    id: provider
+    attributes:
+      label: Provider slug
+      placeholder: google
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Provider documentation URL
+      description: Where its lifecycle status and dates are published.
+    validations:
+      required: true
+  - type: textarea
+    id: dates
+    attributes:
+      label: Known dates
+      description: >-
+        Release, deprecation and shutdown dates, if published. Leave anything you
+        cannot source blank — an omitted field is better than a guess.
+      placeholder: |
+        released_on: 2025-06-17
+        shutdown_on: 2026-10-16 (Google publishes this as an earliest date)

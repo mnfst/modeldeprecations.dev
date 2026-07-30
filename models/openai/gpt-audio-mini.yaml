@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-audio-mini
+name: GPT Audio mini
+description: >-
+  The cheap audio model, and the named replacement for gpt-4o-mini-audio-preview
+  before being deprecated itself nine months later. Anyone following OpenAIs
+  own migration advice through 2026 has now been moved twice.
+deprecated_on: 2026-07-20
+shutdown_on: 2027-01-20
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-audio-1.5
+    recommended: true
+    note: >-
+      There is no mini id in the 1.5 audio generation; the cheaper tier folded
+      back into the base model.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

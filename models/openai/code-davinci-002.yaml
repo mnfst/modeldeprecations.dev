@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: code-davinci-002
+name: code-davinci-002
+description: >-
+  The Codex model behind the original GitHub Copilot, and the shortest notice
+  OpenAI has ever given: deprecated on March 20, 2023 and shut down three days
+  later. The backlash from researchers who lost access mid-study is a large part
+  of why every provider now publishes deprecation schedules months ahead.
+deprecated_on: 2023-03-20
+shutdown_on: 2023-03-23
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-4o,
+      recommended: true,
+      note: "For code work today, gpt-5.3-codex is the direct descendant of this line. gpt-4o is what OpenAI named at the time.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-realtime-mini
+name: GPT Realtime mini
+description: >-
+  The cost tier of the first GA realtime generation, and the successor to
+  gpt-4o-mini-realtime-preview. It was deprecated in July 2026, which puts
+  anyone who migrated off the preview on their second voice migration in a year.
+deprecated_on: 2026-07-20
+shutdown_on: 2027-01-20
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-realtime-2.1-mini
+    recommended: true
+    note: >-
+      A same-family upgrade, so session events should carry over more cleanly
+      than the preview-to-GA move did.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

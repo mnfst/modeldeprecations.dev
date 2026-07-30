@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: o1-mini
+name: o1-mini
+description: >-
+  The cheap reasoning model of the first o-series generation, strong on maths and
+  code for its size but noticeably weaker on general knowledge. Retired October
+  2025.
+released_on: 2024-09-12
+deprecated_on: 2025-04-28
+shutdown_on: 2025-10-27
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: o4-mini,
+      recommended: true,
+      note: "o4-mini was the named successor and is now itself deprecated, shutting down October 2026. Two migrations in eighteen months for anyone who followed the advice each time.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

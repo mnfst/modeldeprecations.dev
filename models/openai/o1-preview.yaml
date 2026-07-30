@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: o1-preview
+name: o1-preview
+description: >-
+  The first public reasoning model, released as a preview in September 2024 and
+  retired ten months later — the shortest life of any widely adopted OpenAI
+  model. It hid its reasoning tokens but billed for them, which is where the
+  industry-wide argument about reasoning-token pricing started.
+released_on: 2024-09-12
+deprecated_on: 2025-04-28
+shutdown_on: 2025-07-28
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: o3,
+      recommended: true,
+      note: "OpenAI named o3 as the successor; o3 is itself now deprecated with a December 2026 shutdown, so the durable target is gpt-5.6-sol.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

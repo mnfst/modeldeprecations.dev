@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-opus-4-7
+name: Claude Opus 4.7
+description: >-
+  The release where Anthropic deprecated the sampling parameters themselves:
+  temperature, top_p and top_k return a 400 error on this model and everything
+  after it. That is a deprecation you hit at runtime rather than on a schedule,
+  and it breaks more code than most model retirements do.
+earliest_shutdown_on: 2027-04-16
+status: active
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-4o-mini
+name: GPT-4o mini
+description: >-
+  The model that made GPT-4-class quality cheap enough to put in a loop, and for
+  a long stretch the highest-volume id on the OpenAI platform. The floating
+  pointer is not deprecated; only the dated gpt-4o-2024-05-13 snapshot of its
+  larger sibling is.
+released_on: 2024-07-18
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: dall-e-3
+name: DALL·E 3
+description: >-
+  The image model that finally rendered text inside images legibly and took
+  prompts as prose rather than keyword soup. It rewrote your prompt before
+  generating, which produced better pictures and made exact reproduction
+  impossible — a trade the gpt-image line kept.
+released_on: 2023-10-03
+deprecated_on: 2025-11-14
+shutdown_on: 2026-05-12
+status: retired
+replacements:
+  - provider: openai
+    model: gpt-image-2
+    recommended: true
+    note: >-
+      Quality is a clear step up, but the automatic prompt rewriting behaves
+      differently. Anything with prompts tuned against DALL·E 3s rewriter needs
+      re-testing rather than porting.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

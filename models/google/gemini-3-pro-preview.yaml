@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-3-pro-preview
+name: Gemini 3 Pro (preview)
+description: >-
+  The first Pro model of the Gemini 3 generation, and one of the shortest-lived
+  entries in this catalog: released November 2025, shut down March 2026, less
+  than four months later. Preview ids on the Gemini API carry real shutdown risk.
+released_on: 2025-11-18
+shutdown_on: 2026-03-09
+status: retired
+replacements:
+  - provider: google
+    model: gemini-3.1-pro-preview
+    recommended: true
+    note: >-
+      The successor is also a preview id. On the Gemini API, preview does not
+      mean experimental so much as short-lived — plan to move again.
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

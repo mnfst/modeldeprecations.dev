@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-image-2
+name: GPT Image 2
+description: >-
+  The current image model, and the migration target for every image id OpenAI
+  has deprecated — DALL·E 2 and 3, gpt-image-1, its mini and 1.5 variants, and
+  the chatgpt-image-latest pointer all converge here. The whole image line
+  turned over inside eighteen months.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

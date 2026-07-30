@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: text-moderation-007
+name: text-moderation-007
+aliases: [text-moderation-stable, text-moderation-latest]
+description: >-
+  The last of the text-only moderation classifiers, and the endpoint most
+  trust-and-safety pipelines were built against before images became table
+  stakes. Both floating pointers, -stable and -latest, resolved to it and went
+  down with it in October 2025.
+deprecated_on: 2025-04-28
+shutdown_on: 2025-10-27
+status: retired
+replacements:
+  - provider: openai
+    model: omni-moderation
+    recommended: true
+    note: >-
+      The category set is wider and the response includes per-category scores
+      for images as well as text, so any thresholds tuned against the old
+      categories need re-checking rather than copying.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

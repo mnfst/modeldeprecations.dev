@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-oss-20b
+name: gpt-oss-20b
+description: >-
+  The smaller of the two gpt-oss open-weight releases, sized to run on a single
+  consumer GPU. Like its larger sibling it carries no shutdown risk in the usual
+  sense — the weights are Apache 2.0 licensed and already distributed.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

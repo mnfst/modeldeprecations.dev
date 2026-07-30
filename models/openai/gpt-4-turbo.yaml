@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-4-turbo
+name: GPT-4 Turbo
+aliases: [gpt-4-turbo-2024-04-09, gpt-4-turbo-completions]
+description: >-
+  The 128k-context, cheaper GPT-4 that made long documents practical and held the
+  default slot until GPT-4o arrived a month after its final snapshot. It is
+  deprecated with an October 2026 shutdown.
+released_on: 2024-04-09
+deprecated_on: 2026-04-22
+shutdown_on: 2026-10-23
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-5.6-sol
+    recommended: true
+    note: >-
+      Context is no longer the constraint it was, so chunking logic written for
+      128k can usually be deleted rather than ported.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

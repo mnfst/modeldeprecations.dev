@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: curie
+name: curie
+description: >-
+  The mid-size GPT-3 base model, roughly a tenth of davinci's price and the
+  usual choice for classification once you had few-shot examples that worked. Its
+  January 2024 shutdown removed the middle of the GPT-3 size ladder.
+released_on: 2020-06-11
+deprecated_on: 2023-07-06
+shutdown_on: 2024-01-04
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: davinci-002,
+      recommended: true,
+      note: "OpenAI collapsed four sizes into two. There is no curie-sized base model on the platform now.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

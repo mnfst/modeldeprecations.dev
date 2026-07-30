@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-4-turbo-preview
+name: GPT-4 Turbo preview
+aliases: [gpt-4-turbo-preview-completions]
+description: >-
+  A floating pointer that resolved to whichever GPT-4 Turbo preview snapshot was
+  current, which meant its behaviour changed underneath anyone who used it. It
+  was retired in March 2026 along with the snapshots it pointed at.
+deprecated_on: 2025-09-26
+shutdown_on: 2026-03-26
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-5.6-sol,
+      recommended: true,
+      note: "Prefer a pinned id this time. Floating preview pointers have been retired in every OpenAI deprecation wave since 2024.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

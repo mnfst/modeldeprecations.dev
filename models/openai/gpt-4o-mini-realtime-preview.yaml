@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-4o-mini-realtime-preview
+name: GPT-4o mini Realtime preview
+description: >-
+  The cheaper realtime preview, which made always-on voice affordable enough for
+  consumer products — realtime audio is billed per minute, so the tier below the
+  flagship mattered more here than anywhere else.
+deprecated_on: 2025-09-15
+shutdown_on: 2026-05-07
+status: retired
+replacements:
+  - provider: openai
+    model: gpt-realtime-mini
+    recommended: true
+    note: >-
+      Note that gpt-realtime-mini is itself deprecated with a January 2027
+      shutdown; gpt-realtime-2.1-mini is the target that lasts.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

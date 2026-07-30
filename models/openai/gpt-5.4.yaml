@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-5.4
+name: GPT-5.4
+description: >-
+  For several months the default recommendation for professional work on the
+  OpenAI platform, and still widely deployed. It is not deprecated, but two
+  generations now sit above it, and OpenAI has been retiring GPT-5-era snapshots
+  on roughly six-month notice.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

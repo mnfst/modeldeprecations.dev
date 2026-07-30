@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-3.5-turbo-0301
+name: GPT-3.5 Turbo (0301)
+description: >-
+  The launch snapshot of GPT-3.5 Turbo, from March 2023 — the model that made
+  chat APIs cheap and kicked off the current wave of applications. It was
+  deprecated three months after release and took eighteen months to actually go.
+released_on: 2023-03-01
+deprecated_on: 2023-06-13
+shutdown_on: 2024-09-13
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-3.5-turbo,
+      recommended: true,
+      note: "Now deprecated in turn. Anything still pinned to a 2023 snapshot should go straight to a current model rather than to the pointer.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30
