@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-2.5-pro-preview-06-05
+name: Gemini 2.5 Pro (preview 06-05)
+description: >-
+  The last of three 2.5 Pro previews, released twelve days before the stable
+  model. All three were shut down on the same day in December 2025.
+released_on: 2025-06-05
+shutdown_on: 2025-12-02
+status: retired
+replacements:
+  - provider: google
+    model: gemini-3.1-pro-preview
+    recommended: true
+    note: >-
+      Google points every 2.5 Pro preview at 3.1 Pro rather than at stable 2.5
+      Pro, which is itself scheduled for retirement in October 2026.
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

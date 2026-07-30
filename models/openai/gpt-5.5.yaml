@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-5.5
+name: GPT-5.5
+description: >-
+  The generation between GPT-5.4 and the Sol/Terra/Luna split, and the last one
+  to use a plain numeric name. It has not been deprecated, but it sits directly
+  behind models that have — worth knowing if a migration plan was written
+  against it earlier in 2026.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

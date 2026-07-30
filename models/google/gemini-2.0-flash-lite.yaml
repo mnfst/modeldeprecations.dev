@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-2.0-flash-lite
+name: Gemini 2.0 Flash-Lite
+aliases: [gemini-2.0-flash-lite-001]
+description: >-
+  The cheapest Gemini of the 2.0 generation, aimed at classification and
+  extraction where per-call cost dominated. Shut down June 1, 2026 alongside
+  gemini-2.0-flash.
+released_on: 2025-02-25
+shutdown_on: 2026-06-01
+status: retired
+replacements:
+  - provider: google
+    model: gemini-3.1-flash-lite
+    recommended: true
+    note: >-
+      The Lite tier persisted across generations, so this is a like-for-like
+      swap — the closest thing to a drop-in in the Gemini catalog.
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

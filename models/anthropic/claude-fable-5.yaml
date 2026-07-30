@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-fable-5
+name: Claude Fable 5
+description: >-
+  Anthropic's most capable widely released model, built for agents that run for
+  hours rather than turns. Anthropic publishes a "not sooner than" date for every
+  active model, which is unusual candour: you know the floor on a model's life
+  the day it ships.
+released_on: 2026-06-09
+earliest_shutdown_on: 2027-06-09
+status: active
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

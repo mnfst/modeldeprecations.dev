@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: text-davinci-002
+name: text-davinci-002
+description: >-
+  The first InstructGPT model trained with supervised fine-tuning on human
+  demonstrations, and the immediate predecessor to text-davinci-003. It is the
+  model most 2022-era research papers benchmarked against, which is why the id
+  still turns up in code long after its January 2024 retirement.
+deprecated_on: 2023-07-06
+shutdown_on: 2024-01-04
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-3.5-turbo-instruct,
+      recommended: true,
+      note: "No current model reproduces this one's behaviour. If you are reproducing a paper rather than shipping a product, an open-weight base model is a closer comparison.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

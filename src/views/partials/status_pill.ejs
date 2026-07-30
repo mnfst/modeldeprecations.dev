@@ -1,0 +1,13 @@
+<%
+  const classes = {
+    active: "bg-emerald-100 text-emerald-900 ring-emerald-200",
+    deprecated: "bg-amber-100 text-amber-900 ring-amber-200",
+    retired: "bg-rose-100 text-rose-900 ring-rose-200",
+  };
+  const cls = classes[life.status] || classes.active;
+  const size = (typeof large !== "undefined" && large) ? "px-3 py-1 text-sm" : "px-2 py-0.5 text-xs";
+%>
+<span class="inline-flex shrink-0 items-center gap-1.5 rounded-full font-medium ring-1 ring-inset <%= cls %> <%= size %>">
+  <span class="inline-block h-1.5 w-1.5 rounded-full <%= life.status === 'active' ? 'bg-emerald-600' : life.status === 'deprecated' ? 'bg-amber-600' : 'bg-rose-600' %>" aria-hidden="true"></span>
+  <%= helpers.statusPill(life) %>
+</span>

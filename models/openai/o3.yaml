@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: o3
+name: o3
+aliases: [o3-2025-04-16]
+description: >-
+  The reasoning model that made chain-of-thought a product feature rather than a
+  prompting trick, and the last o-series flagship before the line was folded into
+  GPT-5. It outlived o1 by more than a year and is still widely referenced in
+  evaluation code and papers.
+released_on: 2025-04-16
+deprecated_on: 2026-06-11
+shutdown_on: 2026-12-11
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-5.6-sol
+    recommended: true
+    note: >-
+      Both are reasoning models, so max_completion_tokens and reasoning_effort
+      carry over. Reasoning tokens are billed as output on both, which is the
+      line item to compare.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-sonnet-5
+name: Claude Sonnet 5
+description: >-
+  The balanced tier of the Claude 5 generation, and the one carrying introductory
+  pricing through August 2026. Not deprecated, with an earliest retirement date
+  of June 2027.
+earliest_shutdown_on: 2027-06-30
+status: active
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

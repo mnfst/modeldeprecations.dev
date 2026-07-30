@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-5-mini
+name: GPT-5 mini
+aliases: [gpt-5-mini-2025-08-07]
+description: >-
+  The cost tier of the original GPT-5 release, and the model that absorbed most
+  of the volume GPT-4o mini used to carry. It was deprecated in the same June
+  2026 announcement as the rest of the GPT-5 family, on the same December
+  shutdown date.
+released_on: 2025-08-07
+deprecated_on: 2026-06-11
+shutdown_on: 2026-12-11
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-5.6-terra
+    recommended: true
+    note: >-
+      Terra is the volume tier of the current generation, so this is the
+      like-for-like swap. Check per-token pricing before assuming the migration
+      is cost-neutral in either direction.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

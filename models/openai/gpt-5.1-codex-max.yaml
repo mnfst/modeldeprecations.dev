@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-5.1-codex-max
+name: GPT-5.1 Codex Max
+description: >-
+  The largest Codex variant, built for repository-scale work where the model
+  needed to hold an entire codebase in context. It lasted about eight months
+  before being retired with the rest of the Codex line.
+deprecated_on: 2026-04-22
+shutdown_on: 2026-07-23
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-5.3-codex,
+      recommended: true,
+      note: "There is no separate -max id in the 5.3 Codex generation; the capability moved into the base model.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

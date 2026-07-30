@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-3.1-pro-preview
+name: Gemini 3.1 Pro (preview)
+description: >-
+  The current Pro-tier model, and the migration target Google names for
+  gemini-2.5-pro and every retired 2.5 Pro preview. It has carried the "-preview"
+  suffix since February 2026 without a stable id appearing — long enough that
+  treating it as production is now the norm rather than the exception.
+released_on: 2026-02-19
+status: active
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

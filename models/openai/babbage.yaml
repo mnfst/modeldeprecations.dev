@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: babbage
+name: babbage
+description: >-
+  The second-smallest GPT-3 base model, mostly used for semantic search and
+  cheap classification where latency mattered more than nuance. Retired January
+  2024 with the rest of the original GPT-3 line.
+released_on: 2020-06-11
+deprecated_on: 2023-07-06
+shutdown_on: 2024-01-04
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: babbage-002,
+      recommended: true,
+      note: "babbage-002 was the direct replacement and is deprecated in turn, shutting down September 2026.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

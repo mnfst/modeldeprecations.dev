@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: o3-mini
+name: o3-mini
+aliases: [o3-mini-2025-01-31]
+description: >-
+  The reasoning model that was cheap enough to use by default, and for much of
+  2025 the best value on the platform for anything involving maths or code. It is
+  deprecated with an October 2026 shutdown.
+released_on: 2025-01-31
+deprecated_on: 2026-04-22
+shutdown_on: 2026-10-23
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-5.6-sol
+    recommended: true
+    note: >-
+      reasoning_effort carries over directly. If o3-mini was chosen for price
+      rather than capability, compare Terra as well before defaulting to Sol.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

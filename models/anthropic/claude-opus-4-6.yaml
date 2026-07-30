@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-opus-4-6
+name: Claude Opus 4.6
+description: >-
+  The first Claude to use the dateless id format, where claude-opus-4-6 is itself
+  a pinned snapshot rather than a pointer to a dated one. It is active, with an
+  earliest retirement of February 2027, and still accepts the sampling
+  parameters that later Opus releases reject.
+earliest_shutdown_on: 2027-02-05
+status: active
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

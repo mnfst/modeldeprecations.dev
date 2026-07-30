@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-sonnet-4-6
+name: Claude Sonnet 4.6
+description: >-
+  The Sonnet that replaced both Sonnet 4 and Sonnet 3.7 when those were retired,
+  which makes it the busiest migration target in the Sonnet line. Active, with an
+  earliest retirement of February 2027.
+earliest_shutdown_on: 2027-02-17
+status: active
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

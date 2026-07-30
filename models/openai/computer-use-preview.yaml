@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: computer-use-preview
+name: computer-use-preview
+aliases: [computer-use-preview-2025-03-11]
+description: >-
+  The model behind OpenAI's Operator agent, which drove a browser by emitting
+  mouse and keyboard actions against screenshots. It stayed a preview for its
+  entire life and was retired in July 2026 without a direct replacement.
+released_on: 2025-03-11
+deprecated_on: 2026-04-22
+shutdown_on: 2026-07-23
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-5.6-terra,
+      recommended: true,
+      note: "There is no drop-in computer-use id in the current generation. The computer_use tool schema does not carry over — this is a rewrite, not a swap.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

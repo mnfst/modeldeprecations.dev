@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-3.5-turbo-0613
+name: GPT-3.5 Turbo (0613)
+aliases: [gpt-3.5-turbo-16k-0613]
+description: >-
+  The June 2023 snapshot that introduced function calling to the API — the
+  feature every agent framework since has been built on. Retired September 2024
+  along with its 16k variant.
+released_on: 2023-06-13
+deprecated_on: 2023-11-06
+shutdown_on: 2024-09-13
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-3.5-turbo,
+      recommended: true,
+      note: "The undated pointer was the named successor and is itself now deprecated, shutting down October 2026. Plan for gpt-5.6-terra instead.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

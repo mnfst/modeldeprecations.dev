@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-3-sonnet-20240229
+name: Claude Sonnet 3
+description: >-
+  The middle model of the original Claude 3 family, positioned between Haiku and
+  Opus on the price ladder that every provider has copied since. Retired July
+  2025.
+released_on: 2024-02-29
+deprecated_on: 2025-01-21
+shutdown_on: 2025-07-21
+status: retired
+replacements:
+  - provider: anthropic
+    model: claude-sonnet-4-6
+    recommended: true
+    note: >-
+      Two full generations separate these models. Prompts written to compensate
+      for Sonnet 3's weaknesses usually hurt rather than help on 4.6.
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

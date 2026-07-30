@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-4.1
+name: GPT-4.1
+description: >-
+  The 2025 refresh that fixed what GPT-4o was weakest at — instruction following
+  and long-context recall — and became the default non-reasoning model for a
+  year. Its nano sibling has been deprecated; gpt-4.1 and gpt-4.1-mini have not.
+released_on: 2025-04-14
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

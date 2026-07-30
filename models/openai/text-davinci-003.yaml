@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: text-davinci-003
+name: text-davinci-003
+description: >-
+  The InstructGPT model that powered the first ChatGPT preview and most of the
+  original prompt-engineering literature. It was a completions model — you sent a
+  prompt string and got a continuation — and its retirement in January 2024 is
+  what forced a generation of code onto the chat API.
+released_on: 2022-11-28
+deprecated_on: 2023-07-06
+shutdown_on: 2024-01-04
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-3.5-turbo-instruct,
+      recommended: true,
+      note: "The named successor kept the completions endpoint alive; it is now deprecated too, shutting down September 2026. After that, no completions-style model remains.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

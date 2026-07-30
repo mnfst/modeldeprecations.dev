@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: davinci
+name: davinci
+description: >-
+  The largest GPT-3 base model, and the one the 2020 paper actually described. It
+  had no instruction tuning at all — you steered it with few-shot examples, which
+  is the technique the whole prompt-engineering field grew out of. Retired
+  January 2024.
+released_on: 2020-06-11
+deprecated_on: 2023-07-06
+shutdown_on: 2024-01-04
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: davinci-002,
+      recommended: true,
+      note: "davinci-002 was the named replacement base model and is itself deprecated, shutting down September 2026 — after which OpenAI hosts no base models at all.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

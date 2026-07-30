@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: babbage-002
+name: babbage-002
+description: >-
+  A base completions model kept in service almost entirely as a fine-tuning
+  target for classification work, where a small model trained on your own labels
+  still beat prompting a large one. Its September 2026 shutdown ends that option.
+released_on: 2023-08-22
+deprecated_on: 2025-09-26
+shutdown_on: 2026-09-28
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-5.4-mini
+    recommended: true
+    note: >-
+      Existing fine-tunes do not transfer. Budget for re-running training on the
+      new base and re-validating accuracy — a base-model fine-tune and an
+      instruction-model fine-tune do not behave the same way.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

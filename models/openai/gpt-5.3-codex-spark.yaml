@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-5.3-codex-spark
+name: GPT-5.3 Codex Spark
+description: >-
+  The low-latency Codex variant, built for the completion loop inside an editor
+  rather than for long agent runs. It shares the Codex family's short release
+  cadence: four of its predecessors were retired on a single day in July 2026.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

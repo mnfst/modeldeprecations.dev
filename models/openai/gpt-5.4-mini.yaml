@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-5.4-mini
+name: GPT-5.4 mini
+description: >-
+  The cost tier of the GPT-5.4 generation. It is the named replacement for the
+  legacy fine-tuning base models — ft-gpt-3.5-turbo, ft-babbage-002 and
+  ft-davinci-002 — which is an unusual role for a mini model and worth checking
+  before assuming a fine-tune migrates cleanly.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

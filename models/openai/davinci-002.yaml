@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: davinci-002
+name: davinci-002
+description: >-
+  The larger of the two remaining base completions models, and the last
+  descendant of the original davinci line still callable. Deprecated with a
+  September 2026 shutdown.
+released_on: 2023-08-22
+deprecated_on: 2025-09-26
+shutdown_on: 2026-09-28
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-5.4-mini
+    recommended: true
+    note: >-
+      Nothing on the current platform offers raw base-model continuation. If your
+      use case depends on it rather than on instruction following, an open-weight
+      model is a closer match than anything OpenAI still hosts.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

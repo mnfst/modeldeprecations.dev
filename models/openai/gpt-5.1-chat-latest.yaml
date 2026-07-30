@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-5.1-chat-latest
+name: GPT-5.1 chat-latest
+description: >-
+  The pointer that briefly replaced chatgpt-4o-latest when that id was retired in
+  February 2026 — and was itself retired five months later. Anyone who followed
+  OpenAI's own migration advice in late 2025 landed here and had to move again
+  almost immediately.
+deprecated_on: 2026-04-22
+shutdown_on: 2026-07-23
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-5.6-sol,
+      recommended: true,
+      note: "Move to a pinned model rather than another chat-latest pointer; the pointer ids have now been retired three times in under a year.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

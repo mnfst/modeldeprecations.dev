@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-5.1-codex
+name: GPT-5.1 Codex
+description: >-
+  The second-generation Codex model, and the one most coding agents shipped
+  against through late 2025. Retired July 23, 2026 alongside gpt-5-codex,
+  gpt-5.1-codex-max, gpt-5.1-codex-mini and gpt-5.2-codex — four generations of
+  the same line, gone on one day.
+deprecated_on: 2026-04-22
+shutdown_on: 2026-07-23
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-5.3-codex,
+      recommended: true,
+      note: "gpt-5.3-codex is the current hosted Codex model. Given how fast this line turns over, pin it and set a calendar reminder rather than assuming a long life.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

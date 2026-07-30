@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-3-7-sonnet-20250219
+name: Claude Sonnet 3.7
+aliases: [claude-3-7-sonnet-latest]
+description: >-
+  The first Claude with extended thinking, and the release that made a visible
+  reasoning budget a mainstream API feature. It was retired in February 2026,
+  almost exactly a year after launch.
+released_on: 2025-02-19
+deprecated_on: 2025-10-28
+shutdown_on: 2026-02-19
+status: retired
+replacements:
+  - provider: anthropic
+    model: claude-sonnet-4-6
+    recommended: true
+    note: >-
+      Sonnet 4.6 uses adaptive thinking rather than an explicit budget, so the
+      thinking.budget_tokens field Sonnet 3.7 introduced no longer applies.
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

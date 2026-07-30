@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-opus-4-5-20251101
+name: Claude Opus 4.5
+aliases: [claude-opus-4-5]
+description: >-
+  The November 2025 Opus, and the oldest Opus still active. Its earliest
+  retirement date of November 2026 is the nearest of any active Anthropic model —
+  worth noting if it is still the default in your config.
+released_on: 2025-11-01
+earliest_shutdown_on: 2026-11-24
+status: active
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

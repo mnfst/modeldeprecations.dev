@@ -1,0 +1,41 @@
+<%
+  const model = row.model;
+  const life = row.life;
+  const days = life.daysToShutdown;
+%>
+<tr
+  class="border-b border-slate-100 last:border-0 hover:bg-warm-hover/40"
+  data-model-status="<%= life.status %>"
+  data-model-search="<%= (model.name + ' ' + model.model + ' ' + helpers.providerLabel(model.provider) + ' ' + model.provider + ' ' + (model.aliases || []).join(' ')).toLowerCase() %>"
+>
+  <td class="px-3 py-2.5">
+    <a href="<%= helpers.modelPagePath(model) %>" class="font-medium text-slate-900 hover:text-accent"><%= model.name %></a>
+    <div class="mt-0.5 font-mono text-xs text-slate-500"><%= model.model %></div>
+  </td>
+  <% if (typeof showProvider === "undefined" || showProvider) { %>
+  <td class="px-3 py-2.5 text-slate-600">
+    <a href="<%= helpers.providerPagePath(model.provider) %>" class="hover:text-accent"><%= helpers.providerLabel(model.provider) %></a>
+  </td>
+  <% } %>
+  <td class="px-3 py-2.5"><%- include("status_pill", { life: life, helpers: helpers }) %></td>
+  <td class="px-3 py-2.5 tabular-nums text-slate-600">
+    <% if (life.shutdown) { %>
+      <%= helpers.formatDate(life.shutdown) %><% if (life.soft) { %><span class="text-slate-400" title="Provider publishes this as the earliest possible date, not a commitment"> (earliest)</span><% } %>
+      <% if (days !== undefined) { %>
+      <div class="text-xs <%= days < 0 ? 'text-slate-400' : days < 60 ? 'text-rose-700' : 'text-slate-500' %>"><%= helpers.relativeDays(days) %></div>
+      <% } %>
+    <% } else if (life.dateUnconfirmed) { %>
+      <span class="text-slate-400">date unconfirmed</span>
+    <% } else { %>
+      <span class="text-slate-300">—</span>
+    <% } %>
+  </td>
+  <td class="px-3 py-2.5">
+    <% const rep = (model.replacements || []).find((r) => r.recommended) || (model.replacements || [])[0]; %>
+    <% if (rep) { %>
+      <a href="/<%= rep.provider %>/<%= rep.model %>" class="font-mono text-xs text-accent hover:text-accent-hover"><%= rep.model %></a>
+    <% } else { %>
+      <span class="text-slate-300">—</span>
+    <% } %>
+  </td>
+</tr>

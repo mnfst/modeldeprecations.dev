@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-2.0
+name: Claude 2
+description: >-
+  The first Claude available without a sales conversation, and the model that
+  introduced most developers to Anthropic. It used the Human/Assistant text
+  format rather than structured messages — a shape that has not existed in the
+  API since. Retired July 2025.
+released_on: 2023-07-11
+deprecated_on: 2025-01-21
+shutdown_on: 2025-07-21
+status: retired
+replacements:
+  - provider: anthropic
+    model: claude-opus-4-8
+    recommended: true
+    note: >-
+      This is an API migration, not a model swap: prompts move from a single
+      Human/Assistant string to a messages array with a separate system field.
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-4.1-mini
+name: GPT-4.1 mini
+description: >-
+  The mid-size GPT-4.1 variant, and one of the few 2025-era ids that has
+  survived the 2026 deprecation waves untouched. It is not listed on the OpenAI
+  deprecations page in any announcement, unlike gpt-4.1-nano.
+released_on: 2025-04-14
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

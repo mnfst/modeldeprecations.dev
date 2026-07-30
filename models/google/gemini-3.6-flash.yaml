@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-3.6-flash
+name: Gemini 3.6 Flash
+description: >-
+  The current Flash model, and the successor Google names for the entire 2.x
+  Flash line. Google publishes a shutdown date for almost every Gemini model as a
+  matter of policy; this one has none yet, which is the clearest signal available
+  that it is at the front of the queue rather than the back.
+released_on: 2026-07-21
+status: active
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

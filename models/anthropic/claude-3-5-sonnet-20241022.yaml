@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-3-5-sonnet-20241022
+name: Claude Sonnet 3.5 v2
+aliases: [claude-3-5-sonnet-latest]
+description: >-
+  The October 2024 Sonnet — confusingly the second model to carry the 3.5 name,
+  which is why the dated id matters here more than anywhere else in the Claude
+  lineup. It introduced computer use and was, for months, the model developers
+  preferred over anything else on the market. Retired October 2025.
+released_on: 2024-10-22
+deprecated_on: 2025-08-13
+shutdown_on: 2025-10-28
+status: retired
+replacements:
+  - provider: anthropic
+    model: claude-sonnet-4-6
+    recommended: true
+    note: >-
+      The computer-use tool this model introduced has changed shape since;
+      re-read the tool docs rather than porting the 2024 schema.
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

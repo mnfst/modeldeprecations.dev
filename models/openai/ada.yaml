@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: ada
+name: ada
+description: >-
+  The smallest and fastest GPT-3 model, priced so low it was used for embeddings
+  and simple classification at a scale nothing else made sense for. Retired
+  January 2024; the embeddings side of its job moved to the dedicated
+  text-embedding models.
+released_on: 2020-06-11
+deprecated_on: 2023-07-06
+shutdown_on: 2024-01-04
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: babbage-002,
+      recommended: true,
+      note: "For embeddings specifically, text-embedding-3-small is the modern equivalent and is not deprecated.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

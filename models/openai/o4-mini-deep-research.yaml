@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: o4-mini-deep-research
+name: o4-mini-deep-research
+aliases: [o4-mini-deep-research-2025-06-26]
+description: >-
+  The cheaper deep-research model, sized for research loops run at volume rather
+  than one report at a time. Retired July 23, 2026 alongside o3-deep-research.
+released_on: 2025-06-26
+deprecated_on: 2026-04-22
+shutdown_on: 2026-07-23
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-5.6-sol,
+      recommended: true,
+      note: "No deep-research id exists in the current generation. Expect to rebuild the search-and-summarise loop in application code.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

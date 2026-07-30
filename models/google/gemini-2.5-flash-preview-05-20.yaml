@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-2.5-flash-preview-05-20
+name: Gemini 2.5 Flash (preview 05-20)
+description: >-
+  The May 2025 preview of 2.5 Flash, and the first Gemini to expose a
+  configurable thinking budget. Shut down November 2025, six months after
+  release.
+released_on: 2025-05-20
+shutdown_on: 2025-11-18
+status: retired
+replacements:
+  - provider: google
+    model: gemini-3.6-flash
+    recommended: true
+    note: >-
+      The thinking-budget parameter this preview introduced has changed shape
+      twice since; check the current thinking docs rather than porting config.
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-5
+name: GPT-5
+aliases: [gpt-5-2025-08-07]
+description: >-
+  The August 2025 launch that unified the GPT and o-series lines into one model
+  with a built-in router, and the id an enormous amount of production code was
+  written against. OpenAI deprecated the snapshot behind it in June 2026 with a
+  six-month runway. If your code says "gpt-5" with no date, this is the entry
+  that applies to you.
+released_on: 2025-08-07
+deprecated_on: 2026-06-11
+shutdown_on: 2026-12-11
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-5.6-sol
+    recommended: true
+    note: >-
+      Sol is a reasoning model, so budget output with max_completion_tokens
+      rather than max_tokens, and expect reasoning_effort to dominate both cost
+      and latency. Re-tune it before comparing prices.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

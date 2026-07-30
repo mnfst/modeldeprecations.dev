@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-4.5-preview
+name: GPT-4.5 preview
+description: >-
+  The largest non-reasoning model OpenAI ever shipped, released in February 2025
+  and withdrawn from the API three months later — the shortest-lived flagship in
+  the platform's history. It was expensive to serve and was overtaken by
+  reasoning models that got more from less compute.
+released_on: 2025-02-27
+deprecated_on: 2025-04-14
+shutdown_on: 2025-07-14
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-4.1,
+      recommended: true,
+      note: "gpt-4.1 was the named successor and is still active — one of the few migration targets from this era that has not itself been deprecated.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

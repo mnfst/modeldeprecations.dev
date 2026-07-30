@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-3-opus-20240229
+name: Claude Opus 3
+description: >-
+  The first Claude to beat GPT-4 on published benchmarks, and the model that put
+  Anthropic in serious contention. It had an unusually long deprecation window —
+  six months — and its retirement prompted Anthropic's public commitments on
+  preserving model weights after shutdown.
+released_on: 2024-02-29
+deprecated_on: 2025-06-30
+shutdown_on: 2026-01-05
+status: retired
+replacements:
+  - provider: anthropic
+    model: claude-opus-4-8
+    recommended: true
+    note: >-
+      Opus 4.8 is cheaper per token than Opus 3 was, has a 1M-token context
+      window against 200k, and rejects temperature, top_p and top_k.
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-sonnet-4-20250514
+name: Claude Sonnet 4
+description: >-
+  The workhorse of the Claude 4 generation, and for a year the default in Claude
+  Code. Retired June 15, 2026 in the same announcement as Opus 4.
+released_on: 2025-05-14
+deprecated_on: 2026-04-14
+shutdown_on: 2026-06-15
+status: retired
+replacements:
+  - provider: anthropic
+    model: claude-sonnet-4-6
+    recommended: true
+    note: >-
+      Sonnet 4.6 keeps the same pricing and raises the context window to 1M
+      tokens. Its adaptive thinking replaces the explicit thinking budget Sonnet 4
+      used, so any code setting thinking.budget_tokens needs review.
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

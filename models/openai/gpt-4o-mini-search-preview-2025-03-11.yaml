@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-4o-mini-search-preview-2025-03-11
+name: GPT-4o mini search-preview
+description: >-
+  The cost tier of the search-preview pair, for grounded answers at volume.
+  Retired on the same schedule as its larger sibling once web search became a
+  tool rather than a model variant.
+released_on: 2025-03-11
+deprecated_on: 2026-04-22
+shutdown_on: 2026-07-23
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-5.6-terra,
+      recommended: true,
+      note: "Use the web_search tool on a current model. Search calls are billed separately from tokens, so re-model the unit cost before rolling out.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

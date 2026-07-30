@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: chatgpt-4o-latest
+name: ChatGPT-4o latest
+description: >-
+  The id that exposed the exact GPT-4o variant serving ChatGPT, complete with the
+  personality tuning the API models did not have. It was popular for chat
+  products that wanted ChatGPT's voice, and it was retired in February 2026.
+deprecated_on: 2025-11-18
+shutdown_on: 2026-02-17
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-5.1-chat-latest,
+      recommended: true,
+      note: "OpenAI named gpt-5.1-chat-latest as the successor — but that id has since been retired too. The chain currently ends at gpt-5.6-sol.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-5.1-codex-mini
+name: GPT-5.1 Codex mini
+description: >-
+  The small Codex model for editor-loop completions, where a 200ms difference in
+  latency is more valuable than a smarter answer. Retired July 23, 2026.
+deprecated_on: 2026-04-22
+shutdown_on: 2026-07-23
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-5.6-terra,
+      recommended: true,
+      note: "OpenAI names Terra rather than a Codex id here. For editor-latency work gpt-5.3-codex-spark is the closer fit.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

@@ -1,0 +1,241 @@
+<%
+  const providerLogo = helpers.logoFor(model.provider);
+  const days = life.daysToShutdown;
+%>
+<%- include("partials/breadcrumbs", { items: [
+  { name: "Home", href: "/" },
+  { name: providerName, href: providerPath },
+  { name: model.name }
+] }) %>
+
+<article>
+<section class="pt-6">
+  <div class="flex flex-wrap items-center gap-2.5">
+    <a href="<%= providerPath %>" class="inline-flex shrink-0 items-center gap-1.5 bg-slate-900 px-2.5 py-1 text-xs font-medium text-white hover:bg-slate-800">
+      <% if (providerLogo) { %><span class="provider-logo inline-flex h-3.5 w-3.5 shrink-0 items-center justify-center" aria-hidden="true"><%- providerLogo %></span><% } %>
+      <span><%= providerName %></span>
+    </a>
+    <code class="font-mono text-xs text-slate-500"><%= model.model %></code>
+  </div>
+
+  <h1 class="mt-3 text-balance font-bold tracking-tight">
+    <%= model.name %> <span class="text-slate-400">(<%= providerName %>)</span>
+  </h1>
+
+  <div class="mt-4 flex flex-wrap items-center gap-3">
+    <%- include("partials/status_pill", { life: life, helpers: helpers, large: true }) %>
+    <% if (life.shutdown && days !== undefined && days >= 0) { %>
+    <span class="text-sm tabular-nums <%= days < 60 ? 'text-rose-700 font-medium' : 'text-slate-600' %>">
+      Shuts down <%= helpers.relativeDays(days) %>
+    </span>
+    <% } %>
+  </div>
+
+  <!-- The answer paragraph: the sentence a search engine should quote. -->
+  <p class="answer mt-5 max-w-3xl text-pretty border-l-4 border-accent bg-warm-tag/60 py-3 pl-4 pr-3 text-base text-slate-900 sm:text-lg">
+    <%= answer %>
+  </p>
+
+  <p class="mt-4 max-w-3xl text-pretty text-sm text-slate-700">
+    <%= model.description %>
+  </p>
+</section>
+
+<section class="mt-10" aria-labelledby="facts">
+  <h2 id="facts" class="text-slate-900">The facts</h2>
+  <div class="mt-3 overflow-x-auto border border-slate-200">
+    <table class="w-full text-left text-sm">
+      <tbody>
+        <tr class="border-b border-slate-100">
+          <th scope="row" class="w-56 bg-warm-tag px-3 py-2.5 font-medium text-slate-600">Provider</th>
+          <td class="px-3 py-2.5"><a href="<%= providerPath %>" class="text-accent hover:text-accent-hover"><%= providerName %></a></td>
+        </tr>
+        <tr class="border-b border-slate-100">
+          <th scope="row" class="bg-warm-tag px-3 py-2.5 font-medium text-slate-600">Model id</th>
+          <td class="px-3 py-2.5 font-mono text-xs"><%= model.model %></td>
+        </tr>
+        <% if (model.aliases.length > 0) { %>
+        <tr class="border-b border-slate-100">
+          <th scope="row" class="bg-warm-tag px-3 py-2.5 font-medium text-slate-600">Also published as</th>
+          <td class="px-3 py-2.5 font-mono text-xs text-slate-600"><%= model.aliases.join(", ") %></td>
+        </tr>
+        <% } %>
+        <tr class="border-b border-slate-100">
+          <th scope="row" class="bg-warm-tag px-3 py-2.5 font-medium text-slate-600">Released</th>
+          <td class="px-3 py-2.5 tabular-nums"><%= model.released_on ? helpers.formatDate(model.released_on) : "—" %></td>
+        </tr>
+        <tr class="border-b border-slate-100">
+          <th scope="row" class="bg-warm-tag px-3 py-2.5 font-medium text-slate-600">Deprecated</th>
+          <td class="px-3 py-2.5 tabular-nums">
+            <% if (model.deprecated_on) { %><%= helpers.formatDate(model.deprecated_on) %><% } else if (life.status === "active") { %><span class="text-slate-400">not deprecated</span><% } else { %><span class="text-slate-400">date not published</span><% } %>
+          </td>
+        </tr>
+        <tr class="border-b border-slate-100">
+          <th scope="row" class="bg-warm-tag px-3 py-2.5 font-medium text-slate-600"><%= life.soft ? "Shutdown (earliest)" : "Shutdown" %></th>
+          <td class="px-3 py-2.5 tabular-nums">
+            <% if (life.shutdown) { %>
+              <%= helpers.formatDate(life.shutdown) %>
+              <% if (days !== undefined) { %><span class="<%= days < 0 ? 'text-slate-400' : days < 60 ? 'text-rose-700' : 'text-slate-500' %>"> · <%= helpers.relativeDays(days) %></span><% } %>
+              <% if (life.soft) { %>
+              <p class="mt-1 text-xs text-slate-500">The provider publishes this as the earliest date the model could be retired, not a commitment. It may move later, but not earlier.</p>
+              <% } %>
+            <% } else { %><span class="text-slate-400">not published</span><% } %>
+          </td>
+        </tr>
+        <tr class="border-b border-slate-100">
+          <th scope="row" class="bg-warm-tag px-3 py-2.5 font-medium text-slate-600">Status</th>
+          <td class="px-3 py-2.5"><%- include("partials/status_pill", { life: life, helpers: helpers }) %></td>
+        </tr>
+        <tr>
+          <th scope="row" class="bg-warm-tag px-3 py-2.5 font-medium text-slate-600">Last verified</th>
+          <td class="px-3 py-2.5 tabular-nums"><%= helpers.formatDate(model.last_verified) %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<% if (replacements.length > 0) { %>
+<section class="mt-10" aria-labelledby="replacement">
+  <h2 id="replacement" class="text-slate-900">What to use instead</h2>
+  <div class="mt-4 space-y-4">
+    <% for (const item of replacements) { %>
+    <div class="border border-slate-200 p-4">
+      <div class="flex flex-wrap items-center gap-2">
+        <% if (item.page) { %>
+        <a href="<%= helpers.modelPagePath(item.page) %>" class="font-medium text-accent hover:text-accent-hover"><%= helpers.modelFullLabel(item.page) %></a>
+        <% } else { %>
+        <span class="font-medium text-slate-900"><%= helpers.providerLabel(item.ref.provider) %> <%= item.ref.model %></span>
+        <% } %>
+        <code class="font-mono text-xs text-slate-500"><%= item.ref.model %></code>
+        <% if (item.ref.recommended) { %>
+        <span class="inline-flex items-center rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-900 ring-1 ring-inset ring-emerald-200">Provider-recommended</span>
+        <% } %>
+        <% if (item.page) { %><span class="ml-auto"><%- include("partials/status_pill", { life: helpers.lifecycle(item.page, today), helpers: helpers }) %></span><% } %>
+      </div>
+      <% if (item.ref.note) { %>
+      <p class="mt-2 max-w-2xl text-sm text-slate-700"><%= item.ref.note %></p>
+      <% } %>
+      <p class="mt-2 text-sm">
+        <a href="<%= siblingUrlFor(item.ref) %>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-accent hover:text-accent-hover">
+          What parameters <%= item.ref.model %> accepts
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-3 w-3 shrink-0" aria-hidden="true"><path d="M17 16V7H8v2h5.59l-6.3 6.29 1.42 1.42 6.29-6.3V16z"></path></svg>
+        </a>
+        <span class="text-slate-400">on modelparams.dev</span>
+      </p>
+    </div>
+    <% } %>
+  </div>
+
+  <% if (recommended) { %>
+  <h3 class="mt-6 text-slate-900">Change the id</h3>
+  <p class="mt-2 max-w-2xl text-sm text-slate-700">
+    In most cases the migration is one string. Check the parameter differences before you ship —
+    newer models drop older sampling knobs more often than they add them.
+  </p>
+  <pre class="mt-3 overflow-x-auto border border-slate-200 bg-slate-50 p-4 font-mono text-xs leading-relaxed"><code><span class="text-rose-700">- "model": "<%= model.model %>"</span>
+<span class="text-emerald-700">+ "model": "<%= recommended.ref.model %>"</span></code></pre>
+  <% } %>
+
+  <% if (chain.length > 1) { %>
+  <h3 class="mt-6 text-slate-900">Where the migration path ends</h3>
+  <p class="mt-2 max-w-2xl text-sm text-slate-700">
+    The recommended successor has itself been replaced. Following the chain to a model that is
+    still active today:
+  </p>
+  <ol class="mt-3 flex flex-wrap items-center gap-2 text-sm">
+    <li class="font-mono text-xs text-slate-500"><%= model.model %></li>
+    <% for (const step of chain) { %>
+    <li aria-hidden="true" class="text-slate-300">→</li>
+    <li>
+      <a href="<%= helpers.modelPagePath(step) %>" class="font-mono text-xs text-accent hover:text-accent-hover"><%= step.model %></a>
+      <span class="ml-1"><%- include("partials/status_pill", { life: helpers.lifecycle(step, today), helpers: helpers }) %></span>
+    </li>
+    <% } %>
+  </ol>
+  <% } %>
+</section>
+<% } %>
+
+<% if (faqs.length > 0) { %>
+<section class="mt-10" aria-labelledby="faq">
+  <h2 id="faq" class="text-slate-900">Frequently asked questions</h2>
+  <dl class="mt-4 max-w-3xl divide-y divide-slate-100 border border-slate-200">
+    <% for (const faq of faqs) { %>
+    <div class="px-4 py-3">
+      <dt class="font-medium text-slate-900"><%= faq.question %></dt>
+      <dd class="mt-1 text-sm text-slate-700"><%= faq.answer %></dd>
+    </div>
+    <% } %>
+  </dl>
+</section>
+<% } %>
+
+<% if (incoming.length > 0) { %>
+<section class="mt-10" aria-labelledby="incoming">
+  <h2 id="incoming" class="text-slate-900">Models that migrate here</h2>
+  <p class="mt-2 max-w-2xl text-sm text-slate-700">
+    <%= providerName %> names <%= model.name %> as the replacement for
+    <%= incoming.length === 1 ? "one model" : incoming.length + " models" %>.
+  </p>
+  <ul class="mt-3 flex flex-wrap gap-2">
+    <% for (const other of incoming) { %>
+    <li><a href="<%= helpers.modelPagePath(other) %>" class="inline-block border border-slate-200 px-2.5 py-1 font-mono text-xs text-slate-600 hover:border-slate-300 hover:text-accent"><%= other.model %></a></li>
+    <% } %>
+  </ul>
+</section>
+<% } %>
+
+<section class="mt-10" aria-labelledby="sources">
+  <h2 id="sources" class="text-slate-900">Sources</h2>
+  <% if (model.sources.length > 0) { %>
+  <ul class="mt-3 space-y-2 text-sm">
+    <% for (const source of model.sources) { %>
+    <li>
+      <a href="<%= source.url %>" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-hover"><%= source.title || helpers.sourceHost(source.url) %></a>
+      <span class="text-slate-400"> · <%= helpers.sourceHost(source.url) %> · accessed <%= helpers.formatDate(source.accessed) %></span>
+    </li>
+    <% } %>
+  </ul>
+  <% } else { %>
+  <p class="mt-3 text-sm text-slate-500">No lifecycle dates are claimed for this model, so there is nothing to cite yet.</p>
+  <% } %>
+  <p class="mt-4 max-w-2xl text-xs text-slate-500">
+    Found something wrong? The data is one YAML file —
+    <a href="https://github.com/mnfst/modeldeprecations.dev/edit/main/models/<%= model.provider %>/<%= model.model %>.yaml" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-hover">edit it on GitHub</a>.
+  </p>
+</section>
+
+<section class="mt-10" aria-labelledby="machine">
+  <h2 id="machine" class="text-slate-900">This page, for machines</h2>
+  <div class="mt-3 grid grid-cols-1 gap-px border border-slate-200 bg-slate-200 text-sm sm:grid-cols-3">
+    <a href="<%= jsonPath %>" rel="nofollow" class="bg-white px-4 py-3 text-accent hover:bg-warm-hover">JSON</a>
+    <a href="<%= markdownPath %>" rel="nofollow" class="bg-white px-4 py-3 text-accent hover:bg-warm-hover">Markdown</a>
+    <a href="<%= badgePath %>" rel="nofollow" class="bg-white px-4 py-3 text-accent hover:bg-warm-hover">Badge JSON</a>
+  </div>
+  <p class="mt-3 text-sm text-slate-600">Drop the badge in a README so it turns red the day this model is retired:</p>
+  <div class="relative mt-2">
+    <button type="button" data-copy-target="badge-md" class="absolute right-2 top-2 z-10 border border-slate-200 bg-white px-2.5 py-1 text-xs font-medium text-slate-600 hover:bg-warm-hover"><span data-copy-label>Copy</span></button>
+    <!-- Wraps rather than scrolls: a single long line would slide underneath the
+         copy button, which floats above it. -->
+    <pre id="badge-md" class="whitespace-pre-wrap break-all border border-slate-200 bg-slate-50 p-4 pr-20 font-mono text-xs leading-relaxed"><%= badgeMarkdown %></pre>
+  </div>
+</section>
+
+<% if (siblings.length > 0) { %>
+<section class="mt-10" aria-labelledby="siblings">
+  <h2 id="siblings" class="text-slate-900">Other <%= providerName %> models</h2>
+  <ul class="mt-3 flex flex-wrap gap-2">
+    <% for (const sibling of siblings) { %>
+    <li>
+      <a href="<%= helpers.modelPagePath(sibling) %>" class="inline-flex items-center gap-2 border border-slate-200 px-2.5 py-1 text-xs text-slate-600 hover:border-slate-300 hover:text-accent">
+        <span class="font-mono"><%= sibling.model %></span>
+        <span class="inline-block h-1.5 w-1.5 rounded-full <%= helpers.lifecycle(sibling, today).status === 'active' ? 'bg-emerald-500' : helpers.lifecycle(sibling, today).status === 'deprecated' ? 'bg-amber-500' : 'bg-rose-500' %>" aria-hidden="true"></span>
+      </a>
+    </li>
+    <% } %>
+  </ul>
+  <p class="mt-3 text-sm"><a href="<%= providerPath %>" class="text-accent hover:text-accent-hover">All <%= providerName %> deprecations →</a></p>
+</section>
+<% } %>
+</article>

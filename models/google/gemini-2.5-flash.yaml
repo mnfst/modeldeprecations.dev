@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-2.5-flash
+name: Gemini 2.5 Flash
+description: >-
+  Probably the highest-volume Gemini model ever deployed: fast, cheap, and the
+  first Flash with a configurable thinking budget. Active, but Google has
+  published October 16, 2026 as the earliest date it could be retired.
+released_on: 2025-06-17
+earliest_shutdown_on: 2026-10-16
+status: active
+replacements:
+  - provider: google
+    model: gemini-3.6-flash
+    recommended: true
+    note: >-
+      Google skips 3.1 and 3.5 and names 3.6 Flash directly. The thinking-budget
+      configuration introduced in 2.5 Flash has changed shape since — re-read the
+      thinking docs rather than porting the config.
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

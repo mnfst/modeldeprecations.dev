@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-5.2-codex
+name: GPT-5.2 Codex
+description: >-
+  The third-generation Codex model, and the shortest-lived of the family: it was
+  deprecated within months of release and retired on the same day as its three
+  predecessors.
+deprecated_on: 2026-04-22
+shutdown_on: 2026-07-23
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-5.3-codex,
+      recommended: true,
+      note: "The direct successor. The Codex line has averaged well under a year per id — treat any Codex model as a moving target.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

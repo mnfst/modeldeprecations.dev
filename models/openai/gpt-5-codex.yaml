@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-5-codex
+name: GPT-5 Codex
+description: >-
+  The model that relaunched the Codex name for agentic coding, tuned for long
+  autonomous runs rather than inline completion. It was retired in July 2026
+  together with every other first-generation Codex id in a single announcement.
+deprecated_on: 2026-04-22
+shutdown_on: 2026-07-23
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-5.6-sol,
+      recommended: true,
+      note: "For coding-agent work the current equivalent is gpt-5.3-codex; OpenAI names Sol as the general replacement.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

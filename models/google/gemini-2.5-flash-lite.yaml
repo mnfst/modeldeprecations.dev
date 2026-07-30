@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-2.5-flash-lite
+name: Gemini 2.5 Flash-Lite
+description: >-
+  The cheapest model of the 2.5 generation, built for classification and
+  extraction at volume where the thinking budget could be set to zero. Active,
+  with an earliest shutdown of October 16, 2026 alongside the rest of the 2.5
+  line.
+released_on: 2025-07-22
+earliest_shutdown_on: 2026-10-16
+status: active
+replacements:
+  - provider: google
+    model: gemini-3.1-flash-lite
+    recommended: true
+    note: >-
+      Note that Google points Flash-Lite at the 3.1 generation while pointing
+      Flash at 3.6 — the Lite tiers are on their own release cadence.
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

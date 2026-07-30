@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-opus-4-8
+name: Claude Opus 4.8
+description: >-
+  The last Opus of the 4.x line, and the successor Anthropic names for Opus 4.1,
+  Opus 4, Opus 3 and the Claude 2 family — four generations of migration paths
+  converge here. Still active, with an earliest retirement date of May 2027.
+earliest_shutdown_on: 2027-05-28
+status: active
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

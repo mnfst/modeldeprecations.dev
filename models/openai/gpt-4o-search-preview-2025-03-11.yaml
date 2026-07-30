@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-4o-search-preview-2025-03-11
+name: GPT-4o search-preview
+description: >-
+  A GPT-4o variant with web search wired in at the model level, so a single call
+  returned an answer with citations. OpenAI later moved search to a tool
+  available on every model, which made the dedicated id redundant.
+released_on: 2025-03-11
+deprecated_on: 2026-04-22
+shutdown_on: 2026-07-23
+status: retired
+replacements:
+  [
+    {
+      provider: openai,
+      model: gpt-5.6-terra,
+      recommended: true,
+      note: "Enable the web_search tool on any current model. The response shape differs: citations arrive as tool output rather than inline annotations.",
+    },
+  ]
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

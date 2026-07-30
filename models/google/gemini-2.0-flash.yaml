@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-2.0-flash
+name: Gemini 2.0 Flash
+aliases: [gemini-2.0-flash-001]
+description: >-
+  The model that made native tool use and a million-token context standard at
+  Flash pricing, and the default Gemini for most of 2025. It was shut down on
+  June 1, 2026 — the largest single removal of live traffic in Gemini's history,
+  since so many integrations had never moved off it.
+released_on: 2025-02-05
+shutdown_on: 2026-06-01
+status: retired
+replacements:
+  - provider: google
+    model: gemini-3.6-flash
+    recommended: true
+    note: >-
+      Google skips the whole 2.5 and 3.x Flash lineage and names 3.6 Flash
+      directly. Response formats are compatible; the thinking configuration is
+      not, since 2.0 Flash had none.
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

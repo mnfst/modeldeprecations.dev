@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-3-5-sonnet-20240620
+name: Claude Sonnet 3.5
+description: >-
+  The original Sonnet 3.5, from June 2024, and the model that introduced
+  Artifacts. Anthropic later shipped a second model under the same 3.5 name,
+  which is why anyone pinned to a date needs to check which one they meant.
+  Retired October 2025.
+released_on: 2024-06-20
+deprecated_on: 2025-08-13
+shutdown_on: 2025-10-28
+status: retired
+replacements:
+  - provider: anthropic
+    model: claude-sonnet-4-6
+    recommended: true
+    note: >-
+      Anthropic points both Sonnet 3.5 snapshots at the same successor, so the
+      June/October distinction stops mattering after the migration.
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

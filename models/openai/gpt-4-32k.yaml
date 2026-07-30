@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-4-32k
+name: GPT-4 32k
+aliases:
+  - gpt-4-32k-0613
+  - gpt-4-32k-0314
+description: >-
+  The 32,000-token variant of the original GPT-4, sold at twice the price of the
+  8k model when a long context was still a premium feature. Access was gated
+  behind a waitlist for most of its life, so it never had the reach of plain
+  gpt-4. GPT-4o made it redundant: 128k of context, faster, and cheaper than the
+  8k model it replaced.
+released_on: 2023-06-13
+deprecated_on: 2024-06-06
+shutdown_on: 2025-06-06
+status: retired
+replacements:
+  - provider: openai
+    model: gpt-4o
+    recommended: true
+    note: >-
+      GPT-4o takes 128k of context, so nothing that fit in 32k needs chunking.
+      It is a Chat Completions model with the same message format — the only
+      required change is the id.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

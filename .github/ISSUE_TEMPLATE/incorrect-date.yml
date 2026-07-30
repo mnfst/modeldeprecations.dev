@@ -1,0 +1,49 @@
+name: Incorrect or missing date
+description: A deprecation or shutdown date on the site is wrong, stale, or missing.
+title: "[data] "
+labels: ["data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for catching this. A wrong date here is worse than no date, so
+        these reports get priority.
+  - type: input
+    id: model
+    attributes:
+      label: Model page
+      description: The URL or the model id.
+      placeholder: https://modeldeprecations.dev/openai/gpt-4-32k
+    validations:
+      required: true
+  - type: dropdown
+    id: field
+    attributes:
+      label: Which field is wrong?
+      options:
+        - deprecated_on (when the provider announced it)
+        - shutdown_on (when API access ends)
+        - earliest_shutdown_on (a soft, provider-estimated date)
+        - released_on
+        - status
+        - replacement
+        - something else
+    validations:
+      required: true
+  - type: input
+    id: correct
+    attributes:
+      label: What is the correct value?
+      placeholder: "2026-10-23"
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source URL
+      description: >-
+        A provider documentation page, changelog entry, or announcement that
+        states it. We cannot ship a date without one.
+      placeholder: https://developers.openai.com/api/docs/deprecations
+    validations:
+      required: true

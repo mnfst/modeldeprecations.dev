@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-opus-5
+name: Claude Opus 5
+description: >-
+  The recommended default for complex agentic coding and enterprise work, and the
+  most common migration target on the Anthropic side of this catalog. Its
+  earliest possible retirement is July 2027 — a longer guaranteed floor than any
+  other model here.
+earliest_shutdown_on: 2027-07-24
+status: active
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-5.6-sol
+name: GPT-5.6 Sol
+description: >-
+  The flagship of the Sol/Terra/Luna split, where OpenAI stopped shipping one
+  frontier model in three sizes and started naming them for what they are for.
+  Sol is the reasoning tier, and it is where almost every 2026 deprecation
+  points: the o-series, the GPT-5 snapshots, the codex line and the chat-latest
+  pointers all name it as their successor.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-07-30
+last_verified: 2026-07-30
