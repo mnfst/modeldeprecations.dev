@@ -39,6 +39,11 @@ export async function renderApiPage(models: Model[], today: string): Promise<str
       description: apiPageDescription(models.length),
       canonicalUrl: absolute(SITE_URL, API_PATH),
       ogImage: ogImagePath(API_PATH),
+      // Nothing under /api is indexed: the v1 JSON and the badge endpoints carry
+      // X-Robots-Tag: noindex (see vercel.json), and these docs join them so the
+      // whole subtree is consistent. `follow` still lets crawlers walk out of it
+      // into the catalog, and the page stays fully reachable for humans.
+      robots: "noindex, follow",
       structuredData: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "TechArticle",

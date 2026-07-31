@@ -1,0 +1,88 @@
+<%- include("partials/breadcrumbs", { items: [
+  { name: "Home", href: "/" },
+  { name: "About" }
+] }) %>
+
+<article>
+<section class="pt-6">
+  <h1 class="text-balance font-bold tracking-tight">How this catalog is built</h1>
+  <p class="answer mt-5 max-w-3xl text-pretty border-l-4 border-accent bg-warm-tag/60 py-3 pl-4 pr-3 text-base text-slate-900 sm:text-lg">
+    Every date on this site comes from the provider's own documentation, is linked from the page
+    that uses it, and is stamped with the day a human last checked it. Nothing is inferred, and
+    nothing is generated.
+  </p>
+  <p class="mt-4 max-w-3xl text-pretty text-sm text-slate-700">
+    Model deprecations are announced in changelogs, footnotes and table rows that get quietly
+    edited or deleted once a model is gone. <%= modelCount %> models across <%= providerCount %>
+    providers are tracked here so that history stays readable after the provider has moved on.
+  </p>
+</section>
+
+<section class="mt-10" aria-labelledby="rules">
+  <h2 id="rules" class="text-slate-900">The rules</h2>
+  <dl class="mt-4 max-w-3xl divide-y divide-slate-100 border border-slate-200">
+    <div class="px-4 py-3">
+      <dt class="font-medium text-slate-900">A date without a source is not published</dt>
+      <dd class="mt-1 text-sm text-slate-700">
+        Every deprecation and shutdown date has to be verifiable at a URL listed under Sources on
+        the model's page. If we cannot find the date, the field is left out and the page says so.
+        A page that admits it has no shutdown date is useful; a page with a plausible wrong date is
+        worse than nothing, because someone will plan a migration around it.
+      </dd>
+    </div>
+    <div class="px-4 py-3">
+      <dt class="font-medium text-slate-900">The provider's own wording wins</dt>
+      <dd class="mt-1 text-sm text-slate-700">
+        Anthropic and Google publish an <em>earliest possible</em> retirement date for models that
+        are current and fully supported. Those render as a scheduled shutdown, not a deprecation,
+        because that is what the provider actually committed to. Where a third-party registry and a
+        provider page disagree, the provider page wins.
+      </dd>
+    </div>
+    <div class="px-4 py-3">
+      <dt class="font-medium text-slate-900">Status is computed, not stored</dt>
+      <dd class="mt-1 text-sm text-slate-700">
+        A model becomes retired here on the day its published shutdown date passes, recomputed at
+        every build. Nobody has to remember to edit a file, so the site cannot drift into telling
+        you a model still works after it has stopped.
+      </dd>
+    </div>
+    <div class="px-4 py-3">
+      <dt class="font-medium text-slate-900">Changes are reviewed in public</dt>
+      <dd class="mt-1 text-sm text-slate-700">
+        The data is one YAML file per model in a public repository. Continuous integration rejects
+        a file that claims a date without a source, and a second check blocks the quieter
+        regressions: deleting a page, dropping an alias that used to resolve, or moving a date
+        without moving the verification stamp forward.
+      </dd>
+    </div>
+  </dl>
+</section>
+
+<section class="mt-10" aria-labelledby="corrections">
+  <h2 id="corrections" class="text-slate-900">Found something wrong?</h2>
+  <p class="mt-2 max-w-2xl text-sm text-slate-700">
+    Wrong dates are the failure mode that matters, so corrections are the most useful thing you can
+    send. Open an issue with the provider URL that proves it, or edit the YAML directly — there is
+    a link to the exact file on every model page.
+  </p>
+  <div class="mt-4 flex flex-wrap gap-3 text-sm">
+    <a href="<%= repoUrl %>/issues/new/choose" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-slate-900 px-4 py-2 font-medium text-white hover:bg-slate-800">Report a wrong date</a>
+    <a href="<%= repoUrl %>" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-slate-300 px-4 py-2 font-medium text-slate-700 hover:bg-warm-hover">Source on GitHub</a>
+  </div>
+</section>
+
+<section class="mt-10" aria-labelledby="who">
+  <h2 id="who" class="text-slate-900">Who maintains it</h2>
+  <p class="mt-2 max-w-2xl text-sm text-slate-700">
+    Built and maintained by <a href="https://manifest.build" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-hover">Manifest</a>, an open-source LLM router, with
+    contributions from anyone who opens a pull request. We keep it because we route traffic to
+    these models and need to know when they stop answering. It is MIT licensed and free to use,
+    including commercially.
+  </p>
+  <p class="mt-2 max-w-2xl text-sm text-slate-700">
+    Its sibling <a href="<%= siblingUrl %>" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-hover">modelparams.dev</a> catalogues the parameters each model
+    accepts — the other half of the question when you are changing a model id.
+  </p>
+</section>
+</article>

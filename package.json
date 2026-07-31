@@ -26,6 +26,7 @@
     "format": "prettier --write .",
     "test": "vitest run",
     "test:watch": "vitest",
+    "check:deploy": "node scripts/check-deployment.mjs",
     "prepare": "husky || true"
   },
   "dependencies": {

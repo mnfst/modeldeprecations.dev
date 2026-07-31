@@ -33,6 +33,11 @@
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
     <meta name="theme-color" content="#ffffff" />
+    <!-- Both critical faces, because both are discovered only after styles.css
+         parses. Ovo sets every heading, so it paints the h1 — the LCP element on
+         a model page — and preloading only the body font left the largest text
+         on the page waiting a round trip, then reflowing when it swapped. -->
+    <link rel="preload" href="/assets/fonts/ovo-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/assets/styles.css" />
   </head>

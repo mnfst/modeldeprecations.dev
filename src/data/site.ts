@@ -17,6 +17,19 @@ export const SIBLING_URL = "https://modelparams.dev";
 export const OG_IMAGE_PATH = "/assets/og.png";
 
 /**
+ * Vercel Web Analytics is served from /_vercel/insights, which only exists on
+ * Vercel — so the tag is emitted when the build runs there and nowhere else.
+ * Deriving it from the environment rather than threading a flag through seven
+ * renderers is what keeps it on *every* page: it used to be passed by hand, and
+ * only the homepage ever got it, which left the entire long tail unmeasured.
+ *
+ * Read at call time, like `buildDate`, so a test can pin it.
+ */
+export function analyticsEnabled(): boolean {
+  return process.env.VERCEL === "1";
+}
+
+/**
  * The build's "today". Every countdown, derived status and freshness date is
  * computed from this one value so a single build is internally consistent, and
  * so tests can pin it.

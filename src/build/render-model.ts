@@ -23,19 +23,43 @@ import { buildModelStructuredData } from "./structured-data.js";
 import { hubLinks, renderShell, viewHelpers } from "./render.js";
 
 /**
+ * True when the display name already spells the API id — "GPT-4 32k" against
+ * `gpt-4-32k`. Then the title only needs one of them. Anthropic's dated
+ * snapshots are the case where it does not: nothing in "Claude Sonnet 3.5"
+ * tells a search engine the page is about `claude-3-5-sonnet-20240620`.
+ */
+function nameSpellsTheId(model: Model): boolean {
+  const bare = (value: string): string => value.toLowerCase().replace(/[^a-z0-9]/g, "");
+  return bare(model.name) === bare(model.model);
+}
+
+/**
  * Keyword-first title. The query is "<model> deprecated" or "<model> shutdown
  * date", so the model name leads and the two words that matter follow it. The
  * brand is the first thing dropped when a long model name needs the room.
+ *
+ * When the id is not recoverable from the name, the title carries both: the id
+ * is what someone pastes into a search box, the name is what they recognise in
+ * the result. If only one fits, the id wins, because the id is the query.
  */
 export function modelPageTitle(model: Model, today: string): string {
   const status = statusOn(model, today);
   const who = model.name;
   const verdict = status === "active" ? "deprecated?" : "deprecation";
+  if (nameSpellsTheId(model)) {
+    return fitTitle([
+      `${who} ${verdict} — shutdown date & replacement · ${SITE_NAME}`,
+      `${who} ${verdict} — shutdown date & replacement`,
+      `${who} ${verdict} — shutdown date`,
+      `${who} ${verdict}`,
+    ]);
+  }
   return fitTitle([
-    `${who} ${verdict} — shutdown date & replacement · ${SITE_NAME}`,
-    `${who} ${verdict} — shutdown date & replacement`,
-    `${who} ${verdict} — shutdown date`,
-    `${who} ${verdict}`,
+    `${who} (${model.model}) ${verdict} — shutdown date`,
+    `${who} (${model.model}) ${verdict}`,
+    `${model.model} ${verdict} — shutdown date & replacement`,
+    `${model.model} ${verdict} — shutdown date`,
+    `${model.model} ${verdict}`,
   ]);
 }
 

@@ -9,11 +9,12 @@ import {
 } from "../data/catalog.js";
 import { answerHeadline } from "../data/answer.js";
 import { modelFullLabel, providerLabel, sourceHost } from "../data/display.js";
+import { shutdownYears } from "../data/hubs.js";
 import { usageGuideMarkdown } from "../data/llms.js";
 import { logoFor } from "../data/logos.js";
 import { VIEWS_DIR } from "../data/paths.js";
 import { formatDate, lifecycle, relativeDays, statusPill, STATUS_LABELS } from "../data/status.js";
-import { OG_IMAGE_PATH, SITE_NAME, SITE_URL } from "../data/site.js";
+import { analyticsEnabled, OG_IMAGE_PATH, SITE_NAME, SITE_URL } from "../data/site.js";
 import {
   absolute,
   CALENDAR_PATH,
@@ -76,6 +77,7 @@ export interface ShellMeta {
   robots?: string;
   /** Root-relative Markdown twin, advertised to agents via <link rel="alternate">. */
   markdownUrl?: string;
+  /** Overrides the environment default; tests pin it rather than set VERCEL. */
   analytics?: boolean;
 }
 
@@ -93,7 +95,7 @@ export async function renderShell(meta: ShellMeta, body: string): Promise<string
     providerHubs: meta.providerHubs,
     helpers: viewHelpers,
     usageGuide: usageGuideMarkdown(SITE_URL),
-    analytics: meta.analytics ?? false,
+    analytics: meta.analytics ?? analyticsEnabled(),
     body,
   });
 }
@@ -139,6 +141,7 @@ export async function renderIndex(opts: IndexOptions): Promise<string> {
     upcoming,
     recent: pastShutdowns(models, today).slice(0, 8),
     facets,
+    years: shutdownYears(models, today),
     today,
     calendarPath: CALENDAR_PATH,
     changelogPath: CHANGELOG_PATH,

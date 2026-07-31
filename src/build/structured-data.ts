@@ -1,12 +1,14 @@
 // JSON-LD builders for every page type. Pure functions of (data, siteUrl, today)
 // so they can be unit-tested without touching the filesystem or a renderer.
+// The shared envelope, breadcrumb and site-level nodes live in jsonld.ts.
 
 import type { ChangeEntry } from "../data/changelog.js";
 import { modelFullLabel, providerLabel } from "../data/display.js";
 import type { ModelFaq } from "../data/faq.js";
-import { REPO_URL, SIBLING_URL, SITE_DESCRIPTION, SITE_NAME } from "../data/site.js";
+import { SITE_DESCRIPTION, SITE_NAME } from "../data/site.js";
 import { lifecycle } from "../data/status.js";
 import {
+  ABOUT_PATH,
   absolute,
   CALENDAR_PATH,
   CHANGELOG_PATH,
@@ -15,57 +17,7 @@ import {
   providerPagePath,
 } from "../data/urls.js";
 import type { Model } from "../schema/model.js";
-
-interface Crumb {
-  name: string;
-  path: string;
-}
-
-function breadcrumb(siteUrl: string, crumbs: Crumb[]) {
-  return {
-    "@type": "BreadcrumbList",
-    itemListElement: crumbs.map((crumb, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: crumb.name,
-      item: absolute(siteUrl, crumb.path),
-    })),
-  };
-}
-
-function graph(nodes: unknown[]): string {
-  return JSON.stringify({ "@context": "https://schema.org", "@graph": nodes });
-}
-
-function organizationNode(siteUrl: string) {
-  return {
-    "@type": "Organization",
-    "@id": `${siteUrl}/#org`,
-    name: SITE_NAME,
-    url: `${siteUrl}/`,
-    description: SITE_DESCRIPTION,
-    // The square PNG rather than the SVG favicon: Google's logo extraction wants a
-    // raster it can crop, and ignores SVG.
-    logo: `${siteUrl}/assets/apple-touch-icon.png`,
-    sameAs: [REPO_URL, SIBLING_URL],
-  };
-}
-
-function homeWebsiteNode(siteUrl: string) {
-  return {
-    "@type": "WebSite",
-    "@id": `${siteUrl}/#website`,
-    url: `${siteUrl}/`,
-    name: SITE_NAME,
-    description: SITE_DESCRIPTION,
-    publisher: { "@id": `${siteUrl}/#org` },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: { "@type": "EntryPoint", urlTemplate: `${siteUrl}/?q={search_term_string}` },
-      "query-input": "required name=search_term_string",
-    },
-  };
-}
+import { breadcrumb, graph, homeWebsiteNode, organizationNode, type Crumb } from "./jsonld.js";
 
 function homeDatasetNode(siteUrl: string, imageUrl: string, today: string) {
   return {
@@ -213,6 +165,61 @@ export function buildProviderStructuredData(
     { name: providerLabel(provider), path: providerPagePath(provider) },
   ]);
   return graph([crumbs, itemList]);
+}
+
+/**
+ * The About page carries the Organization node a second time, so the editorial
+ * policy and the entity that stands behind it are stated in the same graph
+ * rather than only on the homepage.
+ */
+export function buildAboutStructuredData(
+  description: string,
+  siteUrl: string,
+  today: string,
+): string {
+  const about = {
+    "@type": "AboutPage",
+    "@id": `${siteUrl}${ABOUT_PATH}#about`,
+    name: `How ${SITE_NAME} is built`,
+    description,
+    url: absolute(siteUrl, ABOUT_PATH),
+    dateModified: today,
+    mainEntity: { "@id": `${siteUrl}/#org` },
+    publisher: { "@id": `${siteUrl}/#org` },
+  };
+  const crumbs = breadcrumb(siteUrl, [
+    { name: "Home", path: "/" },
+    { name: "About", path: ABOUT_PATH },
+  ]);
+  return graph([crumbs, organizationNode(siteUrl), about]);
+}
+
+/**
+ * The cross-provider hubs (/deprecated, /retired, /shutdowns/<year>) are all the
+ * same shape: an ordered slice of the catalog under a breadcrumb trail. `crumbs`
+ * is everything below Home, so a year hub can nest under Shutdowns.
+ */
+export function buildHubStructuredData(
+  name: string,
+  description: string,
+  entries: { model: Model }[],
+  crumbs: Crumb[],
+  siteUrl: string,
+  today: string,
+): string {
+  const itemList = {
+    "@type": "ItemList",
+    name,
+    description,
+    numberOfItems: entries.length,
+    itemListElement: entries.map((entry, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: absolute(siteUrl, modelPagePath(entry.model)),
+      name: `${modelFullLabel(entry.model)} — ${lifecycle(entry.model, today).status}`,
+    })),
+  };
+  return graph([breadcrumb(siteUrl, [{ name: "Home", path: "/" }, ...crumbs]), itemList]);
 }
 
 export function buildCalendarStructuredData(

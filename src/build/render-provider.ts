@@ -7,7 +7,7 @@ import { SITE_NAME, SITE_URL } from "../data/site.js";
 import { formatDate } from "../data/status.js";
 import { absolute, ogImagePath, providerPagePath } from "../data/urls.js";
 import type { Model } from "../schema/model.js";
-import { DESCRIPTION_MAX, fitDescription, fitTitle } from "./meta.js";
+import { fitDescription, fitTitle } from "./meta.js";
 import { buildProviderStructuredData } from "./structured-data.js";
 import { hubLinks, renderShell, viewHelpers } from "./render.js";
 
@@ -61,7 +61,10 @@ export async function renderProviderPage(
   return renderShell(
     {
       title: providerPageTitle(provider),
-      description: description.slice(0, DESCRIPTION_MAX),
+      // No second trim here: fitDescription already picked a candidate inside the
+      // budget, and slicing again would cut mid-word and leave the meta tag
+      // saying something different from the JSON-LD description below.
+      description,
       canonicalUrl: absolute(SITE_URL, providerPagePath(provider)),
       ogImage: ogImagePath(providerPagePath(provider)),
       structuredData: buildProviderStructuredData(

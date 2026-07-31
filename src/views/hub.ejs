@@ -1,0 +1,50 @@
+<%- include("partials/breadcrumbs", { items: crumbs }) %>
+
+<section class="pt-6">
+  <h1 class="text-balance font-bold tracking-tight"><%= heading %></h1>
+  <p class="mt-4 max-w-3xl text-pretty text-base text-slate-700"><%= intro %></p>
+  <% if (sections.length > 1) { %>
+  <div class="mt-4 flex flex-wrap gap-2 text-sm">
+    <% for (const section of sections) { %>
+    <a href="#<%= section.key %>" class="border border-slate-300 px-3 py-1.5 text-slate-600 hover:bg-warm-hover"><%= section.title %> (<%= section.rows.length %>)</a>
+    <% } %>
+  </div>
+  <% } %>
+</section>
+
+<% for (const section of sections) { %>
+<section class="mt-10" aria-labelledby="<%= section.key %>">
+  <h2 id="<%= section.key %>" class="text-slate-900"><%= section.title %></h2>
+  <p class="mt-2 max-w-2xl text-sm text-slate-600"><%= section.blurb %></p>
+  <div class="mt-4 overflow-x-auto border border-slate-200">
+    <table class="w-full min-w-[46rem] text-left text-sm">
+      <thead class="bg-warm-tag text-xs uppercase tracking-[0.06em] text-slate-500">
+        <tr>
+          <th scope="col" class="px-3 py-2 font-semibold">Model</th>
+          <th scope="col" class="px-3 py-2 font-semibold">Provider</th>
+          <th scope="col" class="px-3 py-2 font-semibold">Status</th>
+          <th scope="col" class="px-3 py-2 font-semibold">Shutdown</th>
+          <th scope="col" class="px-3 py-2 font-semibold">Replacement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (const row of section.rows) { %>
+        <%- include("partials/model_row", { row: row, helpers: helpers, showProvider: true }) %>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</section>
+<% } %>
+
+<section class="mt-12 border-t border-slate-200 pt-8">
+  <h2 class="text-slate-900">Keep looking</h2>
+  <div class="mt-4 grid grid-cols-1 gap-px bg-slate-200 sm:grid-cols-2 lg:grid-cols-3">
+    <% for (const link of related) { %>
+    <a href="<%= link.href %>" class="group bg-white p-4 hover:bg-warm-hover/40">
+      <span class="font-medium text-slate-900 group-hover:text-accent"><%= link.label %></span>
+      <p class="mt-1 text-sm text-slate-600"><%= link.blurb %></p>
+    </a>
+    <% } %>
+  </div>
+</section>

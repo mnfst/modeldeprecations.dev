@@ -4,7 +4,11 @@
 import { describe, expect, it } from "vitest";
 import request from "supertest";
 import { makeApp } from "../src/server/app.js";
+import { uniqueProviders } from "../src/data/catalog.js";
+import { shutdownYears, STATUS_HUBS } from "../src/data/hubs.js";
 import { loadAllModels } from "../src/data/load.js";
+import { RESERVED_ROOT_SEGMENTS } from "../src/data/urls.js";
+import { TODAY } from "./helpers.js";
 
 const { models } = await loadAllModels();
 const app = makeApp(async () => models);
@@ -53,6 +57,45 @@ describe("HTML routes", () => {
     expect(missing.status).toBe(404);
     expect(missing.text).toContain("No page for that model");
     expect((await request(app).get("/nobody")).status).toBe(404);
+  });
+
+  it("serves the about page", async () => {
+    const res = await request(app).get("/about");
+    expect(res.status).toBe(200);
+    expect(res.text).toContain("How this catalog is built");
+    expect(res.text).toContain('"@type":"AboutPage"');
+  });
+
+  it("serves each lifecycle hub with its own table", async () => {
+    for (const status of STATUS_HUBS) {
+      const res = await request(app).get(`/${status}`);
+      expect(res.status).toBe(200);
+      expect(res.text).toContain(`${status === "deprecated" ? "Deprecated" : "Retired"} AI models`);
+      expect(res.text).toContain('"@type":"ItemList"');
+    }
+  });
+
+  it("serves a year hub for every year the catalog has a shutdown in", async () => {
+    const years = shutdownYears(models, TODAY);
+    expect(years.length).toBeGreaterThan(1);
+    for (const year of years) {
+      const res = await request(app).get(`/shutdowns/${year}`);
+      expect(res.status).toBe(200);
+      expect(res.text).toContain(`AI models shutting down in ${year}`);
+    }
+  });
+
+  // A year page with nothing on it would be a thin page inviting a crawl.
+  it("404s a year the catalog has no shutdowns in", async () => {
+    expect((await request(app).get("/shutdowns/1999")).status).toBe(404);
+  });
+
+  // The hubs are reserved root segments, so they must not be reachable as a
+  // provider slug or resolvable twice under different URLs.
+  it("keeps hub paths out of the provider namespace", async () => {
+    for (const segment of [...STATUS_HUBS, "about", "shutdowns"]) {
+      expect(RESERVED_ROOT_SEGMENTS.has(segment)).toBe(true);
+    }
   });
 });
 
@@ -110,15 +153,24 @@ describe("machine-readable routes", () => {
     expect(res.body.$id).toBe("https://modeldeprecations.dev/api/v1/schema.json");
   });
 
-  // Keeps crawlers on the HTML pages while leaving the JSON fetchable, so the
-  // noindex header is actually readable rather than hidden behind a Disallow.
-  it("marks the JSON API and badges noindex, but never the HTML", async () => {
-    expect((await request(app).get("/api/v1/models.json")).headers["x-robots-tag"]).toBe("noindex");
-    expect((await request(app).get("/badge/openai/gpt-4-32k.json")).headers["x-robots-tag"]).toBe(
-      "noindex",
-    );
-    expect((await request(app).get("/")).headers["x-robots-tag"]).toBeUndefined();
-    expect((await request(app).get("/openai")).headers["x-robots-tag"]).toBeUndefined();
+  // Keeps crawlers on the HTML pages while leaving every machine surface
+  // fetchable, so the noindex header is actually readable rather than hidden
+  // behind a Disallow. Mirrors the headers vercel.json applies in production.
+  it("marks the whole /api subtree, the badges and the .md twins noindex", async () => {
+    for (const pathname of [
+      "/api",
+      "/api/v1/models.json",
+      "/badge/openai/gpt-4-32k.json",
+      `/${retired.provider}/${retired.model}.md`,
+    ]) {
+      expect((await request(app).get(pathname)).headers["x-robots-tag"]).toBe("noindex, follow");
+    }
+  });
+
+  it("never marks a page we want indexed", async () => {
+    for (const pathname of ["/", "/openai", "/calendar", "/about", "/deprecated", "/retired"]) {
+      expect((await request(app).get(pathname)).headers["x-robots-tag"]).toBeUndefined();
+    }
   });
 
   // A provider directory named "calendar" would shadow the calendar page.
@@ -140,13 +192,27 @@ describe("sitemap", () => {
     expect(res.text).toContain("<urlset");
   });
 
-  // Only canonical, indexable HTML belongs here. The JSON is noindex, the .md
-  // twins are alternates, and aliases canonicalize elsewhere — listing any of
-  // them would ask Google to index a page we told it to ignore.
-  it("lists every model page and nothing that is noindex", async () => {
+  // Only canonical, indexable HTML belongs here. Everything under /api is
+  // noindex, the .md twins are alternates, and aliases canonicalize elsewhere —
+  // listing any of them would ask Google to index a page we told it to ignore.
+  // Derived from the catalog rather than counted, so adding a page type fails
+  // here until it is deliberately listed or deliberately left out.
+  it("lists exactly the canonical, indexable pages", async () => {
     const { text } = await request(app).get("/sitemap.xml");
     const locs = [...text.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]!);
-    expect(locs).toHaveLength(models.length + 3 + 4);
+    const expected = [
+      "/",
+      "/calendar",
+      "/changelog",
+      "/about",
+      ...STATUS_HUBS.map((status) => `/${status}`),
+      ...shutdownYears(models, TODAY).map((year) => `/shutdowns/${year}`),
+      ...uniqueProviders(models).map((provider) => `/${provider}`),
+      ...models.map((entry) => `/${entry.provider}/${entry.model}`),
+    ].map((pathname) => `https://modeldeprecations.dev${pathname}`);
+
+    expect(new Set(locs)).toEqual(new Set(expected));
+    expect(locs).toHaveLength(expected.length);
     for (const loc of locs) {
       expect(loc).not.toMatch(/\/api\/v1\/|\/badge\/|\.md$|\.json$/);
     }
@@ -154,5 +220,13 @@ describe("sitemap", () => {
     for (const alias of sample.aliases) {
       expect(locs).not.toContain(`https://modeldeprecations.dev/${sample.provider}/${alias}`);
     }
+  });
+
+  // The docs page is reachable and useful; it is just not a search result we
+  // want competing with the catalog. Both halves of that have to hold.
+  it("keeps the whole /api subtree out of the sitemap", async () => {
+    const { text } = await request(app).get("/sitemap.xml");
+    expect(text).not.toContain("<loc>https://modeldeprecations.dev/api");
+    expect((await request(app).get("/api")).status).toBe(200);
   });
 });
