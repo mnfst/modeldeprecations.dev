@@ -10,14 +10,31 @@ import {
 } from "../src/build/render-calendar.js";
 import { changelogPageDescription, changelogPageTitle } from "../src/build/render-changelog.js";
 import { apiPageDescription, apiPageTitle } from "../src/build/render-api.js";
+import { aboutPageDescription, aboutPageTitle } from "../src/build/render-about.js";
+import {
+  statusHubDescription,
+  statusHubTitle,
+  yearHubDescription,
+  yearHubTitle,
+} from "../src/build/render-hub.js";
 import { buildChangelog } from "../src/data/changelog.js";
 import { uniqueProviders, upcomingShutdowns } from "../src/data/catalog.js";
+import {
+  deprecatedEntries,
+  retiredEntries,
+  scheduledEntries,
+  shutdownsInYear,
+  shutdownYears,
+  STATUS_HUBS,
+} from "../src/data/hubs.js";
 import { loadAllModels } from "../src/data/load.js";
 import {
   modelPagePath,
   providerPagePath,
   badgeJsonPath,
   modelMarkdownPath,
+  shutdownYearPath,
+  statusHubPath,
 } from "../src/data/urls.js";
 import { model, TODAY } from "./helpers.js";
 
@@ -66,6 +83,30 @@ describe("model page meta", () => {
     const description = modelPageDescription(long, [long], TODAY);
     expect(description.length).toBeLessThanOrEqual(DESCRIPTION_MAX);
     expect(description.endsWith(".")).toBe(true);
+  });
+
+  // "Claude Sonnet 3.5" is not a string anyone types when they mean
+  // claude-3-5-sonnet-20240620, and the id is what their code says.
+  it("carries the API id when the display name does not spell it", () => {
+    const dated = model({ model: "claude-3-5-sonnet-20240620", name: "Claude Sonnet 3.5" });
+    expect(modelPageTitle(dated, TODAY)).toContain("claude-3-5-sonnet-20240620");
+  });
+
+  it("does not repeat the id when the name already spells it", () => {
+    // "GPT-4 32k" and gpt-4-32k differ only in punctuation and case.
+    expect(modelPageTitle(model(), TODAY)).not.toContain("(gpt-4-32k)");
+  });
+
+  // The id has to survive even when the name leaves no room to carry both.
+  it("drops the display name before the id when only one fits", () => {
+    const verbose = model({
+      model: "gpt-4o-mini-search-preview-2025-03-11",
+      name: "GPT-4o mini Search Preview",
+    });
+    const title = modelPageTitle(verbose, TODAY);
+    expect(title).toContain("gpt-4o-mini-search-preview-2025-03-11");
+    expect(title).not.toContain("GPT-4o mini Search Preview");
+    expect(title.length).toBeLessThanOrEqual(TITLE_MAX);
   });
 });
 
@@ -142,6 +183,23 @@ describe("every page in the real catalog", async () => {
       description: changelogPageDescription(changelog),
     },
     { page: "/api", title: apiPageTitle(), description: apiPageDescription(models.length) },
+    { page: "/about", title: aboutPageTitle(), description: aboutPageDescription(models.length) },
+    ...STATUS_HUBS.map((status) => ({
+      page: statusHubPath(status),
+      title: statusHubTitle(status),
+      description: statusHubDescription(
+        status,
+        status === "deprecated"
+          ? deprecatedEntries(models, TODAY).length + scheduledEntries(models, TODAY).length
+          : retiredEntries(models, TODAY).length,
+        TODAY,
+      ),
+    })),
+    ...shutdownYears(models, TODAY).map((year) => ({
+      page: shutdownYearPath(year),
+      title: yearHubTitle(year),
+      description: yearHubDescription(year, shutdownsInYear(models, TODAY, year)),
+    })),
     ...providers.map((provider) => ({
       page: providerPagePath(provider),
       title: providerPageTitle(provider),
@@ -178,8 +236,11 @@ describe("every page in the real catalog", async () => {
   });
 
   it("opens every model description with a literal verdict", () => {
+    // Matched against the real model paths, not the segment count — /shutdowns/2027
+    // is two segments deep too, and it answers a different question.
+    const modelPaths = new Set(models.map((entry) => modelPagePath(entry)));
     const hedged = pages
-      .filter((page) => page.page.split("/").length === 3)
+      .filter((page) => modelPaths.has(page.page))
       .filter((page) => !/^(Yes|No) — /.test(page.description));
     expect(hedged.map((page) => page.page)).toEqual([]);
   });

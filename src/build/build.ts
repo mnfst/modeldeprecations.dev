@@ -5,6 +5,7 @@ import { buildIcs } from "../data/calendar.js";
 import { buildCatalog, uniqueProviders } from "../data/catalog.js";
 import { buildChangelog } from "../data/changelog.js";
 import { buildRss } from "../data/feed.js";
+import { shutdownYears, STATUS_HUBS } from "../data/hubs.js";
 import { buildLlmsFullTxt, buildLlmsTxt } from "../data/llms.js";
 import { loadAllModels } from "../data/load.js";
 import { modelMarkdown } from "../data/markdown.js";
@@ -18,8 +19,10 @@ import { statusOn, type Model } from "../schema/model.js";
 import { bundleClientScript, compileStyles, copyStaticAssets } from "./assets.js";
 import { gitLastmodMap } from "./lastmod.js";
 import { writeOgImages } from "./og.js";
+import { renderAboutPage } from "./render-about.js";
 import { renderAliasPage } from "./render-alias.js";
 import { renderApiPage } from "./render-api.js";
+import { renderStatusHubPage, renderYearHubPage } from "./render-hub.js";
 import { renderCalendarPage } from "./render-calendar.js";
 import { renderChangelogPage } from "./render-changelog.js";
 import { renderIndex } from "./render.js";
@@ -77,6 +80,24 @@ async function writeHtmlPages(models: Model[], today: string): Promise<void> {
       await renderProviderPage(provider, owned, models, today),
     );
   }
+}
+
+/** The cross-provider slices: /deprecated, /retired and one page per year. */
+async function writeHubPages(models: Model[], today: string): Promise<number> {
+  for (const status of STATUS_HUBS) {
+    await writeFile(
+      path.join(DIST_DIR, `${status}.html`),
+      await renderStatusHubPage(status, models, today),
+    );
+  }
+  const years = shutdownYears(models, today);
+  for (const year of years) {
+    await writeFile(
+      path.join(DIST_DIR, "shutdowns", `${year}.html`),
+      await renderYearHubPage(year, models, today),
+    );
+  }
+  return STATUS_HUBS.length + years.length;
 }
 
 async function writeApiFiles(models: Model[], today: string): Promise<void> {
@@ -143,7 +164,7 @@ export async function build(): Promise<{ models: number; pages: number }> {
   const changelog = buildChangelog(models);
 
   console.log(`Rendering ${models.length} model pages and ${providers.length} provider hubs...`);
-  await writeFile(path.join(DIST_DIR, "index.html"), await renderIndex({ models, today, analytics: true }));
+  await writeFile(path.join(DIST_DIR, "index.html"), await renderIndex({ models, today }));
   await writeHtmlPages(models, today);
   await writeFile(path.join(DIST_DIR, "calendar.html"), await renderCalendarPage(models, today));
   await writeFile(
@@ -151,6 +172,8 @@ export async function build(): Promise<{ models: number; pages: number }> {
     await renderChangelogPage(changelog, models, today),
   );
   await writeFile(path.join(DIST_DIR, "api.html"), await renderApiPage(models, today));
+  await writeFile(path.join(DIST_DIR, "about.html"), await renderAboutPage(models, today));
+  const hubs = await writeHubPages(models, today);
   await writeFile(path.join(DIST_DIR, "404.html"), await renderNotFoundPage(models, today));
 
   console.log("Writing JSON API, badges, feeds...");
@@ -166,7 +189,8 @@ export async function build(): Promise<{ models: number; pages: number }> {
   console.log(`  ${cards} social cards written.`);
 
   const aliases = models.reduce((sum, model) => sum + model.aliases.length, 0);
-  const pages = models.length + providers.length + aliases + 5;
+  // index, calendar, changelog, api, about, 404 — plus the cross-provider hubs.
+  const pages = models.length + providers.length + aliases + hubs + 6;
   const elapsed = ((Date.now() - startedAt) / 1000).toFixed(2);
   console.log(`Built ${models.length} models (${aliases} aliases) into ${pages} pages in ${elapsed}s.`);
   return { models: models.length, pages };

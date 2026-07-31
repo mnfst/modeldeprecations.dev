@@ -24,8 +24,19 @@ export function providerPagePath(provider: string): string {
 export const CALENDAR_PATH = "/calendar";
 export const CHANGELOG_PATH = "/changelog";
 export const API_PATH = "/api";
+export const ABOUT_PATH = "/about";
 export const ICS_PATH = "/calendar.ics";
 export const RSS_PATH = "/changelog.xml";
+
+/** Cross-provider lifecycle hub, e.g. /deprecated. */
+export function statusHubPath(status: string): string {
+  return `/${status}`;
+}
+
+/** Everything shutting down in one year, e.g. /shutdowns/2027. */
+export function shutdownYearPath(year: string): string {
+  return `/shutdowns/${year}`;
+}
 
 /** Static JSON for one model. */
 export function modelJsonPath(model: ModelRef): string {
@@ -57,6 +68,7 @@ export function absolute(siteUrl: string, pathname: string): string {
 
 /** Paths the site owns at the root, which therefore can never be provider slugs. */
 export const RESERVED_ROOT_SEGMENTS = new Set([
+  "about",
   "api",
   "assets",
   "badge",
@@ -64,9 +76,12 @@ export const RESERVED_ROOT_SEGMENTS = new Set([
   "calendar.ics",
   "changelog",
   "changelog.xml",
+  "deprecated",
   "llms.txt",
   "llms-full.txt",
+  "retired",
   "robots.txt",
+  "shutdowns",
   "sitemap.xml",
   "404",
   "index",

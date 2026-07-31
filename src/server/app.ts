@@ -1,27 +1,22 @@
 import express from "express";
-import { buildBadge } from "../data/badge.js";
-import { buildIcs } from "../data/calendar.js";
-import { buildCatalog } from "../data/catalog.js";
 import { buildChangelog } from "../data/changelog.js";
-import { buildRss } from "../data/feed.js";
-import { buildLlmsFullTxt, buildLlmsTxt } from "../data/llms.js";
+import { shutdownYears, STATUS_HUBS } from "../data/hubs.js";
 import { modelMarkdown } from "../data/markdown.js";
-import { DIST_ASSETS_DIR, REPO_ROOT } from "../data/paths.js";
-import { buildRobotsTxt } from "../data/robots.js";
-import { buildSitemap } from "../data/sitemap.js";
-import { gitLastmodMap } from "../build/lastmod.js";
+import { DIST_ASSETS_DIR } from "../data/paths.js";
 import { buildDate, SITE_URL } from "../data/site.js";
 import { RESERVED_ROOT_SEGMENTS } from "../data/urls.js";
-import { buildModelJsonSchema } from "../schema/generate.js";
-import { modelId, statusOn, type Model } from "../schema/model.js";
+import { modelId, type Model } from "../schema/model.js";
+import { renderAboutPage } from "../build/render-about.js";
+import { renderAliasPage } from "../build/render-alias.js";
 import { renderApiPage } from "../build/render-api.js";
 import { renderCalendarPage } from "../build/render-calendar.js";
 import { renderChangelogPage } from "../build/render-changelog.js";
-import { renderIndex } from "../build/render.js";
+import { renderStatusHubPage, renderYearHubPage } from "../build/render-hub.js";
 import { renderModelPage } from "../build/render-model.js";
 import { renderNotFoundPage } from "../build/render-not-found.js";
 import { renderProviderPage } from "../build/render-provider.js";
-import { renderAliasPage } from "../build/render-alias.js";
+import { renderIndex } from "../build/render.js";
+import { mountMachineRoutes } from "./routes-machine.js";
 
 /**
  * Supplies the catalog to each request. The dev server passes a caching loader;
@@ -41,11 +36,16 @@ export function makeApp(loadModels: LoadModels): express.Express {
 
   app.use("/assets", express.static(DIST_ASSETS_DIR, { maxAge: 0 }));
 
-  // The JSON API is for programmatic callers, not search results: `noindex` keeps
-  // crawlers on the HTML pages while every endpoint stays fetchable. Production is
-  // static, so vercel.json carries the same header — this is dev/test parity.
-  app.use(["/api/v1", "/badge"], (_req, res, next) => {
-    res.setHeader("X-Robots-Tag", "noindex");
+  // The API and the badges are for programmatic callers, not search results, and
+  // the .md twins duplicate a model page verbatim. `noindex` keeps crawlers on the
+  // HTML pages while every one of those surfaces stays fetchable. Production is
+  // static, so vercel.json carries the same headers — this is dev/test parity.
+  app.use(["/api", "/badge"], (_req, res, next) => {
+    res.setHeader("X-Robots-Tag", "noindex, follow");
+    next();
+  });
+  app.use((req, res, next) => {
+    if (req.path.endsWith(".md")) res.setHeader("X-Robots-Tag", "noindex, follow");
     next();
   });
   app.use((_req, res, next) => {
@@ -90,112 +90,46 @@ export function makeApp(loadModels: LoadModels): express.Express {
     }
   });
 
-  app.get("/api/v1/models.json", async (_req, res, next) => {
+  app.get("/about", async (_req, res, next) => {
     try {
-      res.json(buildCatalog(await loadModels(), buildDate()));
+      html(res, await renderAboutPage(await loadModels(), buildDate()));
     } catch (err) {
       next(err);
     }
   });
 
-  app.get("/api/v1/schema.json", (_req, res) => {
-    res.json(buildModelJsonSchema());
-  });
-
-  app.get("/api/v1/models/:provider/:slug.json", async (req, res, next) => {
-    try {
-      const today = buildDate();
-      const models = await loadModels();
-      const wanted = `${req.params.provider}/${req.params.slug}`;
-      const model = models.find((entry) => modelId(entry) === wanted);
-      if (!model) {
-        res.status(404).json({ error: "not_found", id: wanted });
-        return;
+  // Declared before /:provider so a lifecycle hub is never mistaken for a
+  // provider slug — the same reason those words are reserved root segments.
+  for (const status of STATUS_HUBS) {
+    app.get(`/${status}`, async (_req, res, next) => {
+      try {
+        html(res, await renderStatusHubPage(status, await loadModels(), buildDate()));
+      } catch (err) {
+        next(err);
       }
-      res.json({
-        $schema: "https://modeldeprecations.dev/api/v1/schema.json",
-        ...model,
-        computed_status: statusOn(model, today),
-        asOf: today,
-      });
-    } catch (err) {
-      next(err);
-    }
-  });
+    });
+  }
 
-  app.get("/badge/:provider/:slug.json", async (req, res, next) => {
+  app.get("/shutdowns/:year", async (req, res, next) => {
     try {
       const models = await loadModels();
-      const wanted = `${req.params.provider}/${req.params.slug}`;
-      const model = models.find((entry) => modelId(entry) === wanted);
-      if (!model) {
+      const today = buildDate();
+      // Only years the catalog actually has shutdowns in get a page, so a guessed
+      // /shutdowns/1999 404s here exactly as it would against the static build.
+      if (!shutdownYears(models, today).includes(req.params.year)) {
         res
           .status(404)
-          .json({
-            schemaVersion: 1,
-            label: req.params.slug,
-            message: "unknown",
-            color: "lightgrey",
-          });
+          .type("html")
+          .send(await renderNotFoundPage(models, today));
         return;
       }
-      res.json(buildBadge(model, buildDate()));
+      html(res, await renderYearHubPage(req.params.year, models, today));
     } catch (err) {
       next(err);
     }
   });
 
-  app.get("/calendar.ics", async (_req, res, next) => {
-    try {
-      res
-        .type("text/calendar; charset=utf-8")
-        .send(buildIcs(await loadModels(), SITE_URL, buildDate()));
-    } catch (err) {
-      next(err);
-    }
-  });
-
-  app.get("/changelog.xml", async (_req, res, next) => {
-    try {
-      res.type("application/rss+xml").send(buildRss(buildChangelog(await loadModels()), SITE_URL));
-    } catch (err) {
-      next(err);
-    }
-  });
-
-  app.get("/robots.txt", (_req, res) => {
-    res.type("text/plain; charset=utf-8").send(buildRobotsTxt(SITE_URL));
-  });
-
-  app.get("/sitemap.xml", async (_req, res, next) => {
-    try {
-      const today = buildDate();
-      const sitemap = buildSitemap(await loadModels(), gitLastmodMap(REPO_ROOT), today, SITE_URL);
-      res.type("application/xml").send(sitemap);
-    } catch (err) {
-      next(err);
-    }
-  });
-
-  app.get("/llms.txt", async (_req, res, next) => {
-    try {
-      res
-        .type("text/plain; charset=utf-8")
-        .send(buildLlmsTxt(SITE_URL, await loadModels(), buildDate()));
-    } catch (err) {
-      next(err);
-    }
-  });
-
-  app.get("/llms-full.txt", async (_req, res, next) => {
-    try {
-      res
-        .type("text/plain; charset=utf-8")
-        .send(buildLlmsFullTxt(SITE_URL, await loadModels(), buildDate()));
-    } catch (err) {
-      next(err);
-    }
-  });
+  mountMachineRoutes(app, loadModels);
 
   app.get("/healthz", (_req, res) => {
     res.json({ ok: true });

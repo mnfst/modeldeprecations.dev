@@ -6,13 +6,16 @@
 
 import { modelLastmod, newestLastmod } from "../build/lastmod.js";
 import { uniqueProviders } from "./catalog.js";
+import { shutdownsInYear, shutdownYears, STATUS_HUBS } from "./hubs.js";
 import type { Model } from "../schema/model.js";
 import {
-  API_PATH,
+  ABOUT_PATH,
   CALENDAR_PATH,
   CHANGELOG_PATH,
   modelPagePath,
   providerPagePath,
+  shutdownYearPath,
+  statusHubPath,
 } from "./urls.js";
 
 export interface SitemapEntry {
@@ -22,9 +25,12 @@ export interface SitemapEntry {
 }
 
 /**
- * Canonical, indexable HTML pages only. The JSON API, the badge endpoints, the
- * .md twins and the alias redirects are all deliberately absent: the first three
- * are noindex, and the aliases canonicalize to the page that owns the answer.
+ * Canonical, indexable HTML pages only. Everything under /api, the badge
+ * endpoints, the .md twins and the alias redirects are all deliberately absent:
+ * the API subtree and the badges are noindex, the .md twins carry a canonical
+ * header pointing at their HTML page, and the aliases canonicalize to the page
+ * that owns the answer. A sitemap that lists a noindex URL asks a crawler to
+ * fetch something only to be told to forget it.
  */
 export function sitemapEntries(
   models: Model[],
@@ -38,7 +44,17 @@ export function sitemapEntries(
     { path: "/", priority: "1.0", lastmod: freshest(models) },
     { path: CALENDAR_PATH, priority: "0.9", lastmod: freshest(models) },
     { path: CHANGELOG_PATH, priority: "0.8", lastmod: freshest(models) },
-    { path: API_PATH, priority: "0.5", lastmod: freshest(models) },
+    { path: ABOUT_PATH, priority: "0.5", lastmod: freshest(models) },
+    ...STATUS_HUBS.map((status) => ({
+      path: statusHubPath(status),
+      priority: "0.9",
+      lastmod: freshest(models),
+    })),
+    ...shutdownYears(models, today).map((year) => ({
+      path: shutdownYearPath(year),
+      priority: "0.8",
+      lastmod: freshest(shutdownsInYear(models, today, year).map((entry) => entry.model)),
+    })),
     ...uniqueProviders(models).map((provider) => ({
       path: providerPagePath(provider),
       priority: "0.9",

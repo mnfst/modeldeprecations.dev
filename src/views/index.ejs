@@ -60,6 +60,20 @@
   </div>
 </section>
 
+<section class="mt-12" aria-labelledby="by-lifecycle">
+  <h2 id="by-lifecycle" class="text-slate-900">By lifecycle</h2>
+  <p class="mt-2 max-w-2xl text-sm text-slate-600">
+    The same catalog sliced by where a model is in its life, and by the year it stops answering.
+  </p>
+  <div class="mt-4 flex flex-wrap gap-2 text-sm">
+    <a href="/deprecated" class="border border-slate-300 px-3 py-1.5 text-slate-600 hover:bg-warm-hover">Deprecated models</a>
+    <a href="/retired" class="border border-slate-300 px-3 py-1.5 text-slate-600 hover:bg-warm-hover">Retired models</a>
+    <% for (const year of years) { %>
+    <a href="/shutdowns/<%= year %>" class="border border-slate-300 px-3 py-1.5 text-slate-600 hover:bg-warm-hover">Shutdowns in <%= year %></a>
+    <% } %>
+  </div>
+</section>
+
 <section class="mt-12" aria-labelledby="all-models">
   <h2 id="all-models" class="text-slate-900">Every model we track</h2>
   <div class="mt-4 flex flex-wrap items-center gap-2">

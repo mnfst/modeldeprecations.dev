@@ -106,6 +106,24 @@ npm run build
 `npm run dev` watches `models/` and `src/views/`, so a YAML edit shows up on
 refresh.
 
+`npm run check:deploy [origin]` crawls a deployed site rather than the repo, and
+checks the things only the edge can get wrong: that an unknown URL really 404s,
+that `/api`, the badges and the `.md` twins send `noindex`, that `.html` and
+trailing slashes redirect to one canonical address. It runs daily in CI, not on
+pull requests, because a failure there is a deployment problem rather than a
+problem with the branch.
+
+## Pages
+
+Model and provider pages come from the catalog directly. The cross-provider hubs
+— `/deprecated`, `/retired` and `/shutdowns/<year>` — are slices of the same data
+in `src/data/hubs.ts`, rendered by `src/build/render-hub.ts`.
+
+Year hubs are derived from the dates present, so a hub can never exist with
+nothing on it and the next year appears the day a date lands in it. Anything
+added at the site root has to go in `RESERVED_ROOT_SEGMENTS`, or a provider
+directory of the same name would shadow it — the build fails if one does.
+
 ## Code
 
 - Files under 300 lines, functions under 50.

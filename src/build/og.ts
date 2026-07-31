@@ -10,16 +10,28 @@ import path from "node:path";
 import { Resvg } from "@resvg/resvg-js";
 import { upcomingShutdowns } from "../data/catalog.js";
 import { modelFullLabel, providerLabel } from "../data/display.js";
+import {
+  deprecatedEntries,
+  retiredEntries,
+  scheduledEntries,
+  shutdownsInYear,
+  shutdownYears,
+  STATUS_HUBS,
+  type StatusHub,
+} from "../data/hubs.js";
 import { CLIENT_DIR, DIST_ASSETS_DIR, DIST_DIR } from "../data/paths.js";
 import { recommendedReplacement } from "../data/replacements.js";
 import { formatDate, lifecycle, relativeDays, STATUS_LABELS } from "../data/status.js";
 import {
+  ABOUT_PATH,
   API_PATH,
   CALENDAR_PATH,
   CHANGELOG_PATH,
   modelPagePath,
   ogImagePath,
   providerPagePath,
+  shutdownYearPath,
+  statusHubPath,
 } from "../data/urls.js";
 import type { Model } from "../schema/model.js";
 import { renderOgCard, type OgCard } from "./og-card.js";
@@ -130,6 +142,39 @@ export function apiCard(modelCount: number): OgCard {
   };
 }
 
+export function statusHubCard(status: StatusHub, count: number, today: string): OgCard {
+  return status === "deprecated"
+    ? {
+        eyebrow: "Every provider",
+        headline: "Deprecated AI models",
+        status: STATUS_LABELS.deprecated,
+        subline: `${count} announced for retirement · shutdown date and replacement for each`,
+      }
+    : {
+        eyebrow: "Every provider",
+        headline: "Retired AI models",
+        status: STATUS_LABELS.retired,
+        subline: `${count} already shut down · verified ${formatDate(today)}`,
+      };
+}
+
+export function yearHubCard(year: string, entries: { model: Model }[]): OgCard {
+  return {
+    eyebrow: "Shutdowns",
+    headline: `AI models shutting down in ${year}`,
+    subline: `${entries.length} model${entries.length === 1 ? "" : "s"} lose API access · every date sourced`,
+    chips: entries.slice(0, 3).map((entry) => entry.model.model),
+  };
+}
+
+export function aboutCard(modelCount: number, providerCount: number): OgCard {
+  return {
+    eyebrow: "About",
+    headline: "How this catalog is built",
+    subline: `${modelCount} models · ${providerCount} providers · every date cited to the provider's docs`,
+  };
+}
+
 /** Writes one card to the dist path that `ogImagePath` advertises for `pagePath`. */
 async function writeCard(pagePath: string, card: OgCard): Promise<void> {
   const file = path.join(DIST_DIR, ogImagePath(pagePath).replace(/^\//, ""));
@@ -155,6 +200,20 @@ export async function writeOgImages(
   await writeCard(CALENDAR_PATH, calendarCard(models, today));
   await writeCard(CHANGELOG_PATH, changelogCard(changelogCount));
   await writeCard(API_PATH, apiCard(models.length));
+  await writeCard(ABOUT_PATH, aboutCard(models.length, providers.length));
+
+  for (const status of STATUS_HUBS) {
+    const count =
+      status === "deprecated"
+        ? deprecatedEntries(models, today).length + scheduledEntries(models, today).length
+        : retiredEntries(models, today).length;
+    await writeCard(statusHubPath(status), statusHubCard(status, count, today));
+  }
+
+  const years = shutdownYears(models, today);
+  for (const year of years) {
+    await writeCard(shutdownYearPath(year), yearHubCard(year, shutdownsInYear(models, today, year)));
+  }
 
   for (const provider of providers) {
     const owned = models.filter((model) => model.provider === provider);
@@ -164,5 +223,5 @@ export async function writeOgImages(
     await writeCard(modelPagePath(model), modelCard(model, models, today));
   }
 
-  return 4 + providers.length + models.length;
+  return 5 + STATUS_HUBS.length + years.length + providers.length + models.length;
 }

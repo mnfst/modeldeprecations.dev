@@ -12,6 +12,8 @@
 
 One page per model, answering the same three questions: is it deprecated, when does it shut down, and what replaces it. OpenAI, Anthropic and Google. Every date is cited to the provider's own docs and stamped with the day we last checked it.
 
+Browse it by provider ([`/openai`](https://modeldeprecations.dev/openai)), by lifecycle ([`/deprecated`](https://modeldeprecations.dev/deprecated), [`/retired`](https://modeldeprecations.dev/retired)) or by the year a model stops answering ([`/shutdowns/2026`](https://modeldeprecations.dev/shutdowns/2026)). How the sourcing works is on [`/about`](https://modeldeprecations.dev/about).
+
 Sibling of [modelparams.dev](https://modelparams.dev), which catalogues the parameters each model accepts. We use both at [Manifest](https://manifest.build/).
 
 ## Badges
@@ -99,7 +101,15 @@ npm run dev          # http://localhost:3000, reloads on changes to models/ and 
 npm run build        # → dist/
 npm run validate     # check every YAML
 npm test
+npm run check:deploy # crawl the deployed site: 404s, redirects, robots headers
 ```
+
+`check:deploy` runs against production by default and asserts the things only the
+edge can get wrong — that an unknown URL really 404s, that `/api` and the `.md`
+twins send `noindex`, that `.html` and trailing slashes redirect to one canonical
+address. Pass an origin to point it at a preview deployment. It runs daily in CI,
+separately from the pull-request checks, because a failure there is a deployment
+problem rather than a problem with the branch.
 
 ## License
 
