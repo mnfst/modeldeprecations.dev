@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: codestral-2501
+name: Codestral 25.01
+description: >-
+  The January 2025 Codestral, twice as fast as the 24.05 original and the version
+  that got Codestral into Continue and Tabnine defaults. Note that Mistral's own
+  table lists its replacement as "Codestral" without a version - the live id is
+  codestral-25-08, and the undated codestral alias now points there.
+deprecated_on: 2025-11-06
+shutdown_on: 2025-11-30
+status: retired
+replacements:
+  - provider: mistral
+    model: codestral-25-08
+    recommended: true
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: moonshot
+model: kimi-k3
+name: Kimi K3
+description: >-
+  Moonshot's flagship, a 2.8T-parameter model with a 1M-token window, native
+  visual understanding and a focus on long-horizon coding work. Its launch is
+  what closed kimi-k2.5 and the entire moonshot-v1 series to new users, so it is
+  both the current model and the direct cause of the largest retirement in
+  Moonshot's history.
+status: active
+sources:
+  - url: https://platform.kimi.ai/docs/models
+    title: Kimi model list
+    accessed: 2026-08-03
+last_verified: 2026-08-03

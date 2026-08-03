@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: command-a-translate-08-2025
+name: Command A Translate
+description: >-
+  A translation-specialised Command A covering 23 languages, and the only model in
+  Cohere's range with an 8k context window - a deliberate cap, since translation
+  requests are short and the throughput matters more than the window.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: c4ai-aya-expanse-32b
+name: Aya Expanse 32B
+description: >-
+  The 32B multilingual research model covering 23 languages, and the survivor of
+  the Aya Expanse pair - the 8B version was retired in April 2026 with no notice
+  period at all. Nothing in Cohere's docs says this one is next, but it is the last
+  Expanse standing.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

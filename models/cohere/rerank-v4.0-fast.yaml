@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: rerank-v4.0-fast
+name: Rerank v4 Fast
+description: >-
+  The latency-optimised half of the v4 rerank pair, same 32k window and a lower
+  quality ceiling. Splitting rerank into fast and pro tiers is new in v4; every
+  earlier generation shipped one model per language scope instead.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

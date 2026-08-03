@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: mistral-small-2503
+name: Mistral Small 3.1
+description: >-
+  The first Small with vision, released March 2025 under Apache 2.0 with a 128k
+  window, and for a while the best open model that fitted on a single RTX 4090.
+  It was caught in the 6 November 2025 sweep that retired four generations of
+  Mistral Small on one day, twenty-four days after the notice.
+deprecated_on: 2025-11-06
+shutdown_on: 2025-11-30
+status: retired
+replacements:
+  - provider: mistral
+    model: mistral-small-4-0-26-03
+    recommended: true
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

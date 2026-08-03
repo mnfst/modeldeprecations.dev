@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: command-a-vision-07-2025
+name: Command A Vision
+description: >-
+  The image-capable Command A, aimed squarely at enterprise document work: charts,
+  scanned forms, OCR-style question answering. Cohere shipped it as a separate id
+  rather than adding vision to the base model, a split that Command A Plus has
+  since closed.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

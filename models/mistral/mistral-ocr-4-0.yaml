@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: mistral-ocr-4-0
+name: Mistral OCR 4
+description: >-
+  Mistral's document-understanding service, now returning paragraph-level
+  bounding boxes and structural block labels rather than a flat text dump. It is
+  the third OCR id in two years and both predecessors are shut down, so this is a
+  line that rotates fast: if you pinned mistral-ocr-2503 or mistral-ocr-2505 in
+  a pipeline, neither answers any more.
+status: active
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

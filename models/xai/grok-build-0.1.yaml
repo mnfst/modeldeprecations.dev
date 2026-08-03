@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xai
+model: grok-build-0.1
+name: Grok Build 0.1
+description: >-
+  The coding model that replaced grok-code-fast-1 when it retired in May 2026,
+  and the only id in xAI's range with a 0.x version number. Its 256k context is
+  the smallest xAI serves, which is a deliberate trade for the throughput an
+  editor integration needs.
+status: active
+sources:
+  - url: https://docs.x.ai/developers/models
+    title: xAI models and pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

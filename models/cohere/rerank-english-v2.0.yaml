@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: rerank-english-v2.0
+name: Rerank English v2
+description: >-
+  The English reranker that made two-stage retrieval a standard pattern: cheap
+  vector search first, then this model to reorder the top fifty. It is the one
+  Cohere deprecation with a textbook runway - announced 2 December 2024, shut down
+  30 April 2025, five months apart.
+deprecated_on: 2024-12-02
+shutdown_on: 2025-04-30
+status: retired
+replacements:
+  - provider: cohere
+    model: rerank-v3.5
+    recommended: true
+    note: >-
+      v3.5 is multilingual, so the English-only and multilingual v2.0 ids collapse
+      into one. Fine-tunes built on the v2.0 bases were explicitly not affected by
+      this deprecation.
+sources:
+  - url: https://docs.cohere.com/docs/deprecations
+    title: Cohere deprecations
+    accessed: 2026-08-03
+last_verified: 2026-08-03

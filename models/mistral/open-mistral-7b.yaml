@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: open-mistral-7b
+name: Mistral 7B
+description: >-
+  The model that made Mistral's reputation: an Apache 2.0 7B released by
+  BitTorrent magnet link in September 2023 that beat Llama 2 13B and became the
+  base for a generation of fine-tunes. The API id covered versions 0.2 and 0.3
+  and stopped answering on 30 March 2025, though the weights are permanent.
+deprecated_on: 2024-11-30
+shutdown_on: 2025-03-30
+status: retired
+replacements:
+  - provider: mistral
+    model: ministral-3-8b-25-12
+    recommended: true
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

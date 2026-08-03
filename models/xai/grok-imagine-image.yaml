@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xai
+model: grok-imagine-image
+name: Grok Imagine Image
+description: >-
+  xAI's image generation endpoint and the successor to the grok-2-image line. The
+  Imagine family renamed everything: nothing in xAI's current image or video
+  range carries a Grok version number any more, which makes the lineage from the
+  1212-era models harder to trace than it should be.
+status: active
+sources:
+  - url: https://docs.x.ai/developers/models
+    title: xAI models and pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

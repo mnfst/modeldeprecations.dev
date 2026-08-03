@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: zai
+model: glm-4.5-x
+name: GLM-4.5-X
+description: >-
+  The high-performance tier of the GLM-4.5 launch, tuned for throughput at the top
+  of the range. The X suffix was retired as a naming convention after 4.5 - nothing
+  in the 4.6, 4.7 or 5.x lines uses it - but the ids themselves are still served.
+released_on: 2025-07-28
+status: active
+sources:
+  - url: https://docs.z.ai/release-notes/new-released
+    title: Z.ai new releases
+    accessed: 2026-08-03
+  - url: https://docs.z.ai/guides/overview/pricing
+    title: Z.ai model pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

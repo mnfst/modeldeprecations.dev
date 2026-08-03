@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: leanstral-1-5
+name: Leanstral 1.5
+description: >-
+  Leanstral graduated out of Mistral's labs prefix with this release: the
+  experimental id was labs-leanstral-2603 and it was retired five weeks after
+  1.5 landed. Losing the labs prefix is the signal that matters here, because
+  ids under it carry no retirement guarantee at all and this one now sits in the
+  supported Apache 2.0 range.
+status: active
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

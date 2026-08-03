@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: labs-devstral-small-2512
+name: Devstral Small 2
+description: >-
+  Shipped under the labs prefix, which on Mistral's API means exactly what it
+  sounds like: no support commitment and no expectation of a long life. It got
+  five weeks between deprecation and shutdown and never graduated to a stable id,
+  unlike Leanstral, which made the same journey out of labs successfully.
+deprecated_on: 2026-02-27
+shutdown_on: 2026-03-31
+status: retired
+replacements:
+  - provider: mistral
+    model: mistral-medium-3-5-26-04
+    recommended: true
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

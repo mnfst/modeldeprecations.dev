@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: zai
+model: glm-ocr
+name: GLM-OCR
+description: >-
+  Z.ai's document-parsing model, split out from the general vision line in February
+  2026. Keeping OCR separate from vision is the same call Mistral made and the
+  opposite of Google's - the argument being that structured document extraction
+  wants different training data than general image understanding.
+released_on: 2026-02-03
+status: active
+sources:
+  - url: https://docs.z.ai/release-notes/new-released
+    title: Z.ai new releases
+    accessed: 2026-08-03
+  - url: https://docs.z.ai/guides/overview/pricing
+    title: Z.ai model pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

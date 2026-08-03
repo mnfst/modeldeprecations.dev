@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: devstral-2512
+name: Devstral 2
+description: >-
+  Mistral's agentic coding model, built for driving a codebase through a tool
+  loop rather than completing a line in an editor. Devstral 2 lasted seven
+  months. Mistral retired the whole Devstral line into Medium 3.5 in mid-2026,
+  which is the clearest example of its strategy of collapsing specialist ids into
+  one general model.
+deprecated_on: 2026-05-22
+shutdown_on: 2026-07-31
+status: retired
+replacements:
+  - provider: mistral
+    model: mistral-medium-3-5-26-04
+    recommended: true
+    note: >-
+      Medium 3.5 is explicitly optimised for agentic and coding use, but it is a
+      general model. Prompts tuned to Devstral's SWE-bench-style scaffolding are
+      worth re-testing rather than lifting across unchanged.
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: command-r-03-2024
+name: Command R (03-2024)
+description: >-
+  The model that put Cohere on the map for retrieval-augmented generation, with
+  citations and connectors built into the chat API rather than bolted on. Cohere
+  deprecated it on 15 September 2025 and has not published a shutdown date. Under
+  Cohere's own policy the date is assigned at deprecation time; here it was not,
+  so the id is closed to new customers and still answering for existing ones.
+aliases:
+  - command-r
+deprecated_on: 2025-09-15
+status: deprecated
+replacements:
+  - provider: cohere
+    model: command-r-08-2024
+    recommended: true
+    note: >-
+      Cohere also names command-r-plus-08-2024 and command-a-03-2025. Whichever
+      you pick, the connectors parameter went away in the same announcement, so a
+      RAG integration built on managed connectors needs rewriting rather than
+      repointing.
+sources:
+  - url: https://docs.cohere.com/docs/deprecations
+    title: Cohere deprecations
+    accessed: 2026-08-03
+last_verified: 2026-08-03

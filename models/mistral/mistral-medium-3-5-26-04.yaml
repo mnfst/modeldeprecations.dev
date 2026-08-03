@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: mistral-medium-3-5-26-04
+name: Mistral Medium 3.5
+description: >-
+  Mistral's frontier-class multimodal model, and the row every other row in the
+  deprecation table points at. Large 2.1, Pixtral Large, all three Magistral
+  Medium releases and both Devstral generations were retired into this one id,
+  because Mistral decided reasoning, vision and coding did not each need their
+  own endpoint. If you are migrating anything premier-tier off Mistral, this is
+  almost certainly where the arrow lands.
+status: active
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: tiny-aya-global
+name: Tiny Aya Global
+description: >-
+  A 3.35B research model from Cohere Labs covering 70 languages, and the general
+  member of a four-model set where the other three each specialise by region. Aya
+  has always been the research arm's line rather than the commercial one, which is
+  also why 8B-era Aya ids were retired with no notice period.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

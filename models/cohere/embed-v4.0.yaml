@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: embed-v4.0
+name: Embed v4
+description: >-
+  Cohere's current embedding model, and the first that takes text, images and
+  mixed documents in one call with a configurable output dimension. The 128k input
+  window is unusual for an embedder - the v3.0 family it replaces caps at 512
+  tokens, a 250x difference that changes how you chunk.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

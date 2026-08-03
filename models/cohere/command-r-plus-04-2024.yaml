@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: command-r-plus-04-2024
+name: Command R+ (04-2024)
+description: >-
+  Cohere's April 2024 flagship, the first open-weights model to seriously
+  compete on multi-step tool use, and the one that made the undated command-r-plus
+  alias worth pinning. Deprecated 15 September 2025 with no shutdown date
+  published, which means existing users keep access indefinitely and new ones get
+  none.
+aliases:
+  - command-r-plus
+deprecated_on: 2025-09-15
+status: deprecated
+replacements:
+  - provider: cohere
+    model: command-r-plus-08-2024
+    recommended: true
+    note: >-
+      The nearest snapshot, but Cohere lists command-a-03-2025 as the
+      strongest-performing option across domains and that is where new work
+      should go.
+sources:
+  - url: https://docs.cohere.com/docs/deprecations
+    title: Cohere deprecations
+    accessed: 2026-08-03
+last_verified: 2026-08-03

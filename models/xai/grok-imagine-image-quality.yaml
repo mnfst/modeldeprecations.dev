@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xai
+model: grok-imagine-image-quality
+name: Grok Imagine Image Quality
+description: >-
+  The slower, higher-fidelity image model, and the id that grok-imagine-image-pro
+  was folded into on 15 May 2026. It is the only non-text model in that
+  retirement wave, and the only one that did not end up pointing at grok-4.3.
+status: active
+sources:
+  - url: https://docs.x.ai/developers/models
+    title: xAI models and pricing
+    accessed: 2026-08-03
+  - url: https://docs.x.ai/developers/migration/may-15-retirement
+    title: Grok Model Retirement on May 15, 2026
+    accessed: 2026-08-03
+last_verified: 2026-08-03

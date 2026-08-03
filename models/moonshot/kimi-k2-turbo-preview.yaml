@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: moonshot
+model: kimi-k2-turbo-preview
+name: Kimi K2 Turbo
+description: >-
+  The high-throughput K2, same model served several times faster at a premium
+  price, which made it the usual choice for interactive coding tools. Discontinued
+  25 May 2026. The pattern survives in kimi-k2.7-code-highspeed, so the id is gone
+  but the tier is not.
+shutdown_on: 2026-05-25
+status: retired
+replacements:
+  - provider: moonshot
+    model: kimi-k2.7-code-highspeed
+    recommended: false
+    note: >-
+      Moonshot points the whole K2 series at its latest models generically. If
+      throughput was why you were on turbo, the code-highspeed id is the direct
+      equivalent; if you wanted a general model, kimi-k2.6 is the closer fit.
+sources:
+  - url: https://platform.kimi.ai/docs/models
+    title: Kimi model list
+    accessed: 2026-08-03
+last_verified: 2026-08-03

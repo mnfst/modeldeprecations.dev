@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: devstral-small-2505
+name: Devstral Small 1.0
+description: >-
+  The first Devstral, released in May 2025 with All Hands AI as a model for
+  OpenHands-style agents. It had the shortest deprecation runway of any Mistral
+  model in the catalogue - announced 31 October 2025 and gone by 30 November,
+  four weeks later - because 1.1 had already replaced it in practice.
+deprecated_on: 2025-10-31
+shutdown_on: 2025-11-30
+status: retired
+replacements:
+  - provider: mistral
+    model: mistral-medium-3-5-26-04
+    recommended: true
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

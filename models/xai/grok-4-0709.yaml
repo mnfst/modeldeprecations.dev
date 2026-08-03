@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xai
+model: grok-4-0709
+name: Grok 4
+description: >-
+  The July 2025 flagship that xAI launched with claims of PhD-level performance
+  across every subject, and the first Grok that could not be asked to skip
+  thinking. Because the undated grok-4 alias pointed here, plenty of integrations
+  were running it without ever naming the snapshot.
+aliases:
+  - grok-4
+  - grok-4-latest
+shutdown_on: 2026-05-15
+status: retired
+replacements:
+  - provider: xai
+    model: grok-4.3
+    recommended: true
+    note: >-
+      Maps to grok-4.3 with reasoning effort "low". Grok 4 had no non-reasoning
+      mode at all, so this is the first time the workload can be run without
+      thinking tokens if you want that.
+sources:
+  - url: https://docs.x.ai/developers/migration/may-15-retirement
+    title: Grok Model Retirement on May 15, 2026
+    accessed: 2026-08-03
+last_verified: 2026-08-03

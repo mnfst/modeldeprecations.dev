@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: voxtral-mini-2507
+name: Voxtral Mini
+description: >-
+  The first Voxtral, which did double duty as both an audio-understanding model
+  and a transcription endpoint - Mistral's docs listed it twice, once under each
+  job. That is exactly the ambiguity the 26.02 split was meant to fix, and both
+  of the doc rows pointing at this id retired together on 31 May 2026.
+deprecated_on: 2026-02-27
+shutdown_on: 2026-05-31
+status: retired
+replacements:
+  - provider: mistral
+    model: voxtral-mini-transcribe-26-02
+    recommended: true
+    note: >-
+      Mistral names the transcription model as the successor for both of this
+      id's roles. If you were using it for audio question answering rather than
+      transcription, that is a capability change and not a version bump.
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

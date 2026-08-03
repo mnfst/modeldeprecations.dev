@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: open-mixtral-8x22b
+name: Mixtral 8x22B
+description: >-
+  141B total parameters with 39B active, released April 2024 as the largest open
+  model of its moment and the high-water mark for Mistral's fully-open strategy
+  before Large 1.0 went closed a few weeks later. Retired 30 March 2025 alongside
+  the rest of the open-prefix ids.
+deprecated_on: 2024-11-30
+shutdown_on: 2025-03-30
+status: retired
+replacements:
+  - provider: mistral
+    model: mistral-small-4-0-26-03
+    recommended: true
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

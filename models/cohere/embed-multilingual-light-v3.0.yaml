@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: embed-multilingual-light-v3.0
+name: Embed Multilingual Light v3
+description: >-
+  The compact multilingual embedder, 512 tokens in and a smaller vector out. Like
+  the English light model it survived the v2.0 cull, and it has no successor in the
+  v4 generation - if you need small vectors across languages, this id is the whole
+  option set.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

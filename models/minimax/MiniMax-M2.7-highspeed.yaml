@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: minimax
+model: MiniMax-M2.7-highspeed
+name: MiniMax M2.7 Highspeed
+description: >-
+  The throughput-optimised M2.7, sold as a distinct id rather than as a routing
+  hint. MiniMax has shipped a highspeed twin for every model since M2.1, which
+  doubles the size of the catalogue and means a latency decision is baked into
+  the model string your code sends.
+released_on: 2026-03-18
+status: active
+sources:
+  - url: https://platform.minimax.io/docs/release-notes/models
+    title: MiniMax model release notes
+    accessed: 2026-08-03
+  - url: https://platform.minimax.io/docs/api-reference/api-overview
+    title: MiniMax API models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

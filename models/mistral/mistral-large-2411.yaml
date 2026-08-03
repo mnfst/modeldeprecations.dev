@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: mistral-large-2411
+name: Mistral Large 2.1
+description: >-
+  For most of 2025 this was what mistral-large-latest resolved to, which means a
+  lot of code that never named a version was running it. Mistral did not route it
+  to Large 3 when it retired it - it pointed at Medium 3.5, which is the clearest
+  statement that the Large tier stopped being the top of the range.
+deprecated_on: 2026-02-27
+shutdown_on: 2026-05-31
+status: retired
+replacements:
+  - provider: mistral
+    model: mistral-medium-3-5-26-04
+    recommended: true
+    note: >-
+      Mistral names Medium 3.5, not Large 3, as the successor. If you want to
+      stay in the Large tier for licensing reasons, mistral-large-3-25-12 exists
+      and is Apache 2.0, but it is not the model Mistral points you at.
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

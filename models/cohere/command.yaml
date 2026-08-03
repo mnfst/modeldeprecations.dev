@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: command
+name: Command
+description: >-
+  The original Cohere instruction model, an undated floating id from the
+  generate-endpoint era that predates the whole Command R line. It was deprecated
+  on 15 September 2025 in the same sweep that removed /v1/generate, /v1/classify
+  and fine-tuning for it - the announcement was less a model retirement than the
+  end of Cohere's first API generation.
+deprecated_on: 2025-09-15
+status: deprecated
+replacements:
+  - provider: cohere
+    model: command-a-03-2025
+    recommended: true
+    note: >-
+      If you were calling this through /v1/generate rather than /v1/chat, the
+      endpoint is gone too. This is an API migration, not a model swap.
+sources:
+  - url: https://docs.cohere.com/docs/deprecations
+    title: Cohere deprecations
+    accessed: 2026-08-03
+last_verified: 2026-08-03

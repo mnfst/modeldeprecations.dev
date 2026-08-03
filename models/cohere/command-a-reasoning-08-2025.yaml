@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: command-a-reasoning-08-2025
+name: Command A Reasoning
+description: >-
+  Cohere's first model with an extended thinking mode, released August 2025 with
+  the same 256k window as Command A. It is one of the two successors Cohere names
+  for the retired Aya Expanse and Aya Vision 8B models, which is a large jump in
+  size for anyone taking that advice literally.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

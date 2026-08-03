@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: c4ai-aya-vision-32b
+name: Aya Vision 32B
+description: >-
+  Cohere Labs' multimodal research model, 32B parameters and a 16k window, capable
+  of answering questions about images across 23 languages. Its 8B sibling is
+  already shut down, which makes this the only Aya model that still takes an image
+  at all.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

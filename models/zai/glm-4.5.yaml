@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: zai
+model: glm-4.5
+name: GLM-4.5
+description: >-
+  355B total parameters with 32B active, released July 2025 under an open licence,
+  and the model that established Z.ai as a serious lab outside China. It is the
+  oldest GLM still listed for sale, a year and five generations later.
+released_on: 2025-07-28
+status: active
+sources:
+  - url: https://docs.z.ai/release-notes/new-released
+    title: Z.ai new releases
+    accessed: 2026-08-03
+  - url: https://docs.z.ai/guides/overview/pricing
+    title: Z.ai model pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

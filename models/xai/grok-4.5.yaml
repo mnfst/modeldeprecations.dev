@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xai
+model: grok-4.5
+name: Grok 4.5
+description: >-
+  xAI's current flagship, with a 500k context window and a February 2026
+  knowledge cutoff. It is worth noting that it is not the model xAI routes
+  retired ids to - that is grok-4.3, which has double the context and costs less.
+  4.5 is a deliberate choice rather than a default you fall into.
+aliases:
+  - grok-4.5-latest
+status: active
+sources:
+  - url: https://docs.x.ai/developers/models
+    title: xAI models and pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

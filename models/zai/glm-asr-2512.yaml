@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: zai
+model: glm-asr-2512
+name: GLM-ASR-2512
+description: >-
+  The speech recognition model, and the only current Z.ai id with a date stamp
+  baked into the name. That stamp is the one piece of lifecycle signalling Z.ai
+  gives anywhere: it implies a 2512 successor is expected, which is more than the
+  undated ids tell you.
+released_on: 2025-12-10
+status: active
+sources:
+  - url: https://docs.z.ai/release-notes/new-released
+    title: Z.ai new releases
+    accessed: 2026-08-03
+  - url: https://docs.z.ai/guides/overview/pricing
+    title: Z.ai model pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

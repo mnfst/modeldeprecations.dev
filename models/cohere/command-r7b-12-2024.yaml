@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: command-r7b-12-2024
+name: Command R7B
+description: >-
+  A 7B model with a 128k window, the smallest thing in Cohere's Command line and
+  the one aimed at running on a single commodity GPU. Cohere names it first among
+  the chat replacements for the retired Aya 8B models, which makes it the
+  like-for-like size match in that migration.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

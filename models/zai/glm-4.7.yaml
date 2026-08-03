@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: zai
+model: glm-4.7
+name: GLM-4.7
+description: >-
+  The December 2025 model that closed out the 4.x line, with large gains in
+  multilingual agentic coding and terminal work over GLM-4.6. It is still one of
+  the three models supported on every Z.ai coding plan, which makes it the oldest
+  id the company actively promotes.
+released_on: 2025-12-22
+status: active
+sources:
+  - url: https://docs.z.ai/release-notes/new-released
+    title: Z.ai new releases
+    accessed: 2026-08-03
+  - url: https://docs.z.ai/guides/overview/pricing
+    title: Z.ai model pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

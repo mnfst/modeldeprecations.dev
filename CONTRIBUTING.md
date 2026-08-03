@@ -21,6 +21,21 @@ CI enforces this: any entry with a lifecycle date and no source fails validation
 - DeepSeek — https://api-docs.deepseek.com/updates/ (DeepSeek has no deprecation
   table; retirements are announced in the change log and in the dated release
   notes under `/news/`, then the model simply disappears from the pricing page)
+- Mistral — https://docs.mistral.ai/getting-started/models/models_overview/ (the
+  best-kept table of the lot: every legacy model keeps its row with both a
+  deprecation and a retirement date, years after the id stopped answering)
+- Cohere — https://docs.cohere.com/docs/deprecations (announcement-dated
+  sections rather than one table; a batch often ships with no shutdown date, and
+  Cohere's own policy is that the date "will be assigned at that time")
+- xAI — https://docs.x.ai/developers/migration/may-15-retirement (xAI publishes a
+  page per retirement wave and deletes the model's doc page afterwards, so
+  anything older than the current wave has no first-party date left to cite)
+- Moonshot AI — https://platform.kimi.ai/docs/models (the model list carries a
+  discontinued table at the bottom with a date per model)
+- MiniMax — https://platform.minimax.io/docs/release-notes/models (releases only;
+  MiniMax has never published a deprecation, so its entries are all `active`)
+- Z.ai — https://docs.z.ai/release-notes/new-released (same shape as MiniMax:
+  dated releases, no retirement notices)
 
 Providers delete rows from these tables once a model is long gone. If a page has
 moved, cite an archive.org snapshot rather than a blog post about it.

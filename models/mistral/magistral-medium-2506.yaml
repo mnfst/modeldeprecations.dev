@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: magistral-medium-2506
+name: Magistral Medium 1.0
+description: >-
+  Mistral's first reasoning model, announced in June 2025 as Europe's answer to
+  o1 and R1, with multilingual chains of thought as its distinguishing pitch. It
+  lasted under five months on the API. Of everything in the Mistral table this is
+  the shortest gap between a flagship launch and its deprecation notice.
+deprecated_on: 2025-10-31
+shutdown_on: 2025-11-30
+status: retired
+replacements:
+  - provider: mistral
+    model: mistral-medium-3-5-26-04
+    recommended: true
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

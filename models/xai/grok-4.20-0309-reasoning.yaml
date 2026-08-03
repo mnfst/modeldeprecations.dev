@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xai
+model: grok-4.20-0309-reasoning
+name: Grok 4.20 Reasoning
+description: >-
+  A dated 4.20 snapshot that keeps reasoning and non-reasoning as separate ids,
+  the convention xAI had just moved away from with 4.3. Pinned snapshots like
+  this one are the safe choice for evaluation harnesses, at the cost of being
+  first in line whenever xAI runs its next retirement wave.
+status: active
+sources:
+  - url: https://docs.x.ai/developers/models
+    title: xAI models and pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

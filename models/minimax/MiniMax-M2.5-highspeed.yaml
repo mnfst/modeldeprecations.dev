@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: minimax
+model: MiniMax-M2.5-highspeed
+name: MiniMax M2.5 Highspeed
+description: >-
+  The fast-serving M2.5. Its continued presence in the model list is the clearest
+  illustration of MiniMax's approach to lifecycle: ids accumulate and nothing is
+  ever announced as going away, which is comfortable until the day something
+  quietly stops answering.
+status: active
+sources:
+  - url: https://platform.minimax.io/docs/release-notes/models
+    title: MiniMax model release notes
+    accessed: 2026-08-03
+  - url: https://platform.minimax.io/docs/api-reference/api-overview
+    title: MiniMax API models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

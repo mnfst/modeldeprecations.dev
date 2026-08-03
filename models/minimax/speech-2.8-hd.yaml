@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: minimax
+model: speech-2.8-hd
+name: Speech 2.8 HD
+description: >-
+  The high-fidelity half of MiniMax's January 2026 text-to-speech release, adding
+  natural sound tags that let you mark laughter or hesitation inline in the text.
+  HD trades latency for audio quality; the turbo variant makes the opposite
+  trade.
+released_on: 2026-01-23
+status: active
+sources:
+  - url: https://platform.minimax.io/docs/release-notes/models
+    title: MiniMax model release notes
+    accessed: 2026-08-03
+last_verified: 2026-08-03

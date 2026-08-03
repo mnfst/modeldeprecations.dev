@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xai
+model: grok-beta
+name: Grok Beta
+description: >-
+  The id xAI's public API launched with in November 2024, during the period when
+  the whole platform was free credit and a waitlist. It lasted about a month
+  before grok-2-1212 superseded it. Nothing in xAI's current documentation
+  records when it stopped answering.
+status: retired
+replacements:
+  - provider: xai
+    model: grok-4.3
+    recommended: false
+    note: >-
+      Two full generations later. Treat this as a rewrite rather than a model
+      swap.
+sources:
+  - url: https://docs.x.ai/developers/models
+    title: xAI models and pricing (no longer lists this model)
+    accessed: 2026-08-03
+last_verified: 2026-08-03

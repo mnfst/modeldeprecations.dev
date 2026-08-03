@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: ministral-3-14b-25-12
+name: Ministral 3 14B
+description: >-
+  The largest of the three Ministral 3 edge models and the only one Mistral names
+  as the successor to Pixtral 12B, which makes it the place multimodal
+  small-model workloads ended up. Apache 2.0 like the rest of the Ministral 3
+  line, so unlike the 24.10 Ministrals it replaced there is nothing stopping you
+  running it yourself when the API id eventually rotates.
+status: active
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: c4ai-aya-expanse-8b
+name: Aya Expanse 8B
+description: >-
+  The small half of Cohere Labs' 23-language Aya Expanse release, and a model a
+  lot of people picked precisely because 8B was the size they could self-host. It
+  was retired on 4 April 2026, the same day it was announced. The 32B version
+  survives; this one does not.
+deprecated_on: 2026-04-04
+shutdown_on: 2026-04-04
+status: retired
+replacements:
+  - provider: cohere
+    model: command-a-03-2025
+    recommended: true
+    note: >-
+      Cohere names command-a-03-2025 and command-a-reasoning-08-2025, both far
+      larger than 8B. If size was the point, command-r7b-12-2024 is the nearest
+      supported model.
+sources:
+  - url: https://docs.cohere.com/docs/deprecations
+    title: Cohere deprecations
+    accessed: 2026-08-03
+last_verified: 2026-08-03

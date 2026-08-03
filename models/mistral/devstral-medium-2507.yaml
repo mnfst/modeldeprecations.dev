@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: devstral-medium-2507
+name: Devstral Medium 1.0
+description: >-
+  The premier-tier half of the first Devstral generation, sold as the coding
+  model you paid for when the open Devstral Small was not strong enough. It ran
+  ten months before the February 2026 deprecation wave took it, and unlike Small
+  it never had an open-weights release to fall back on.
+deprecated_on: 2026-02-27
+shutdown_on: 2026-05-31
+status: retired
+replacements:
+  - provider: mistral
+    model: mistral-medium-3-5-26-04
+    recommended: true
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: zai
+model: glm-5-turbo
+name: GLM-5 Turbo
+description: >-
+  The fast, cheap member of the GLM-5 family, and one of only three models
+  available across every tier of Z.ai's coding plan. Turbo here means a smaller
+  model rather than the same weights served faster, which is the opposite of what
+  the suffix means at MiniMax or Moonshot.
+released_on: 2026-03-15
+status: active
+sources:
+  - url: https://docs.z.ai/release-notes/new-released
+    title: Z.ai new releases
+    accessed: 2026-08-03
+  - url: https://docs.z.ai/guides/overview/pricing
+    title: Z.ai model pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

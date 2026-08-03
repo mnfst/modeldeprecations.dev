@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: tiny-aya-fire
+name: Tiny Aya Fire
+description: >-
+  The South Asian language specialist in the Tiny Aya set, 8k context and small
+  enough to run on a laptop. Cohere Labs releases these as research artefacts, so
+  they carry no enterprise support commitment - a distinction that matters given
+  what happened to the Aya Expanse and Aya Vision 8B ids.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

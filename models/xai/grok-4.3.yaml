@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xai
+model: grok-4.3
+name: Grok 4.3
+description: >-
+  The workhorse of the xAI API and the destination for seven of the eight ids
+  retired on 15 May 2026. It takes a reasoning_effort setting rather than
+  splitting reasoning and non-reasoning into separate model names, which is the
+  change that made half of xAI's catalogue redundant in one release. A million
+  tokens of context at $1.25 per million in.
+status: active
+sources:
+  - url: https://docs.x.ai/developers/models
+    title: xAI models and pricing
+    accessed: 2026-08-03
+  - url: https://docs.x.ai/developers/migration/may-15-retirement
+    title: Grok Model Retirement on May 15, 2026
+    accessed: 2026-08-03
+last_verified: 2026-08-03

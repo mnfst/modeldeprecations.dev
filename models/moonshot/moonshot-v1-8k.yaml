@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: moonshot
+model: moonshot-v1-8k
+name: Moonshot v1 8k
+description: >-
+  The cheapest and oldest id Moonshot serves, the short-context entry point to the
+  original API and the one most quickstart tutorials still reference. Two years
+  of copy-pasted example code points at this string, which makes its 31 August
+  sunset the most disruptive line in Moonshot's model list.
+shutdown_on: 2026-08-31
+status: deprecated
+replacements:
+  - provider: moonshot
+    model: kimi-k2.6
+    recommended: true
+sources:
+  - url: https://platform.kimi.ai/docs/models
+    title: Kimi model list
+    accessed: 2026-08-03
+last_verified: 2026-08-03

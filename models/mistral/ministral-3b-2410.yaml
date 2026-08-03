@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: ministral-3b-2410
+name: Ministral 3B
+description: >-
+  The smaller half of les Ministraux, and the only one of the pair whose weights
+  Mistral never released in any form - it was API-only for its entire fourteen
+  months. When it shut down at the end of 2025 the model became genuinely
+  unavailable rather than merely unhosted.
+deprecated_on: 2025-12-02
+shutdown_on: 2025-12-31
+status: retired
+replacements:
+  - provider: mistral
+    model: ministral-3-3b-25-12
+    recommended: true
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

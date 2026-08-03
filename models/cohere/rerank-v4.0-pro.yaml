@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: rerank-v4.0-pro
+name: Rerank v4 Pro
+description: >-
+  The current high-quality reranker, multilingual with a 32k context - eight times
+  what rerank-v3.5 accepts, which means whole documents rather than passages. Third
+  generation of a product line where Cohere has consistently been the strongest
+  option on the market.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

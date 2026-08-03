@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: embed-english-v3.0
+name: Embed English v3
+description: >-
+  The English-only v3 embedder, and the model Cohere named when it retired
+  embed-english-v2.0 in April 2026. It is still supported but no longer the
+  default recommendation: new work is pointed at embed-v4.0, which handles images
+  and much longer inputs.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

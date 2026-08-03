@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: command-r-08-2024
+name: Command R (08-2024)
+description: >-
+  The August 2024 refresh of Command R, and the model Cohere named as the
+  replacement when it deprecated the original 03-2024 snapshot a year later. It
+  also absorbed all of Cohere's fine-tuning: after the March 2025 change, every
+  Command fine-tune is built on this base.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

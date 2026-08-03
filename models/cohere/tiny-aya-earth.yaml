@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: tiny-aya-earth
+name: Tiny Aya Earth
+description: >-
+  The Tiny Aya variant tuned for West Asian and African languages. Splitting a 3B
+  model four ways by region is the opposite of the usual approach of one large
+  multilingual model, and it is aimed at exactly the languages that a global model
+  under-serves.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: moonshot
+model: kimi-latest
+name: Kimi Latest
+description: >-
+  A floating alias that always resolved to whatever model the Kimi consumer app
+  was running, with automatic context caching attached. Moonshot discontinued it
+  on 28 January 2026, which is the unusual part: most providers keep a latest
+  pointer forever precisely so they never have to retire one.
+shutdown_on: 2026-01-28
+status: retired
+replacements:
+  - provider: moonshot
+    model: kimi-k3
+    recommended: true
+    note: >-
+      There is no floating id in the current range. You now have to name a
+      specific model, which means picking up new releases is a deliberate change
+      rather than something that happens to you overnight.
+sources:
+  - url: https://platform.kimi.ai/docs/models
+    title: Kimi model list
+    accessed: 2026-08-03
+last_verified: 2026-08-03

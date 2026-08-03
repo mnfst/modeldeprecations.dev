@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: minimax
+model: MiniMax-M3
+name: MiniMax M3
+description: >-
+  MiniMax's current flagship, released June 2026 with a million-token window -
+  five times any M2-series model - and built for agentic reasoning, tool use and
+  multimodal chat input. It is the first MiniMax id to break the 204,800-token
+  ceiling every model since M2 had shared.
+released_on: 2026-06-01
+status: active
+sources:
+  - url: https://platform.minimax.io/docs/release-notes/models
+    title: MiniMax model release notes
+    accessed: 2026-08-03
+  - url: https://platform.minimax.io/docs/api-reference/api-overview
+    title: MiniMax API models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

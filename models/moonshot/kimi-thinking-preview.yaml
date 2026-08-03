@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: moonshot
+model: kimi-thinking-preview
+name: Kimi Thinking Preview
+description: >-
+  Moonshot's first reasoning model, a multimodal preview released in May 2025 at
+  a price several times the rest of the range. It is the oldest entry in
+  Moonshot's discontinued table, switched off on 11 November 2025, six months
+  after it appeared.
+shutdown_on: 2025-11-11
+status: retired
+replacements:
+  - provider: moonshot
+    model: kimi-k2.6
+    recommended: true
+sources:
+  - url: https://platform.kimi.ai/docs/models
+    title: Kimi model list
+    accessed: 2026-08-03
+last_verified: 2026-08-03

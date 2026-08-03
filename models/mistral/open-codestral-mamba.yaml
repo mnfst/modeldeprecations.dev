@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: open-codestral-mamba
+name: Codestral Mamba 7B
+description: >-
+  A 7B code model built on the Mamba2 state-space architecture instead of a
+  transformer, promising linear-time inference over long contexts. It is the only
+  non-transformer Mistral ever served, and the only entry in the table whose
+  deprecation and retirement fall on the same day - 6 June 2025, no notice period
+  at all.
+deprecated_on: 2025-06-06
+shutdown_on: 2025-06-06
+status: retired
+replacements:
+  - provider: mistral
+    model: codestral-25-08
+    recommended: true
+    note: >-
+      Codestral 25.08 is a standard transformer. The linear-time long-context
+      behaviour that was the whole point of the Mamba variant does not carry
+      over.
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: mistral-moderation-2411
+name: Mistral Moderation
+description: >-
+  The classifier behind Mistral's moderation endpoint, scoring text across nine
+  policy categories. It shipped in November 2024 and ran nineteen months, which
+  makes it one of the longest-lived ids Mistral has had - moderation models get
+  refreshed on policy changes rather than on capability jumps.
+deprecated_on: 2026-03-31
+shutdown_on: 2026-06-30
+status: retired
+replacements:
+  - provider: mistral
+    model: mistral-moderation-26-03
+    recommended: true
+    note: >-
+      Check the category list before swapping. Moderation 2 scores a different
+      taxonomy, so a threshold tuned against the 24.11 category keys will not
+      map across one to one.
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

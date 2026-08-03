@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xai
+model: grok-voice-think-fast-2.0
+name: Grok Voice Think Fast 2.0
+description: >-
+  The second generation of xAI's voice model, listed alongside 1.0 rather than
+  replacing it. xAI has not published a deprecation notice for the 1.0 id, so
+  both remain callable - but on this provider's record, the older of two
+  co-listed ids is the one that disappears next.
+status: active
+sources:
+  - url: https://docs.x.ai/developers/models
+    title: xAI models and pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

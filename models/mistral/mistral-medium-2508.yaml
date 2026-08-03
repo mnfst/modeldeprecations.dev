@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: mistral-medium-2508
+name: Mistral Medium 3.1
+description: >-
+  The August 2025 refresh of Mistral Medium 3, and the model most Mistral API
+  traffic sat on through the second half of that year. It is deprecated but not
+  yet gone: Mistral gave the 3.x Mediums an unusually long runway, announcing on
+  22 May 2026 and setting the shutdown for the end of August, so this is the one
+  entry in the wave you can still call today.
+deprecated_on: 2026-05-22
+shutdown_on: 2026-08-31
+status: deprecated
+replacements:
+  - provider: mistral
+    model: mistral-medium-3-5-26-04
+    recommended: true
+    note: >-
+      Medium 3.5 is multimodal where 3.1 was text-only, so a request that used to
+      be rejected for containing an image part will now succeed and be billed.
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

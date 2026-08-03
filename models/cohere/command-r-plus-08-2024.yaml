@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: command-r-plus-08-2024
+name: Command R+ (08-2024)
+description: >-
+  The larger half of the August 2024 Command R refresh, tuned for multi-step RAG
+  and tool use. It is deprecated-adjacent rather than deprecated: Cohere names it
+  as a migration target for the retired 04-2024 snapshot while Command A has
+  otherwise taken over the top of the range.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

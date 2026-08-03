@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: moonshot
+model: kimi-k2-0711-preview
+name: Kimi K2 (0711)
+description: >-
+  The first Kimi K2, a 1T-parameter mixture of experts released open-weights in
+  July 2025 that briefly made Moonshot the strongest non-Western lab on agentic
+  benchmarks. Its API id was discontinued on 25 May 2026 along with the rest of
+  the K2 series; the weights remain downloadable.
+shutdown_on: 2026-05-25
+status: retired
+replacements:
+  - provider: moonshot
+    model: kimi-k2.6
+    recommended: true
+    note: >-
+      Moonshot's guidance is to move to the latest Kimi model. K2.6 is the direct
+      general-purpose descendant; K3 is the flagship.
+sources:
+  - url: https://platform.kimi.ai/docs/models
+    title: Kimi model list
+    accessed: 2026-08-03
+last_verified: 2026-08-03

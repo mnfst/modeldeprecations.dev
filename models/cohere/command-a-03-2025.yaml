@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: command-a-03-2025
+name: Command A
+description: >-
+  The 111B model that reset Cohere's enterprise line in March 2025, built to run
+  on two GPUs and be deployed privately, which is the thing Cohere's customers
+  actually buy. It is the named replacement for almost every retired Command
+  model, so it sits at the end of most migration chains on this provider.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

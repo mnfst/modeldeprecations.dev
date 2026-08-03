@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: voxtral-mini-transcribe-realtime-26-02
+name: Voxtral Mini Transcribe Realtime
+description: >-
+  The streaming sibling of Voxtral Mini Transcribe 2, tuned for live captioning
+  rather than batch files. It is a separate id rather than a flag on the batch
+  model, which means a live-transcription integration has its own lifecycle to
+  track even though the two models share a version stamp today.
+status: active
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

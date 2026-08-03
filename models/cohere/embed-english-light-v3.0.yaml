@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: embed-english-light-v3.0
+name: Embed English Light v3
+description: >-
+  The small, fast English embedder - fewer dimensions, lower latency, cheaper at
+  volume. Cohere kept the light variants alive through the v2.0 retirement even
+  though embed-v4.0 has no light counterpart, which makes this the only route to a
+  compact Cohere embedding today.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03
