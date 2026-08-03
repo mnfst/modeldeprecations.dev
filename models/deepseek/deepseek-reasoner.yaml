@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: deepseek
+model: deepseek-reasoner
+name: DeepSeek Reasoner
+description: >-
+  The id that served DeepSeek-R1 in January 2025, the open-weights reasoning
+  model that made chain-of-thought cheap and briefly moved the US stock market.
+  It was the first mainstream API to hand back the reasoning trace itself in
+  `reasoning_content`. From V3.1 onwards it stopped being a separate model and
+  became the thinking half of a hybrid one, which is why V4 replaced it with a
+  request parameter rather than another id.
+released_on: 2025-01-20
+deprecated_on: 2026-04-24
+shutdown_on: 2026-07-24
+status: retired
+replacements:
+  - provider: deepseek
+    model: deepseek-v4-flash
+    recommended: true
+    note: >-
+      deepseek-reasoner routed to V4-Flash with thinking on, which is the
+      default, so `model: "deepseek-v4-flash"` reproduces the old behaviour.
+      Use `thinking.reasoning_effort` (`low`, `high`, `max`) to trade depth
+      against cost, and deepseek-v4-pro for the hardest problems.
+sources:
+  - url: https://api-docs.deepseek.com/news/news250120/
+    title: DeepSeek-R1 Release
+    accessed: 2026-08-03
+  - url: https://api-docs.deepseek.com/news/news260424/
+    title: DeepSeek V4 Preview Release
+    accessed: 2026-08-03
+  - url: https://api-docs.deepseek.com/updates/
+    title: DeepSeek API change log
+    accessed: 2026-08-03
+last_verified: 2026-08-03

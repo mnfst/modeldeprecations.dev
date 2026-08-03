@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: deepseek
+model: deepseek-chat
+name: DeepSeek Chat
+description: >-
+  For two years this was the DeepSeek API: a single moving id that always pointed
+  at whatever the current chat model happened to be. It carried V2 in May 2024,
+  then V2.5, V3, V3.1 and V3.2, so code written in 2024 kept working through five
+  model generations without an edit. V4 ended that. DeepSeek shipped explicit
+  ids, gave the alias three months, and switched it off on 24 July 2026.
+deprecated_on: 2026-04-24
+shutdown_on: 2026-07-24
+status: retired
+replacements:
+  - provider: deepseek
+    model: deepseek-v4-flash
+    recommended: true
+    note: >-
+      Through the transition deepseek-chat routed to V4-Flash with thinking off.
+      Swapping the id alone is not equivalent: on deepseek-v4-flash the
+      `thinking.type` parameter defaults to `enabled`, so you get reasoning
+      tokens, slower responses and a larger bill unless you send
+      `"thinking": {"type": "disabled"}`.
+sources:
+  - url: https://api-docs.deepseek.com/news/news260424/
+    title: DeepSeek V4 Preview Release
+    accessed: 2026-08-03
+  - url: https://api-docs.deepseek.com/updates/
+    title: DeepSeek API change log
+    accessed: 2026-08-03
+  - url: https://api-docs.deepseek.com/api/create-chat-completion
+    title: DeepSeek Create Chat Completion
+    accessed: 2026-08-03
+last_verified: 2026-08-03

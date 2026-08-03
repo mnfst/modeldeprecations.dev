@@ -10,7 +10,7 @@
 [![CI](https://github.com/mnfst/modeldeprecations.dev/actions/workflows/ci.yml/badge.svg)](https://github.com/mnfst/modeldeprecations.dev/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-One page per model, answering the same three questions: is it deprecated, when does it shut down, and what replaces it. OpenAI, Anthropic and Google. Every date is cited to the provider's own docs and stamped with the day we last checked it.
+One page per model, answering the same three questions: is it deprecated, when does it shut down, and what replaces it. OpenAI, Anthropic, Google and DeepSeek. Every date is cited to the provider's own docs and stamped with the day we last checked it.
 
 Browse it by provider ([`/openai`](https://modeldeprecations.dev/openai)), by lifecycle ([`/deprecated`](https://modeldeprecations.dev/deprecated), [`/retired`](https://modeldeprecations.dev/retired)) or by the year a model stops answering ([`/shutdowns/2026`](https://modeldeprecations.dev/shutdowns/2026)). How the sourcing works is on [`/about`](https://modeldeprecations.dev/about).
 

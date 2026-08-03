@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: deepseek
+model: deepseek-coder
+name: DeepSeek Coder
+description: >-
+  DeepSeek's code-specialised endpoint, last upgraded on its own in July 2024
+  with DeepSeek-Coder-V2-0724. On 5 September 2024 DeepSeek merged the coder and
+  chat lines into V2.5 and kept this id alive purely so existing integrations
+  would not break. It has named nothing of its own since. DeepSeek has never
+  published a shutdown date for it, and it was not named in the July 2026
+  retirement notice that took down deepseek-chat and deepseek-reasoner.
+deprecated_on: 2024-09-05
+status: deprecated
+replacements:
+  - provider: deepseek
+    model: deepseek-v4-flash
+    recommended: true
+    note: >-
+      DeepSeek's instruction in 2024 was to call deepseek-chat instead, but that
+      id was itself retired in July 2026, so the live end of the path is
+      deepseek-v4-flash. Send `"thinking": {"type": "disabled"}` to keep the
+      non-reasoning behaviour deepseek-coder had.
+sources:
+  - url: https://api-docs.deepseek.com/updates/
+    title: DeepSeek API change log
+    accessed: 2026-08-03
+  - url: https://api-docs.deepseek.com/quick_start/pricing
+    title: DeepSeek models and pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

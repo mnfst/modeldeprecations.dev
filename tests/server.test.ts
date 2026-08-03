@@ -32,7 +32,7 @@ describe("HTML routes", () => {
   });
 
   it("serves each provider hub", async () => {
-    for (const provider of ["openai", "anthropic", "google"]) {
+    for (const provider of ["openai", "anthropic", "google", "deepseek"]) {
       const res = await request(app).get(`/${provider}`);
       expect(res.status).toBe(200);
       expect(res.text).toContain("deprecated models");
