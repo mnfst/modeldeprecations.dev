@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: qwen
+model: qwen3-max-2026-01-23
+name: Qwen3 Max (2026-01-23)
+description: >-
+  The January 2026 Max snapshot, five months old at the point Alibaba scheduled it
+  for decommissioning. Dated Qwen snapshots get thirty days' notice against three
+  months for stable ids, which is the argument for never pinning one unless you are
+  reproducing an evaluation.
+shutdown_on: 2026-10-10
+status: deprecated
+replacements:
+  - provider: qwen
+    model: qwen3.7-max
+    recommended: true
+sources:
+  - url: https://www.alibabacloud.com/help/en/model-studio/model-depreciation
+    title: Alibaba Cloud Model Studio model decommissioning
+    accessed: 2026-08-03
+last_verified: 2026-08-03

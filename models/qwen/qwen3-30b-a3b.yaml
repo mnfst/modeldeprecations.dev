@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: qwen
+model: qwen3-30b-a3b
+name: Qwen3 30B A3B
+description: >-
+  The 30B mixture of experts with 3B active, the most-downloaded model of the Qwen3
+  generation because it ran fast on consumer hardware. It is the only dense-line
+  retirement Alibaba routes to Plus rather than Flash.
+shutdown_on: 2026-10-10
+status: deprecated
+replacements:
+  - provider: qwen
+    model: qwen3.7-plus
+    recommended: true
+sources:
+  - url: https://www.alibabacloud.com/help/en/model-studio/model-depreciation
+    title: Alibaba Cloud Model Studio model decommissioning
+    accessed: 2026-08-03
+last_verified: 2026-08-03

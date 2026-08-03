@@ -43,6 +43,9 @@ describe("HTML routes", () => {
       "moonshot",
       "minimax",
       "zai",
+      "qwen",
+      "amazon",
+      "xiaomi",
     ]) {
       const res = await request(app).get(`/${provider}`);
       expect(res.status).toBe(200);

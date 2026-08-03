@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: qwen
+model: qwen3-8b
+name: Qwen3 8B
+description: >-
+  One of the dense Qwen3 models Alibaba hosted alongside the open-weights release,
+  for people who wanted the exact 8B model without running it themselves. All four
+  dense sizes on Model Studio go on the same day, ending the hosted dense line
+  entirely.
+shutdown_on: 2026-10-10
+status: deprecated
+replacements:
+  - provider: qwen
+    model: qwen3.6-flash
+    recommended: true
+sources:
+  - url: https://www.alibabacloud.com/help/en/model-studio/model-depreciation
+    title: Alibaba Cloud Model Studio model decommissioning
+    accessed: 2026-08-03
+last_verified: 2026-08-03

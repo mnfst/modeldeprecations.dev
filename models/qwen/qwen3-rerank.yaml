@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: qwen
+model: qwen3-rerank
+name: Qwen3 Rerank
+description: >-
+  The reranker that replaced gte-rerank when Alibaba retired the GTE line in May
+  2026. It is the only survivor of Model Studio's pre-Qwen-branded retrieval
+  models, all of which have now been folded into the Qwen naming.
+status: active
+sources:
+  - url: https://www.alibabacloud.com/help/en/model-studio/models
+    title: Alibaba Cloud Model Studio models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

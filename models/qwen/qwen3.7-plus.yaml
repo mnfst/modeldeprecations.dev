@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: qwen
+model: qwen3.7-plus
+name: Qwen3.7 Plus
+description: >-
+  The mid tier of the 3.7 generation, and now also the vision model - Alibaba
+  folded image and video understanding into Plus rather than keeping a separate
+  qwen3-vl line, which is why the whole VL family is scheduled for retirement.
+status: active
+sources:
+  - url: https://www.alibabacloud.com/help/en/model-studio/models
+    title: Alibaba Cloud Model Studio models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-2.0-flash-live-001
+name: Gemini 2.0 Flash Live
+description: >-
+  The first Live API model, handling bidirectional audio and video streaming over
+  a websocket rather than request-response. It shut down on 9 December 2025, six
+  months before the rest of the 2.0 line, because the Live API moved fast enough
+  that a 2.0-era session protocol was not worth maintaining.
+shutdown_on: 2025-12-09
+status: retired
+replacements:
+  - provider: google
+    model: gemini-3.1-flash-live-preview
+    recommended: true
+    note: >-
+      The successor is still a preview id. Migrating off a retired model onto a
+      preview one is not ideal, but it is what Google names.
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-08-03
+last_verified: 2026-08-03

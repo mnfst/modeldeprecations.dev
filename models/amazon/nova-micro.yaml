@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: amazon
+model: nova-micro
+name: Amazon Nova Micro
+description: >-
+  The text-only Nova, built for the lowest latency Amazon can serve at 128k of
+  context. It is the only understanding-tier Nova that takes no images or video,
+  and the only one still Active in every region it launched in.
+  The Bedrock invoke id is amazon.nova-micro-v1:0.
+status: active
+sources:
+  - url: https://docs.aws.amazon.com/nova/latest/userguide/what-is-nova.html
+    title: What is Amazon Nova
+    accessed: 2026-08-03
+last_verified: 2026-08-03

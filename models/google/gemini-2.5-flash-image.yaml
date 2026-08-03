@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-2.5-flash-image
+name: Gemini 2.5 Flash Image
+description: >-
+  The original Nano Banana, and the model that made conversational image editing
+  a mainstream feature in late 2025. Its shutdown is set two weeks earlier than
+  the rest of the 2.5 line, on 2 October 2026 rather than 16 October, so an app
+  doing both chat and image editing has two migration deadlines, not one.
+earliest_shutdown_on: 2026-10-02
+status: active
+replacements:
+  - provider: google
+    model: gemini-3.1-flash-image
+    recommended: true
+    note: >-
+      Google's deprecation table names gemini-3.1-flash-image-preview. That
+      preview has since gone stable as gemini-3.1-flash-image, which is what the
+      models page lists and what this page points at.
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-08-03
+last_verified: 2026-08-03

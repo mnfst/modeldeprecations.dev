@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-mythos-5
+name: Claude Mythos 5
+description: >-
+  The same underlying model as Claude Fable 5 with the cybersecurity and biology
+  safeguards lifted, offered only to approved Project Glasswing customers. It
+  shares Fable 5's specs and pricing and its own 1M context window, but it is the
+  one current Claude id you cannot reach by signing up - access runs through an
+  Anthropic, AWS or Google Cloud account team.
+released_on: 2026-06-09
+status: active
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/models/overview
+    title: Anthropic models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

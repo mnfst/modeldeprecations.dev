@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: imagen-3.0-generate-002
+name: Imagen 3
+description: >-
+  Google's third-generation image model on the Gemini API, and the last Imagen to
+  serve before the 4.0 line took over. It shut down on 10 November 2025. Imagen
+  sits on a separate version track from Gemini itself, so nothing about a Gemini
+  model's lifecycle tells you anything about the image models.
+shutdown_on: 2025-11-10
+status: retired
+replacements:
+  - provider: google
+    model: imagen-4.0-generate-001
+    recommended: true
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-08-03
+last_verified: 2026-08-03

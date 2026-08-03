@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-4o-transcribe
+name: GPT-4o Transcribe
+description: >-
+  The full-size speech-to-text model of the GPT-4o generation, still served and
+  still undated. OpenAI's own guidance points at the mini model instead for best
+  results, which leaves this id in the odd position of being the larger, more
+  expensive option that the docs do not recommend.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/models
+    title: OpenAI models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

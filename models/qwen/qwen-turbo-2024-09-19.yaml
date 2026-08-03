@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: qwen
+model: qwen-turbo-2024-09-19
+name: Qwen Turbo (2024-09-19)
+description: >-
+  The last qwen-turbo snapshot. Its decommissioning is where the turbo tier name
+  disappeared from Model Studio: Alibaba pointed it at qwen-flash rather than at
+  another turbo, and no turbo id has shipped since.
+shutdown_on: 2026-01-30
+status: retired
+replacements:
+  - provider: qwen
+    model: qwen-flash-2025-07-28
+    recommended: true
+sources:
+  - url: https://www.alibabacloud.com/help/en/model-studio/model-depreciation
+    title: Alibaba Cloud Model Studio model decommissioning
+    accessed: 2026-08-03
+last_verified: 2026-08-03

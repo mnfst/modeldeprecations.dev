@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: qwen
+model: qwen3-max
+name: Qwen3 Max
+description: >-
+  The stable Max id of the third generation, still served while both of its dated
+  snapshots are scheduled to go on 10 October 2026. It is the named successor to
+  qwen3-max-preview, which is the ordinary shape of an Alibaba retirement: the
+  preview dies, the stable id it previewed lives on.
+status: active
+sources:
+  - url: https://www.alibabacloud.com/help/en/model-studio/models
+    title: Alibaba Cloud Model Studio models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xiaomi
+model: mimo-v2.5-asr
+name: MiMo V2.5 ASR
+description: >-
+  The speech recognition model, bilingual across Chinese and English including
+  dialects, and tuned for noisy input. Xiaomi splitting ASR out from the omni-modal
+  model is a hint about where these run: on devices, where a dedicated small model
+  beats a general one.
+status: active
+sources:
+  - url: https://mimo.mi.com/docs/en-US/quick-start/model-hyperparameters
+    title: Xiaomi MiMo model list
+    accessed: 2026-08-03
+last_verified: 2026-08-03

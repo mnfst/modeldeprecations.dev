@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: amazon
+model: nova-canvas
+name: Amazon Nova Canvas
+description: >-
+  Amazon's image generation model, capped at a 1024-character prompt and about
+  4.2 megapixels of output. Legacy since 30 March 2026, ending 30 September.
+  Bedrock's lifecycle table lists no successor for it, so this is a capability
+  leaving the platform rather than a version bump.
+  The Bedrock invoke id is amazon.nova-canvas-v1:0.
+deprecated_on: 2026-03-30
+shutdown_on: 2026-09-30
+status: deprecated
+replacements:
+  - provider: google
+    model: imagen-4.0-generate-001
+    recommended: false
+    note: >-
+      Amazon names no successor and Nova 2 ships no image generation model, so
+      this is a capability leaving Bedrock rather than a version bump. Imagen 4
+      is the nearest live equivalent in this catalogue, and it is our
+      suggestion rather than Amazon's.
+sources:
+  - url: https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html
+    title: Amazon Bedrock model lifecycle
+    accessed: 2026-08-03
+  - url: https://docs.aws.amazon.com/nova/latest/userguide/what-is-nova.html
+    title: What is Amazon Nova
+    accessed: 2026-08-03
+last_verified: 2026-08-03

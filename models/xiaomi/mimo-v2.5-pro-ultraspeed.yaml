@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xiaomi
+model: mimo-v2.5-pro-ultraspeed
+name: MiMo V2.5 Pro UltraSpeed
+description: >-
+  The same Pro weights served with FP4 quantisation and parallel decoding for peaks
+  around a thousand tokens a second. It is a separate model id rather than a
+  serving flag, so a latency choice is baked into the string your code sends and
+  carries its own lifecycle.
+status: active
+sources:
+  - url: https://mimo.mi.com/docs/en-US/quick-start/model-hyperparameters
+    title: Xiaomi MiMo model list
+    accessed: 2026-08-03
+last_verified: 2026-08-03
