@@ -20,9 +20,9 @@ describe("the shipped catalog", () => {
     expect(models.length).toBeGreaterThan(100);
   });
 
-  it("covers the three launch providers", () => {
+  it("covers every provider the site claims to track", () => {
     const providers = new Set(models.map((entry) => entry.provider));
-    expect([...providers].sort()).toEqual(["anthropic", "google", "openai"]);
+    expect([...providers].sort()).toEqual(["anthropic", "deepseek", "google", "openai"]);
   });
 
   // The promise on every page is "every date has a source". This is that promise

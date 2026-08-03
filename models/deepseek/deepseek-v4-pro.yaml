@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: deepseek
+model: deepseek-v4-pro
+name: DeepSeek V4 Pro
+description: >-
+  DeepSeek's frontier model, 1.6T parameters with 49B active, released alongside
+  V4 Flash in April 2026 and served from the same base URL through either the
+  OpenAI or the Anthropic wire format. No legacy alias ever pointed at it: the
+  two ids DeepSeek retired in July 2026 both routed to Flash, so reaching Pro
+  has always meant naming it. Roughly three times the price of Flash for the
+  same million-token context window.
+released_on: 2026-04-24
+status: active
+sources:
+  - url: https://api-docs.deepseek.com/quick_start/pricing
+    title: DeepSeek models and pricing
+    accessed: 2026-08-03
+  - url: https://api-docs.deepseek.com/news/news260424/
+    title: DeepSeek V4 Preview Release
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: deepseek
+model: deepseek-v4-flash
+name: DeepSeek V4 Flash
+description: >-
+  The smaller half of DeepSeek V4 — 284B parameters with 13B active — and the
+  landing place for every integration that used to call deepseek-chat or
+  deepseek-reasoner. Thinking is a request parameter here rather than a separate
+  id, which is what made those two aliases redundant. A million tokens of
+  context at fourteen cents per million input is the reason it is the default
+  migration target on the DeepSeek side of this catalog.
+released_on: 2026-04-24
+status: active
+sources:
+  - url: https://api-docs.deepseek.com/quick_start/pricing
+    title: DeepSeek models and pricing
+    accessed: 2026-08-03
+  - url: https://api-docs.deepseek.com/news/news260424/
+    title: DeepSeek V4 Preview Release
+    accessed: 2026-08-03
+last_verified: 2026-08-03

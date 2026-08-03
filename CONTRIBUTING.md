@@ -18,6 +18,9 @@ CI enforces this: any entry with a lifecycle date and no source fails validation
 - OpenAI — https://developers.openai.com/api/docs/deprecations
 - Anthropic — https://platform.claude.com/docs/en/about-claude/model-deprecations
 - Google — https://ai.google.dev/gemini-api/docs/deprecations
+- DeepSeek — https://api-docs.deepseek.com/updates/ (DeepSeek has no deprecation
+  table; retirements are announced in the change log and in the dated release
+  notes under `/news/`, then the model simply disappears from the pricing page)
 
 Providers delete rows from these tables once a model is long gone. If a page has
 moved, cite an archive.org snapshot rather than a blog post about it.
