@@ -194,6 +194,9 @@ describe("card text stays inside the vendored font", () => {
         "moonshot",
         "minimax",
         "zai",
+        "qwen",
+        "amazon",
+        "xiaomi",
       ].map((p) =>
         providerCard(
           p,

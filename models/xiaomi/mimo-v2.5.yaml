@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xiaomi
+model: mimo-v2.5
+name: MiMo V2.5
+description: >-
+  The base omni-modal model, taking text, image, video and audio with a million
+  tokens of context. It replaced the MiMo V2 series, which Xiaomi deprecated on 30
+  June without publishing individual model ids for the models going away - so this
+  catalogue records the successor and not the predecessors.
+status: active
+sources:
+  - url: https://mimo.mi.com/docs/en-US/quick-start/model-hyperparameters
+    title: Xiaomi MiMo model list
+    accessed: 2026-08-03
+last_verified: 2026-08-03

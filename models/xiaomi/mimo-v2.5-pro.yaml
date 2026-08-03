@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xiaomi
+model: mimo-v2.5-pro
+name: MiMo V2.5 Pro
+description: >-
+  Xiaomi's flagship, a trillion-parameter model with 42B active and a million-token
+  window, released open-weights under MIT. A phone manufacturer shipping a frontier
+  model under a permissive licence is the unusual part: the hosted API is a
+  convenience, not the only way to run it.
+status: active
+sources:
+  - url: https://mimo.mi.com/docs/en-US/quick-start/model-hyperparameters
+    title: Xiaomi MiMo model list
+    accessed: 2026-08-03
+last_verified: 2026-08-03

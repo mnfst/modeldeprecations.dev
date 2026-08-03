@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: qwen
+model: qwen3-coder-plus
+name: Qwen3 Coder Plus
+description: >-
+  Alibaba's dedicated coding model, popular well outside China because the open
+  Qwen3-Coder weights made it easy to try before paying for the hosted id. Its
+  retirement folds coding back into the general Plus tier, the same consolidation
+  Mistral and Moonshot made in the same period.
+shutdown_on: 2026-10-10
+status: deprecated
+replacements:
+  - provider: qwen
+    model: qwen3.7-plus
+    recommended: true
+sources:
+  - url: https://www.alibabacloud.com/help/en/model-studio/model-depreciation
+    title: Alibaba Cloud Model Studio model decommissioning
+    accessed: 2026-08-03
+last_verified: 2026-08-03

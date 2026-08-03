@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: qwen
+model: qwen3-vl-flash
+name: Qwen3 VL Flash
+description: >-
+  The stable vision-language Flash id, and the head of a family of four VL models
+  all retiring on the same day. Alibaba is not replacing the VL line with a newer
+  VL model: vision moved into the general Plus and Flash models, so the whole
+  qwen3-vl namespace disappears.
+shutdown_on: 2026-10-10
+status: deprecated
+replacements:
+  - provider: qwen
+    model: qwen3.6-flash
+    recommended: true
+sources:
+  - url: https://www.alibabacloud.com/help/en/model-studio/model-depreciation
+    title: Alibaba Cloud Model Studio model decommissioning
+    accessed: 2026-08-03
+last_verified: 2026-08-03

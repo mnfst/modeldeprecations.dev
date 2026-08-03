@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-3-pro-image
+name: Gemini 3 Pro Image
+description: >-
+  Nano Banana Pro, the high-end image model of the Gemini 3 generation, released
+  the same day as the 3.1 Flash Image. It is the only Pro-tier image model Google
+  serves and it carries the Gemini 3 version number rather than 3.1, so the image
+  line's numbering has already drifted from the text line's.
+released_on: 2026-05-28
+status: active
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-08-03
+  - url: https://ai.google.dev/gemini-api/docs/models
+    title: Gemini API models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

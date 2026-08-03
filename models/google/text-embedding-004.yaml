@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: text-embedding-004
+name: Text Embedding 004
+description: >-
+  Google's pre-Gemini-branded embedding model from April 2024, and the id most
+  early Vertex and AI Studio RAG stacks were built on. It shut down on 14 January
+  2026 after a twenty-one month run. Embedding retirements are the expensive kind:
+  the vectors it produced are not comparable with any successor's, so migrating
+  means re-embedding the whole corpus.
+released_on: 2024-04-09
+shutdown_on: 2026-01-14
+status: retired
+replacements:
+  - provider: google
+    model: gemini-embedding-2
+    recommended: true
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-08-03
+last_verified: 2026-08-03

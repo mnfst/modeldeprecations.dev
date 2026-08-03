@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-mythos-preview
+name: Claude Mythos Preview
+description: >-
+  The first Mythos-class model, released in April 2026 to a closed group of cyber
+  defenders and critical infrastructure providers under Project Glasswing. It is
+  the only deprecated Claude model with no retirement date on the deprecations
+  page - the notice lives in a callout on the models overview instead, because an
+  invitation-only model has no public user base to give sixty days' notice to.
+status: deprecated
+replacements:
+  - provider: anthropic
+    model: claude-mythos-5
+    recommended: true
+    note: >-
+      Same access model: invitation-only through Project Glasswing, no self-serve
+      sign-up. Mythos 5 is priced at less than half of Mythos Preview.
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-08-03
+  - url: https://platform.claude.com/docs/en/about-claude/models/overview
+    title: Anthropic models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

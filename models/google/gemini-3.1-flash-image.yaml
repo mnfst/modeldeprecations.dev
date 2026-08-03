@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-3.1-flash-image
+name: Gemini 3.1 Flash Image
+description: >-
+  Nano Banana 2, the stable successor to the 2.5 Flash Image model, released May
+  2026. It reached a stable id faster than most Gemini image work - the previous
+  generation spent months as a preview string that a lot of production code
+  ended up pinned to.
+released_on: 2026-05-28
+status: active
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-08-03
+  - url: https://ai.google.dev/gemini-api/docs/models
+    title: Gemini API models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

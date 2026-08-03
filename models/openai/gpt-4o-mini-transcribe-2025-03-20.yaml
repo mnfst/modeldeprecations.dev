@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-4o-mini-transcribe-2025-03-20
+name: GPT-4o mini Transcribe (2025-03-20)
+description: >-
+  The March 2025 snapshot of OpenAI's small speech-to-text model, and the first
+  thing to beat Whisper on word error rate on OpenAI's own API. It is the only
+  transcription id in the July 2026 legacy-audio deprecation: the floating
+  gpt-4o-mini-transcribe slug moved to the December snapshot, and this pinned one
+  is what stops answering.
+deprecated_on: 2026-07-20
+shutdown_on: 2027-01-20
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-4o-mini-transcribe-2025-12-15
+    recommended: true
+    note: >-
+      If your code says gpt-4o-mini-transcribe without a date you are already on
+      the December snapshot and nothing breaks. Only the pinned March string is
+      going away.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI deprecations
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: qwen
+model: qwen3.6-max-preview
+name: Qwen3.6 Max Preview
+description: >-
+  A preview of the 3.6 Max that Alibaba superseded before it ever went stable -
+  there is no qwen3.6-max, only this preview and then 3.7. Preview ids in Model
+  Studio get the same thirty-day notice as any other snapshot, which is not much
+  for something people treated as a flagship.
+shutdown_on: 2026-10-10
+status: deprecated
+replacements:
+  - provider: qwen
+    model: qwen3.7-max
+    recommended: true
+sources:
+  - url: https://www.alibabacloud.com/help/en/model-studio/model-depreciation
+    title: Alibaba Cloud Model Studio model decommissioning
+    accessed: 2026-08-03
+last_verified: 2026-08-03

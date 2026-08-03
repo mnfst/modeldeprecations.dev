@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: qwen
+model: qwen3-32b
+name: Qwen3 32B
+description: >-
+  The largest hosted dense Qwen3, and the last of the four to be scheduled. Its
+  retirement completes Alibaba's move away from serving open dense checkpoints as
+  paid API ids - the weights stay on Hugging Face, the endpoints do not.
+shutdown_on: 2026-10-10
+status: deprecated
+replacements:
+  - provider: qwen
+    model: qwen3.6-flash
+    recommended: true
+sources:
+  - url: https://www.alibabacloud.com/help/en/model-studio/model-depreciation
+    title: Alibaba Cloud Model Studio model decommissioning
+    accessed: 2026-08-03
+last_verified: 2026-08-03

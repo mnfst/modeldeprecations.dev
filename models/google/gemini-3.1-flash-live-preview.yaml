@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-3.1-flash-live-preview
+name: Gemini 3.1 Flash Live Preview
+description: >-
+  The current Live API model for realtime audio and video sessions, and the named
+  successor to the retired 2.0 Live id. Google has never shipped a stable
+  non-preview Live model: every generation of this line has carried a preview
+  suffix, which means no committed lifecycle at all.
+status: active
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/models
+    title: Gemini API models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

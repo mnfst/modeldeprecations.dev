@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: qwen
+model: qwen-flash-2025-07-28
+name: Qwen Flash (2025-07-28)
+description: >-
+  The replacement Alibaba named for the retired qwen-turbo line, and the point at
+  which turbo stopped being a tier name in Model Studio. Anything still calling
+  qwen-turbo with a 2024 date stamp was pointed here.
+status: active
+sources:
+  - url: https://www.alibabacloud.com/help/en/model-studio/models
+    title: Alibaba Cloud Model Studio models
+    accessed: 2026-08-03
+last_verified: 2026-08-03
