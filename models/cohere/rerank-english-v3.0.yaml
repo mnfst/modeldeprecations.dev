@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: rerank-english-v3.0
+name: Rerank English v3
+description: >-
+  The English reranker from the v3 generation, handling documents and JSON records
+  alike with a 4k window. It has outlived the v2.0 models it succeeded and the v3.5
+  model that superseded it is still active too, so Cohere is currently running four
+  generations of reranker at once.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

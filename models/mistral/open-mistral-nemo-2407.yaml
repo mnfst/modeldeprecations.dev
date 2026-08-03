@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: open-mistral-nemo-2407
+name: Mistral Nemo 12B
+description: >-
+  Built with NVIDIA, Apache 2.0, and the model that introduced the Tekken
+  tokenizer Mistral still uses. It is the longest-lived open id in the
+  catalogue - two years on the API, outlasting three full Mistral Small
+  generations - and was only retired in the May 2026 wave.
+aliases:
+  - open-mistral-nemo
+deprecated_on: 2026-05-22
+shutdown_on: 2026-07-31
+status: retired
+replacements:
+  - provider: mistral
+    model: ministral-3-8b-25-12
+    recommended: true
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

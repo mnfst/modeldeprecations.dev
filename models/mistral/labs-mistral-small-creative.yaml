@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: labs-mistral-small-creative
+name: Mistral Small Creative
+description: >-
+  A writing-tuned Small that traded benchmark scores for prose that did not read
+  like an assistant. It never left labs and lasted four months. Mistral pointed
+  it at Ministral 3 8B rather than Mistral Small 4, which is a smaller model - a
+  reminder that the named replacement is the provider's recommendation, not a
+  claim of equivalence.
+deprecated_on: 2026-03-31
+shutdown_on: 2026-04-30
+status: retired
+replacements:
+  - provider: mistral
+    model: ministral-3-8b-25-12
+    recommended: true
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

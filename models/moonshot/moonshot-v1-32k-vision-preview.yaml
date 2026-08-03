@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: moonshot
+model: moonshot-v1-32k-vision-preview
+name: Moonshot v1 32k Vision Preview
+description: >-
+  The 32k image-capable variant of the v1 line. Between three context sizes and
+  two modalities the original API needed six ids to express what the current
+  range does with one model, which is the whole argument for the K-series
+  renaming. Sunsets 31 August.
+shutdown_on: 2026-08-31
+status: deprecated
+replacements:
+  - provider: moonshot
+    model: kimi-k2.6
+    recommended: true
+sources:
+  - url: https://platform.kimi.ai/docs/models
+    title: Kimi model list
+    accessed: 2026-08-03
+last_verified: 2026-08-03

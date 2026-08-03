@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: moonshot
+model: moonshot-v1-32k
+name: Moonshot v1 32k
+description: >-
+  The middle tier of the original Moonshot API, priced between the 8k and 128k
+  variants of the same underlying model. Choosing between the three was a billing
+  decision rather than a capability one, a design Moonshot abandoned entirely with
+  the Kimi-branded ids. It sunsets on 31 August with the rest of the v1 line.
+shutdown_on: 2026-08-31
+status: deprecated
+replacements:
+  - provider: moonshot
+    model: kimi-k2.6
+    recommended: true
+sources:
+  - url: https://platform.kimi.ai/docs/models
+    title: Kimi model list
+    accessed: 2026-08-03
+last_verified: 2026-08-03

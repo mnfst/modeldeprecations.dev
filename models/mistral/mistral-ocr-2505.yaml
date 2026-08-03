@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: mistral-ocr-2505
+name: Mistral OCR 2
+description: >-
+  The second OCR release, adding better table and equation handling to the model
+  that had made Mistral's document API worth using. It ran a year before the
+  February 2026 wave took it. Both OCR ids that came before OCR 4 are now dead,
+  which makes this the fastest-rotating family Mistral runs.
+deprecated_on: 2026-02-27
+shutdown_on: 2026-05-31
+status: retired
+replacements:
+  - provider: mistral
+    model: mistral-ocr-4-0
+    recommended: true
+    note: >-
+      OCR 4 returns structural block labels and paragraph-level bounding boxes
+      that OCR 2 did not emit, so downstream code that indexed into the response
+      by position rather than by key needs revisiting.
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

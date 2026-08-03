@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: embed-english-v2.0
+name: Embed English v2
+description: >-
+  Cohere's 4096-dimension English embedder from 2022, and one of the first
+  embedding APIs anybody built a vector database on. It was retired effective 4
+  April 2026 - the same date as the announcement, so there was no notice period
+  at all, which for an embedding model means re-indexing your entire corpus with
+  no warning.
+deprecated_on: 2026-04-04
+shutdown_on: 2026-04-04
+status: retired
+replacements:
+  - provider: cohere
+    model: embed-v4.0
+    recommended: true
+    note: >-
+      Cohere also names embed-english-v3.0. Either way the vectors are not
+      comparable with v2.0's, so this is a full re-embed of every document you
+      have stored, not a config change.
+sources:
+  - url: https://docs.cohere.com/docs/deprecations
+    title: Cohere deprecations
+    accessed: 2026-08-03
+last_verified: 2026-08-03

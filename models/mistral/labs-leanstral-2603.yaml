@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: labs-leanstral-2603
+name: Leanstral 26.03
+description: >-
+  The experimental id Leanstral shipped under before it was promoted. It was
+  deprecated on 22 May 2026 and switched off on 30 June, which is the normal
+  outcome for a labs id: the model survives under a new stable name and only the
+  experimental address dies.
+deprecated_on: 2026-05-22
+shutdown_on: 2026-06-30
+status: retired
+replacements:
+  - provider: mistral
+    model: leanstral-1-5
+    recommended: true
+    note: >-
+      A rename rather than a swap, but the id changes shape completely - there is
+      no date stamp on leanstral-1-5, so anything parsing the trailing YYMM out
+      of the model string will break.
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

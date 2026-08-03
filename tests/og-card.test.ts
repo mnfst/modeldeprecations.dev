@@ -183,7 +183,18 @@ describe("card text stays inside the vendored font", () => {
       calendarCard(models, TODAY),
       changelogCard(217),
       apiCard(models.length),
-      ...["openai", "anthropic", "google", "deepseek"].map((p) =>
+      ...[
+        "openai",
+        "anthropic",
+        "google",
+        "deepseek",
+        "mistral",
+        "xai",
+        "cohere",
+        "moonshot",
+        "minimax",
+        "zai",
+      ].map((p) =>
         providerCard(
           p,
           models.filter((m) => m.provider === p),

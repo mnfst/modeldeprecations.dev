@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xai
+model: grok-2-image-1212
+name: Grok 2 Image
+description: >-
+  The Aurora-based image generator that xAI ran before the Imagine line, priced
+  per image rather than per token and capped at four images a request. It is no
+  longer served and its docs page is gone. xAI announced the shutdown by email
+  and in-product rather than in the documentation, so there is no citable
+  first-party date left.
+status: retired
+replacements:
+  - provider: xai
+    model: grok-imagine-image
+    recommended: false
+    note: >-
+      The Imagine line is the direct successor, but xAI's public docs no longer
+      carry the notice that said so.
+sources:
+  - url: https://docs.x.ai/developers/models
+    title: xAI models and pricing (no longer lists this model)
+    accessed: 2026-08-03
+last_verified: 2026-08-03

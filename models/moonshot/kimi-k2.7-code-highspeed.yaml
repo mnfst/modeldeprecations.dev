@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: moonshot
+model: kimi-k2.7-code-highspeed
+name: Kimi K2.7 Code Highspeed
+description: >-
+  The same K2.7 Code weights served on faster infrastructure at 180 to 260 tokens
+  a second, sold as a separate id rather than a priority flag. Moonshot has used
+  this turbo-suffix pattern since the K2 era, and it means a latency change is a
+  model migration with its own lifecycle to track.
+status: active
+sources:
+  - url: https://platform.kimi.ai/docs/models
+    title: Kimi model list
+    accessed: 2026-08-03
+last_verified: 2026-08-03

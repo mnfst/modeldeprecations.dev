@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xai
+model: grok-imagine-video
+name: Grok Imagine Video
+description: >-
+  Text and image to video generation over the same API surface as the rest of
+  Grok, which is unusual - most providers keep video behind a separate async
+  jobs endpoint. It is the base tier of a two-model video line that xAI has
+  already versioned once.
+status: active
+sources:
+  - url: https://docs.x.ai/developers/models
+    title: xAI models and pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

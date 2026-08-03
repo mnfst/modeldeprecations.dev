@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xai
+model: grok-vision-beta
+name: Grok Vision Beta
+description: >-
+  The image-input companion to grok-beta from the November 2024 API launch, and
+  the shortest-lived id xAI has shipped - grok-2-vision-1212 replaced it within
+  weeks. Like the rest of the beta-era models it left no dated notice behind in
+  the docs.
+status: retired
+replacements:
+  - provider: xai
+    model: grok-4.3
+    recommended: false
+    note: >-
+      Our suggestion. xAI published no migration path for the beta ids.
+sources:
+  - url: https://docs.x.ai/developers/models
+    title: xAI models and pricing (no longer lists this model)
+    accessed: 2026-08-03
+last_verified: 2026-08-03

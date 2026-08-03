@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: ministral-3-3b-25-12
+name: Ministral 3 3B
+description: >-
+  The smallest model Mistral serves over the API, and the successor to
+  ministral-3b-2410. The 24.10 Ministrals were premier-licensed and lasted barely
+  a year; the 25.12 rewrite is Apache 2.0 and shares its training run with the 8B
+  and 14B, so the three now move as one family rather than as separately dated
+  point releases.
+status: active
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

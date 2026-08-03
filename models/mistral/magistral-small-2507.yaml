@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: magistral-small-2507
+name: Magistral Small 1.1
+description: >-
+  The 24B open reasoning model from Mistral's July 2025 refresh, released
+  alongside Magistral Medium 1.1 and deprecated on the same day three months
+  later. It is one of four Magistrals that shared a 30 November 2025 shutdown, so
+  the entire first year of Mistral's reasoning line went dark in one evening.
+deprecated_on: 2025-10-31
+shutdown_on: 2025-11-30
+status: retired
+replacements:
+  - provider: mistral
+    model: mistral-small-4-0-26-03
+    recommended: true
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

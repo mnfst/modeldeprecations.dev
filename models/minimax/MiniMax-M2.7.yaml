@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: minimax
+model: MiniMax-M2.7
+name: MiniMax M2.7
+description: >-
+  The March 2026 release that MiniMax launched under a recursive self-improvement
+  banner, and still the model the platform recommends when M3's million-token
+  window is more than you need. MiniMax has never deprecated a model, so M2.7
+  sits alongside four older siblings rather than replacing them.
+released_on: 2026-03-18
+status: active
+sources:
+  - url: https://platform.minimax.io/docs/release-notes/models
+    title: MiniMax model release notes
+    accessed: 2026-08-03
+  - url: https://platform.minimax.io/docs/api-reference/api-overview
+    title: MiniMax API models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

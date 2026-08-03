@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: moonshot
+model: kimi-k2.6
+name: Kimi K2.6
+description: >-
+  A 256k multimodal model taking text, image and video input, with thinking as a
+  request-level mode rather than a separate id - the change that made
+  kimi-k2-thinking and its turbo variant redundant. It is the general-purpose
+  model in the current range, sitting below K3 and beside the code-specific
+  K2.7s.
+status: active
+sources:
+  - url: https://platform.kimi.ai/docs/models
+    title: Kimi model list
+    accessed: 2026-08-03
+last_verified: 2026-08-03

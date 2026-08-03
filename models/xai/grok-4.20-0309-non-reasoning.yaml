@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xai
+model: grok-4.20-0309-non-reasoning
+name: Grok 4.20 Non-Reasoning
+description: >-
+  The straight-through half of the 4.20 snapshot pair, for workloads that want a
+  1M-token window without paying for thinking tokens. Every previous xAI id with
+  non-reasoning in the name was retired on 15 May 2026 in favour of a
+  reasoning_effort parameter, so the naming here is a step back to an older
+  convention.
+status: active
+sources:
+  - url: https://docs.x.ai/developers/models
+    title: xAI models and pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

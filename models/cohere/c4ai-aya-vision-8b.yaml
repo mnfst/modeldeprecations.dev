@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: c4ai-aya-vision-8b
+name: Aya Vision 8B
+description: >-
+  The compact multilingual vision model from Cohere Labs, answering questions
+  about images in 23 languages at a size you could actually deploy. Retired 4
+  April 2026 with no notice, and the replacements Cohere names for it are text
+  models - the only vision-capable Aya left is the 32B.
+deprecated_on: 2026-04-04
+shutdown_on: 2026-04-04
+status: retired
+replacements:
+  - provider: cohere
+    model: c4ai-aya-vision-32b
+    recommended: false
+    note: >-
+      Cohere's notice points at command-a-03-2025 and command-a-reasoning-08-2025,
+      neither of which takes images. If you need vision, the 32B Aya or
+      command-a-vision-07-2025 are the real options.
+sources:
+  - url: https://docs.cohere.com/docs/deprecations
+    title: Cohere deprecations
+    accessed: 2026-08-03
+last_verified: 2026-08-03

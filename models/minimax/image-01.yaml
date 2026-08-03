@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: minimax
+model: image-01
+name: Image 01
+description: >-
+  MiniMax's only image generation model, released February 2025 and never
+  versioned since. Every other MiniMax product line has shipped three or four
+  generations in that time, which makes this the one id where a replacement
+  landing without warning would be a genuine surprise.
+released_on: 2025-02-15
+status: active
+sources:
+  - url: https://platform.minimax.io/docs/release-notes/models
+    title: MiniMax model release notes
+    accessed: 2026-08-03
+last_verified: 2026-08-03

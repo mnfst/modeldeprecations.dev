@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: rerank-multilingual-v3.0
+name: Rerank Multilingual v3
+description: >-
+  The non-English reranker of the v3 generation. Cohere stopped splitting rerank by
+  language at v3.5, so this is the last id in the line where you had to pick
+  English or multilingual up front rather than getting both from one model.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

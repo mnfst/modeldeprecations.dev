@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: mistral-small-2506
+name: Mistral Small 3.2
+description: >-
+  The last of the Mistral Small 3 line, a June 2025 point release that mostly
+  fixed instruction-following and repetition problems in 3.1 rather than adding
+  anything. It outlived its three predecessors by eight months and stopped
+  answering on 31 July 2026, which closed out the 3.x Small series entirely.
+deprecated_on: 2026-04-30
+shutdown_on: 2026-07-31
+status: retired
+replacements:
+  - provider: mistral
+    model: mistral-small-4-0-26-03
+    recommended: true
+    note: >-
+      Small 4 is a hybrid reasoning model. It can emit thinking content that
+      Small 3.2 never produced, so parsers that assumed the whole response body
+      was the answer need checking.
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

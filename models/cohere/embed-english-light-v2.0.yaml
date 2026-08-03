@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: embed-english-light-v2.0
+name: Embed English Light v2
+description: >-
+  The 1024-dimension light English embedder, chosen by people who cared about
+  index size more than recall. Retired on 4 April 2026 with no notice period.
+  Note that its direct successor embed-english-light-v3.0 is still active, so
+  this is one of the few v2.0 retirements with a genuine like-for-like target.
+deprecated_on: 2026-04-04
+shutdown_on: 2026-04-04
+status: retired
+replacements:
+  - provider: cohere
+    model: embed-english-light-v3.0
+    recommended: false
+    note: >-
+      Cohere's notice names embed-english-v3.0 and embed-v4.0, neither of which
+      is a light model. The light v3.0 id is the closer match on vector size and
+      cost, but it is our recommendation rather than Cohere's.
+sources:
+  - url: https://docs.cohere.com/docs/deprecations
+    title: Cohere deprecations
+    accessed: 2026-08-03
+last_verified: 2026-08-03

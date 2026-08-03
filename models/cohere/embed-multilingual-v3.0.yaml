@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: embed-multilingual-v3.0
+name: Embed Multilingual v3
+description: >-
+  The 100-plus language embedder that replaced embed-multilingual-v2.0 when that
+  model was retired in April 2026. Cross-lingual retrieval was Cohere's strongest
+  differentiator for years, and this is the id most of that work was built on.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

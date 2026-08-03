@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: embed-multilingual-v2.0
+name: Embed Multilingual v2
+description: >-
+  The model that made cross-language retrieval practical for most teams - one
+  vector space across 100-plus languages, years before that was table stakes. It
+  was switched off on 4 April 2026 on the day it was announced, ending Cohere's
+  entire v2.0 embedding generation in a single notice.
+deprecated_on: 2026-04-04
+shutdown_on: 2026-04-04
+status: retired
+replacements:
+  - provider: cohere
+    model: embed-v4.0
+    recommended: true
+    note: >-
+      embed-multilingual-v3.0 is the other option Cohere names. v4.0 takes 128k
+      of input against v2.0's 512 tokens, so chunking strategy is worth
+      revisiting at the same time as the re-index.
+sources:
+  - url: https://docs.cohere.com/docs/deprecations
+    title: Cohere deprecations
+    accessed: 2026-08-03
+last_verified: 2026-08-03

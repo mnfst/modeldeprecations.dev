@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: moonshot
+model: kimi-k2.7-code
+name: Kimi K2.7 Code
+description: >-
+  The coding-specialised model of the K2.7 generation, 256k of context and tuned
+  for agentic edit-and-run loops rather than single completions. Moonshot has kept
+  a code-specific id in every generation since K2 even as it merged thinking and
+  non-thinking modes into single models.
+status: active
+sources:
+  - url: https://platform.kimi.ai/docs/models
+    title: Kimi model list
+    accessed: 2026-08-03
+last_verified: 2026-08-03

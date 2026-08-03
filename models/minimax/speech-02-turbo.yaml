@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: minimax
+model: speech-02-turbo
+name: Speech 02 Turbo
+description: >-
+  The low-latency member of the original Speech 02 pair from April 2025. Sixteen
+  months on it is still in the API model list unchanged, which on this platform
+  means nothing in particular - MiniMax lists models until it does not.
+released_on: 2025-04-02
+status: active
+sources:
+  - url: https://platform.minimax.io/docs/release-notes/models
+    title: MiniMax model release notes
+    accessed: 2026-08-03
+last_verified: 2026-08-03

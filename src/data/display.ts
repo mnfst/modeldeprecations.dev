@@ -10,6 +10,9 @@ const PROVIDER_LABELS: Record<string, string> = {
   xai: "xAI",
   alibaba: "Alibaba",
   cohere: "Cohere",
+  minimax: "MiniMax",
+  moonshot: "Moonshot AI",
+  zai: "Z.ai",
 };
 
 function titleCase(slug: string): string {

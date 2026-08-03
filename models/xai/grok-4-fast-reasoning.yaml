@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xai
+model: grok-4-fast-reasoning
+name: Grok 4 Fast Reasoning
+description: >-
+  The September 2025 model that introduced the 2M context window to the xAI API
+  and undercut every comparable frontier model on price, which is why it ended up
+  in so many agent frameworks as the default. Retired 15 May 2026, one generation
+  behind 4.1 Fast and shut down on the same day as it.
+shutdown_on: 2026-05-15
+status: retired
+replacements:
+  - provider: xai
+    model: grok-4.3
+    recommended: true
+    note: >-
+      Maps to grok-4.3 with reasoning effort "low".
+sources:
+  - url: https://docs.x.ai/developers/migration/may-15-retirement
+    title: Grok Model Retirement on May 15, 2026
+    accessed: 2026-08-03
+last_verified: 2026-08-03

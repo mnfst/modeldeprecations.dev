@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: voxtral-mini-transcribe-26-02
+name: Voxtral Mini Transcribe 2
+description: >-
+  The transcription half of Voxtral, split out as its own id and pre-trained for
+  the job rather than being a general audio model asked politely. It replaces
+  voxtral-mini-2507, which served both the audio-understanding and the
+  transcription use case under one name until Mistral decided the two wanted
+  different models.
+status: active
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: codestral-2405
+name: Codestral 24.05
+description: >-
+  The first Codestral, a 22B fill-in-the-middle model covering eighty programming
+  languages, released under a licence that banned commercial use and started a
+  long argument about what Mistral meant by open. It ran on the API for thirteen
+  months.
+deprecated_on: 2024-12-02
+shutdown_on: 2025-06-16
+status: retired
+replacements:
+  - provider: mistral
+    model: codestral-25-08
+    recommended: true
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

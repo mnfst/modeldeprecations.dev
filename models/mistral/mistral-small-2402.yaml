@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: mistral-small-2402
+name: Mistral Small 1.0
+description: >-
+  The original Small, launched February 2024 next to Mistral Large as the cheap
+  half of the pair, and internally a tuned Mixtral 8x7B rather than a dense model.
+  It was deprecated the same November and given seven months, outliving several
+  models that shipped after it.
+deprecated_on: 2024-11-30
+shutdown_on: 2025-06-16
+status: retired
+replacements:
+  - provider: mistral
+    model: mistral-small-4-0-26-03
+    recommended: true
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

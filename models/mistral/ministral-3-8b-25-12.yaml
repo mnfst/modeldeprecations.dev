@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: ministral-3-8b-25-12
+name: Ministral 3 8B
+description: >-
+  The middle Ministral 3, and the id that inherited the longest tail in Mistral's
+  catalogue: open-mistral-7b, Mistral Nemo 12B, Ministral 8B and Mistral Small
+  Creative all name it as their replacement. Anything you wrote against a
+  seven-or-eight-billion-parameter Mistral endpoint between 2023 and 2026
+  eventually resolves here.
+status: active
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: mistral-large-2402
+name: Mistral Large 1.0
+description: >-
+  The model Mistral launched with its Microsoft partnership in February 2024,
+  available on Azure the same week it hit la Plateforme. It was the company's
+  first closed-weights flagship and the moment the open-source-only framing
+  stopped being accurate. Shut down 16 June 2025.
+deprecated_on: 2024-11-30
+shutdown_on: 2025-06-16
+status: retired
+replacements:
+  - provider: mistral
+    model: mistral-large-3-25-12
+    recommended: true
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

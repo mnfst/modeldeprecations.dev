@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: moonshot
+model: moonshot-v1-128k-vision-preview
+name: Moonshot v1 128k Vision Preview
+description: >-
+  Moonshot's long-context vision model, still carrying a preview suffix at the
+  point it was scheduled for shutdown - it never graduated to a stable id in more
+  than a year of service. Closed to new users after K3 and sunsetting on 31
+  August with the rest of the v1 platform.
+shutdown_on: 2026-08-31
+status: deprecated
+replacements:
+  - provider: moonshot
+    model: kimi-k2.6
+    recommended: true
+    note: >-
+      K2.6 takes images and video as well as text, so the vision-preview split
+      disappears entirely.
+sources:
+  - url: https://platform.kimi.ai/docs/models
+    title: Kimi model list
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xai
+model: grok-4-fast-non-reasoning
+name: Grok 4 Fast Non-Reasoning
+description: >-
+  The non-thinking half of Grok 4 Fast, and the cheapest id xAI has ever served.
+  It was the natural home for classification and extraction jobs at volume, which
+  makes it the one in this wave most likely to be sitting in a batch pipeline
+  nobody has looked at since it was written.
+shutdown_on: 2026-05-15
+status: retired
+replacements:
+  - provider: xai
+    model: grok-4.3
+    recommended: true
+    note: >-
+      Maps to grok-4.3 with reasoning effort "none". This is the largest price
+      jump in the wave: a high-volume extraction job that cost pennies on this id
+      is now billed at flagship rates.
+sources:
+  - url: https://docs.x.ai/developers/migration/may-15-retirement
+    title: Grok Model Retirement on May 15, 2026
+    accessed: 2026-08-03
+last_verified: 2026-08-03

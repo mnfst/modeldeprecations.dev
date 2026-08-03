@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: zai
+model: glm-4.7-flash
+name: GLM-4.7 Flash
+description: >-
+  The free tier of the GLM-4.7 family, released a month after the base model. Z.ai
+  has shipped a Flash id in every generation since 4.5, and they are the ids most
+  likely to be running in hobby projects and evaluation scripts that nobody is
+  watching for breakage.
+released_on: 2026-01-19
+status: active
+sources:
+  - url: https://docs.z.ai/release-notes/new-released
+    title: Z.ai new releases
+    accessed: 2026-08-03
+  - url: https://docs.z.ai/guides/overview/pricing
+    title: Z.ai model pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

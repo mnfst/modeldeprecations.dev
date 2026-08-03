@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: tiny-aya-water
+name: Tiny Aya Water
+description: >-
+  The European and Asia-Pacific member of the Tiny Aya family. Its language list
+  overlaps heavily with the models Cohere already sells commercially, which makes
+  it the one Tiny Aya where the research and product lines answer the same
+  question.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

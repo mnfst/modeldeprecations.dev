@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: command-a-plus-05-2026
+name: Command A Plus
+description: >-
+  Cohere's current flagship, a mixture-of-experts model that folds vision,
+  reasoning and translation into one id after two years of shipping those as
+  three separate Command A variants. The 128k window is smaller than the 256k
+  Command A it sits above, which is the trade for the extra capability.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

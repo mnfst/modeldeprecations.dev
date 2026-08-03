@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: mistral-medium-2505
+name: Mistral Medium 3
+description: >-
+  The model that reintroduced a middle tier to Mistral's API after two years of
+  only Small and Large, and the first sign that Large was being quietly demoted.
+  It shares its 31 August 2026 shutdown with Medium 3.1, so both generations of
+  the id go dark on the same day rather than the older one leaving first.
+deprecated_on: 2026-05-22
+shutdown_on: 2026-08-31
+status: deprecated
+replacements:
+  - provider: mistral
+    model: mistral-medium-3-5-26-04
+    recommended: true
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

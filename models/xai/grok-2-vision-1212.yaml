@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xai
+model: grok-2-vision-1212
+name: Grok 2 Vision
+description: >-
+  xAI's first image-understanding model on the API, shipped alongside grok-2-1212
+  and limited to 8k of context, which made it awkward for anything beyond a
+  single image and a short question. Its documentation page now 404s and the id
+  is off the model list; no retirement date was ever published in xAI's docs.
+status: retired
+replacements:
+  - provider: xai
+    model: grok-4.3
+    recommended: false
+    note: >-
+      grok-4.3 accepts images natively with a 1M window. This is our reading of
+      the path, not a migration xAI documented.
+sources:
+  - url: https://docs.x.ai/developers/models
+    title: xAI models and pricing (no longer lists this model)
+    accessed: 2026-08-03
+last_verified: 2026-08-03

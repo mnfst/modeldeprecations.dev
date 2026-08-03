@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: rerank-multilingual-v2.0
+name: Rerank Multilingual v2
+description: >-
+  The cross-language half of the v2.0 rerank pair, retired alongside its English
+  sibling on 30 April 2025. Its existence is the reason rerank-v3.5 was a
+  simplification as much as an upgrade: from v3.5 onward you no longer choose a
+  language scope when you pick a reranker.
+deprecated_on: 2024-12-02
+shutdown_on: 2025-04-30
+status: retired
+replacements:
+  - provider: cohere
+    model: rerank-v3.5
+    recommended: true
+sources:
+  - url: https://docs.cohere.com/docs/deprecations
+    title: Cohere deprecations
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: minimax
+model: music-3.0
+name: Music 3.0
+description: >-
+  The July 2026 music generation model, fourth in a line that started as a beta in
+  mid-2025 and has shipped roughly every three months since. Unlike the speech
+  line, MiniMax lists only the current music model in its API overview, so the
+  earlier ids are gone without ever having been formally retired.
+released_on: 2026-07-16
+status: active
+sources:
+  - url: https://platform.minimax.io/docs/release-notes/models
+    title: MiniMax model release notes
+    accessed: 2026-08-03
+  - url: https://platform.minimax.io/docs/api-reference/api-overview
+    title: MiniMax API models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

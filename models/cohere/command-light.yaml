@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: command-light
+name: Command Light
+description: >-
+  The cheap, small sibling of the original Command, and for a long time the
+  budget option for classification and short generation on Cohere. Deprecated 15
+  September 2025 with no shutdown date. Cohere named no small replacement for it
+  in that notice - command-r7b-12-2024 is the closest thing in the current range.
+deprecated_on: 2025-09-15
+status: deprecated
+replacements:
+  - provider: cohere
+    model: command-r-08-2024
+    recommended: true
+    note: >-
+      Cohere's named alternatives are all considerably larger than command-light
+      was. If cost per token was why you were on this id, command-r7b-12-2024 is
+      the closer match even though the notice does not mention it.
+sources:
+  - url: https://docs.cohere.com/docs/deprecations
+    title: Cohere deprecations
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: moonshot
+model: kimi-k2.5
+name: Kimi K2.5
+description: >-
+  The general-intelligence model that carried Moonshot's API through the K2.x
+  era. After the K3 launch it stopped being available to newly registered users
+  while continuing to serve existing ones, and it goes dark with the rest of the
+  legacy platform on 31 August. Moonshot's docs print that date without a year;
+  read in context it is 2026.
+shutdown_on: 2026-08-31
+status: deprecated
+replacements:
+  - provider: moonshot
+    model: kimi-k2.6
+    recommended: true
+    note: >-
+      K2.6 is the closest general-purpose model and takes the same 256k of
+      context. If you were relying on K2.5 being cheap rather than on what it
+      could do, check pricing before switching - the newer ids are not
+      like-for-like on cost.
+sources:
+  - url: https://platform.kimi.ai/docs/models
+    title: Kimi model list
+    accessed: 2026-08-03
+last_verified: 2026-08-03

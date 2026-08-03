@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xai
+model: grok-3-mini
+name: Grok 3 Mini
+description: >-
+  The small reasoning model of the Grok 3 generation, and the first xAI id that
+  exposed its thinking trace, which made it briefly popular for debugging agent
+  behaviour. It went before grok-3 itself did. The id is off the model list and
+  its docs page 404s, with no retirement date left in xAI's documentation.
+status: retired
+replacements:
+  - provider: xai
+    model: grok-4.3
+    recommended: false
+    note: >-
+      grok-4.3 with a low reasoning effort is the closest equivalent, though the
+      price floor is considerably higher than Grok 3 Mini's was.
+sources:
+  - url: https://docs.x.ai/developers/models
+    title: xAI models and pricing (no longer lists this model)
+    accessed: 2026-08-03
+last_verified: 2026-08-03

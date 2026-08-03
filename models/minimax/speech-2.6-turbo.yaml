@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: minimax
+model: speech-2.6-turbo
+name: Speech 2.6 Turbo
+description: >-
+  The fast variant of the 2.6 speech generation. Four MiniMax speech ids across
+  three generations are currently active at once, which is a lot of surface area
+  for a provider that has never published a deprecation.
+released_on: 2025-10-29
+status: active
+sources:
+  - url: https://platform.minimax.io/docs/release-notes/models
+    title: MiniMax model release notes
+    accessed: 2026-08-03
+last_verified: 2026-08-03

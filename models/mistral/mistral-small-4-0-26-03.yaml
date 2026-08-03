@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: mistral-small-4-0-26-03
+name: Mistral Small 4
+description: >-
+  The hybrid small model that folded instruct, reasoning and coding into a single
+  weight class, which is why magistral-small and devstral-small stopped existing
+  as separate ids after it shipped. Every Mistral Small that came before it -
+  1.0, 2.0, 3.0, 3.1 and 3.2 - has now been retired into this row, along with
+  Saba, Mixtral and the two 8x-series mixtures.
+status: active
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xai
+model: grok-voice-think-fast-1.0
+name: Grok Voice Think Fast 1.0
+description: >-
+  A speech-to-speech model tuned for conversational latency, the audio half of
+  xAI's range. The "think fast" naming is doing real work: it is a reasoning
+  model with the budget capped low enough that a human on a phone call does not
+  notice the pause.
+status: active
+sources:
+  - url: https://docs.x.ai/developers/models
+    title: xAI models and pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

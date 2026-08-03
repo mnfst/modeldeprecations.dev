@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: moonshot
+model: kimi-k2-thinking
+name: Kimi K2 Thinking
+description: >-
+  Moonshot's reasoning K2, able to run hundreds of sequential tool calls without
+  losing the thread, and the model that put an open-weights system at the top of
+  several agentic leaderboards in late 2025. Its id was retired on 25 May 2026
+  once thinking became a mode on the general models rather than a separate name.
+shutdown_on: 2026-05-25
+status: retired
+replacements:
+  - provider: moonshot
+    model: kimi-k2.6
+    recommended: true
+    note: >-
+      K2.6 has a thinking mode you turn on per request. The response shape
+      differs from this id's, so anything parsing reasoning content out of the
+      body needs checking.
+sources:
+  - url: https://platform.kimi.ai/docs/models
+    title: Kimi model list
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: minimax
+model: speech-02-hd
+name: Speech 02 HD
+description: >-
+  The April 2025 speech model, and the oldest audio id MiniMax still serves. Note
+  the zero-padded version number: MiniMax switched from 02 to 2.5 without ever
+  shipping an 03, so string-sorting the speech ids gives you the wrong order.
+released_on: 2025-04-02
+status: active
+sources:
+  - url: https://platform.minimax.io/docs/release-notes/models
+    title: MiniMax model release notes
+    accessed: 2026-08-03
+last_verified: 2026-08-03

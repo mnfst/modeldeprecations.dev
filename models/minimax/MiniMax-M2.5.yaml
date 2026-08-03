@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: minimax
+model: MiniMax-M2.5
+name: MiniMax M2.5
+description: >-
+  The February 2026 model that MiniMax claimed state-of-the-art results with on
+  programming, tool calling and search. It reads as the legacy option today - two
+  generations back and still listed at full price - but MiniMax has published no
+  deprecation notice for it, so it stays active in this catalogue.
+status: active
+sources:
+  - url: https://platform.minimax.io/docs/release-notes/models
+    title: MiniMax model release notes
+    accessed: 2026-08-03
+  - url: https://platform.minimax.io/docs/api-reference/api-overview
+    title: MiniMax API models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

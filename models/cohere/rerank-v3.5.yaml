@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: cohere
+model: rerank-v3.5
+name: Rerank v3.5
+description: >-
+  The December 2024 reranker that replaced the entire v2.0 family, and still the
+  model Cohere's deprecation page names for anyone migrating off it. Superseded in
+  practice by the v4 pair, but not itself deprecated - it remains the cheapest
+  supported way to rerank.
+status: active
+sources:
+  - url: https://docs.cohere.com/docs/models
+    title: Cohere models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

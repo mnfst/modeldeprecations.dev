@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: mistral-small-2409
+name: Mistral Small 2.0
+description: >-
+  A 22B model released in September 2024 under Mistral's research licence, sold
+  as the midpoint between Nemo and Large. It is the odd size in the family
+  history: every Small before and after it is either 12B or 24B, and nothing
+  Mistral ships today is 22B.
+deprecated_on: 2025-11-06
+shutdown_on: 2025-11-30
+status: retired
+replacements:
+  - provider: mistral
+    model: mistral-small-4-0-26-03
+    recommended: true
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: mistral-large-3-25-12
+name: Mistral Large 3
+description: >-
+  Apache 2.0, which is the detail people miss: Mistral Large spent two
+  generations as a closed premier model before Large 3 shipped open in December
+  2025. It is the named successor to both Mistral Large 1.0 and 2.0, and it is
+  the only survivor of the Large line - Large 2.1 was pushed to Medium 3.5
+  instead, so the family's own name no longer marks the top of the range.
+status: active
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: moonshot
+model: moonshot-v1-128k
+name: Moonshot v1 128k
+description: >-
+  The long-context member of Moonshot's original API family, and the model that
+  built the company's reputation for handling very long documents back when 128k
+  was a headline number. Context length was part of the model id rather than a
+  runtime property, which is why there are three of these. Closed to new users
+  after the K3 launch and sunsetting on 31 August, printed in Moonshot's docs
+  without a year.
+shutdown_on: 2026-08-31
+status: deprecated
+replacements:
+  - provider: moonshot
+    model: kimi-k2.6
+    recommended: true
+    note: >-
+      Nothing in the current range encodes context length in the id. Pick the
+      model, not the window - K2.6 gives you 256k and K3 gives you 1M.
+sources:
+  - url: https://platform.kimi.ai/docs/models
+    title: Kimi model list
+    accessed: 2026-08-03
+last_verified: 2026-08-03

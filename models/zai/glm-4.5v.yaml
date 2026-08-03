@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: zai
+model: glm-4.5v
+name: GLM-4.5V
+description: >-
+  Z.ai's first widely-used vision model, released August 2025 on the GLM-4.5-Air
+  base and notable for reading UI screenshots well enough to drive them. It is the
+  oldest vision id still listed and the direct ancestor of everything in the
+  V-series since.
+released_on: 2025-08-11
+status: active
+sources:
+  - url: https://docs.z.ai/release-notes/new-released
+    title: Z.ai new releases
+    accessed: 2026-08-03
+  - url: https://docs.z.ai/guides/overview/pricing
+    title: Z.ai model pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

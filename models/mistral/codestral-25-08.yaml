@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: mistral
+model: codestral-25-08
+name: Codestral 25.08
+description: >-
+  The third Codestral to hold the name and the only one still answering. Mistral
+  has kept a dedicated code-completion model through three generations while
+  folding every other specialist line into Medium and Small, largely because
+  fill-in-the-middle for IDE autocomplete is a different latency problem than
+  chat. Both earlier Codestrals and Codestral Mamba point here.
+status: active
+sources:
+  - url: https://docs.mistral.ai/getting-started/models/models_overview/
+    title: Mistral models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03

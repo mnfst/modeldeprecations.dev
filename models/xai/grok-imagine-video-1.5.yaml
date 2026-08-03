@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: xai
+model: grok-imagine-video-1.5
+name: Grok Imagine Video 1.5
+description: >-
+  The newer video model, shipped as a separate id rather than as an upgrade to
+  grok-imagine-video. Both are still listed, which means xAI is running the two
+  in parallel and has not yet said what happens to the unversioned one - the same
+  pattern that preceded the May 2026 image retirement.
+status: active
+sources:
+  - url: https://docs.x.ai/developers/models
+    title: xAI models and pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

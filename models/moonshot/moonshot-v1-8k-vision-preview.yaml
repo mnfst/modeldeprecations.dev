@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: moonshot
+model: moonshot-v1-8k-vision-preview
+name: Moonshot v1 8k Vision Preview
+description: >-
+  The short-context vision preview, and the tightest fit of the six v1 ids: 8k of
+  context does not go far once an image is tokenised. It is closed to new
+  registrations and shuts down on 31 August alongside every other moonshot-v1
+  string.
+shutdown_on: 2026-08-31
+status: deprecated
+replacements:
+  - provider: moonshot
+    model: kimi-k2.6
+    recommended: true
+sources:
+  - url: https://platform.kimi.ai/docs/models
+    title: Kimi model list
+    accessed: 2026-08-03
+last_verified: 2026-08-03

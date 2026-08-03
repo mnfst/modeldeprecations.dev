@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: minimax
+model: MiniMax-M2.1-highspeed
+name: MiniMax M2.1 Highspeed
+description: >-
+  The original highspeed variant, which established a naming convention MiniMax
+  has applied to every model since. It is the oldest id in the pattern and, on a
+  platform with no deprecation policy, the one with the least idea of how long it
+  has left.
+released_on: 2025-12-22
+status: active
+sources:
+  - url: https://platform.minimax.io/docs/release-notes/models
+    title: MiniMax model release notes
+    accessed: 2026-08-03
+  - url: https://platform.minimax.io/docs/api-reference/api-overview
+    title: MiniMax API models overview
+    accessed: 2026-08-03
+last_verified: 2026-08-03
