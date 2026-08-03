@@ -1,12 +1,13 @@
 # yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
 provider: amazon
-model: amazon.nova-reel-v1:0
-name: Amazon Nova Reel v1.0
+model: nova-reel-1-1
+name: Amazon Nova Reel v1.1
 description: >-
-  The first release of Amazon's video generation model, producing 720p at 24
-  frames a second from a 512-character prompt. Both Reel versions were moved to
-  Legacy on the same day and share a 30 September 2026 end of life, so there is no
-  newer Reel to migrate to.
+  The second Reel, and the id AWS's Nova documentation still lists as the current
+  video model even though Bedrock's lifecycle table has it Legacy with a 30
+  September 2026 end of life. When a provider's own two pages disagree, the
+  lifecycle table is the one with the date on it.
+  The Bedrock invoke id is amazon.nova-reel-v1:1.
 deprecated_on: 2026-03-30
 shutdown_on: 2026-09-30
 status: deprecated
@@ -21,5 +22,8 @@ replacements:
 sources:
   - url: https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html
     title: Amazon Bedrock model lifecycle
+    accessed: 2026-08-03
+  - url: https://docs.aws.amazon.com/nova/latest/userguide/what-is-nova.html
+    title: What is Amazon Nova
     accessed: 2026-08-03
 last_verified: 2026-08-03

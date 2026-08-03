@@ -1,18 +1,19 @@
 # yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
 provider: amazon
-model: amazon.nova-premier-v1:0
+model: nova-premier
 name: Amazon Nova Premier
 description: >-
   The most capable model Amazon has trained itself, a million-token multimodal
   system sold as much for distilling smaller custom models as for serving traffic.
   It went Legacy on 13 March 2026 and ends on 14 September. Anyone who used it as
   a distillation teacher loses the teacher, not just the endpoint.
+  The Bedrock invoke id is amazon.nova-premier-v1:0.
 deprecated_on: 2026-03-13
 shutdown_on: 2026-09-14
 status: deprecated
 replacements:
   - provider: amazon
-    model: amazon.nova-pro-v1:0
+    model: nova-pro
     recommended: false
     note: >-
       Bedrock's lifecycle table names no successor. Nova Pro is the most capable

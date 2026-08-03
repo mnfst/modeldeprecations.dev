@@ -46,6 +46,12 @@ CI enforces this: any entry with a lifecycle date and no source fails validation
 - Xiaomi MiMo — https://mimo.mi.com/docs/en-US/quick-start/model-hyperparameters
   (the model list carries a one-line deprecation note with no model ids attached)
 
+A `model` id must not contain a colon, even when the provider's own id does.
+`actions/upload-artifact` rejects the built page, because a colon is illegal in
+an NTFS filename. Amazon Nova is the case that hits this: use `nova-premier` and
+put the Bedrock invoke id (`amazon.nova-premier-v1:0`) in the description, where
+it is still searchable.
+
 Providers delete rows from these tables once a model is long gone. If a page has
 moved, cite an archive.org snapshot rather than a blog post about it.
 
