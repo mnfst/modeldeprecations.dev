@@ -25,8 +25,11 @@
   <div class="mt-4 flex flex-wrap items-center gap-3">
     <%- include("partials/status_pill", { life: life, helpers: helpers, large: true }) %>
     <% if (life.shutdown && days !== undefined && days >= 0) { %>
+    <%# "Shutdown", not "Shuts down": the client rewrites the countdown against the
+        reader's clock, so this label has to read as well in the past tense
+        ("Shutdown 1 day ago") as in the future ("Shutdown in 2 days"). %>
     <span class="text-sm tabular-nums <%= days < 60 ? 'text-rose-700 font-medium' : 'text-slate-600' %>">
-      Shuts down <%= helpers.relativeDays(days) %>
+      Shutdown <%- helpers.countdown(life) %>
     </span>
     <% } %>
   </div>
@@ -75,7 +78,7 @@
           <td class="px-3 py-2.5 tabular-nums">
             <% if (life.shutdown) { %>
               <%= helpers.formatDate(life.shutdown) %>
-              <% if (days !== undefined) { %><span class="<%= days < 0 ? 'text-slate-400' : days < 60 ? 'text-rose-700' : 'text-slate-500' %>"> · <%= helpers.relativeDays(days) %></span><% } %>
+              <% if (days !== undefined) { %><span class="<%= days < 0 ? 'text-slate-400' : days < 60 ? 'text-rose-700' : 'text-slate-500' %>"> · <%- helpers.countdown(life) %></span><% } %>
               <% if (life.soft) { %>
               <p class="mt-1 text-xs text-slate-500">The provider publishes this as the earliest date the model could be retired, not a commitment. It may move later, but not earlier.</p>
               <% } %>

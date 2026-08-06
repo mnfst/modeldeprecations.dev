@@ -10,7 +10,12 @@ import {
   type Status,
 } from "../schema/model.js";
 
-const MS_PER_DAY = 86_400_000;
+// The day arithmetic itself lives in a leaf module because the client bundle
+// needs it too — see src/data/relative-time.ts. Imported and re-exported here so
+// every existing caller keeps importing the vocabulary from one place.
+import { daysBetween, relativeDays } from "./relative-time.js";
+
+export { daysBetween, relativeDays };
 
 const MONTHS = [
   "January",
@@ -33,22 +38,6 @@ export function formatDate(iso: string | undefined): string {
   const [year, month, day] = iso.split("-").map(Number);
   if (!year || !month || !day) return iso;
   return `${MONTHS[month - 1]} ${day}, ${year}`;
-}
-
-/** Whole days from `from` to `to`. Negative when `to` is in the past. */
-export function daysBetween(from: string, to: string): number {
-  const a = Date.parse(`${from}T00:00:00Z`);
-  const b = Date.parse(`${to}T00:00:00Z`);
-  if (Number.isNaN(a) || Number.isNaN(b)) return 0;
-  return Math.round((b - a) / MS_PER_DAY);
-}
-
-/** "in 78 days" / "in 1 day" / "today" / "12 days ago". */
-export function relativeDays(days: number): string {
-  if (days === 0) return "today";
-  const n = Math.abs(days);
-  const unit = n === 1 ? "day" : "days";
-  return days > 0 ? `in ${n} ${unit}` : `${n} ${unit} ago`;
 }
 
 export const STATUS_LABELS: Record<Status, string> = {

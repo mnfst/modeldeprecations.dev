@@ -2,6 +2,7 @@
 // enhancement over server-rendered HTML: with JS off, every page still shows its
 // full content, and the homepage table is complete and readable.
 
+import { setupCountdowns } from "./countdown.js";
 import { setupWebMCP } from "./webmcp.js";
 
 function setupProvidersMenu(): void {
@@ -168,6 +169,7 @@ function setupTableFilter(): void {
 }
 
 function main(): void {
+  setupCountdowns();
   setupProvidersMenu();
   setupHowToUseModal();
   setupCopyButtons();

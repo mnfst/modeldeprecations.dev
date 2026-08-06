@@ -22,7 +22,7 @@
     <% if (life.shutdown) { %>
       <%= helpers.formatDate(life.shutdown) %><% if (life.soft) { %><span class="text-slate-400" title="Provider publishes this as the earliest possible date, not a commitment"> (earliest)</span><% } %>
       <% if (days !== undefined) { %>
-      <div class="text-xs <%= days < 0 ? 'text-slate-400' : days < 60 ? 'text-rose-700' : 'text-slate-500' %>"><%= helpers.relativeDays(days) %></div>
+      <div class="text-xs <%= days < 0 ? 'text-slate-400' : days < 60 ? 'text-rose-700' : 'text-slate-500' %>"><%- helpers.countdown(life) %></div>
       <% } %>
     <% } else if (life.dateUnconfirmed) { %>
       <span class="text-slate-400">date unconfirmed</span>

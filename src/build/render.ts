@@ -13,7 +13,14 @@ import { shutdownYears } from "../data/hubs.js";
 import { usageGuideMarkdown } from "../data/llms.js";
 import { logoFor } from "../data/logos.js";
 import { VIEWS_DIR } from "../data/paths.js";
-import { formatDate, lifecycle, relativeDays, statusPill, STATUS_LABELS } from "../data/status.js";
+import {
+  formatDate,
+  lifecycle,
+  relativeDays,
+  statusPill,
+  STATUS_LABELS,
+  type Lifecycle,
+} from "../data/status.js";
 import { analyticsEnabled, OG_IMAGE_PATH, SITE_NAME, SITE_URL } from "../data/site.js";
 import {
   absolute,
@@ -29,6 +36,20 @@ import { buildHomeStructuredData } from "./structured-data.js";
 
 const LAYOUT_PATH = path.join(VIEWS_DIR, "layout.ejs");
 
+/**
+ * A countdown, wrapped in the `<time>` element it is derived from.
+ *
+ * The build writes the phrase for crawlers and for readers without JS, and the
+ * `datetime` attribute carries the date it was computed against so the client
+ * can recompute it — see src/client/countdown.ts. Without that, the number is
+ * frozen at the moment the page was generated: a page built two days before a
+ * shutdown keeps saying "in 2 days" long after the model is gone.
+ */
+export function countdown(life: Lifecycle): string {
+  if (life.shutdown === undefined || life.daysToShutdown === undefined) return "";
+  return `<time datetime="${life.shutdown}" data-countdown>${relativeDays(life.daysToShutdown)}</time>`;
+}
+
 /** Helpers exposed to every EJS view. */
 export const viewHelpers = {
   modelId,
@@ -41,6 +62,7 @@ export const viewHelpers = {
   statusLabel: (status: string): string => STATUS_LABELS[status as keyof typeof STATUS_LABELS],
   formatDate,
   relativeDays,
+  countdown,
   answerHeadline,
   modelPagePath,
   providerPagePath,
