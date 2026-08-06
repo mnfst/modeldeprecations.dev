@@ -107,9 +107,14 @@ npm run check:deploy # crawl the deployed site: 404s, redirects, robots headers
 `check:deploy` runs against production by default and asserts the things only the
 edge can get wrong — that an unknown URL really 404s, that `/api` and the `.md`
 twins send `noindex`, that `.html` and trailing slashes redirect to one canonical
-address. Pass an origin to point it at a preview deployment. It runs daily in CI,
-separately from the pull-request checks, because a failure there is a deployment
-problem rather than a problem with the branch.
+address, and that the deployed build has not gone stale. Pass an origin to point
+it at a preview deployment. It runs daily in CI, separately from the pull-request
+checks, because a failure there is a deployment problem rather than a problem
+with the branch.
+
+Countdowns are a pure function of the build date, so the site redeploys on a
+daily timer and the client re-derives each one from the reader's clock. See
+[CONTRIBUTING.md](CONTRIBUTING.md#freshness).
 
 ## License
 

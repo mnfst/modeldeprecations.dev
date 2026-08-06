@@ -11,6 +11,10 @@
 
 const ORIGIN = (process.argv[2] ?? "https://modeldeprecations.dev").replace(/\/$/, "");
 
+// The refresh workflow rebuilds daily; two days allows for one missed run and
+// for this check racing ahead of the rebuild, without tolerating real drift.
+const MAX_BUILD_AGE_DAYS = 2;
+
 const failures = [];
 const passes = [];
 
@@ -133,6 +137,28 @@ async function main() {
     );
     await expectStatus(pathname, 200, "Listed in the sitemap, so it has to serve.");
   }
+
+  // Build freshness. The site answers "is it deprecated yet" as of the day it
+  // was generated, so a build that stops being refreshed does not break — it
+  // just quietly starts lying, counting down to dates that have already passed.
+  // Nothing in the repo can detect that either, because the repo is fine; only
+  // the deployed artifact is old. .github/workflows/refresh.yml keeps it moving
+  // and this is what notices when it stops.
+  const catalog = await head("/api/v1/models.json");
+  let asOf = "";
+  try {
+    asOf = JSON.parse(catalog.body).asOf ?? "";
+  } catch {
+    asOf = "";
+  }
+  const age = asOf ? Math.round((Date.now() - Date.parse(`${asOf}T00:00:00Z`)) / 86_400_000) : NaN;
+  record(
+    Number.isFinite(age) && age <= MAX_BUILD_AGE_DAYS,
+    `the deployed build is at most ${MAX_BUILD_AGE_DAYS} days old`,
+    `asOf is ${asOf || "(unreadable)"}, ${Number.isFinite(age) ? `${age} days old` : "unparseable"}. ` +
+      `Every countdown on the site is computed against that date, so they are all off by ` +
+      `the same amount. Check the Daily refresh workflow and VERCEL_DEPLOY_HOOK_URL.`,
+  );
 
   console.log(`${passes.length} passed`);
   for (const pass of passes) console.log(`  ok    ${pass}`);

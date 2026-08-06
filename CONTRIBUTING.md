@@ -142,9 +142,23 @@ refresh.
 `npm run check:deploy [origin]` crawls a deployed site rather than the repo, and
 checks the things only the edge can get wrong: that an unknown URL really 404s,
 that `/api`, the badges and the `.md` twins send `noindex`, that `.html` and
-trailing slashes redirect to one canonical address. It runs daily in CI, not on
-pull requests, because a failure there is a deployment problem rather than a
-problem with the branch.
+trailing slashes redirect to one canonical address, and that the deployed build
+is no more than two days old. It runs daily in CI, not on pull requests, because
+a failure there is a deployment problem rather than a problem with the branch.
+
+## Freshness
+
+Every countdown and derived status is a pure function of the build's "today", so
+a build is internally consistent but frozen at the date it ran. Deploying only on
+push therefore leaves the site answering as of the last commit, counting down to
+dates that have already passed.
+
+Two things keep it honest. The Daily refresh workflow redeploys on a timer, which
+is what moves a model to Retired on the day it happens and refreshes the API,
+`llms.txt`, the badges and the OG cards along with the HTML. It needs a
+`VERCEL_DEPLOY_HOOK_URL` repository secret; without one the workflow fails loudly
+rather than skipping. On top of that the client re-derives each countdown from the
+reader's own clock, so a cached page never shows a number that has run out.
 
 ## Pages
 

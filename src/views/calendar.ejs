@@ -48,7 +48,7 @@
       </div>
       <% } %>
       <div class="ml-auto text-sm tabular-nums <%= (row.life.daysToShutdown ?? 999) < 60 ? 'text-rose-700' : 'text-slate-500' %>">
-        <%= helpers.relativeDays(row.life.daysToShutdown) %>
+        <%- helpers.countdown(row.life) %>
       </div>
     </li>
     <% } %>

@@ -1,0 +1,43 @@
+name: Daily refresh
+
+# Every countdown, derived status and freshness date on the site is a pure
+# function of the build's "today" (src/data/site.ts). That makes a build
+# internally consistent, but it also freezes it: with deploys only on push, the
+# site keeps answering as of the day of the last commit. It sat three days stale
+# in August 2026 and told readers claude-opus-4-1 would shut down "in 2 days"
+# after it already had.
+#
+# So redeploy on a timer. This is what moves a model from "Shutdown scheduled"
+# to "Retired" on the day it happens, and it refreshes every surface at once —
+# HTML, the JSON API, llms.txt, the .md twins, the badges and the OG cards.
+#
+# Needs a VERCEL_DEPLOY_HOOK_URL repository secret: Vercel project → Settings →
+# Git → Deploy Hooks, pointed at the production branch.
+
+on:
+  schedule:
+    # Early, so the deployment check at 07:00 UTC grades a fresh build.
+    - cron: "0 5 * * *"
+  workflow_dispatch:
+
+# A rebuild triggered while one is running gains nothing.
+concurrency:
+  group: daily-refresh
+  cancel-in-progress: false
+
+jobs:
+  redeploy:
+    name: Rebuild the deployed site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger a Vercel deploy
+        env:
+          HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$HOOK_URL" ]; then
+            echo "::error::VERCEL_DEPLOY_HOOK_URL is not set. Without it the site" \
+                 "never rebuilds and every countdown on it silently goes stale."
+            exit 1
+          fi
+          curl --fail --silent --show-error --request POST "$HOOK_URL" --output /dev/null
+          echo "Deploy hook accepted the rebuild."
