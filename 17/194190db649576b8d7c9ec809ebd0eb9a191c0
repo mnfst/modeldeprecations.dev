@@ -1,0 +1,74 @@
+tests/sources-artifact.test.ts
+  s_7d8479463971ca::t_cae5ef5554cd39 15
+package.json
+  s_7d8479463971ca::t_cbcc9891045fcc 42-43
+src/sources/html.ts
+  s_7d8479463971ca::t_29fb2eed2f7d81 1-20,22-28,33-62
+  s_7d8479463971ca::t_28b6242f8fb259 21,29-32
+tests/sources-registry.test.ts
+  s_7d8479463971ca::t_7f5ad7eea4aad2 68,70-76,88-89
+  s_7d8479463971ca::t_11a2a7aa8f38f8 17,24-33,59-67,86-87,90
+  s_e7bd75d16ebb51::t_ed17884dfbc6ab 69
+tests/sources-run.test.ts
+  s_7d8479463971ca::t_cae5ef5554cd39 20
+src/sources/registry.ts
+  s_7d8479463971ca::t_29c819adb5cfc9 63-68,76-81
+  s_7d8479463971ca::t_7f5ad7eea4aad2 4,69,87-93
+  s_7d8479463971ca::t_29fb2eed2f7d81 37,61,82-86,94-104
+tests/sources-fetch-source.test.ts
+  s_7d8479463971ca::t_bf18880b78a516 51-52,55-58
+  s_7d8479463971ca::t_f1c59cf4f7c5d1 48
+  s_7d8479463971ca::t_7f5ad7eea4aad2 69,71-91
+  s_7d8479463971ca::t_11a2a7aa8f38f8 9,16-25,46-47,49-50,53-54,59-68
+  s_7d8479463971ca::t_a7bffc5997976f 70
+sources.yaml
+  s_7d8479463971ca::t_5c228cfabab4c8 110-187
+src/sources/report.ts
+  s_7d8479463971ca::t_29fb2eed2f7d81 14-15
+src/sources/fetch-source.ts
+  s_7d8479463971ca::t_29fb2eed2f7d81 3,75,82-85,93-104,155-157,159-160
+  s_7d8479463971ca::t_bf18880b78a516 133-136
+  s_7d8479463971ca::t_35276412e256f6 105
+package-lock.json
+  s_7d8479463971ca::t_e6093021411f8d 17-18,2119-2124,2509-2536,2678-2732,2791-2802,3739-3747,4525-4546,4596-4607
+snapshots/alibaba/deprecations.md
+  s_7d8479463971ca::t_25d6bd80417b59 1-126
+snapshots/bedrock/model-lifecycle.md
+  s_7d8479463971ca::t_602bc5e8102e39 1-55
+snapshots/deepseek/updates.md
+  s_7d8479463971ca::t_ff913854ed3959 1-322
+snapshots/google/deprecations.md
+  s_7d8479463971ca::t_ac40b3b1b0a43e 1-137
+snapshots/mistral/models.md
+  s_7d8479463971ca::t_923b2ce75f7e6a 1-137
+snapshots/thinking-machines/model-deprecations.md
+  s_7d8479463971ca::t_a052fb4b191941 1-39
+snapshots/vertex/model-versions.md
+  s_7d8479463971ca::t_c7ee94a92d75df 1-104
+snapshots/xiaomi/deprecations.md
+  s_7d8479463971ca::t_5881347c12814b 1-30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "17194190db649576b8d7c9ec809ebd0eb9a191c0",
+  "prompts": {},
+  "sessions": {
+    "s_7d8479463971ca": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a01e36-e9ea-7072-a174-cc817a3b7e02",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Guillaume Gay <guillaume.gay@protonmail.com>"
+    },
+    "s_e7bd75d16ebb51": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a01e40-5137-7572-bf4d-ef1b23f13ac7",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Guillaume Gay <guillaume.gay@protonmail.com>"
+    }
+  }
+}
