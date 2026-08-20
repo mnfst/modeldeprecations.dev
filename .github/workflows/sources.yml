@@ -1,0 +1,134 @@
+name: Source snapshots
+
+on:
+  schedule:
+    - cron: "0 4 * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: source-snapshots
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    name: Fetch provider sources
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - name: Check out the default branch without credentials
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate registry and snapshots
+        run: npm run validate
+
+      - name: Fetch sources
+        id: fetch
+        shell: bash
+        run: |
+          set +e
+          npm run sources:fetch -- --report .source-fetch/report.json
+          status=$?
+          set -e
+          echo "exit_code=$status" >> "$GITHUB_OUTPUT"
+          if [ "$status" -ne 0 ] && [ "$status" -ne 2 ]; then
+            exit "$status"
+          fi
+
+      - name: Upload sanitized fetch artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: source-snapshots
+          path: |
+            snapshots/
+            .source-fetch/report.json
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
+
+  publish:
+    name: Publish source changes
+    needs: fetch
+    if: github.event_name == 'schedule' || github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Check out the default branch without credentials
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download fetch artifact
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: source-snapshots
+          path: .source-fetch/artifact
+
+      - name: Validate artifact before credentials
+        id: artifact
+        run: npm run sources:validate-artifact -- --artifact .source-fetch/artifact
+
+      - name: Create short-lived publication token
+        id: app-token
+        # Install a GitHub App on this repository with Contents, Issues, and
+        # Pull requests write access, then add these two repository secrets.
+        uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349 # v2
+        with:
+          app-id: ${{ secrets.SOURCE_FETCH_APP_ID }}
+          private-key: ${{ secrets.SOURCE_FETCH_APP_PRIVATE_KEY }}
+          permission-contents: write
+          permission-issues: write
+          permission-pull-requests: write
+
+      - name: Update source failure issues
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: npm run sources:publish-issues -- --report .source-fetch/artifact/.source-fetch/report.json
+
+      - name: Create or update snapshot pull request
+        if: steps.artifact.outputs.has_changes == 'true'
+        uses: peter-evans/create-pull-request@22a9089034f40e5a961c8808d113e2c98fb63676 # v7
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          base: ${{ github.event.repository.default_branch }}
+          branch: automation/source-snapshots
+          delete-branch: true
+          draft: true
+          commit-message: "chore: refresh provider source snapshots"
+          title: "chore: refresh provider source snapshots"
+          add-paths: snapshots/**/*.md
+          body: |
+            ### What changed
+            - Refreshes ${{ steps.artifact.outputs.changed_count }} provider source snapshot(s).
+
+            ### Why
+            Provider documentation changed since the last reviewed snapshot.
+
+            Review the Files tab before merging. This pull request never edits catalog data.

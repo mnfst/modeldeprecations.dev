@@ -1,7 +1,15 @@
 import { loadAllModels } from "./load.js";
+import { loadSourceRegistry, validateSnapshotInventory } from "../sources/registry.js";
 
 async function main(): Promise<void> {
-  const { models, issues } = await loadAllModels();
+  const [{ models, issues: modelIssues }, sourceResult] = await Promise.all([
+    loadAllModels(),
+    loadSourceRegistry(),
+  ]);
+  const sourceIssues = sourceResult.registry
+    ? [...sourceResult.issues, ...(await validateSnapshotInventory(sourceResult.registry))]
+    : sourceResult.issues;
+  const issues = [...modelIssues, ...sourceIssues];
 
   if (issues.length > 0) {
     console.error(`Found ${issues.length} validation issue(s):\n`);
@@ -13,7 +21,9 @@ async function main(): Promise<void> {
   }
 
   const sourced = models.filter((model) => model.sources.length > 0).length;
-  console.log(`OK — validated ${models.length} model(s); ${sourced} carry at least one source.`);
+  console.log(
+    `OK — validated ${models.length} model(s), ${sourceResult.registry!.sources.length} source snapshot(s); ${sourced} models carry at least one source.`,
+  );
 }
 
 main().catch((err) => {
