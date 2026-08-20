@@ -1,0 +1,112 @@
+tests/sources-artifact.test.ts
+  s_7d8479463971ca::t_722c6346c9f8ec 1-106
+src/sources/issues.ts
+  s_7d8479463971ca::t_995b99eb598b5e 1-55
+  s_7d8479463971ca::t_175c1edf7b50f2 56-68
+package.json
+  s_7d8479463971ca::t_995b99eb598b5e 25
+  s_7d8479463971ca::t_950d183f4dbcb2 24,26-27
+.gitignore
+  s_7d8479463971ca::t_950d183f4dbcb2 14
+tests/sources-registry.test.ts
+  s_7d8479463971ca::t_5dade3d54f726f 52
+  s_7d8479463971ca::t_ba310dff1cc283 1-49,51,53-92
+  s_7d8479463971ca::t_2b9e1d18fb50ba 50
+sources.yaml
+  s_7d8479463971ca::t_5bdd027bb8b42c 1-109
+src/data/paths.ts
+  s_7d8479463971ca::t_950d183f4dbcb2 8-10
+tests/sources-fetch-source.test.ts
+  s_7d8479463971ca::t_574244c201946b 27,29,38-40,46-48,84-86,98-100,104-106,115-118,127-129,140-143
+  s_7d8479463971ca::t_44e67db08a04c8 64-70
+  s_7d8479463971ca::t_477185d71dcea5 1-26,28,30-37,41-45,49-63,71-83,87-97,101-103,107-114,119-126,130-139,144-150
+.github/workflows/sources.yml
+  s_7d8479463971ca::t_995b99eb598b5e 1-99,102-134
+  s_7d8479463971ca::t_7039e4c5df4e17 100-101
+tests/sources-run.test.ts
+  s_7d8479463971ca::t_164c25075c1757 1-116
+  s_7d8479463971ca::t_61ff38c7556659 117-120
+src/data/validate.ts
+  s_7d8479463971ca::t_722c6346c9f8ec 2,5-12,24-26
+src/sources/artifact.ts
+  s_7d8479463971ca::t_722c6346c9f8ec 1-91
+  s_7d8479463971ca::t_a803662fa08cc3 92-96
+src/sources/fetch-source.ts
+  s_7d8479463971ca::t_477185d71dcea5 1-57,61-64,67,72-80,86-156,160-164,169-177
+  s_7d8479463971ca::t_ac707f0ef65a50 58-60,65-66
+  s_7d8479463971ca::t_574244c201946b 68-71,81-85,157-159,165-168
+src/sources/seed.ts
+  s_7d8479463971ca::t_164c25075c1757 1-41
+  s_7d8479463971ca::t_41e1df11afe1c7 42-43
+src/sources/files.ts
+  s_7d8479463971ca::t_164c25075c1757 1-34
+src/sources/validate-artifact.ts
+  s_7d8479463971ca::t_722c6346c9f8ec 1-35
+  s_7d8479463971ca::t_2fe28bcbb82276 36
+tests/sources-issues.test.ts
+  s_7d8479463971ca::t_995b99eb598b5e 1-62
+  s_7d8479463971ca::t_942b12de7fafcf 63-65
+src/sources/publish-issues.ts
+  s_7d8479463971ca::t_995b99eb598b5e 1-101
+src/sources/run.ts
+  s_7d8479463971ca::t_164c25075c1757 1-88
+  s_7d8479463971ca::t_54d22cc5257691 89
+tests/sources-workflow.test.ts
+  s_7d8479463971ca::t_995b99eb598b5e 1-28
+src/sources/registry.ts
+  s_7d8479463971ca::t_5dade3d54f726f 37-55
+  s_7d8479463971ca::t_62067e760e5e86 1-36,56-195
+src/sources/report.ts
+  s_7d8479463971ca::t_477185d71dcea5 1-50
+src/sources/fetch.ts
+  s_7d8479463971ca::t_164c25075c1757 1-37
+  s_7d8479463971ca::t_0bc9d564b1fb54 38
+snapshots/anthropic/deprecations.md
+  s_7d8479463971ca::t_0baca22d81ad4e 1-222
+snapshots/anthropic/models.md
+  s_7d8479463971ca::t_edb3ef436a9ca6 1-184
+snapshots/cerebras/deprecations.md
+  s_7d8479463971ca::t_5a6cd8db02e1da 1-86
+snapshots/cohere/deprecations.md
+  s_7d8479463971ca::t_a694adc9f22a98 1-114
+snapshots/cohere/models.md
+  s_7d8479463971ca::t_8e122eb0d10e4f 1-177
+snapshots/fireworks/changelog.md
+  s_7d8479463971ca::t_fb274923707f8c 1-724
+snapshots/groq/deprecations.md
+  s_7d8479463971ca::t_187f0b2a274286 1-259
+snapshots/minimax/api-overview.md
+  s_7d8479463971ca::t_000cd3b3dcc5fa 1-360
+snapshots/minimax/releases.md
+  s_7d8479463971ca::t_11a8a6b1a2b5be 1-140
+snapshots/moonshot/models.md
+  s_7d8479463971ca::t_d6fd8ac102e969 1-55
+snapshots/openai/deprecations.md
+  s_7d8479463971ca::t_e3c8ab0c307cfa 1-490
+snapshots/openai/models.md
+  s_7d8479463971ca::t_80c7ee40e095f1 1-118
+snapshots/perplexity/changelog.md
+  s_7d8479463971ca::t_daa2083e071586 1-835
+snapshots/xai/may-15-retirement.md
+  s_7d8479463971ca::t_3aaf939df5ac41 1-73
+snapshots/z-ai/pricing.md
+  s_7d8479463971ca::t_8e671c217b6669 1-88
+snapshots/z-ai/releases.md
+  s_7d8479463971ca::t_d3bf3b591786d4 1-108
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "d506a0571bd778a54fa531e95dc4b5a0cbfb81e6",
+  "prompts": {},
+  "sessions": {
+    "s_7d8479463971ca": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a01e36-e9ea-7072-a174-cc817a3b7e02",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Guillaume Gay <guillaume.gay@protonmail.com>"
+    }
+  }
+}
