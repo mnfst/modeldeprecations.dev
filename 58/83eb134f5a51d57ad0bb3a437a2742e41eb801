@@ -1,0 +1,43 @@
+sources.yaml
+  s_4537041956511c::t_a879af38f1b25e 110-119
+.fieldflow/inspect/334d5f419d434ee5.json
+  s_4537041956511c::t_3a1886d28124ef 1-67
+package-lock.json
+  s_4537041956511c::t_a9c0ead1304ab8 17-18,2119-2124,2509-2536,2678-2732,2791-2802,3739-3747,4525-4546,4596-4607
+package.json
+  s_4537041956511c::t_f5dbd18c12c3f5 42-43
+snapshots/google/deprecations.md
+  s_4537041956511c::t_63ee97c5897fc5 1-137
+src/sources/fetch-source.ts
+  s_4537041956511c::t_c03ba85dc721da 3,49-53,56,68,79,86-89,97-109,137-140,159-161,163-165
+src/sources/html.ts
+  s_4537041956511c::t_d9a59c6e4a5ba2 1-353
+src/sources/registry.ts
+  s_4537041956511c::t_fc8c818f73e391 4,37,61,63-69,76-104
+src/sources/report.ts
+  s_4537041956511c::t_e3886050c49aea 14-15
+tests/sources-artifact.test.ts
+  s_4537041956511c::t_d4f0d16bb3f093 15
+tests/sources-fetch-source.test.ts
+  s_4537041956511c::t_d2b4c5a57ddbd2 9,16-25,46-93
+tests/sources-registry.test.ts
+  s_4537041956511c::t_7b96c99f688ab9 17,24-33,59-76,86-90,108-124
+tests/sources-run.test.ts
+  s_4537041956511c::t_cd3491b7beac2a 20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "5883eb134f5a51d57ad0bb3a437a2742e41eb801",
+  "prompts": {},
+  "sessions": {
+    "s_4537041956511c": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_fdcf726e9ffe5mqqa8chnIF0to",
+        "model": "auto"
+      },
+      "human_author": "Guillaume Gay <guillaume.gay@protonmail.com>"
+    }
+  }
+}
