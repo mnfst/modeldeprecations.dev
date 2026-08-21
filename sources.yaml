@@ -167,3 +167,12 @@ sources:
     min_bytes: 1500
     max_bytes: 200000
     required_markers: ["# Model Deprecation", "### Deprecated model"]
+  - provider: vertex
+    slug: model-versions
+    format: html
+    url: https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions
+    html_selector: .devsite-article
+    max_download_bytes: 2000000
+    min_bytes: 4000
+    max_bytes: 200000
+    required_markers: ["# Model versions and lifecycle", "### Retired models"]
