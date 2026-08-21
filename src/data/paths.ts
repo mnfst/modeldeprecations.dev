@@ -5,6 +5,9 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 
 export const REPO_ROOT = path.resolve(here, "..", "..");
 export const MODELS_DIR = path.join(REPO_ROOT, "models");
+export const SOURCES_FILE = path.join(REPO_ROOT, "sources.yaml");
+export const SNAPSHOTS_DIR = path.join(REPO_ROOT, "snapshots");
+export const SOURCE_FETCH_DIR = path.join(REPO_ROOT, ".source-fetch");
 export const VIEWS_DIR = path.join(REPO_ROOT, "src", "views");
 export const CLIENT_DIR = path.join(REPO_ROOT, "src", "client");
 export const DIST_DIR = path.join(REPO_ROOT, "dist");

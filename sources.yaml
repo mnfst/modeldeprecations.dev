@@ -1,0 +1,109 @@
+sources:
+  - provider: openai
+    slug: deprecations
+    catalog_provider: openai
+    url: https://developers.openai.com/api/docs/deprecations.md
+    min_bytes: 18000
+    max_bytes: 200000
+    required_markers: ["# Deprecations", "## Upcoming deprecations"]
+  - provider: openai
+    slug: models
+    catalog_provider: openai
+    url: https://developers.openai.com/api/docs/models.md
+    min_bytes: 5000
+    max_bytes: 200000
+    required_markers: ["# Models", "## Recommended models"]
+  - provider: anthropic
+    slug: deprecations
+    catalog_provider: anthropic
+    url: https://platform.claude.com/docs/en/about-claude/model-deprecations.md
+    min_bytes: 6000
+    max_bytes: 200000
+    required_markers: ["## Overview", "## Deprecation downsides and mitigations"]
+  - provider: anthropic
+    slug: models
+    catalog_provider: anthropic
+    url: https://platform.claude.com/docs/en/about-claude/models/overview.md
+    min_bytes: 14000
+    max_bytes: 200000
+    required_markers: ["## Choosing a model", "## Get started with Claude"]
+  - provider: cohere
+    slug: deprecations
+    catalog_provider: cohere
+    url: https://docs.cohere.com/docs/deprecations.md
+    min_bytes: 3000
+    max_bytes: 200000
+    required_markers: ["# Deprecations", "## Deprecation History"]
+  - provider: cohere
+    slug: models
+    catalog_provider: cohere
+    url: https://docs.cohere.com/docs/models.md
+    min_bytes: 15000
+    max_bytes: 200000
+    required_markers: ["# An Overview of Cohere's Models", "## Embed"]
+  - provider: groq
+    slug: deprecations
+    url: https://console.groq.com/docs/deprecations.md
+    min_bytes: 10000
+    max_bytes: 200000
+    required_markers: ["## [Model Deprecation]", "## [Deprecation History]"]
+  - provider: cerebras
+    slug: deprecations
+    url: https://inference-docs.cerebras.ai/support/deprecation.md
+    min_bytes: 1500
+    max_bytes: 200000
+    required_markers: ["# Deprecations"]
+  - provider: fireworks
+    slug: changelog
+    url: https://docs.fireworks.ai/updates/changelog.md
+    min_bytes: 23000
+    max_bytes: 200000
+    required_markers: ["# Changelog"]
+  - provider: perplexity
+    slug: changelog
+    url: https://docs.perplexity.ai/docs/resources/changelog.md
+    min_bytes: 20000
+    max_bytes: 200000
+    required_markers: ["# Changelog"]
+  - provider: xai
+    slug: may-15-retirement
+    catalog_provider: xai
+    url: https://docs.x.ai/developers/migration/may-15-retirement.md
+    min_bytes: 2000
+    max_bytes: 200000
+    required_markers: ["# Grok Model Retirement on May 15, 2026", "## Recommended Replacements"]
+  - provider: z-ai
+    slug: releases
+    catalog_provider: zai
+    url: https://docs.z.ai/release-notes/new-released.md
+    min_bytes: 5000
+    max_bytes: 200000
+    required_markers: ["# New Released", "## Models"]
+  - provider: z-ai
+    slug: pricing
+    catalog_provider: zai
+    url: https://docs.z.ai/guides/overview/pricing.md
+    min_bytes: 1500
+    max_bytes: 200000
+    required_markers: ["# Pricing", "## Models"]
+  - provider: moonshot
+    slug: models
+    catalog_provider: moonshot
+    url: https://platform.kimi.ai/docs/models.md
+    min_bytes: 2400
+    max_bytes: 200000
+    required_markers: ["# Model List", "## Deprecated Models"]
+  - provider: minimax
+    slug: releases
+    catalog_provider: minimax
+    url: https://platform.minimax.io/docs/release-notes/models.md
+    min_bytes: 3000
+    max_bytes: 200000
+    required_markers: ["# Models"]
+  - provider: minimax
+    slug: api-overview
+    catalog_provider: minimax
+    url: https://platform.minimax.io/docs/api-reference/api-overview.md
+    min_bytes: 10000
+    max_bytes: 200000
+    required_markers: ["# API Overview", "## Get API Key"]
