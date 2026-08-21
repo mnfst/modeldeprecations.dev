@@ -1,0 +1,157 @@
+tests/catalog-data.test.ts
+  s_4537041956511c::t_e5fa8e4e3875b6 26,28,38
+vercel.json
+  s_4537041956511c::t_6f487fd426a3da 9-55
+src/data/display.ts
+  s_4537041956511c::t_ba63446c6e574b 12,17
+CONTRIBUTING.md
+  s_4537041956511c::t_77c71a1141615b 42,44
+src/data/logos.ts
+  s_4537041956511c::t_fc64e0c6755dec 24,28
+docs/superpowers/plans/2026-08-20-daily-source-fetch.md
+  s_7d8479463971ca::t_58716a4a855147 1-322
+docs/superpowers/specs/2026-08-20-daily-source-fetch-design.md
+  s_4537041956511c::t_4b23d34dc374eb 1-395
+models/alibaba/gte-rerank.yaml
+  s_4537041956511c::t_03fc79c4775776 2,12
+models/alibaba/qwen-flash-2025-07-28.yaml
+  s_4537041956511c::t_5a50ff9f510a4f 2
+models/alibaba/qwen-plus-2024-11-27.yaml
+  s_4537041956511c::t_aeb7200116018a 2,13
+models/alibaba/qwen-plus-2025-12-01.yaml
+  s_4537041956511c::t_f8e84eeab6b9a8 2
+models/alibaba/qwen-turbo-2024-09-19.yaml
+  s_4537041956511c::t_5a855cc453d50e 2,12
+models/alibaba/qwen3-14b.yaml
+  s_4537041956511c::t_242c11d095bb80 2,13
+models/alibaba/qwen3-30b-a3b.yaml
+  s_4537041956511c::t_cad47d10e835bf 2,12
+models/alibaba/qwen3-32b.yaml
+  s_4537041956511c::t_49ff04bed37a5b 2,12
+models/alibaba/qwen3-8b.yaml
+  s_4537041956511c::t_55a15315dde70e 2,13
+models/alibaba/qwen3-coder-plus.yaml
+  s_4537041956511c::t_f8b54977dde5d2 2,13
+models/alibaba/qwen3-max-2025-09-23.yaml
+  s_4537041956511c::t_d916270cb126da 2,12
+models/alibaba/qwen3-max-2026-01-23.yaml
+  s_4537041956511c::t_3ba730762e93a1 2,13
+models/alibaba/qwen3-max-preview.yaml
+  s_4537041956511c::t_b9df0fb0e5903f 2,13
+models/alibaba/qwen3-max.yaml
+  s_4537041956511c::t_c3f14c5c2287bc 2
+models/alibaba/qwen3-rerank.yaml
+  s_4537041956511c::t_853017234815e8 2
+models/alibaba/qwen3-vl-8b-instruct.yaml
+  s_4537041956511c::t_fe2e483f578bbc 2,12
+models/alibaba/qwen3-vl-8b-thinking.yaml
+  s_4537041956511c::t_48296b2a6e0c93 2,13
+models/alibaba/qwen3-vl-flash-2025-10-15.yaml
+  s_4537041956511c::t_46e43f29153199 2,12
+models/alibaba/qwen3-vl-flash-2026-01-22.yaml
+  s_4537041956511c::t_65badc95face64 2,11
+models/alibaba/qwen3-vl-flash.yaml
+  s_4537041956511c::t_c2046857511ecc 2,13
+models/alibaba/qwen3.5-omni-plus-realtime.yaml
+  s_4537041956511c::t_4e066d9e4bcf37 2
+models/alibaba/qwen3.5-omni-plus.yaml
+  s_4537041956511c::t_d79b41c11bab2e 2
+models/alibaba/qwen3.6-flash.yaml
+  s_4537041956511c::t_3b6dd47a1539bd 2
+models/alibaba/qwen3.6-max-preview.yaml
+  s_4537041956511c::t_36e993e0fb1cb6 2,13
+models/alibaba/qwen3.7-max.yaml
+  s_4537041956511c::t_3b74f51cf7a563 2
+models/alibaba/qwen3.7-plus.yaml
+  s_4537041956511c::t_372b5f13e878ea 2
+models/bedrock/nova-canvas.yaml
+  s_4537041956511c::t_f4beb517c4a65d 2
+models/bedrock/nova-lite.yaml
+  s_4537041956511c::t_8f1dd1787c1148 2
+models/bedrock/nova-micro.yaml
+  s_4537041956511c::t_4447559428b331 2
+models/bedrock/nova-premier.yaml
+  s_4537041956511c::t_be283e8db6af22 2,15
+models/bedrock/nova-pro.yaml
+  s_4537041956511c::t_9cd35d0d6c84ea 2
+models/bedrock/nova-reel-1-0.yaml
+  s_4537041956511c::t_e48d0318d3f8e0 2
+models/bedrock/nova-reel-1-1.yaml
+  s_4537041956511c::t_f2006fd6018142 2
+models/bedrock/nova-sonic.yaml
+  s_4537041956511c::t_12a4c9b4302a10 2
+models/z-ai/glm-4-32b-0414-128k.yaml
+  s_4537041956511c::t_deb0583a688cd4 2
+models/z-ai/glm-4.5-air.yaml
+  s_4537041956511c::t_a6ee9e58524785 2
+models/z-ai/glm-4.5-airx.yaml
+  s_4537041956511c::t_a523828d95b107 2
+models/z-ai/glm-4.5-flash.yaml
+  s_4537041956511c::t_a265bca6d8db58 2
+models/z-ai/glm-4.5-x.yaml
+  s_4537041956511c::t_db8252972d489f 2
+models/z-ai/glm-4.5.yaml
+  s_4537041956511c::t_8fe409468f6cfd 2
+models/z-ai/glm-4.5v.yaml
+  s_4537041956511c::t_dbacacba34eb7c 2
+models/z-ai/glm-4.6.yaml
+  s_4537041956511c::t_efa673412c4d51 2
+models/z-ai/glm-4.6v-flash.yaml
+  s_4537041956511c::t_21d804d13e20e9 2
+models/z-ai/glm-4.6v-flashx.yaml
+  s_4537041956511c::t_cebc4598e18df2 2
+models/z-ai/glm-4.6v.yaml
+  s_4537041956511c::t_e34e380679f768 2
+models/z-ai/glm-4.7-flash.yaml
+  s_4537041956511c::t_9f42a11471ca86 2
+models/z-ai/glm-4.7-flashx.yaml
+  s_4537041956511c::t_a36c048ce9c2f0 2
+models/z-ai/glm-4.7.yaml
+  s_4537041956511c::t_04d4a8a1251142 2
+models/z-ai/glm-5-turbo.yaml
+  s_4537041956511c::t_31571fafb430bf 2
+models/z-ai/glm-5.1.yaml
+  s_4537041956511c::t_099c3174d45659 2
+models/z-ai/glm-5.2.yaml
+  s_4537041956511c::t_241f4b1c42c074 2
+models/z-ai/glm-5.yaml
+  s_4537041956511c::t_cfd0482644e78d 2
+models/z-ai/glm-5v-turbo.yaml
+  s_4537041956511c::t_ce76f29eafda81 2
+models/z-ai/glm-asr-2512.yaml
+  s_4537041956511c::t_30167b445f0a99 2
+models/z-ai/glm-image.yaml
+  s_4537041956511c::t_79a821fa06e784 2
+models/z-ai/glm-ocr.yaml
+  s_4537041956511c::t_fe6c999eb8b0ac 2
+sources.yaml
+  s_4537041956511c::t_6b6c0994edd456 77,84,142,152
+tests/og-card.test.ts
+  s_4537041956511c::t_d652c833086a8b 196-198
+tests/server.test.ts
+  s_4537041956511c::t_3589a22c6bf1a3 45-47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "7de58053914a3a243abee1687bd94fe4c4c48950",
+  "prompts": {},
+  "sessions": {
+    "s_4537041956511c": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_fdcf726e9ffe5mqqa8chnIF0to",
+        "model": "auto"
+      },
+      "human_author": "Guillaume Gay <guillaume.gay@protonmail.com>"
+    },
+    "s_7d8479463971ca": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a01e36-e9ea-7072-a174-cc817a3b7e02",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Guillaume Gay <guillaume.gay@protonmail.com>"
+    }
+  }
+}
