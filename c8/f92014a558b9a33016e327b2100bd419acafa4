@@ -1,0 +1,21 @@
+sources.yaml
+  s_4537041956511c::t_01995d051ea364 120-129
+snapshots/mistral/models.md
+  s_4537041956511c::t_95994973449d64 1-133
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "c8f92014a558b9a33016e327b2100bd419acafa4",
+  "prompts": {},
+  "sessions": {
+    "s_4537041956511c": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_fdcf726e9ffe5mqqa8chnIF0to",
+        "model": "auto"
+      },
+      "human_author": "Guillaume Gay <guillaume.gay@protonmail.com>"
+    }
+  }
+}
