@@ -117,3 +117,13 @@ sources:
     min_bytes: 8000
     max_bytes: 200000
     required_markers: ["# Gemini deprecations", "## Embedding models"]
+  - provider: mistral
+    slug: models
+    catalog_provider: mistral
+    format: html
+    url: https://docs.mistral.ai/models
+    html_selector: 'article[data-page-content="true"]'
+    max_download_bytes: 2000000
+    min_bytes: 10000
+    max_bytes: 200000
+    required_markers: ["# Models Overview", "### Deprecated & retired models"]
