@@ -1,0 +1,22 @@
+CONTRIBUTING.md
+  s_4537041956511c::t_22f12c2fcada77 146-147,156-159
+scripts/check-deployment.mjs
+  s_4537041956511c::t_91b29533110363 145-146
+  s_4537041956511c::t_49fe307d603be6 160
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "72b1cd9f64218062a3d6633239ae858f593f7720",
+  "prompts": {},
+  "sessions": {
+    "s_4537041956511c": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_fdcf726e9ffe5mqqa8chnIF0to",
+        "model": "auto"
+      },
+      "human_author": "Guillaume Gay <guillaume.gay@protonmail.com>"
+    }
+  }
+}
