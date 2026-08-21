@@ -1,0 +1,21 @@
+sources.yaml
+  s_4537041956511c::t_ad7a9103d3a1f9 130-139
+snapshots/deepseek/updates.md
+  s_4537041956511c::t_1fa8f76169714e 1-325
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "3adf135c7347dc27d28a7e3c227044cd3b9b8ca0",
+  "prompts": {},
+  "sessions": {
+    "s_4537041956511c": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_fdcf726e9ffe5mqqa8chnIF0to",
+        "model": "auto"
+      },
+      "human_author": "Guillaume Gay <guillaume.gay@protonmail.com>"
+    }
+  }
+}
