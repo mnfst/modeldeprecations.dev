@@ -1,0 +1,22 @@
+.github/workflows/sources.yml
+  s_4537041956511c::t_b03f4ae6c5aeeb 71-73
+  s_4537041956511c::t_de43ff2784cd47 102,109
+tests/sources-workflow.test.ts
+  s_4537041956511c::t_47b3074d530a14 7,13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "81b944d47041365fffc995c2c7c74997ec5973f4",
+  "prompts": {},
+  "sessions": {
+    "s_4537041956511c": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_fdcf726e9ffe5mqqa8chnIF0to",
+        "model": "auto"
+      },
+      "human_author": "Guillaume Gay <guillaume.gay@protonmail.com>"
+    }
+  }
+}
