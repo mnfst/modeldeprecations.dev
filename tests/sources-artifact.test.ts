@@ -12,6 +12,7 @@ const source: SourceEntry = {
   provider: "openai",
   slug: "deprecations",
   catalog_provider: "openai",
+  format: "markdown",
   url: "https://example.com/deprecations.md",
   min_bytes: 5,
   max_bytes: 1000,

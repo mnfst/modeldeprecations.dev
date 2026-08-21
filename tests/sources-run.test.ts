@@ -17,6 +17,7 @@ function entry(slug = "deprecations"): SourceEntry {
     provider: "openai",
     slug,
     catalog_provider: "openai",
+    format: "markdown",
     url: `https://example.com/${slug}.md`,
     min_bytes: 5,
     max_bytes: 1000,

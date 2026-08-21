@@ -107,3 +107,13 @@ sources:
     min_bytes: 10000
     max_bytes: 200000
     required_markers: ["# API Overview", "## Get API Key"]
+  - provider: google
+    slug: deprecations
+    catalog_provider: google
+    format: html
+    url: https://ai.google.dev/gemini-api/docs/deprecations
+    html_selector: .devsite-article
+    max_download_bytes: 2000000
+    min_bytes: 8000
+    max_bytes: 200000
+    required_markers: ["# Gemini deprecations", "## Embedding models"]

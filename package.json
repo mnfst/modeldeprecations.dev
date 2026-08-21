@@ -39,6 +39,8 @@
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "js-yaml": "^4.1.0",
+    "node-html-markdown": "^2.0.0",
+    "node-html-parser": "^6.1.13",
     "zod": "^3.23.8",
     "zod-to-json-schema": "^3.23.0"
   },

@@ -11,6 +11,8 @@ export const SourceErrorCode = z.enum([
   "shrink",
   "missing_marker",
   "invalid_utf8",
+  "missing_selector",
+  "conversion_failed",
   "missing_snapshot",
   "write_failed",
 ]);
