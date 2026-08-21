@@ -169,6 +169,7 @@ sources:
     required_markers: ["# Model Deprecation", "### Deprecated model"]
   - provider: vertex
     slug: model-versions
+    catalog_provider: vertex
     format: html
     url: https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions
     html_selector: .devsite-article

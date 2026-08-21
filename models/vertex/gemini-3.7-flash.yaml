@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: vertex
+model: gemini-3.7-flash
+name: Gemini 3.7 Flash (Vertex AI)
+description: >-
+  The most recent Flash model on Vertex AI, released August 2026 under
+  short-term availability. No retirement date has been announced; like the rest
+  of the short-term line it will retire 45 days after a replacement ships, so
+  pin it loosely rather than treating the id as stable.
+released_on: 2026-08-13
+status: active
+sources:
+  - url: https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions
+    title: Vertex AI model versions and lifecycle
+    accessed: 2026-08-21
+last_verified: 2026-08-21

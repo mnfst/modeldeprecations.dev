@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: vertex
+model: gemini-3.5-flash
+name: Gemini 3.5 Flash (Vertex AI)
+description: >-
+  A current-generation Flash model on Vertex AI and the named successor to the
+  2.5 Pro line. Google guarantees at least 12 months of availability, so the
+  published "May 19, 2027 or later" retirement date is a floor, not a
+  commitment — the model is active with no firm shutdown date.
+released_on: 2026-05-19
+earliest_shutdown_on: 2027-05-19
+status: active
+sources:
+  - url: https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions
+    title: Vertex AI model versions and lifecycle
+    accessed: 2026-08-21
+last_verified: 2026-08-21

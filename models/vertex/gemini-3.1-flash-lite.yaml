@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: vertex
+model: gemini-3.1-flash-lite
+name: Gemini 3.1 Flash-Lite (Vertex AI)
+description: >-
+  The current low-cost workhorse on Vertex AI. Google guarantees availability
+  for at least 12 months from release, so the published retirement date is a
+  floor ("May 7, 2027 or later") rather than a commitment — it is active, with
+  no firm shutdown to plan around yet.
+released_on: 2026-05-07
+earliest_shutdown_on: 2027-05-07
+status: active
+sources:
+  - url: https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions
+    title: Vertex AI model versions and lifecycle
+    accessed: 2026-08-21
+last_verified: 2026-08-21

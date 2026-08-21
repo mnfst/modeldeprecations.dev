@@ -33,6 +33,7 @@ describe("the shipped catalog", () => {
       "mistral",
       "moonshot",
       "openai",
+      "vertex",
       "xai",
       "xiaomi",
       "z-ai",
