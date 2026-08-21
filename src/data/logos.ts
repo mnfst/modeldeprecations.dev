@@ -21,12 +21,11 @@ const SLUG_TO_LOBE: Record<string, string> = {
   deepseek: "deepseek-color",
   xai: "xai",
   alibaba: "alibabacloud-color",
-  amazon: "nova-color",
-  qwen: "qwen-color",
+  bedrock: "bedrock-color",
   xiaomi: "xiaomimimo",
   minimax: "minimax-color",
   moonshot: "kimi-color",
-  zai: "zai",
+  "z-ai": "zai",
 };
 
 const cache = new Map<string, string | null>();

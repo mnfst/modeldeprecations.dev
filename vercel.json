@@ -6,6 +6,53 @@
   "framework": null,
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/amazon/:path*",
+      "destination": "/bedrock/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/qwen/:path*",
+      "destination": "/alibaba/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/zai/:path*",
+      "destination": "/z-ai/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/api/v1/models/amazon/:path*",
+      "destination": "/api/v1/models/bedrock/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/api/v1/models/qwen/:path*",
+      "destination": "/api/v1/models/alibaba/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/api/v1/models/zai/:path*",
+      "destination": "/api/v1/models/z-ai/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/badge/amazon/:path*",
+      "destination": "/badge/bedrock/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/badge/qwen/:path*",
+      "destination": "/badge/alibaba/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/badge/zai/:path*",
+      "destination": "/badge/z-ai/:path*",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(api|badge)/(.*)",

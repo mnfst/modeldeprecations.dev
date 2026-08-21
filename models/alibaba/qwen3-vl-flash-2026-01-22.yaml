@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: alibaba
+model: qwen3-vl-flash-2026-01-22
+name: Qwen3 VL Flash (2026-01-22)
+description: >-
+  The January 2026 snapshot of VL Flash, and the newest model in Alibaba's entire
+  decommissioning table - under nine months from release to scheduled shutdown.
+shutdown_on: 2026-10-10
+status: deprecated
+replacements:
+  - provider: alibaba
+    model: qwen3.6-flash
+    recommended: true
+sources:
+  - url: https://www.alibabacloud.com/help/en/model-studio/model-depreciation
+    title: Alibaba Cloud Model Studio model decommissioning
+    accessed: 2026-08-03
+last_verified: 2026-08-03

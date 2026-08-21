@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: z-ai
+model: glm-5.1
+name: GLM-5.1
+description: >-
+  The April 2026 refresh of GLM-5, and the model people were pushed to when
+  third-party hosts started dropping GLM-5. On Z.ai's own platform both are still
+  listed and priced, which is the difference worth knowing: a model can be
+  deprecated on someone else's inference service while the source provider keeps
+  serving it.
+released_on: 2026-04-07
+status: active
+sources:
+  - url: https://docs.z.ai/release-notes/new-released
+    title: Z.ai new releases
+    accessed: 2026-08-03
+  - url: https://docs.z.ai/guides/overview/pricing
+    title: Z.ai model pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

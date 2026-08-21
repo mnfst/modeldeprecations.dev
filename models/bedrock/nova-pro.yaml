@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: bedrock
+model: nova-pro
+name: Amazon Nova Pro
+description: >-
+  The multimodal workhorse of the first Nova generation, 300k of context across
+  text, image and video. With Premier now Legacy, this is the most capable Nova
+  still Active, and the only understanding-tier model AWS lists as a distillation
+  teacher that is not itself scheduled for end of life.
+  The Bedrock invoke id is amazon.nova-pro-v1:0.
+status: active
+sources:
+  - url: https://docs.aws.amazon.com/nova/latest/userguide/what-is-nova.html
+    title: What is Amazon Nova
+    accessed: 2026-08-03
+last_verified: 2026-08-03

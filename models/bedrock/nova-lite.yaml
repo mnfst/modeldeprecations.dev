@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: bedrock
+model: nova-lite
+name: Amazon Nova Lite
+description: >-
+  The cheap multimodal Nova, taking the same text, image and video inputs as Pro
+  at a fraction of the price and the same 300k window. It is a distillation
+  student of both Premier and Pro, which means the model AWS taught it with is
+  now Legacy while the student is not.
+  The Bedrock invoke id is amazon.nova-lite-v1:0.
+status: active
+sources:
+  - url: https://docs.aws.amazon.com/nova/latest/userguide/what-is-nova.html
+    title: What is Amazon Nova
+    accessed: 2026-08-03
+last_verified: 2026-08-03

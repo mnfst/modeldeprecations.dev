@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: z-ai
+model: glm-4.6v
+name: GLM-4.6V
+description: >-
+  The December 2025 vision model, released two months after the text GLM-4.6 it is
+  built on. It anchors a three-model tier of its own - base, FlashX and Flash - the
+  same pricing split Z.ai applies to its text models.
+released_on: 2025-12-08
+status: active
+sources:
+  - url: https://docs.z.ai/release-notes/new-released
+    title: Z.ai new releases
+    accessed: 2026-08-03
+  - url: https://docs.z.ai/guides/overview/pricing
+    title: Z.ai model pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

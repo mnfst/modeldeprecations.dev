@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: z-ai
+model: glm-5v-turbo
+name: GLM-5V-Turbo
+description: >-
+  The vision model of the GLM-5 generation, and the only one - there is no base
+  GLM-5V, just the turbo variant. Z.ai's V-series numbering tracks the text models
+  one release behind, so the vision line is always a generation adrift of the
+  flagship.
+released_on: 2026-04-01
+status: active
+sources:
+  - url: https://docs.z.ai/release-notes/new-released
+    title: Z.ai new releases
+    accessed: 2026-08-03
+  - url: https://docs.z.ai/guides/overview/pricing
+    title: Z.ai model pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

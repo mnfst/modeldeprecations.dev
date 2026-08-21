@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: alibaba
+model: qwen-plus-2025-12-01
+name: Qwen Plus (2025-12-01)
+description: >-
+  The December 2025 snapshot of the long-running qwen-plus line, and the named
+  replacement for the 2024-11-27 snapshot that was deprecated in January 2026.
+  Alibaba keeps qwen-plus alive across generations as a dated series rather than
+  retiring the family name, which is why this id looks nothing like qwen3.7-plus.
+status: active
+sources:
+  - url: https://www.alibabacloud.com/help/en/model-studio/models
+    title: Alibaba Cloud Model Studio models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

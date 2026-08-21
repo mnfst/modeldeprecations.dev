@@ -42,9 +42,9 @@ describe("HTML routes", () => {
       "cohere",
       "moonshot",
       "minimax",
-      "zai",
-      "qwen",
-      "amazon",
+      "z-ai",
+      "alibaba",
+      "bedrock",
       "xiaomi",
     ]) {
       const res = await request(app).get(`/${provider}`);
