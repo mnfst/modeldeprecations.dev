@@ -137,3 +137,13 @@ sources:
     min_bytes: 8000
     max_bytes: 200000
     required_markers: ["# Change Log", "## Date:"]
+  - provider: bedrock
+    slug: model-lifecycle
+    catalog_provider: amazon
+    format: html
+    url: https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html
+    html_selector: "#main-col-body"
+    max_download_bytes: 2000000
+    min_bytes: 7000
+    max_bytes: 200000
+    required_markers: ["# Model lifecycle", "## Legacy and end-of-life (EOL) models"]
