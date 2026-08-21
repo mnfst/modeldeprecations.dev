@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
+import { parse } from "node-html-parser";
 import { z } from "zod";
 import { MODELS_DIR, SNAPSHOTS_DIR, SOURCES_FILE } from "../data/paths.js";
 
@@ -33,6 +34,7 @@ export const MODEL_PARAMS_PROVIDERS = [
 
 const Provider = z.enum(MODEL_PARAMS_PROVIDERS);
 const Slug = z.string().regex(SLUG, "must be a lowercase kebab-case slug");
+const Format = z.enum(["markdown", "html"]);
 
 const SourceUrl = z
   .string()
@@ -49,9 +51,6 @@ const SourceUrl = z
       ctx.addIssue({ code: "custom", message: "must not contain credentials" });
     }
     if (parsed.hash) ctx.addIssue({ code: "custom", message: "must not contain a fragment" });
-    if (!parsed.pathname.endsWith(".md")) {
-      ctx.addIssue({ code: "custom", message: "path must end in .md" });
-    }
   });
 
 export const SourceEntrySchema = z
@@ -59,13 +58,50 @@ export const SourceEntrySchema = z
     provider: Provider,
     slug: Slug,
     catalog_provider: Slug.optional(),
+    format: Format.default("markdown"),
     url: SourceUrl,
+    html_selector: z
+      .string()
+      .min(1)
+      .max(200)
+      .regex(/^[^\r\n]+$/)
+      .optional(),
+    max_download_bytes: z.number().int().positive().max(5_000_000).optional(),
     min_bytes: z.number().int().positive(),
     max_bytes: z.number().int().positive(),
     required_markers: z.array(z.string().min(1).max(200)).min(1),
   })
   .strict()
   .superRefine((source, ctx) => {
+    let pathname: string | undefined;
+    try {
+      pathname = new URL(source.url).pathname;
+    } catch {
+      pathname = undefined;
+    }
+    if (source.format === "markdown" && pathname && !pathname.endsWith(".md")) {
+      ctx.addIssue({ code: "custom", path: ["url"], message: "path must end in .md" });
+    }
+    if (source.format === "html" && !source.html_selector) {
+      ctx.addIssue({ code: "custom", path: ["html_selector"], message: "is required for HTML" });
+    }
+    if (source.html_selector) {
+      try {
+        parse("<main></main>").querySelector(source.html_selector);
+      } catch {
+        ctx.addIssue({ code: "custom", path: ["html_selector"], message: "is not valid CSS" });
+      }
+    }
+    if (source.format === "html" && !source.max_download_bytes) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["max_download_bytes"],
+        message: "is required for HTML",
+      });
+    }
+    if (source.format === "markdown" && (source.html_selector || source.max_download_bytes)) {
+      ctx.addIssue({ code: "custom", message: "HTML fields require format: html" });
+    }
     if (source.max_bytes <= source.min_bytes) {
       ctx.addIssue({
         code: "custom",

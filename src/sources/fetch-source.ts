@@ -1,5 +1,6 @@
 import type { SourceEntry } from "./registry.js";
 import type { SourceErrorCode } from "./report.js";
+import { convertHtml, HtmlConversionError } from "./html.js";
 
 const DEFAULT_TIMEOUT_MS = 20_000;
 const MAX_ATTEMPTS = 3;
@@ -45,10 +46,14 @@ function parseRetryAfter(value: string | null, now: number): number | undefined 
   return Math.min(Math.max(date - now, 0), MAX_RETRY_DELAY_MS);
 }
 
-async function readBounded(response: Response, maxBytes: number): Promise<Buffer> {
+async function readBounded(
+  response: Response,
+  maxBytes: number,
+  limitName: "max_bytes" | "max_download_bytes",
+): Promise<Buffer> {
   const stated = response.headers.get("content-length");
   if (stated && Number(stated) > maxBytes) {
-    throw new SourceFetchError("too_large", "response exceeds max_bytes");
+    throw new SourceFetchError("too_large", `response exceeds ${limitName}`);
   }
   if (!response.body) return Buffer.alloc(0);
 
@@ -60,7 +65,7 @@ async function readBounded(response: Response, maxBytes: number): Promise<Buffer
     size += chunk.value.byteLength;
     if (size > maxBytes) {
       await reader.cancel();
-      throw new SourceFetchError("too_large", "response exceeds max_bytes");
+      throw new SourceFetchError("too_large", `response exceeds ${limitName}`);
     }
     chunks.push(chunk.value);
     chunk = await reader.read();
@@ -71,18 +76,35 @@ async function readBounded(response: Response, maxBytes: number): Promise<Buffer
   );
 }
 
-function normalize(raw: Buffer): Buffer {
+function decodeUtf8(raw: Buffer): string {
   let text: string;
   try {
     text = new TextDecoder("utf-8", { fatal: true }).decode(raw);
   } catch {
     throw new SourceFetchError("invalid_utf8", "response is not valid UTF-8");
   }
+  return text;
+}
+
+function normalize(text: string): Buffer {
   const normalized = text
     .replace(/\r\n?/g, "\n")
     .replace(/[\t ]+$/gm, "")
     .replace(/\n*$/, "");
   return Buffer.from(`${normalized}\n`, "utf8");
+}
+
+function prepareBody(source: SourceEntry, raw: Buffer): Buffer {
+  const text = decodeUtf8(raw);
+  if (source.format === "markdown") return normalize(text);
+  try {
+    return normalize(convertHtml(source, text));
+  } catch (error) {
+    if (error instanceof HtmlConversionError) {
+      throw new SourceFetchError(error.code, error.message);
+    }
+    throw new SourceFetchError("conversion_failed", "HTML conversion failed");
+  }
 }
 
 function validateBody(source: SourceEntry, body: Buffer, baseline?: Buffer): void {
@@ -112,7 +134,10 @@ async function oneAttempt(
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
   try {
     const response = await fetchImpl(source.url, {
-      headers: { "user-agent": "modeldeprecations.dev source monitor/1.0" },
+      headers: {
+        "accept-language": "en",
+        "user-agent": "modeldeprecations.dev source monitor/1.0",
+      },
       redirect: "manual",
       signal: controller.signal,
     });
@@ -131,10 +156,13 @@ async function oneAttempt(
       throw new SourceFetchError("http_status", `source returned HTTP ${response.status}`);
     }
     const mediaType = response.headers.get("content-type")?.split(";", 1)[0]?.trim().toLowerCase();
-    if (mediaType !== "text/markdown") {
-      throw new SourceFetchError("content_type", "source did not return text/markdown");
+    const expectedType = source.format === "html" ? "text/html" : "text/markdown";
+    if (mediaType !== expectedType) {
+      throw new SourceFetchError("content_type", `source did not return ${expectedType}`);
     }
-    const body = normalize(await readBounded(response, source.max_bytes));
+    const maxDownloadBytes = source.max_download_bytes ?? source.max_bytes;
+    const limitName = source.format === "html" ? "max_download_bytes" : "max_bytes";
+    const body = prepareBody(source, await readBounded(response, maxDownloadBytes, limitName));
     validateBody(source, body, baseline);
     return body;
   } catch (error) {

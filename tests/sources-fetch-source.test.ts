@@ -6,10 +6,21 @@ const source: SourceEntry = {
   provider: "openai",
   slug: "deprecations",
   catalog_provider: "openai",
+  format: "markdown",
   url: "https://example.com/deprecations.md",
   min_bytes: 5,
   max_bytes: 1000,
   required_markers: ["# Marker"],
+};
+
+const htmlSource: SourceEntry = {
+  ...source,
+  provider: "google",
+  catalog_provider: "google",
+  format: "html",
+  url: "https://example.com/deprecations",
+  html_selector: "article",
+  max_download_bytes: 2000,
 };
 
 function markdown(body = "# Marker\nBody\n", headers: HeadersInit = {}): Response {
@@ -30,6 +41,54 @@ describe("fetchSource", () => {
     });
     expect(fetched.body.toString()).toBe("# Marker\nBody\n");
     expect(fetched.attempts).toBe(1);
+  });
+
+  it("converts the selected HTML content to markdown", async () => {
+    const response = new Response(
+      '<html><nav>Noise</nav><article><h1>Marker<a class="hash-link">#</a></h1><p>Body</p><script>bad()</script></article></html>',
+      { headers: { "content-type": "text/html; charset=utf-8" } },
+    );
+    const fetch = vi.fn(async () => response);
+    const fetched = await fetchSource(htmlSource, undefined, { fetch });
+    expect(fetched.body.toString()).toBe("# Marker\n\nBody\n");
+    expect(fetched.body.toString()).not.toContain("bad");
+    expect(fetch).toHaveBeenCalledWith(
+      htmlSource.url,
+      expect.objectContaining({ headers: expect.objectContaining({ "accept-language": "en" }) }),
+    );
+  });
+
+  it("rejects HTML when the content selector no longer matches", async () => {
+    const response = new Response("<main># Marker</main>", {
+      headers: { "content-type": "text/html" },
+    });
+    await expectCode(
+      fetchSource(htmlSource, undefined, { fetch: vi.fn(async () => response) }),
+      "missing_selector",
+    );
+  });
+
+  it("enforces the raw HTML download bound", async () => {
+    await expect(
+      fetchSource({ ...htmlSource, max_download_bytes: 20 }, undefined, {
+        fetch: vi.fn(
+          async () =>
+            new Response("<article><h1>Marker</h1></article>", {
+              headers: { "content-type": "text/html" },
+            }),
+        ),
+      }),
+    ).rejects.toMatchObject({
+      code: "too_large",
+      message: "response exceeds max_download_bytes",
+    });
+  });
+
+  it("rejects markdown for an HTML source", async () => {
+    await expectCode(
+      fetchSource(htmlSource, undefined, { fetch: vi.fn(async () => markdown()) }),
+      "content_type",
+    );
   });
 
   it("rejects HTML and redirects", async () => {

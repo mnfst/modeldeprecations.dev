@@ -1,0 +1,67 @@
+{
+  "manifest_version": 1,
+  "command": ["gh", "api", "repos/mnfst/modelparams.dev/contents/models/vertex?ref=main"],
+  "command_hash": "334d5f419d434ee5",
+  "root_type": "list",
+  "paths": [
+    {
+      "path": "[]",
+      "types": ["object"]
+    },
+    {
+      "path": "[]._links",
+      "types": ["object"]
+    },
+    {
+      "path": "[]._links.git",
+      "types": ["string"]
+    },
+    {
+      "path": "[]._links.html",
+      "types": ["string"]
+    },
+    {
+      "path": "[]._links.self",
+      "types": ["string"]
+    },
+    {
+      "path": "[].download_url",
+      "types": ["string"]
+    },
+    {
+      "path": "[].git_url",
+      "types": ["string"]
+    },
+    {
+      "path": "[].html_url",
+      "types": ["string"]
+    },
+    {
+      "path": "[].name",
+      "types": ["string"]
+    },
+    {
+      "path": "[].path",
+      "types": ["string"]
+    },
+    {
+      "path": "[].sha",
+      "types": ["string"]
+    },
+    {
+      "path": "[].size",
+      "types": ["integer"]
+    },
+    {
+      "path": "[].type",
+      "types": ["string"]
+    },
+    {
+      "path": "[].url",
+      "types": ["string"]
+    }
+  ],
+  "path_count": 14,
+  "input_items": 11,
+  "sampled_items": 11
+}
