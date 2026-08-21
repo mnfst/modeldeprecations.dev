@@ -127,3 +127,13 @@ sources:
     min_bytes: 10000
     max_bytes: 200000
     required_markers: ["# Models Overview", "### Deprecated & retired models"]
+  - provider: deepseek
+    slug: updates
+    catalog_provider: deepseek
+    format: html
+    url: https://api-docs.deepseek.com/updates/
+    html_selector: article
+    max_download_bytes: 2000000
+    min_bytes: 8000
+    max_bytes: 200000
+    required_markers: ["# Change Log", "## Date:"]
