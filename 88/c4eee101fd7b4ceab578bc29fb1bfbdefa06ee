@@ -1,0 +1,37 @@
+snapshots/alibaba/deprecations.md
+  s_7d8479463971ca::t_334207bea5478f 37-43,49-92,104-113,117-126
+snapshots/bedrock/model-lifecycle.md
+  s_7d8479463971ca::t_02b9cbb6bec36b 5,19,27-42
+snapshots/deepseek/updates.md
+  s_7d8479463971ca::t_d4fa8f144eefae 25,49,68
+snapshots/google/deprecations.md
+  s_7d8479463971ca::t_dd138c6c91f482 3,111-121
+snapshots/mistral/models.md
+  s_7d8479463971ca::t_5bc8e35ec0cb26 29,87-133
+snapshots/vertex/model-versions.md
+  s_7d8479463971ca::t_95da8bfde9d21c 100
+src/sources/fetch-source.ts
+  s_7d8479463971ca::t_081ea26633a1ed 49-53,56,68,164-165
+src/sources/html.ts
+  s_7d8479463971ca::t_96d4cb17c70589 2,37-308,315-326,334-336,338,348-351
+tests/sources-fetch-source.test.ts
+  s_7d8479463971ca::t_0f83847956d3db 72,81-84
+tests/sources-html.test.ts
+  s_7d8479463971ca::t_f14288e4c800a3 1-163
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "88c4eee101fd7b4ceab578bc29fb1bfbdefa06ee",
+  "prompts": {},
+  "sessions": {
+    "s_7d8479463971ca": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a01e36-e9ea-7072-a174-cc817a3b7e02",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Guillaume Gay <guillaume.gay@protonmail.com>"
+    }
+  }
+}
