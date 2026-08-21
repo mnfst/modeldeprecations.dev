@@ -157,3 +157,13 @@ sources:
     min_bytes: 5000
     max_bytes: 200000
     required_markers: ["## Retirement impact", "## Deprecated models"]
+  - provider: xiaomi
+    slug: deprecations
+    catalog_provider: xiaomi
+    format: html
+    url: https://mimo.mi.com/docs/en-US/updates/deprecate
+    html_selector: .mdxContent
+    max_download_bytes: 2000000
+    min_bytes: 1500
+    max_bytes: 200000
+    required_markers: ["# Model Deprecation", "### Deprecated model"]
