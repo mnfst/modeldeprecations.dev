@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: vertex
+model: gemini-2.5-pro
+name: Gemini 2.5 Pro (Vertex AI)
+description: >-
+  The Vertex AI (Gemini Enterprise Agent Platform) flavour of Gemini 2.5 Pro,
+  with thinking enabled by default and a million-token context window. Google
+  has committed to retiring it on the platform on October 20, 2026 — a firmer
+  date than the Gemini API's "not before" window, so it counts as deprecated
+  here even though the model is still active and widely used.
+released_on: 2025-06-17
+shutdown_on: 2026-10-20
+status: deprecated
+replacements:
+  - provider: vertex
+    model: gemini-3.5-flash
+    recommended: true
+sources:
+  - url: https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions
+    title: Vertex AI model versions and lifecycle
+    accessed: 2026-08-21
+last_verified: 2026-08-21

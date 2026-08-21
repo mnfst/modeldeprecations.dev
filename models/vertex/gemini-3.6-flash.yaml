@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: vertex
+model: gemini-3.6-flash
+name: Gemini 3.6 Flash (Vertex AI)
+description: >-
+  A short-term availability Flash model on Vertex AI. Google lists no
+  retirement date yet, but short-term models retire 45 days after a replacement
+  is released, so treat this as a fast-moving id with no committed shutdown
+  window on record.
+released_on: 2026-07-21
+status: active
+sources:
+  - url: https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions
+    title: Vertex AI model versions and lifecycle
+    accessed: 2026-08-21
+last_verified: 2026-08-21

@@ -15,6 +15,7 @@ const PROVIDER_LABELS: Record<string, string> = {
   minimax: "MiniMax",
   moonshot: "Moonshot AI",
   "z-ai": "Z.ai",
+  vertex: "Vertex AI",
 };
 
 function titleCase(slug: string): string {

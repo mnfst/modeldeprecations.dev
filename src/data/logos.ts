@@ -26,6 +26,7 @@ const SLUG_TO_LOBE: Record<string, string> = {
   minimax: "minimax-color",
   moonshot: "kimi-color",
   "z-ai": "zai",
+  vertex: "google-color",
 };
 
 const cache = new Map<string, string | null>();

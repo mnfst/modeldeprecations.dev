@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: vertex
+model: gemini-2.5-flash
+name: Gemini 2.5 Flash (Vertex AI)
+description: >-
+  The fast, cheap half of the 2.5 generation on Vertex AI, and the workhorse
+  most workloads defaulted to through late 2025. Google has committed to
+  retiring it on the platform on October 20, 2026, and points users at the 3.x
+  Flash-Lite line as the replacement.
+released_on: 2025-06-17
+shutdown_on: 2026-10-20
+status: deprecated
+replacements:
+  - provider: vertex
+    model: gemini-3.5-flash-lite
+    recommended: true
+  - provider: vertex
+    model: gemini-3.1-flash-lite
+sources:
+  - url: https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions
+    title: Vertex AI model versions and lifecycle
+    accessed: 2026-08-21
+last_verified: 2026-08-21
