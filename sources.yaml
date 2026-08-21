@@ -74,14 +74,14 @@ sources:
     required_markers: ["# Grok Model Retirement on May 15, 2026", "## Recommended Replacements"]
   - provider: z-ai
     slug: releases
-    catalog_provider: zai
+    catalog_provider: z-ai
     url: https://docs.z.ai/release-notes/new-released.md
     min_bytes: 5000
     max_bytes: 200000
     required_markers: ["# New Released", "## Models"]
   - provider: z-ai
     slug: pricing
-    catalog_provider: zai
+    catalog_provider: z-ai
     url: https://docs.z.ai/guides/overview/pricing.md
     min_bytes: 1500
     max_bytes: 200000
@@ -139,7 +139,7 @@ sources:
     required_markers: ["# Change Log", "## Date:"]
   - provider: bedrock
     slug: model-lifecycle
-    catalog_provider: amazon
+    catalog_provider: bedrock
     format: html
     url: https://docs.aws.amazon.com/bedrock/latest/userguide/model-lifecycle.html
     html_selector: "#main-col-body"
@@ -149,7 +149,7 @@ sources:
     required_markers: ["# Model lifecycle", "## Legacy and end-of-life (EOL) models"]
   - provider: alibaba
     slug: deprecations
-    catalog_provider: qwen
+    catalog_provider: alibaba
     format: html
     url: https://www.alibabacloud.com/help/en/model-studio/model-depreciation
     html_selector: article.product-description

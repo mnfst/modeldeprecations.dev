@@ -9,13 +9,12 @@ const PROVIDER_LABELS: Record<string, string> = {
   deepseek: "DeepSeek",
   xai: "xAI",
   alibaba: "Alibaba",
+  bedrock: "Amazon Bedrock",
   cohere: "Cohere",
-  amazon: "Amazon",
-  qwen: "Qwen",
   xiaomi: "Xiaomi MiMo",
   minimax: "MiniMax",
   moonshot: "Moonshot AI",
-  zai: "Z.ai",
+  "z-ai": "Z.ai",
 };
 
 function titleCase(slug: string): string {

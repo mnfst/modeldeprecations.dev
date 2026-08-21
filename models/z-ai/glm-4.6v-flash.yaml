@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: z-ai
+model: glm-4.6v-flash
+name: GLM-4.6V-Flash
+description: >-
+  The free vision tier. Between GLM-4.5-Flash, GLM-4.7-Flash and this, Z.ai runs
+  three no-cost ids simultaneously - a strategy that gets the models adopted and
+  also means a lot of production code is sitting on endpoints with no support
+  commitment attached.
+status: active
+sources:
+  - url: https://docs.z.ai/release-notes/new-released
+    title: Z.ai new releases
+    accessed: 2026-08-03
+  - url: https://docs.z.ai/guides/overview/pricing
+    title: Z.ai model pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

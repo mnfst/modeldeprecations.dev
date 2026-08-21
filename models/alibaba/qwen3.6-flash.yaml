@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: alibaba
+model: qwen3.6-flash
+name: Qwen3.6 Flash
+description: >-
+  The cheap fast model of the current range, and the single largest destination in
+  Alibaba's deprecation table: eight retiring ids point here, including the entire
+  qwen3 dense series and most of the VL line. Note that Model Studio's own
+  decommissioning page also lists qwen3.6-flash as retiring with itself named as
+  the replacement, which is a documentation error rather than a real retirement.
+status: active
+sources:
+  - url: https://www.alibabacloud.com/help/en/model-studio/models
+    title: Alibaba Cloud Model Studio models
+    accessed: 2026-08-03
+last_verified: 2026-08-03

@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: alibaba
+model: qwen3-14b
+name: Qwen3 14B
+description: >-
+  The 14B dense Qwen3. Alibaba points every retired dense model at qwen3.6-flash
+  regardless of the original size, which for this one is a move from a mid-size
+  dense model to a much larger sparse one - cheaper per token, but not the same
+  thing at all.
+shutdown_on: 2026-10-10
+status: deprecated
+replacements:
+  - provider: alibaba
+    model: qwen3.6-flash
+    recommended: true
+sources:
+  - url: https://www.alibabacloud.com/help/en/model-studio/model-depreciation
+    title: Alibaba Cloud Model Studio model decommissioning
+    accessed: 2026-08-03
+last_verified: 2026-08-03

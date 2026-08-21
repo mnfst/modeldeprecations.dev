@@ -23,8 +23,9 @@ describe("the shipped catalog", () => {
   it("covers every provider the site claims to track", () => {
     const providers = new Set(models.map((entry) => entry.provider));
     expect([...providers].sort()).toEqual([
-      "amazon",
+      "alibaba",
       "anthropic",
+      "bedrock",
       "cohere",
       "deepseek",
       "google",
@@ -32,10 +33,9 @@ describe("the shipped catalog", () => {
       "mistral",
       "moonshot",
       "openai",
-      "qwen",
       "xai",
       "xiaomi",
-      "zai",
+      "z-ai",
     ]);
   });
 

@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: z-ai
+model: glm-4.5-airx
+name: GLM-4.5-AirX
+description: >-
+  The fast-serving Air, combining both of the suffixes Z.ai used in the 4.5
+  generation. Four ids for one model family - base, X, Air and AirX - is the high
+  water mark of Z.ai's naming, and the 4.6 line dropped straight back to one.
+released_on: 2025-07-28
+status: active
+sources:
+  - url: https://docs.z.ai/release-notes/new-released
+    title: Z.ai new releases
+    accessed: 2026-08-03
+  - url: https://docs.z.ai/guides/overview/pricing
+    title: Z.ai model pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

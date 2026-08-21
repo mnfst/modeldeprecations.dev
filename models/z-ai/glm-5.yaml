@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: z-ai
+model: glm-5
+name: GLM-5
+description: >-
+  The February 2026 model that started Z.ai's fifth generation, superseded twice
+  within four months. Several downstream inference providers retired their GLM-5
+  endpoints in April 2026; Z.ai itself published nothing, and the model remains on
+  its pricing page.
+released_on: 2026-02-12
+status: active
+sources:
+  - url: https://docs.z.ai/release-notes/new-released
+    title: Z.ai new releases
+    accessed: 2026-08-03
+  - url: https://docs.z.ai/guides/overview/pricing
+    title: Z.ai model pricing
+    accessed: 2026-08-03
+last_verified: 2026-08-03

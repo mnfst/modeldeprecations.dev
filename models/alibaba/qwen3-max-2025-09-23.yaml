@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: alibaba
+model: qwen3-max-2025-09-23
+name: Qwen3 Max (2025-09-23)
+description: >-
+  The launch snapshot of Qwen3 Max from September 2025. It survives its own
+  successor snapshot's announcement by exactly nothing - Alibaba set both to go on
+  10 October 2026, so pinning the older one bought no extra time.
+shutdown_on: 2026-10-10
+status: deprecated
+replacements:
+  - provider: alibaba
+    model: qwen3.7-max
+    recommended: true
+sources:
+  - url: https://www.alibabacloud.com/help/en/model-studio/model-depreciation
+    title: Alibaba Cloud Model Studio model decommissioning
+    accessed: 2026-08-03
+last_verified: 2026-08-03
