@@ -1,0 +1,41 @@
+models/vertex/gemini-2.5-flash-lite.yaml
+  s_4537041956511c::t_695d35cb08c983 1-21
+models/vertex/gemini-2.5-flash.yaml
+  s_4537041956511c::t_1e45b39075f04a 1-23
+models/vertex/gemini-2.5-pro.yaml
+  s_4537041956511c::t_521ab7a3a5caf4 1-22
+src/data/logos.ts
+  s_4537041956511c::t_f41dd2aec49e54 29
+models/vertex/gemini-3.6-flash.yaml
+  s_4537041956511c::t_17bfc7878f0793 1-16
+models/vertex/gemini-3.5-flash.yaml
+  s_4537041956511c::t_8b3433f9b06b17 1-17
+models/vertex/gemini-3.1-flash-lite.yaml
+  s_4537041956511c::t_23696959f601ef 1-17
+models/vertex/gemini-3.5-flash-lite.yaml
+  s_4537041956511c::t_ffbfe93487d361 1-17
+models/vertex/gemini-3.7-flash.yaml
+  s_4537041956511c::t_4c8d0ad730c87b 1-16
+sources.yaml
+  s_4537041956511c::t_a197d50e415ddf 172
+src/data/display.ts
+  s_4537041956511c::t_873ee1aa559981 18
+tests/catalog-data.test.ts
+  s_4537041956511c::t_910b0dd78796bf 36
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "1daa09240790cfd6bd260edce0ecb650a5ff4de4",
+  "prompts": {},
+  "sessions": {
+    "s_4537041956511c": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_fdcf726e9ffe5mqqa8chnIF0to",
+        "model": "auto"
+      },
+      "human_author": "Guillaume Gay <guillaume.gay@protonmail.com>"
+    }
+  }
+}
