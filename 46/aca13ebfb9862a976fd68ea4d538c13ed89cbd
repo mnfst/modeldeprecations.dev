@@ -1,0 +1,21 @@
+sources.yaml
+  s_4537041956511c::t_e56ba7daf08920 170-178
+snapshots/vertex/model-versions.md
+  s_4537041956511c::t_67b9d495c32be7 1-102
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "46aca13ebfb9862a976fd68ea4d538c13ed89cbd",
+  "prompts": {},
+  "sessions": {
+    "s_4537041956511c": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_fdcf726e9ffe5mqqa8chnIF0to",
+        "model": "auto"
+      },
+      "human_author": "Guillaume Gay <guillaume.gay@protonmail.com>"
+    }
+  }
+}
