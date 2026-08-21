@@ -142,8 +142,8 @@ async function main() {
   // was generated, so a build that stops being refreshed does not break — it
   // just quietly starts lying, counting down to dates that have already passed.
   // Nothing in the repo can detect that either, because the repo is fine; only
-  // the deployed artifact is old. .github/workflows/refresh.yml keeps it moving
-  // and this is what notices when it stops.
+  // the deployed artifact is old. The site rebuilds on every merge to main,
+  // so staleness means nothing has shipped in a while.
   const catalog = await head("/api/v1/models.json");
   let asOf = "";
   try {
@@ -157,7 +157,7 @@ async function main() {
     `the deployed build is at most ${MAX_BUILD_AGE_DAYS} days old`,
     `asOf is ${asOf || "(unreadable)"}, ${Number.isFinite(age) ? `${age} days old` : "unparseable"}. ` +
       `Every countdown on the site is computed against that date, so they are all off by ` +
-      `the same amount. Check the Daily refresh workflow and VERCEL_DEPLOY_HOOK_URL.`,
+      `the same amount. Merge something to main to trigger a fresh build.`,
   );
 
   console.log(`${passes.length} passed`);
