@@ -4,13 +4,13 @@ import { describe, expect, it } from "vitest";
 const file = new URL("../.github/workflows/sources.yml", import.meta.url);
 
 describe("source snapshot workflow", () => {
-  it("keeps fetching credential-free and validates before minting a token", async () => {
+  it("keeps fetching credential-free and validates before publishing", async () => {
     const workflow = await fs.readFile(file, "utf8");
     expect(workflow).toContain("permissions: {}\n");
     expect(workflow).toContain("contents: read");
     expect(workflow).toContain("persist-credentials: false");
     expect(workflow.indexOf("Validate artifact before credentials")).toBeLessThan(
-      workflow.indexOf("Create short-lived publication token"),
+      workflow.indexOf("Update source failure issues"),
     );
     expect(workflow).not.toContain("ANTHROPIC_API_KEY");
     expect(workflow).not.toContain("claude-code-action");

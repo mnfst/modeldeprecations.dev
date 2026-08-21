@@ -68,7 +68,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
-      contents: read
+      contents: write
+      issues: write
+      pull-requests: write
     steps:
       - name: Check out the default branch without credentials
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -95,28 +97,16 @@ jobs:
         id: artifact
         run: npm run sources:validate-artifact -- --artifact .source-fetch/artifact
 
-      - name: Create short-lived publication token
-        id: app-token
-        # Install a GitHub App on this repository with Contents, Issues, and
-        # Pull requests write access, then add these two repository secrets.
-        uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349 # v2
-        with:
-          app-id: ${{ secrets.SOURCE_FETCH_APP_ID }}
-          private-key: ${{ secrets.SOURCE_FETCH_APP_PRIVATE_KEY }}
-          permission-contents: write
-          permission-issues: write
-          permission-pull-requests: write
-
       - name: Update source failure issues
         env:
-          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run sources:publish-issues -- --report .source-fetch/artifact/.source-fetch/report.json
 
       - name: Create or update snapshot pull request
         if: steps.artifact.outputs.has_changes == 'true'
         uses: peter-evans/create-pull-request@22a9089034f40e5a961c8808d113e2c98fb63676 # v7
         with:
-          token: ${{ steps.app-token.outputs.token }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           base: ${{ github.event.repository.default_branch }}
           branch: automation/source-snapshots
           delete-branch: true
