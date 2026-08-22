@@ -2,6 +2,32 @@
 
 ---
 
+## Date: 2026-08-21
+
+### DeepSeek-V4-Flash-Vision-Exp Release
+
+Today, the new multimodal vision understanding model DeepSeek-V4-Flash-Vision-Exp is now available on the DeepSeek API platform. This is an experimental model that can be accessed by setting `model='deepseek-v4-flash-vision-exp'`.
+
+- Terminal Bench 2.1: 83.9
+- NL2Repo: 57.7
+- DeepSWE: 59.3
+- DSBench-Hard: 63.6
+- AutomationBench (Public): 25.7
+- ApexBench (Pass@1): 36.5
+- Agents' Last Exam: 27.3
+- Chartography: 64.3
+- ZeroBench (Pass@5): 35.0
+
+\* For the Code Agent text tasks in the public benchmark sets, the DeepSeek family models were tested using the DeepSeek Harness minimal mode as the framework, with the max effort level, topp=0.95, and temperature=1.0; in the ApexBench and Agents' Last Exam evaluations, the text model DeepSeek-V4-Flash ignores the multimodal elements within them.
+
+In terms of pure-text capabilities (agent, reasoning, world knowledge, etc.), DeepSeek-V4-Flash-Vision-Exp is on par with the official DeepSeek-V4-Flash.
+
+On agent benchmarks that require visual understanding, DeepSeek-V4-Flash-Vision-Exp delivers a significant leap over DeepSeek-V4-Flash, bringing its multimodal agent capabilities close to Opus-4.8.
+
+For usage details, please refer to the [Vision guide](/guides/vision).
+
+---
+
 ## Date: 2026-08-13
 
 ### DeepSeek-V4-Pro Update
