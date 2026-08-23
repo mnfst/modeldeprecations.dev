@@ -1,0 +1,16 @@
+src/sources/html.ts
+  h_4314c622e2d856 85,87-92,94-114,123,142-144,149,152-153,167-168,242
+tests/sources-html.test.ts
+  h_4314c622e2d856 121-136,171,175
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "42e10b22a23c6ad7701176a2e08579770ae3fe9a",
+  "prompts": {},
+  "humans": {
+    "h_4314c622e2d856": {
+      "author": "Guillaume Gay <guillaume.gay@protonmail.com>"
+    }
+  }
+}
