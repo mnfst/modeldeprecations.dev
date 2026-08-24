@@ -1,0 +1,21 @@
+src/sources/html.ts
+  s_a4b01aec2615a6::t_76fa8c02c140da 84-93,99,130-133,135-136,138-139,143-151,153,156-157,169-172,175-176
+tests/sources-html.test.ts
+  s_a4b01aec2615a6::t_a55203a8d1f2ba 1-248
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "a505b60358e6de7a56ac196bb91a0e3dc141dbe5",
+  "prompts": {},
+  "sessions": {
+    "s_a4b01aec2615a6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2e19af9d-9e24-4ef3-a630-64ff45ed747e",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Guillaume Gay <guillaume.gay@protonmail.com>"
+    }
+  }
+}
