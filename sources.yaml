@@ -177,3 +177,12 @@ sources:
     min_bytes: 4000
     max_bytes: 200000
     required_markers: ["# Model versions and lifecycle", "### Retired models"]
+  - provider: thinking-machines
+    slug: model-deprecations
+    format: html
+    url: https://tinker-docs.thinkingmachines.ai/tinker/model-deprecations/
+    html_selector: article.md-content__inner
+    max_download_bytes: 2000000
+    min_bytes: 2000
+    max_bytes: 200000
+    required_markers: ["# Model Deprecations", "## Recommended replacements"]

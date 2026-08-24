@@ -81,11 +81,22 @@ function splitPairedTableCells(root: HTMLElement): void {
   }
 }
 
+// A table rendered inside another table's cell is part of that cell's content,
+// never the data half of a split header, so it is skipped on both sides of the
+// pairing below.
+function isNestedTable(table: HTMLElement): boolean {
+  return !!(table.parentNode as HTMLElement | null)?.closest("table");
+}
+
+// The two halves of a split header are adjacent in document order but not
+// necessarily siblings: a page may wrap each half in its own scroll container,
+// so the halves share no parent to walk between.
 function mergeSplitHeaderTables(root: HTMLElement): void {
   const tables = root.querySelectorAll("table");
   for (let index = 0; index < tables.length - 1; index += 1) {
     const headerTable = tables[index]!;
     const dataTable = tables[index + 1]!;
+    if (isNestedTable(headerTable) || isNestedTable(dataTable)) continue;
     const headerRows = directRows(headerTable);
     const dataRows = directRows(dataTable);
     if (headerRows.length !== 1 || dataRows.length === 0) continue;
@@ -116,18 +127,34 @@ function flattenedCell(cell: HTMLElement, content?: string): string {
   return clone.outerHTML;
 }
 
+// HTML reads a span it cannot parse as 1 rather than as an error, and colspan
+// has no zero. Only rowspan="0" carries meaning: span to the end of the row
+// group. Returning 0 for it defers that to flattenTableSpans, the only place
+// that knows where the group ends.
 function spanValue(cell: HTMLElement, name: "rowspan" | "colspan"): number {
-  const raw = cell.getAttribute(name);
-  if (raw === undefined) return 1;
+  const raw = cell.getAttribute(name)?.trim();
+  if (!raw) return 1;
   const value = Number(raw);
-  if (!Number.isInteger(value) || value < 1) throw new Error(`invalid table ${name}`);
+  if (!Number.isInteger(value) || value < 0) return 1;
+  if (value === 0) return name === "rowspan" ? 0 : 1;
   return value;
 }
 
+// The last row of the row group (thead, tbody, tfoot, or the table itself when
+// the markup has no groups) holding the row at rowIndex.
+function rowGroupEnd(rows: HTMLElement[], rowIndex: number): number {
+  const group = rows[rowIndex]!.parentNode;
+  let end = rowIndex;
+  while (end + 1 < rows.length && rows[end + 1]!.parentNode === group) end += 1;
+  return end;
+}
+
 function flattenTableSpans(table: HTMLElement): void {
+  const rows = directRows(table);
   const pending = new Map<number, { html: string; remaining: number }>();
 
-  for (const row of directRows(table)) {
+  for (let rowIndex = 0; rowIndex < rows.length; rowIndex += 1) {
+    const row = rows[rowIndex]!;
     const flattened: string[] = [];
     let column = 0;
 
@@ -139,9 +166,14 @@ function flattenTableSpans(table: HTMLElement): void {
       column += 1;
     };
 
+    // A rowspan never reaches past its own row group, so an oversized one is
+    // clamped rather than failing the whole page.
+    const availableRows = rowGroupEnd(rows, rowIndex) - rowIndex + 1;
+
     for (const cell of directCells(row)) {
       while (pending.has(column)) appendPending();
-      const rowSpan = spanValue(cell, "rowspan");
+      const declared = spanValue(cell, "rowspan");
+      const rowSpan = declared === 0 ? availableRows : Math.min(declared, availableRows);
       const columnSpan = spanValue(cell, "colspan");
       for (let span = 0; span < columnSpan; span += 1) {
         while (pending.has(column)) appendPending();
