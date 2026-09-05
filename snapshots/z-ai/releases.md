@@ -8,6 +8,14 @@
 
 ## Models
 
+<Update label="2026-08-26" description="  GLM-5.3-Flash">
+  * Native visual capabilities enable the model to observe interfaces, rendering results, and interaction feedback—creating a closed loop across code, browsers, and GUIs.
+
+  * Efficient hybrid architecture: Combines linear and sparse attention with 320B total parameters and 18B activated, significantly reducing compute and KV-cache requirements.
+
+  * Beyond coding: Supports office document and financial research workflows, autonomously breaking down goals, using tools, and refining outputs. Learn more in our [documentation](/guides/vlm/glm-5.3-flash).\*
+</Update>
+
 <Update label="2026-08-18" description="  GLM-5.3">
   * Stronger Coding Capabilities: GLM-5.3 delivers a significant improvement in coding capabilities, achieving a 50% gain over GLM-5.2 on Z.ai Code Bench and reaching state-of-the-art (SOTA) performance among open-source models on public benchmarks, including Terminal Bench 3.0.
 
@@ -26,18 +34,6 @@
   * Designed for long-horizon tasks, GLM-5.1 can work independently for up to 8 hours in a single run, enabling a full loop from planning and execution to iterative refinement and final delivery.
 
   * It demonstrates stronger engineering intelligence across autonomous planning, sustained execution, bug fixing, and strategy iteration, while achieving comprehensive capability alignment with Claude Opus 4.6. Built with multi-turn SFT, RL, and a process-quality evaluation framework, GLM-5.1 further improves stability, consistency, and tool use over extended tasks. Learn more in our [documentation](/guides/llm/glm-5.1).\*
-</Update>
-
-<Update label="2026-04-01" description="  GLM-5V-Turbo">
-  * Designed for vision-based coding and claw-style Agent workflows, GLM-5V-Turbo brings native multimodal understanding to images, video, and text, enabling stronger planning, coding, and action execution in visually grounded tasks.
-
-  * It strengthens multimodal tool use and GUI task execution, allowing the model to better interpret interfaces, design mocks, documents, and charts, plan the next action, and complete end-to-end Agent workflows while maintaining strong pure-text coding and reasoning performance. Learn more in our [documentation](/guides/vlm/glm-5v-turbo).\*
-</Update>
-
-<Update label="2026-03-15" description="  GLM-5-Turbo">
-  * Designed for high-throughput OpenClaw lobster workloads, GLM-5-Turbo focuses on improving stability and efficiency in long-chain Agent tasks, enabling smoother execution for complex, multi-step workflows.
-
-  * It strengthens tool and Skills integration and enhances complex instruction decomposition, allowing the model to better identify task goals, plan execution steps, coordinate across multiple agents, and maintain temporal consistency in extended tasks.Learn more in our [documentation](/guides/llm/glm-5-turbo).\*
 </Update>
 
 <Update label="2026-02-12" description="  GLM-5">

@@ -34,8 +34,9 @@ are.
   [retrieval augmented generation](retrieval-augmented-generation-rag) (RAG), translation, copywriting, and
   similar use cases. They work through the [Chat](../reference/chat) endpoint, which can be used with or without
   RAG.
-* [Rerank](https://cohere.com/blog/rerank/?_gl=1*1t6ls4x*_ga*MTAxNTg1NTM1MS4xNjk1MjMwODQw*_ga_CRGS116RZS*MTcxNzYwMzYxMy4zNTEuMS4xNzE3NjAzNjUxLjIyLjAuMA..) is the fastest way to inject the intelligence of a language model into an existing search system. It can be accessed via the [Rerank](../reference/rerank-1) endpoint.
-* [Embed](https://cohere.com/models/embed?_gl=1*1t6ls4x*_ga*MTAxNTg1NTM1MS4xNjk1MjMwODQw*_ga_CRGS116RZS*MTcxNzYwMzYxMy4zNTEuMS4xNzE3NjAzNjUxLjIyLjAuMA..) improves the accuracy of search, classification, clustering, and RAG results. It powers the [Embed](../reference/embed) endpoint.
+* [Rerank](../../docs/rerank) is the fastest way to inject the intelligence of a language model into an existing search system. It can be accessed via the [Rerank](../reference/rerank-1) endpoint.
+* [Embed](../../docs/cohere-embed) improves the accuracy of search, classification, clustering, and RAG results. It powers the [Embed](../reference/embed) endpoint.
+* [Parse](../../docs/parse) extracts structured, machine-readable data from unstructured enterprise documents, like forms and PDFs. It powers the [Parse](../../v2/reference/parse) endpoint.
 * [Cohere Transcribe](../../v2/docs/transcribe) is Cohere's dedicated audio transcription model for automatic speech
   recognition (ASR). It powers the [Audio Transcriptions](../../v2/reference/create-audio-transcription) endpoint.
   [Cohere Transcribe Arabic](../../v2/docs/transcribe-arabic) is a version of the model optimized for Arabic-language
@@ -88,13 +89,13 @@ In this table, we provide some important context for using Cohere Command models
 
 These models can be used to generate embeddings from text or classify it based on various parameters. Embeddings can be used for estimating semantic similarity between two sentences, choosing a sentence which is most likely to follow another sentence, or categorizing user feedback. The Representation model comes with a variety of helper functions, such as for detecting the language of an input.
 
-| Model Name                      | Description                                                                                                               | Modalities                                   | Dimensions                                 | Context Length | Similarity Metric                                             | Endpoints                                                                 |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | ------------------------------------------ | -------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `embed-v4.0`                    | A model that allows for text and images to be classified or turned into embeddings                                        | Text, Images, Mixed texts/images (i.e. PDFs) | One of '\[256, 512, 1024, 1536 (default)]' | 128k           | Cosine Similarity, Dot Product Similarity, Euclidean Distance | [Embed](../reference/embed),  <br />[Embed Jobs](../reference/embed-jobs) |
-| `embed-english-v3.0`            | A model that allows for text to be classified or turned into embeddings. English only.                                    | Text, Images                                 | 1024                                       | 512            | Cosine Similarity                                             | [Embed](../reference/embed),  <br />[Embed Jobs](../reference/embed-jobs) |
-| `embed-english-light-v3.0`      | A smaller, faster version of `embed-english-v3.0`. Almost as capable, but a lot faster. English only.                     | Text, Images                                 | 384                                        | 512            | Cosine Similarity                                             | [Embed](../reference/embed),  <br />[Embed Jobs](../reference/embed-jobs) |
-| `embed-multilingual-v3.0`       | Provides multilingual classification and embedding support. [See supported languages here.](/docs/supported-languages)    | Text, Images                                 | 1024                                       | 512            | Cosine Similarity                                             | [Embed](../reference/embed), [Embed Jobs](../reference/embed-jobs)        |
-| `embed-multilingual-light-v3.0` | A smaller, faster version of `embed-multilingual-v3.0`. Almost as capable, but a lot faster. Supports multiple languages. | Text, Images                                 | 384                                        | 512            | Cosine Similarity                                             | [Embed](../reference/embed),  <br />[Embed Jobs](../reference/embed-jobs) |
+| Model Name                      | Description                                                                                                               | Modalities                                   | Dimensions                                 | Context Length | Similarity Metric                                             | Endpoints                                                           |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | ------------------------------------------ | -------------- | ------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `embed-v4.0`                    | A model that allows for text and images to be classified or turned into embeddings                                        | Text, Images, Mixed texts/images (i.e. PDFs) | One of '\[256, 512, 1024, 1536 (default)]' | 128k           | Cosine Similarity, Dot Product Similarity, Euclidean Distance | [Embed](../reference/embed),  [Embed Jobs](../reference/embed-jobs) |
+| `embed-english-v3.0`            | A model that allows for text to be classified or turned into embeddings. English only.                                    | Text, Images                                 | 1024                                       | 512            | Cosine Similarity                                             | [Embed](../reference/embed),  [Embed Jobs](../reference/embed-jobs) |
+| `embed-english-light-v3.0`      | A smaller, faster version of `embed-english-v3.0`. Almost as capable, but a lot faster. English only.                     | Text, Images                                 | 384                                        | 512            | Cosine Similarity                                             | [Embed](../reference/embed),  [Embed Jobs](../reference/embed-jobs) |
+| `embed-multilingual-v3.0`       | Provides multilingual classification and embedding support. [See supported languages here.](/docs/supported-languages)    | Text, Images                                 | 1024                                       | 512            | Cosine Similarity                                             | [Embed](../reference/embed), [Embed Jobs](../reference/embed-jobs)  |
+| `embed-multilingual-light-v3.0` | A smaller, faster version of `embed-multilingual-v3.0`. Almost as capable, but a lot faster. Supports multiple languages. | Text, Images                                 | 384                                        | 512            | Cosine Similarity                                             | [Embed](../reference/embed),  [Embed Jobs](../reference/embed-jobs) |
 
 ### Using Embed Models on Different Platforms
 
@@ -135,17 +136,35 @@ In this table, we provide some important context for using Cohere Rerank models 
 | `rerank-english-v3.0`      | N/A                     | Unique per deployment | `Cohere-rerank-v3-english`      | N/A                              |
 | `rerank-multilingual-v3.0` | N/A                     | Unique per deployment | `Cohere-rerank-v3-multilingual` | N/A                              |
 
-<br />
+\
+
 
 Rerank accepts full strings rather than tokens, so the token limit works a little differently. Rerank will automatically chunk documents longer than 510 tokens, and there is therefore no explicit limit to how long a document can be when using rerank. See our [best practice guide](/docs/reranking-best-practices) for more info about formatting documents for the Rerank endpoint.
+
+## Parse
+
+Parse is our vision parsing model for extracting structured data from enterprise documents that can be used in AI search and agentic applications.
+
+| Model Name   | Status | Description                                                                   | Endpoints                         |
+| ------------ | ------ | ----------------------------------------------------------------------------- | --------------------------------- |
+| `parse-v5.0` | Live   | For document intelligence workloads that demand accurate, high-volume parsing | [Parse](../../v2/reference/parse) |
+
+### Using Parse Models on Different Platforms
+
+In this table, we provide some important context for using Cohere Parse on Amazon SageMaker and Azure Foundry.
+
+| Model Name   | Amazon SageMaker      | Azure AI Foundry    |
+| :----------- | :-------------------- | :------------------ |
+| `parse-v5.0` | Unique per deployment | `cohere-parse-v5.0` |
 
 ## Audio
 
 Cohere Transcribe is our dedicated model for audio-in, text-out automatic speech recognition (ASR) workloads. For Arabic-language transcription, use Cohere Transcribe Arabic for best-in-class performance.
 
-| Model Name                  | Status | Description                                                                               | Maximum file size | Endpoints                                                             |
-| --------------------------- | ------ | ----------------------------------------------------------------------------------------- | ----------------- | --------------------------------------------------------------------- |
-| `cohere-transcribe-03-2026` | Live   | Open source research release focused on high-accuracy, multilingual speech transcription. | 25MB              | [Audio Transcriptions](../../v2/reference/create-audio-transcription) |
+| Model Name                         | Status | Description                                                                    | Maximum file size | Endpoints                                                             |
+| ---------------------------------- | ------ | ------------------------------------------------------------------------------ | ----------------- | --------------------------------------------------------------------- |
+| `cohere-transcribe-03-2026`        | Live   | Open source model focused on high-accuracy, multilingual speech transcription. | 25MB              | [Audio Transcriptions](../../v2/reference/create-audio-transcription) |
+| `cohere-transcribe-arabic-07-2026` | Live   | Finetune optimized for Arabic audio inputs                                     | 25MB              | [Audio Transcriptions](../../v2/reference/create-audio-transcription) |
 
 ### Using Audio Models on Different Platforms
 

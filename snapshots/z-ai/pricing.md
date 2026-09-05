@@ -8,17 +8,28 @@
 
 ## Models
 
+### Latest Models
+
+Prices per 1M tokens.
+
+| Model         | Input              | Cached Input       | Cached Input Storage | Output            |
+| :------------ | :----------------- | :----------------- | :------------------- | :---------------- |
+| GLM-5.3-Flash | ~~\$0.15~~ \$0.075 | ~~\$0.03~~ \$0.015 | Limited-time Free    | ~~\$0.50~~ \$0.25 |
+| GLM-5.3       | \$1.4              | \$0.26             | Limited-time Free    | \$4.4             |
+| GLM-5.2       | \$1.4              | \$0.26             | Limited-time Free    | \$4.4             |
+
+<Tip>
+  GLM-5.3-Flash is available at a 50% discount (strikethrough prices are list prices). The promotion ends at 24:00 on September 9, 2026 (UTC+8, Singapore time).
+</Tip>
+
 ### Text Models
 
 Prices per 1M tokens.
 
 | Model               | Input  | Cached Input | Cached Input Storage | Output |
 | :------------------ | :----- | :----------- | :------------------- | :----- |
-| GLM-5.3             | \$1.4  | \$0.26       | Limited-time Free    | \$4.4  |
-| GLM-5.2             | \$1.4  | \$0.26       | Limited-time Free    | \$4.4  |
 | GLM-5.1             | \$1.4  | \$0.26       | Limited-time Free    | \$4.4  |
 | GLM-5               | \$1    | \$0.2        | Limited-time Free    | \$3.2  |
-| GLM-5-Turbo         | \$1.2  | \$0.24       | Limited-time Free    | \$4.0  |
 | GLM-4.7             | \$0.6  | \$0.11       | Limited-time Free    | \$2.2  |
 | GLM-4.7-FlashX      | \$0.07 | \$0.01       | Limited-time Free    | \$0.4  |
 | GLM-4.6             | \$0.6  | \$0.11       | Limited-time Free    | \$2.2  |
@@ -36,7 +47,6 @@ Prices per 1M tokens.
 
 | Model           | Input  | Cached Input | Cached Input Storage | Output |
 | :-------------- | :----- | :----------- | :------------------- | :----- |
-| GLM-5V-Turbo    | \$1.2  | \$0.24       | Limited-time Free    | \$4    |
 | GLM-4.6V        | \$0.3  | \$0.05       | Limited-time Free    | \$0.9  |
 | GLM-OCR         | \$0.03 | \\           | \\                   | \$0.03 |
 | GLM-4.6V-FlashX | \$0.04 | \$0.004      | Limited-time Free    | \$0.4  |
@@ -62,15 +72,9 @@ Prices per image.
 
 Prices per video.
 
-| Model            | Price |
-| :--------------- | :---- |
-| CogVideoX-3      | \$0.2 |
-| ViduQ1-Text      | \$0.4 |
-| ViduQ1-Image     | \$0.4 |
-| ViduQ1-Start-End | \$0.4 |
-| Vidu2-Image      | \$0.2 |
-| Vidu2-Start-End  | \$0.2 |
-| Vidu2-Reference  | \$0.4 |
+| Model       | Price |
+| :---------- | :---- |
+| CogVideoX-3 | \$0.2 |
 
 ### Audio Models
 

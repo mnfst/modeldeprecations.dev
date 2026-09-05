@@ -1,3 +1,5 @@
+[ View as Markdown](index.md "Open the Markdown source of this page")
+
 # Model Deprecations
 
 ## How does Tinker handle model deprecation?

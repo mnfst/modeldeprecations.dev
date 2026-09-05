@@ -4,19 +4,83 @@
 
 # Changelog
 
+<Update label="2026-09-01">
+  <Badge color="blue">Inference</Badge>
+
+  # Serverless rate limit ceilings now scale by model size
+
+  Serverless adaptive rate limit ceilings now vary by model size tier. Smaller models (\< 400B parameters) get higher ceilings; medium models (400B – \< 1.6T) get intermediate ceilings; large models (≥ 1.6T) keep the previous base ceilings. See [Serverless rate limits](/serverless/rate-limits#model-size-tiers) for tier thresholds and ceiling values.
+</Update>
+
+<Update label="2026-08-30">
+  <Badge color="purple">Training</Badge>
+
+  # New Serverless Training models: DeepSeek V4 Flash 0731, Qwen 3.8 27B, and Muse Glimmer 30B
+
+  The following models are now available for LoRA workloads on the shared Serverless Training pool:
+
+  * **[DeepSeek V4 Flash 0731](https://app.fireworks.ai/models/fireworks/deepseek-v4-flash-0731)** with up to 262K context
+  * **[Qwen 3.8 27B](https://app.fireworks.ai/models/fireworks/qwen3p8-27b)** with up to 128K context
+  * **[Muse Glimmer 30B](https://app.fireworks.ai/models/fireworks/muse-glimmer-30b)** with up to 128K context
+
+  See the [Serverless Training guide](/fine-tuning/training-api/serverless) for setup and the [training model catalog](/fine-tuning/models) for current availability.
+</Update>
+
+<Update label="2026-08-27">
+  <Badge color="blue">Inference</Badge>
+
+  # Serverless deprecation: MiniMax M2.7, GPT OSS 20B, Kimi K2.6 Turbo/Fast, Kimi K2.7 Code Fast, DeepSeek V4 Pro
+
+  The following models are deprecated from serverless effective August 27, 2026.
+
+  ## **Recommended migrations**
+
+  * **[MiniMax M2.7](https://app.fireworks.ai/models/fireworks/minimax-m2p7)** — migrate to **[MiniMax M3](https://app.fireworks.ai/models/fireworks/minimax-m3)**
+  * **[GPT OSS 20B](https://app.fireworks.ai/models/fireworks/gpt-oss-20b)** — migrate to **[GPT OSS 120B](https://app.fireworks.ai/models/fireworks/gpt-oss-120b)** or **[Qwen3 8B](https://app.fireworks.ai/models/fireworks/qwen3-8b)** for lower-latency workloads
+  * **[Kimi K2.6 Turbo / Fast](https://app.fireworks.ai/models/fireworks/kimi-k2p6)** — migrate to **[Kimi K2.6](https://app.fireworks.ai/models/fireworks/kimi-k2p6)** (standard serving path)
+  * **[Kimi K2.7 Code Fast](https://app.fireworks.ai/models/fireworks/kimi-k2p7-code)** — migrate to **[Kimi K2.7 Code](https://app.fireworks.ai/models/fireworks/kimi-k2p7-code)** (standard serving path)
+  * **[DeepSeek V4 Pro](https://app.fireworks.ai/models/fireworks/deepseek-v4-pro)** — migrate to **[DeepSeek V4 Pro (0813)](https://app.fireworks.ai/models/fireworks/deepseek-v4-pro-0813)**
+</Update>
+
+<Update label="2026-08-26">
+  <Badge color="purple">Training</Badge>
+
+  # Serverless Training deprecation: Qwen 3.5 9B and Qwen 3.6 27B
+
+  **Qwen 3.5 9B** and **Qwen 3.6 27B** are deprecated from Serverless Training effective August 26, 2026.
+
+  Migrate new and existing Serverless Training workloads to **[Qwen 3.8 27B](https://app.fireworks.ai/models/fireworks/qwen3p8-27b)**.
+
+  This change applies to the shared Serverless Training pool. Check the [training model catalog](/fine-tuning/models) for availability on other training surfaces.
+</Update>
+
+<Update label="2026-08-25">
+  <Badge color="gray">Platform</Badge>
+
+  # SSO documentation: IdP-initiated SAML
+
+  Updated the [Custom SSO](/accounts/sso) guide. IdP-initiated SAML is supported as an opt-in (`--enable-idp-initiated-sso`); the previous troubleshooting copy that said Fireworks only supported SP-initiated login was incorrect.
+</Update>
+
 <Update label="2026-08-14">
+  <Badge color="blue">Inference</Badge>
+
   # Serverless deprecation: DeepSeek V4 Flash
 
   **DeepSeek V4 Flash** is deprecated from serverless. Migrate to **[DeepSeek V4 Flash (0731)](https://app.fireworks.ai/models/fireworks/deepseek-v4-flash-0731)**.
 </Update>
 
 <Update label="2026-07-16">
+  <Badge color="purple">Training</Badge>
+
   # SFT learning rate scheduler documentation
 
   Documented learning rate scheduler settings for supervised fine-tuning jobs, including `constant`, `linear`, and `cosine` schedules via `firectl` and the REST API `lrScheduler` object.
 </Update>
 
 <Update label="2026-06-26">
+  <Badge color="blue">Inference</Badge>
+
   # Serverless deprecation: Kimi K2.5 and Qwen 3.6 Plus
 
   **Kimi K2.5** and **Qwen 3.6 Plus** are deprecated from serverless.
@@ -28,18 +92,24 @@
 </Update>
 
 <Update label="2026-06-17">
+  <Badge color="blue">Inference</Badge>
+
   # Serverless deprecation: MiniMax M2.5
 
   **MiniMax M2.5** is deprecated from serverless. Migrate to **[MiniMax M2.7](https://app.fireworks.ai/models/fireworks/minimax-m2p7)**.
 </Update>
 
 <Update label="2026-06-15">
+  <Badge color="blue">Inference</Badge>
+
   # New model: GLM 5.2
 
   **[GLM 5.2](https://app.fireworks.ai/models/fireworks/glm-5p2)** is now available in the Model Library.
 </Update>
 
 <Update label="2026-06-12">
+  <Badge color="blue">Inference</Badge>
+
   # New models: Kimi K2.7 Code, MiniMax M3, and Qwen 3.7 Plus
 
   The following models are now available in the Model Library:
@@ -50,12 +120,16 @@
 </Update>
 
 <Update label="2026-06-10">
+  <Badge color="blue">Inference</Badge>
+
   # Audio inference and image generation deprecation
 
   Audio inference and image generation are deprecated.
 </Update>
 
 <Update label="2026-05-14">
+  <Badge color="blue">Inference</Badge>
+
   # Serverless deprecation: legacy models removed May 14, 2026
 
   Several legacy serverless models will be decommissioned on **May 14, 2026** to make room for newer, higher-performance releases. This applies **only to serverless** usage; **dedicated deployments are unaffected**.
@@ -79,6 +153,8 @@
 </Update>
 
 <Update label="2026-02-05">
+  <Badge color="blue">Inference</Badge> <Badge color="purple">Training</Badge> <Badge color="gray">Platform</Badge>
+
   # Video & Audio Models, AWS S3 Training Integration, and SSO Improvements
 
   ## **Video & Audio Input Models**
@@ -91,7 +167,7 @@
 
   Training datasets can now be stored in your own AWS S3 buckets using GCP-to-AWS OIDC federation. This Bring Your Own Bucket (BYOB) approach keeps your data private while enabling secure access during Supervised Fine-Tuning and Reinforcement Fine-Tuning jobs—no long-lived credentials required.
 
-  See the [Secure Training (BYOB) documentation](/fine-tuning/finetuning-intro#training-security) for IAM role setup and usage examples.
+  See the [Secure Training (BYOB) documentation](/guides/security_compliance/secure_training) for IAM role setup and usage examples.
 
   ## **Just-In-Time (JIT) User Provisioning for SSO** (Enterprise)
 
@@ -102,7 +178,7 @@
   ## 📚 Documentation Updates
 
   * **Video & Audio Inputs:** New guide for processing video and audio with Qwen3 Omni and Molmo2 models ([Video & Audio Inputs](/guides/video-audio-inputs))
-  * **AWS S3 Bucket Integration:** BYOB dataset storage for training via OIDC federation ([Secure Training](/fine-tuning/finetuning-intro#training-security))
+  * **AWS S3 Bucket Integration:** BYOB dataset storage for training via OIDC federation ([Secure Training](/guides/security_compliance/secure_training))
   * **Rate Limits Clarification:** Expanded documentation on adaptive serverless limits, upper bounds, and monitoring ([Serverless rate limits](/serverless/rate-limits))
   * **Anthropic-Compatible Thinking Parameter:** Control reasoning with `thinking` parameter alongside `reasoning_effort` ([Reasoning](/guides/reasoning))
   * **Scaling from Zero Behavior:** Deployments scaled to zero return `503` immediately with retry guidance ([Autoscaling](/deployments/autoscaling))
@@ -134,6 +210,8 @@
 </Update>
 
 <Update label="2026-01-20">
+  <Badge color="purple">Training</Badge> <Badge color="gray">Platform</Badge>
+
   # Warm-Start Training and Azure Model Uploads
 
   ## **Warm-Start Training for Reinforcement Fine-Tuning**
@@ -171,6 +249,8 @@
 </Update>
 
 <Update label="2025-12-22">
+  <Badge color="blue">Inference</Badge> <Badge color="purple">Training</Badge> <Badge color="gray">Platform</Badge>
+
   # Playground Categories, New User Roles, Fine-Tuning Improvements, and New Models
 
   ## **Playground Categories**
@@ -229,6 +309,8 @@
 </Update>
 
 <Update label="2025-12-15">
+  <Badge color="blue">Inference</Badge> <Badge color="purple">Training</Badge> <Badge color="gray">Platform</Badge>
+
   # Reasoning Guide, Prompt Caching Updates, New Models and CLI Updates
 
   ## **Reasoning Guide**
@@ -291,6 +373,8 @@
 </Update>
 
 <Update label="2025-12-08">
+  <Badge color="blue">Inference</Badge> <Badge color="purple">Training</Badge> <Badge color="gray">Platform</Badge>
+
   # DeepSeek V3.2 on Serverless, Cached Token Pricing, and New Models
 
   ## ☁️ Serverless
@@ -348,6 +432,8 @@
 </Update>
 
 <Update label="2025-12-01">
+  <Badge color="blue">Inference</Badge> <Badge color="purple">Training</Badge> <Badge color="gray">Platform</Badge>
+
   # Audit Logs, Dataset Download, Weighted Training for Reinforcement Fine-Tuning, and New Model
 
   ## **Audit Logs in Web App**
@@ -398,6 +484,8 @@
 </Update>
 
 <Update label="2025-11-24">
+  <Badge color="blue">Inference</Badge> <Badge color="purple">Training</Badge> <Badge color="gray">Platform</Badge>
+
   # Evaluator Improvements, Kimi K2 Thinking on Serverless, and New API Endpoints
 
   ## **Improved Evaluator Creation Experience**
@@ -463,6 +551,8 @@
 </Update>
 
 <Update label="2025-11-12">
+  <Badge color="purple">Training</Badge>
+
   ## ☀️ Sunsetting Build SDK
 
   The Build SDK is being deprecated in favor of a new Python SDK generated
@@ -490,6 +580,8 @@
 </Update>
 
 <Update label="2025-08-22">
+  <Badge color="purple">Training</Badge>
+
   ## Supervised Fine-Tuning
 
   We now support supervised fine tuning with separate thinking traces for reasoning models (e.g. DeepSeek R1, GPT OSS, Qwen3 Thinking etc) that ensures training-inference consistency. An example including thinking traces would look like:
@@ -516,12 +608,16 @@
 </Update>
 
 <Update label="2025-08-10">
+  <Badge color="purple">Training</Badge>
+
   ## Supervised Fine-Tuning
 
   We now support Qwen3 MoE model (Qwen3 dense models are already supported) and GPT OSS models for supervised fine-tuning. GPT OSS model fine tunning support is single-turn without thinking traces at the moment.
 </Update>
 
 <Update label="2025-07-29">
+  <Badge color="purple">Training</Badge> <Badge color="gray">Platform</Badge>
+
   ## 🎨 Vision-Language Model Fine-Tuning
 
   You can now fine-tune Vision-Language Models (VLMs) on Fireworks AI using the Qwen 2.5 VL model family.
@@ -540,7 +636,7 @@
   * Support for up to 64K context length during training
   * Built on the same Supervised Fine-tuning V2 infrastructure as text models
 
-  See the [VLM fine-tuning documentation](/fine-tuning/fine-tuning-models#vision-fine-tuning) for setup instructions and dataset formatting requirements.
+  See the [VLM fine-tuning documentation](/fine-tuning/fine-tuning-models#vision-training) for setup instructions and dataset formatting requirements.
 
   ## 🔧 Build SDK: Deployment Configuration Application Requirement
 
@@ -566,6 +662,8 @@
 </Update>
 
 <Update label="2025-07-23">
+  <Badge color="purple">Training</Badge>
+
   ## 🚀 Bring Your Own Rollout and Reward Development for Reinforcement Learning
 
   You can now develop your own custom rollout and reward functionality while using
@@ -577,12 +675,16 @@
 </Update>
 
 <Update label="2025-07-16">
+  <Badge color="purple">Training</Badge>
+
   ## Supervised Fine-Tuning V2
 
   We now support Llama 4 MoE model supervised fine-tuning (Llama 4 Scout, Llama 4 Maverick, Text only).
 </Update>
 
 <Update label="2025-07-10">
+  <Badge color="gray">Platform</Badge>
+
   ## 🏗️ Build SDK `LLM` Deployment Logic Refactor
 
   Based on early feedback from users and internal testing, we've refactored the
@@ -599,6 +701,8 @@
 </Update>
 
 <Update label="2025-07-02">
+  <Badge color="blue">Inference</Badge>
+
   ## 🚀 Support for Responses API in Python SDK
 
   You can now use the Responses API in the Python SDK. This is useful if you want to use the Responses API in your own applications.
@@ -607,6 +711,8 @@
 </Update>
 
 <Update label="2025-07-01">
+  <Badge color="gray">Platform</Badge>
+
   ## Support for LinkedIn authentication
 
   You can now log in to Fireworks using your LinkedIn account. This is useful if
@@ -627,6 +733,8 @@
 </Update>
 
 <Update label="2025-06-30">
+  <Badge color="blue">Inference</Badge> <Badge color="gray">Platform</Badge>
+
   ## Support for GitHub authentication
 
   You can now log in to Fireworks using your GitHub account. This is useful if
@@ -653,6 +761,8 @@
 </Update>
 
 <Update label="2025-06-24">
+  <Badge color="blue">Inference</Badge> <Badge color="purple">Training</Badge>
+
   ## 🎯 Build SDK: Reward-kit integration for evaluator development
 
   The Build SDK now natively integrates with [reward-kit](https://github.com/fw-ai-external/reward-kit) to simplify evaluator development for [Reinforcement Fine-Tuning (RFT)](/fine-tuning/reinforcement-fine-tuning-models). You can now create custom evaluators in Python with automatic dependency management and seamless deployment to Fireworks infrastructure.
@@ -677,6 +787,8 @@
 </Update>
 
 <Update label="2025-06-13">
+  <Badge color="purple">Training</Badge>
+
   ## Supervised Fine-Tuning V2
 
   Supervised Fine-Tuning V2 released.
@@ -696,12 +808,16 @@
 </Update>
 
 <Update label="2025-05-20">
+  <Badge color="blue">Inference</Badge>
+
   ## Diarization and batch processing support added to audio inference
 
   See our [blog post](https://fireworks.ai/blog/audio-summer-updates-and-new-features) for details.
 </Update>
 
 <Update label="2025-05-19">
+  <Badge color="purple">Training</Badge>
+
   ## 🚀 Easier & faster LoRA fine-tune deployments on Fireworks
 
   You can now deploy a LoRA fine-tune with a single command and get speeds that approximately match the base model:

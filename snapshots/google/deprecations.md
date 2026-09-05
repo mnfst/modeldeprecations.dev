@@ -10,7 +10,8 @@ Deprecation announcements are made on the [Release notes](/gemini-api/docs/chang
 
 | **Model**                      | **Release date**  | **Shutdown date**          | **Recommended replacement** |
 | ------------------------------ | ----------------- | -------------------------- | --------------------------- |
-| gemini-3.7-flash               | August 2026       | No shutdown date announced |                             |
+| gemini-3.8-flash               | September 2, 2026 | No shutdown date announced |                             |
+| gemini-3.7-flash               | August 13, 2026   | No shutdown date announced |                             |
 | gemini-3.6-flash               | July 21, 2026     | No shutdown date announced |                             |
 | gemini-3.5-flash-lite          | July 21, 2026     | No shutdown date announced |                             |
 | gemini-3.5-flash               | May 19, 2026      | No shutdown date announced |                             |
@@ -65,8 +66,10 @@ Deprecation announcements are made on the [Release notes](/gemini-api/docs/chang
 
 | **Model**                                     | **Release date**  | **Shutdown date**          | **Recommended replacement**   |
 | --------------------------------------------- | ----------------- | -------------------------- | ----------------------------- |
+| gemini-3.5-transcribe-live                    | August 2026       | No shutdown date announced |                               |
 | gemini-2.0-flash-live-001                     | April 9, 2025     | December 9, 2025           | gemini-3.1-flash-live-preview |
 | Preview models                                |                   |                            |                               |
+| gemini-3.5-live-translate-preview             | June 2026         | No shutdown date announced |                               |
 | gemini-3.1-flash-live-preview                 | March 11, 2026    | No shutdown date announced |                               |
 | gemini-2.5-flash-native-audio-preview-12-2025 | December 12, 2025 | No shutdown date announced | gemini-3.1-flash-live-preview |
 | gemini-live-2.5-flash-preview                 | June 17, 2025     | December 9, 2025           | gemini-3.1-flash-live-preview |
@@ -75,6 +78,7 @@ Deprecation announcements are made on the [Release notes](/gemini-api/docs/chang
 
 | **Model**                    | **Release date** | **Shutdown date**          | **Recommended replacement**  |
 | ---------------------------- | ---------------- | -------------------------- | ---------------------------- |
+| gemini-3.5-transcribe        | August 2026      | No shutdown date announced |                              |
 | Preview models               |                  |                            |                              |
 | gemini-3.1-flash-tts-preview | April 13, 2026   | No shutdown date announced |                              |
 | gemini-2.5-flash-preview-tts | May 20, 2025     | No shutdown date announced | gemini-3.1-flash-tts-preview |
@@ -120,13 +124,22 @@ Deprecation announcements are made on the [Release notes](/gemini-api/docs/chang
 | veo-3.0-generate-preview      | July 31, 2025     | November 12, 2025          | veo-3.1-generate-preview                                                                                                                                                         |
 | veo-3.0-fast-generate-preview | July 31, 2025     | November 12, 2025          | veo-3.1-fast-generate-preview                                                                                                                                                    |
 
+## Gemini Omni Flash models
+
+| **Model**                 | **Release date** | **Shutdown date**          | **Recommended replacement** |
+| ------------------------- | ---------------- | -------------------------- | --------------------------- |
+| gemini-omni-1.1-flash     | August 27, 2026  | No shutdown date announced |                             |
+| Deprecated models         |                  |                            |                             |
+| gemini-omni-flash-preview | June 30, 2026    | September 30, 2026         | gemini-omni-1.1-flash       |
+
 ## Lyria models
 
-| **Model**            | **Release date** | **Shutdown date**          | **Recommended replacement** |
-| -------------------- | ---------------- | -------------------------- | --------------------------- |
-| lyria-3-clip-preview | March 25, 2026   | No shutdown date announced |                             |
-| lyria-3-pro-preview  | March 25, 2026   | No shutdown date announced |                             |
-| lyria-realtime-exp   | May 20, 2025     | No shutdown date announced |                             |
+| **Model**            | **Release date**  | **Shutdown date**          | **Recommended replacement** |
+| -------------------- | ----------------- | -------------------------- | --------------------------- |
+| lyria-3.5            | September 3, 2026 | No shutdown date announced |                             |
+| lyria-3-clip-preview | March 25, 2026    | No shutdown date announced |                             |
+| lyria-3-pro-preview  | March 25, 2026    | No shutdown date announced | lyria-3.5                   |
+| lyria-realtime-exp   | May 20, 2025      | No shutdown date announced |                             |
 
 ## Robotics models
 

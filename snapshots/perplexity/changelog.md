@@ -8,6 +8,18 @@
   Looking ahead? Check out our [Feature Roadmap](/docs/resources/feature-roadmap) to see what's coming next.
 </Tip>
 
+<Update label="September 2026" tags={["Agent API", "Router", "Models"]}>
+  **GLM 5.3 Flash**
+
+  The Agent API and Router API now support `perplexity/glm-5.3-flash` at \$0.15 per million uncached-input tokens, \$0.03 per million cached-input tokens, and \$0.50 per million output tokens. See the [Agent API Models reference](/docs/agent-api/models) or the [Router model catalog](/docs/router/models).
+</Update>
+
+<Update label="August 2026" tags={["Agent API", "Router", "Models"]}>
+  **GLM 5.3**
+
+  The Agent API and Router API now support `perplexity/glm-5.3` at \$1.40 per million uncached-input tokens, \$0.26 per million cached-input tokens, and \$4.40 per million output tokens. See the [Agent API Models reference](/docs/agent-api/models) or the [Router model catalog](/docs/router/models).
+</Update>
+
 <Update label="August 2026" tags={["Agent API", "Presets"]}>
   **Prompt caching for presets**
 
@@ -23,7 +35,7 @@
 <Update label="August 2026" tags={["Agent API", "Router", "Models"]}>
   **Gemini 3.7 Flash**
 
-  The Agent API and Router API now support `google/gemini-3.7-flash` at launch pricing of \$0.375 per million input tokens, \$0.0375 per million cached-input tokens, and \$1.875 per million output tokens. See the [Agent API Models reference](/docs/agent-api/models).
+  Pricing for `google/gemini-3.7-flash` increased on August 27, 2026 to \$0.75 per million input tokens, \$0.075 per million cached-input tokens, and \$3.75 per million output and reasoning tokens. See the [Agent API Models reference](/docs/agent-api/models).
 </Update>
 
 <Update label="August 2026" tags={["Agent API", "Models"]}>
@@ -35,19 +47,19 @@
 <Update label="August 2026" tags={["Agent API", "Models"]}>
   **NVIDIA Nemotron 3 Ultra**
 
-  The Agent API and Router API now support `perplexity/nemotron-3-ultra-550b-a55b` at \$0.25 per million input or cached-input tokens and \$2.50 per million output tokens. See the [Agent API Models reference](/docs/agent-api/models) or the [Router model catalog](/docs/gateway/models).
+  The Agent API and Router API now support `perplexity/nemotron-3-ultra-550b-a55b` at \$0.25 per million input or cached-input tokens and \$2.50 per million output tokens. See the [Agent API Models reference](/docs/agent-api/models) or the [Router model catalog](/docs/router/models).
 </Update>
 
 <Update label="August 2026" tags={["Agent API", "Router", "Models"]}>
   **NVIDIA Nemotron 3.5 Lightning**
 
-  The Agent API and Router API now support `perplexity/nemotron-3.5-lightning-30b-a3b`, a fast, efficient open-weight reasoning model, at \$0.0115 per million input tokens, \$0.00115 per million cached-input tokens, and \$0.17 per million output tokens. See the [Agent API Models reference](/docs/agent-api/models) or the [Router model catalog](/docs/gateway/models).
+  The Agent API and Router API now support `perplexity/nemotron-3.5-lightning-30b-a3b`, a fast, efficient open-weight reasoning model, at \$0.0115 per million input tokens, \$0.00115 per million cached-input tokens, and \$0.17 per million output tokens. See the [Agent API Models reference](/docs/agent-api/models) or the [Router model catalog](/docs/router/models).
 </Update>
 
 <Update label="August 2026" tags={["Agent API", "Router", "Models"]}>
   **DeepSeek V4 Flash 0731**
 
-  The Agent API and Router API now support `perplexity/deepseek-v4-flash-0731`, a fast, efficient open reasoning model with a 1M-token context window. See pricing in the [Agent API Models reference](/docs/agent-api/models) or the [Router model catalog](/docs/gateway/models).
+  The Agent API and Router API now support `perplexity/deepseek-v4-flash-0731`, a fast, efficient open reasoning model with a 1M-token context window. See pricing in the [Agent API Models reference](/docs/agent-api/models) or the [Router model catalog](/docs/router/models).
 </Update>
 
 <Update label="July 2026" tags={["Agent API", "Models", "Pricing"]}>
@@ -67,7 +79,7 @@
   * Automatic health-based routing and failover across model deployments
   * Per-token pricing at each model's published rates, with no per-request fees
 
-  [Get started with the Router API →](/docs/gateway/quickstart)
+  [Get started with the Router API →](/docs/router/quickstart)
 </Update>
 
 <Update label="July 2026" tags={["MCP"]}>
