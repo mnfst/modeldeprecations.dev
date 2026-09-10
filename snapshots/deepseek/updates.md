@@ -2,6 +2,48 @@
 
 ---
 
+## Date: 2026-09-10
+
+### DeepSeek-V4.1-Flash Release
+
+Today, we officially release the DeepSeek-V4.1-Flash model. It is the smallest model in our new architecture family, with native multimodal visual understanding. The new architecture is designed for a higher capability ceiling, faster inference, higher throughput, and scaling to larger models.
+
+- GPQA Diamond: 90.9
+- HLE: 36.8 (39.1\*)
+- Codeforces (Rating): 3471
+- MathArena Apex: 65.6
+- Terminal-Bench 2.1: 90.6
+- Terminal-Bench 3.0: 30.0
+- Terminal-Bench 4.0: 31.2
+- DeepSWE v1.1: 74.2
+- ProgramBench: 20.3
+- NL2Repo-Bench: 65.4
+- CyberGym: 88.1
+- SEC-Bench Pro: 62.8
+- ExploitGym: 15.3
+- HLE (w/tools): 63.9
+- Automation-Bench: 54.8
+- Agents' Last Exam: 31.8
+- Chartography (w/tools): 78.9
+- BabyVision (w/tools): 89.6
+- ZeroBench-main (w/tools): 49.0
+
+\* Tested only on the pure-text subset of the HLE benchmark set.
+
+**API changes**
+
+DeepSeek V4.1 Flash is now available on the DeepSeek API with native multimodal support. Change the model name to `deepseek-flash` to call the latest V4.1 Flash model. The previous-generation models V4 Flash and V4 Flash Vision Exp have been retired; for compatibility, the model names `deepseek-v4-flash` and `deepseek-v4-flash-vision-exp` are temporarily routed to V4.1 Flash.
+
+Meanwhile, extensive testing shows that V4.1 Flash now outperforms DeepSeek V4 Pro across performance, cost, speed, and total time, so we plan to retire V4 Pro in an orderly manner. After 12:00 Beijing Time on September 14, 2026, and until the future release of V4.1 Pro, all requests to `deepseek-v4-pro` will be routed to V4.1 Flash and billed at the V4.1 Flash price.
+
+**API pricing adjustment**
+
+With the release of DeepSeek-V4.1-Flash, API prices have been reduced accordingly. For details, please refer to [Models & Pricing](/quick%5Fstart/pricing).
+
+For more details, please refer to [this documentation](/news/news260910).
+
+---
+
 ## Date: 2026-08-21
 
 ### DeepSeek-V4-Flash-Vision-Exp Release
