@@ -23,7 +23,7 @@ Starting **May 15, 2026 at 12:00 PM PT**:
 
 * Requests to any **reasoning** model in the list above will be served by **`grok-4.3` with `low` reasoning effort**.
 * Requests to any **non-reasoning** model in the list above will be served by **`grok-4.3` with `none` reasoning effort**.
-* `grok-imagine-image-pro` will be redirected to `grok-imagine-image-quality`.
+* `grok-imagine-image-pro` will be redirected to `grok-imagine-image-quality`. On November 2, 2026, `grok-imagine-image-quality` is itself retired in favor of `grok-imagine-image-2.0`; see the [November 2 migration guide](/developers/migration/imagine-image-quality-nov-2).
 
 ## Pricing impact
 
