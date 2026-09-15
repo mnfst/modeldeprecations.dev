@@ -4,9 +4,21 @@
 
 # Changelog
 
+> Updates to the Perplexity API platform.
+
 <Tip>
   Looking ahead? Check out our [Feature Roadmap](/docs/resources/feature-roadmap) to see what's coming next.
 </Tip>
+
+<Update label="September 2026" tags={["Agent API", "Connectors"]}>
+  **Custom connectors: Bring your own MCP server**
+
+  Register a remote MCP server once on your [Project connectors page](https://console.perplexity.ai/project/connectors).
+  Perplexity stores the server's credential, so your application does not need to store or send it with each request.
+  Use the generated connector ID with `type: "connector"` in Agent API requests.
+  Custom connectors are available to all Projects and support API-key or no authentication, with Streamable HTTP or SSE transport.
+  See [Add a custom connector](/docs/agent-api/tools/connectors#add-a-custom-connector).
+</Update>
 
 <Update label="September 2026" tags={["MCP", "Security"]}>
   **Sign in with Perplexity for the remote MCP server**
@@ -60,12 +72,6 @@
   **NVIDIA Nemotron 3 Ultra**
 
   The Agent API and Router API now support `perplexity/nemotron-3-ultra-550b-a55b` at \$0.25 per million input or cached-input tokens and \$2.50 per million output tokens. See the [Agent API Models reference](/docs/agent-api/models) or the [Router model catalog](/docs/router/models).
-</Update>
-
-<Update label="August 2026" tags={["Agent API", "Router", "Models"]}>
-  **NVIDIA Nemotron 3.5 Lightning**
-
-  The Agent API and Router API now support `perplexity/nemotron-3.5-lightning-30b-a3b`, a fast, efficient open-weight reasoning model, at \$0.0115 per million input tokens, \$0.00115 per million cached-input tokens, and \$0.17 per million output tokens. See the [Agent API Models reference](/docs/agent-api/models) or the [Router model catalog](/docs/router/models).
 </Update>
 
 <Update label="August 2026" tags={["Agent API", "Router", "Models"]}>
