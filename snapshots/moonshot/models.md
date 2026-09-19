@@ -8,10 +8,6 @@
 
 Click [here](pricing/chat) to see more details of model price.
 
-<Warning>
-  The `kimi-k2.5` and `moonshot-v1` series were officially retired on August 31, 2026. Calls to these models now return a 404 (model not found) error. Please migrate to [kimi-k3](/docs/guide/kimi-k3-quickstart) or other latest models.
-</Warning>
-
 ## Multi-modal Model
 
 | Model Name                 | Description                                                                                                                                                                                                                                 |
