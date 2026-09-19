@@ -55,10 +55,10 @@ This API supports video generation from multimodal input (text, images, video, a
 
 **Supported Models**
 
-| Model          | Description                                                                                                                                                                   |
-| :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| MiniMax-H3     | Multimodal video generation model supporting text / image / first-and-last-frame / reference input, 768P / 2K resolution, 4–15s duration.                                     |
-| MiniMax-H3-Max | Fast generation model. Supports text-to-video and image-to-video (first / last frame) only; reference input is not supported. 480P / 768P resolution (no 2K), 5–15s duration. |
+| Model          | Description                                                                                                                                               |
+| :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| MiniMax-H3     | Multimodal video generation model supporting text / image / first-and-last-frame / reference input, 768P / 2K resolution, 4–15s duration.                 |
+| MiniMax-H3-Max | Fast generation model supporting text-to-video, image-to-video (first / last frame), and reference input. 480P / 768P resolution (no 2K), 5–15s duration. |
 
 **API Usage Guide**
 
