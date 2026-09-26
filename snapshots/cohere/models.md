@@ -48,7 +48,8 @@ are.
 * The North family includes purpose-built models such as
   [North Small Translate](north-small-translate-1.0) for machine translation and
   [North Mini Code](north-mini-code-1.0) for agentic coding. Both are available through the
-  [Chat](../reference/chat) endpoint and support production deployment through Model Vault.
+  [Chat](../reference/chat) endpoint. North Mini Code also supports production deployment through
+  [Model Vault](../../v2/docs/model-vault).
 
 ## Command
 
@@ -92,7 +93,8 @@ In this table, we provide some important context for using Cohere Command models
 ## North
 
 North is Cohere's family of purpose-built generative models. North models are available on the Cohere API for
-evaluation and through [Model Vault](../../v2/docs/model-vault) for production deployment.
+evaluation. [North Mini Code](north-mini-code-1.0) also supports production deployment through
+[Model Vault](../../v2/docs/model-vault).
 
 | Model Name                  | Status | Description                                                                                                                                                              | Modality | Context Length | Maximum Output Tokens | Endpoints                 |
 | --------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | -------------- | --------------------- | ------------------------- |
@@ -153,7 +155,9 @@ In this table, we provide some important context for using Cohere Rerank models 
 \
 
 
-Rerank accepts full strings rather than tokens, so the token limit works a little differently. Rerank will automatically chunk documents longer than 510 tokens, and there is therefore no explicit limit to how long a document can be when using rerank. See our [best practice guide](/docs/reranking-best-practices) for more info about formatting documents for the Rerank endpoint.
+> **Note**
+>
+> Rerank accepts full strings rather than tokens, so the token limit works a little differently. Rerank will automatically chunk documents longer than 510 tokens, and there is therefore no explicit limit to how long a document can be when using rerank. See our [best practice guide](/docs/reranking-best-practices) for more info about formatting documents for the Rerank endpoint.
 
 ## Parse
 

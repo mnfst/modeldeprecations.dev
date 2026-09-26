@@ -12,11 +12,12 @@
 
 Prices per 1M tokens.
 
-| Model         | Input  | Cached Input | Cached Input Storage | Output |
-| :------------ | :----- | :----------- | :------------------- | :----- |
-| GLM-5.3-Flash | \$0.15 | \$0.03       | Limited-time Free    | \$0.50 |
-| GLM-5.3       | \$1.4  | \$0.26       | Limited-time Free    | \$4.4  |
-| GLM-5.2       | \$1.4  | \$0.26       | Limited-time Free    | \$4.4  |
+| Model          | Input  | Cached Input | Cached Input Storage | Output |
+| :------------- | :----- | :----------- | :------------------- | :----- |
+| GLM-5.3-Flash  | \$0.15 | \$0.03       | Limited-time Free    | \$0.50 |
+| GLM-5.3-FlashX | \$0.37 | \$0.075      | Limited-time Free    | \$1.25 |
+| GLM-5.3        | \$1.4  | \$0.26       | Limited-time Free    | \$4.4  |
+| GLM-5.2        | \$1.4  | \$0.26       | Limited-time Free    | \$4.4  |
 
 ### Text Models
 
