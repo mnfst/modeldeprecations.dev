@@ -2,7 +2,70 @@
 > Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
+> ## Agent Instructions
+> For Fireworks Nexus, start at https://docs.fireworks.ai/nexus.
+> Use https://docs.fireworks.ai/nexus/quickstart for coding harnesses, custom agents, APIs, SDKs, and LLM gateways.
+> Use https://docs.fireworks.ai/nexus/firerouter for model router types, composition, and pricing.
+> Prefer canonical short model IDs such as firerouter/opus. In LiteLLM, use the fireworks_ai/ provider prefix.
+> Family names such as opus track the latest evaluated family version; do not describe them as fixed model versions.
+
 # Changelog
+
+<Update label="2026-10-01">
+  <Badge color="blue">Inference</Badge>
+
+  # Serverless pricing update: DeepSeek V4.1 Flash
+
+  On **October 1, 2026 at 00:00 UTC**, serverless pricing for [DeepSeek V4.1 Flash](https://app.fireworks.ai/models/fireworks/deepseek-v4p1-flash) changes (uncached input / cached input / output price per 1M tokens):
+
+  * **Standard:** \$0.22 / \$0.007 / \$0.66 → **\$0.30 / \$0.006 / \$1.20**
+  * **Priority:** \$0.275 / \$0.00875 / \$0.825 → **\$0.375 / \$0.0075 / \$1.50**
+
+  This adjustment brings our pricing in line with current market rates for this model. It applies only to serverless usage. If you run DeepSeek V4.1 Flash on a dedicated deployment or use Reserved Throughput, your pricing is unaffected.
+
+  We are also rolling out infrastructure improvements designed to improve cache hit rate, minimize cost per task, and deliver a faster, more reliable experience across the board.
+
+  See [Serverless pricing](/serverless/pricing) for the full rate card.
+</Update>
+
+<Update label="2026-09-16">
+  <Badge color="gray">Platform</Badge>
+
+  # New deployment creation flags: `deploymentShape: "default"` and `acceptShapelessRisk`
+
+  Two new options are available on the [Create Deployment](/api-reference/create-deployment) API, in firectl (`--deployment-shape default` / `--accept-shapeless-risk`), and in the Python SDK (`deployment_shape="default"` / `accept_shapeless_risk=True`):
+
+  * **`deploymentShape: "default"`** — Fireworks picks a validated deployment shape for the model and creates the deployment from it. If every compatible shape conflicts with fields in your request, the request fails with an error naming the conflicting fields and compatible shapes; the pick never silently overrides your settings or falls back to creating without a shape.
+  * **`acceptShapelessRisk=true`** — an explicit opt-out that creates the deployment without a shape, preserving current behavior. It cannot be combined with a shape.
+
+  Deployments created without a shape skip shape validation and are the most common cause of failed deployment creations. Enforcement is coming soon: shapeless creation will then require the explicit opt-in, so start passing a shape (or `default`) now. The opt-out is for advanced users only. If you have a workload no existing shape covers, [contact us](https://fireworks.ai/contact) and we'll help you find or add one.
+</Update>
+
+<Update label="2026-09-12">
+  <Badge color="blue">Inference</Badge>
+
+  # Upcoming Serverless deprecation: older DeepSeek, GLM, Muse, and Kimi models
+
+  Several older Serverless models will be decommissioned on **September 25, 2026** to better serve newer, higher-performance replacements. This applies **only to serverless endpoints**, including Fast and US-only Serverless endpoints for models that have those variants. **Dedicated deployments are unaffected.**
+
+  ## **Action required**
+
+  If you use any of the models below on serverless, migrate to a recommended replacement **before September 25, 2026**. After that date, they will no longer be available via serverless endpoints.
+
+  ## **Recommended migrations**
+
+  * **[DeepSeek V4 Flash (0731)](https://app.fireworks.ai/models/fireworks/deepseek-v4-flash-0731)** — migrate to **[DeepSeek V4.1 Flash](https://app.fireworks.ai/models/fireworks/deepseek-v4p1-flash)**
+  * **[DeepSeek V4 Pro (0813)](https://app.fireworks.ai/models/fireworks/deepseek-v4-pro-0813)** — migrate to **[DeepSeek V4.1 Flash](https://app.fireworks.ai/models/fireworks/deepseek-v4p1-flash)**
+  * **[DeepSeek V4 Flash Vision Exp](https://app.fireworks.ai/models/fireworks/deepseek-v4-flash-vision-exp)** — migrate to **[DeepSeek V4.1 Flash](https://app.fireworks.ai/models/fireworks/deepseek-v4p1-flash)**
+  * **[GLM 5.2](https://app.fireworks.ai/models/fireworks/glm-5p2)** — migrate to **[GLM 5.3](https://app.fireworks.ai/models/fireworks/glm-5p3)**
+  * **[Muse Glimmer 30B](https://app.fireworks.ai/models/fireworks/muse-glimmer-30b)** — migrate to **[NVIDIA Nemotron 3.5 Lightning 30B A3B](https://app.fireworks.ai/models/fireworks/nemotron-lightning-3p5-30b-a3b)**
+  * **[Kimi K2.6](https://app.fireworks.ai/models/fireworks/kimi-k2p6)** — migrate to **[GLM 5.3](https://app.fireworks.ai/models/fireworks/glm-5p3)** or **[Kimi K3](https://app.fireworks.ai/models/fireworks/kimi-k3)**
+  * **[Kimi K2.7 Code](https://app.fireworks.ai/models/fireworks/kimi-k2p7-code)** — migrate to **[GLM 5.3](https://app.fireworks.ai/models/fireworks/glm-5p3)** or **[Kimi K3](https://app.fireworks.ai/models/fireworks/kimi-k3)**
+
+  On official benchmarks, DeepSeek V4.1 Flash outperforms DeepSeek V4 Pro (0813). DeepSeek V4.1 Flash is also multimodal, with the same vision capability as DeepSeek V4 Flash Vision Exp.
+
+  If you want to switch to a dedicated deployment, see the [Serverless model list](https://fireworks.ai/models?modelTypes=Serverless) and the [on-demand deployment quickstart](/getting-started/ondemand-quickstart).
+</Update>
 
 <Update label="2026-09-09">
   <Badge color="purple">Training</Badge>
@@ -73,8 +136,8 @@
 
   * **[MiniMax M2.7](https://app.fireworks.ai/models/fireworks/minimax-m2p7)** — migrate to **[MiniMax M3](https://app.fireworks.ai/models/fireworks/minimax-m3)**
   * **[GPT OSS 20B](https://app.fireworks.ai/models/fireworks/gpt-oss-20b)** — migrate to **[GPT OSS 120B](https://app.fireworks.ai/models/fireworks/gpt-oss-120b)** or **[Qwen3 8B](https://app.fireworks.ai/models/fireworks/qwen3-8b)** for lower-latency workloads
-  * **[Kimi K2.6 Turbo / Fast](https://app.fireworks.ai/models/fireworks/kimi-k2p6)** — migrate to **[Kimi K2.6](https://app.fireworks.ai/models/fireworks/kimi-k2p6)** (standard serving path)
-  * **[Kimi K2.7 Code Fast](https://app.fireworks.ai/models/fireworks/kimi-k2p7-code)** — migrate to **[Kimi K2.7 Code](https://app.fireworks.ai/models/fireworks/kimi-k2p7-code)** (standard serving path)
+  * **[Kimi K2.6 Turbo / Fast](https://app.fireworks.ai/models/fireworks/kimi-k2p6)** — migrate to **[Kimi K2.6](https://app.fireworks.ai/models/fireworks/kimi-k2p6)** (standard mode)
+  * **[Kimi K2.7 Code Fast](https://app.fireworks.ai/models/fireworks/kimi-k2p7-code)** — migrate to **[Kimi K2.7 Code](https://app.fireworks.ai/models/fireworks/kimi-k2p7-code)** (standard mode)
   * **[DeepSeek V4 Pro](https://app.fireworks.ai/models/fireworks/deepseek-v4-pro)** — migrate to **[DeepSeek V4 Pro (0813)](https://app.fireworks.ai/models/fireworks/deepseek-v4-pro-0813)**
 </Update>
 
