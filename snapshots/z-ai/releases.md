@@ -101,3 +101,6 @@
   * We’ve launched CogVideoX-3, an incremental upgrade to our video generation model with improved quality and new features.
   * It adds support for start and end frame synthesis. Learn more in our [documentation](/guides/video/cogvideox-3).\*
 </Update>
+
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.
