@@ -12,9 +12,16 @@ With the continuous iteration of the MiMo model, the new version has comprehensi
 - Access [ Bill Details ](https://platform.xiaomimimo.com/console/usage), check if there are any models pending offline;
 - Refer to the system replacement model in the table below to complete your code self-check and replacement. It is recommended to fully test and verify before the official switch.
 
+### Deprecated model on 2026.10.21
+
+| Offline Model | Deprecated Time               | Note                                                                         |
+| ------------- | ----------------------------- | ---------------------------------------------------------------------------- |
+| mimo-v2.5-pro | Beijing Time 2026.10.21 10:00 | **No system replacement model; will be directly deprecated upon expiration** |
+| mimo-v2.5     | Beijing Time 2026.10.21 10:00 | **No system replacement model; will be directly deprecated upon expiration** |
+
 ### Deprecated model on 2026.6.30
 
-| Deprecated Model | Offline Time                 | System replacement time      | System Replacement Model | Replacement Impact                                                                            |
+| Deprecated Model | Deprecated Time              | System replacement time      | System Replacement Model | Replacement Impact                                                                            |
 | ---------------- | ---------------------------- | ---------------------------- | ------------------------ | --------------------------------------------------------------------------------------------- |
 | mimo-v2-pro      | Beijing Time 2026.6.30 00:00 | Beijing Time 2026.6.1 00:00  | mimo-v2.5-pro            | API parameters are fully adapted                                                              |
 | mimo-v2-omni     | Beijing Time 2026.6.30 00:00 | Beijing Time 2026.6.1 00:00  | mimo-v2.5                | API parameters are fully adapted                                                              |

@@ -4,9 +4,107 @@
 
 # Changelog
 
+> Updates to the Perplexity API platform.
+
 <Tip>
   Looking ahead? Check out our [Feature Roadmap](/docs/resources/feature-roadmap) to see what's coming next.
 </Tip>
+
+<Update label="September 2026" tags={["Agent API", "Models"]}>
+  **GPT-6.1 Sol**
+
+  The Agent API now supports `openai/gpt-6.1-sol`. See the [Agent API Models reference](/docs/agent-api/models).
+</Update>
+
+<Update label="September 2026" tags={["Agent API", "Models"]}>
+  **Claude Sonnet 5.5**
+
+  The Agent API now supports `anthropic/claude-sonnet-5-5`. See the [Agent API Models reference](/docs/agent-api/models).
+</Update>
+
+<Update label="September 2026" tags={["Agent API", "Presets", "Models"]}>
+  **xhigh preset uses Claude Opus 5.5**
+
+  The Agent API `xhigh` preset now uses Claude Opus 5.5:
+
+  | Preset | Previous model | New model |
+  | - | - | - |
+  | `xhigh` | `openai/gpt-5.6-sol` | `anthropic/claude-opus-5-5` |
+
+  Prompts, reasoning effort, tools, token budgets, and step limits are unchanged.
+</Update>
+
+<Update label="September 2026" tags={["Agent API", "Presets", "Models"]}>
+  **Low, medium, and high presets use GPT-6**
+
+  The Agent API `low`, `medium`, and `high` presets now use the GPT-6 model family:
+
+  | Preset | Previous model | New model |
+  | - | - | - |
+  | `low` | `openai/gpt-5.6-luna` | `openai/gpt-6-luna` |
+  | `medium` | `openai/gpt-5.6-luna` | `openai/gpt-6-luna` |
+  | `high` | `openai/gpt-5.6-sol` | `openai/gpt-6-sol` |
+
+  Prompts, reasoning effort, tools, token budgets, and step limits are unchanged.
+</Update>
+
+<Update label="September 2026" tags={["Agent API", "Router", "Models", "Deprecation"]}>
+  **Upcoming retirement of older OpenAI models**
+
+  On October 24, 2026 at 00:00 UTC, the Agent API and Router API will retire these model IDs:
+
+  * `openai/gpt-5.4`
+  * `openai/gpt-5.4-mini`
+  * `openai/gpt-5.4-nano`
+  * `openai/gpt-5.2`
+  * `openai/gpt-5.1`
+  * `openai/gpt-5`
+  * `openai/gpt-5-mini`
+
+  Update direct model selections and fallback chains before the cutoff. The models remain available until then. After the cutoff, the retired IDs will no longer be accepted or returned by model-list endpoints.
+
+  For new integrations, choose a current OpenAI model in the [Agent API Models reference](/docs/agent-api/models).
+</Update>
+
+<Update label="September 2026" tags={["Agent API", "Presets"]}>
+  **Fast preset uses Fast Search**
+
+  The Agent API `fast` preset now uses Fast Search (`search_type: "fast"`). `web_search` drops from \$2.50 to \$1.00 per 1,000 invocations, and search is about 800 ms faster. See [Agent API Web Search](/docs/agent-api/tools/web-search#search-type).
+</Update>
+
+<Update label="September 2026" tags={["Search API", "Agent API"]}>
+  **Fast Search**
+
+  Set `search_type: "fast"` on the Search API or the Agent API `web_search` tool to use a lower-latency search path. Fast Search costs \$1.00 per 1,000 Search API requests or `web_search` invocations, with model tokens billed separately for Agent API. Set `search_type: "web"` for standard web search. See [Search API Fast Search](/docs/search/fast-search) or [Agent API Web Search](/docs/agent-api/tools/web-search#search-type).
+</Update>
+
+<Update label="September 2026" tags={["Agent API", "Models"]}>
+  **GPT-6 Sol**
+
+  The Agent API now supports `openai/gpt-6-sol`. See the [Agent API Models reference](/docs/agent-api/models).
+
+  **GPT-6 Luna**
+
+  The Agent API now supports `openai/gpt-6-luna`. See the [Agent API Models reference](/docs/agent-api/models).
+
+  **Claude Opus 5.5**
+
+  The Agent API now supports `anthropic/claude-opus-5-5`. See the [Agent API Models reference](/docs/agent-api/models).
+
+  **Grok 4.7**
+
+  The Agent API now supports `xai/grok-4.7`. See the [Agent API Models reference](/docs/agent-api/models).
+</Update>
+
+<Update label="September 2026" tags={["Agent API", "Connectors"]}>
+  **Custom connectors: Bring your own MCP server**
+
+  Register a remote MCP server once on your [Project connectors page](https://console.perplexity.ai/project/connectors).
+  Perplexity stores the server's credential, so your application does not need to store or send it with each request.
+  Use the generated connector ID with `type: "connector"` in Agent API requests.
+  Custom connectors are available to all Projects and support API-key or no authentication, with Streamable HTTP or SSE transport.
+  See [Add a custom connector](/docs/agent-api/tools/connectors#add-a-custom-connector).
+</Update>
 
 <Update label="September 2026" tags={["MCP", "Security"]}>
   **Sign in with Perplexity for the remote MCP server**
@@ -41,7 +139,7 @@
 <Update label="August 2026" tags={["Agent API", "Presets"]}>
   **Fast preset updated**
 
-  The Agent API `fast` preset now uses `openai/gpt-5.6-luna` with `minimal` reasoning effort and priority processing. Dynamic `fast` preset requests pick up the change automatically. If you use a [frozen configuration](/docs/agent-api/presets#current-preset-values), update the model and reasoning effort and set `service_tier` to `priority`. Priority processing uses 2× the model's standard token prices.
+  The Agent API `fast` preset now uses `openai/gpt-6-luna` with reasoning effort set to `none` and priority processing. Dynamic `fast` preset requests pick up the change automatically. If you use a [frozen configuration](/docs/agent-api/presets#current-preset-values), update the model and reasoning effort and set `service_tier` to `priority`. Priority processing uses 2× the model's standard token prices.
 </Update>
 
 <Update label="August 2026" tags={["Agent API", "Router", "Models"]}>
@@ -60,18 +158,6 @@
   **NVIDIA Nemotron 3 Ultra**
 
   The Agent API and Router API now support `perplexity/nemotron-3-ultra-550b-a55b` at \$0.25 per million input or cached-input tokens and \$2.50 per million output tokens. See the [Agent API Models reference](/docs/agent-api/models) or the [Router model catalog](/docs/router/models).
-</Update>
-
-<Update label="August 2026" tags={["Agent API", "Router", "Models"]}>
-  **NVIDIA Nemotron 3.5 Lightning**
-
-  The Agent API and Router API now support `perplexity/nemotron-3.5-lightning-30b-a3b`, a fast, efficient open-weight reasoning model, at \$0.0115 per million input tokens, \$0.00115 per million cached-input tokens, and \$0.17 per million output tokens. See the [Agent API Models reference](/docs/agent-api/models) or the [Router model catalog](/docs/router/models).
-</Update>
-
-<Update label="August 2026" tags={["Agent API", "Router", "Models"]}>
-  **DeepSeek V4 Flash 0731**
-
-  The Agent API and Router API now support `perplexity/deepseek-v4-flash-0731`, a fast, efficient open reasoning model with a 1M-token context window. See pricing in the [Agent API Models reference](/docs/agent-api/models) or the [Router model catalog](/docs/router/models).
 </Update>
 
 <Update label="July 2026" tags={["Agent API", "Models", "Pricing"]}>
@@ -162,7 +248,6 @@
   The Agent API expanded model coverage this month, all with direct first-party token pricing. See the full list in the [Agent API Models reference](/docs/agent-api/models).
 
   * **Claude Sonnet 5** — `anthropic/claude-sonnet-5`, Anthropic's latest Sonnet model.
-  * **GLM 5.2** — `perplexity/glm-5.2`, Z.AI's flagship reasoning model.
   * **Kimi K2.7 Code** — `perplexity/kimi-k2.7-code`, Moonshot AI's coding and agentic model.
   * **Nemotron 3 Super** — `nvidia/nemotron-3-super-120b-a12b`, NVIDIA's open-weight reasoning model.
 </Update>
@@ -272,7 +357,7 @@
   * **Context-aware**: Perfect for educational content, geographic queries, processes, and demonstrations
   * **Configurable control**: Enable/disable and override media types as needed
 
-  Available exclusively with `sonar-pro`, the Media Classifier enhances responses for visual concepts, locations, step-by-step processes, and educational content. [Learn more →](/docs/sonar/media)
+  Available exclusively with `sonar-pro`, the Media Classifier enhances responses for visual concepts, locations, step-by-step processes, and educational content.
 
   **Search API Enhancements**
 
@@ -298,8 +383,6 @@
   * **Real-time thought streaming**: Watch the model's reasoning process as it works through your question
   * **Automatic classification**: Use `search_type: "auto"` to let the system intelligently route queries based on complexity
   * **Built-in tools**: Access `web_search` and `fetch_url_content` tools that the model uses automatically
-
-  Learn more about Pro Search in our [Pro Search Quickstart](/docs/sonar/pro-search/quickstart) guide.
 
   **MCP Server: One-Click Installation**
 
@@ -334,7 +417,7 @@
   * Streaming support with async iterators
   * Automatic environment variable handling for API keys
 
-  Get started with our [SDK Quickstart Guide](/docs/sdk/overview) and explore the [Sonar API Guide](/docs/sonar/quickstart) for detailed usage examples.
+  Get started with our [SDK Quickstart Guide](/docs/sdk/overview).
 
   **Interactive Search API Playground**
 
@@ -364,8 +447,6 @@
   * **Multi-language Support**: Analyze documents in various languages
 
   Upload documents either via publicly accessible URLs using the `file_url` content type, similar to our existing image upload functionality.
-
-  Get started with our comprehensive [File Attachments Guide](/docs/sonar/media#sending-files).
 </Update>
 
 <Update label="September 2025" tags={["Search", "Features"]}>
@@ -598,9 +679,6 @@
       "reasoning_effort": "low"
     }'
   ```
-
-  For detailed documentation and implementation examples, please see:
-  [Sonar Deep Research Documentation](/docs/sonar/models/sonar-deep-research)
 </Update>
 
 <Update label="May 2025" tags={["Models", "Async"]}>
@@ -617,9 +695,6 @@
   3. `GET https://api.perplexity.ai/v1/async/sonar/{request_id}` - Retrieves the status and result of a specific asynchronous chat completion job
 
   **Note:** Async requests have a time-to-live (TTL) of 7 days. After this period, the request and its results will no longer be accessible.
-
-  For detailed documentation and implementation examples, please see:
-  [Sonar Deep Research Documentation](/docs/sonar/models/sonar-deep-research)
 </Update>
 
 <Update label="May 2025" tags={["Search", "Breaking Change"]}>

@@ -2,7 +2,250 @@
 > Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
+> ## Agent Instructions
+> For Fireworks Nexus, start at https://docs.fireworks.ai/nexus.
+> Use https://docs.fireworks.ai/nexus/quickstart for coding harnesses, custom agents, APIs, SDKs, and LLM gateways.
+> Use https://docs.fireworks.ai/nexus/firerouter for how model routers work, the supported model list, composition, closed-model credentials, and pricing.
+> Prefer canonical short model IDs such as firerouter/opus. In LiteLLM litellm_params.model, use the full path fireworks_ai/accounts/fireworks/routers/firerouter/opus.
+> Family names such as opus track the latest evaluated family version; do not describe them as fixed model versions.
+
 # Changelog
+
+export const ChangelogSearch = () => {
+  const PRODUCTS = ["Inference", "Training", "Platform"];
+  const [entries, setEntries] = useState([]);
+  const [selected, setSelected] = useState([]);
+  const [query, setQuery] = useState("");
+  useEffect(() => {
+    setEntries([...document.querySelectorAll(".update-container")].map(entry => ({
+      id: entry.id,
+      products: [...entry.querySelectorAll('[data-badge="true"]')].map(badge => badge.textContent.trim()),
+      text: entry.textContent.toLowerCase()
+    })));
+  }, []);
+  const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+  const hidden = entries.filter(entry => selected.length > 0 && !entry.products.some(product => selected.includes(product)) || !terms.every(term => entry.text.includes(term)));
+  const shown = entries.length - hidden.length;
+  const active = selected.length > 0 || terms.length > 0;
+  const hiddenCss = hidden.map(({id}) => {
+    const escaped = CSS.escape(id);
+    return `[id="${escaped}"], #table-of-contents-content li:has(> a[href="#${escaped}"])`;
+  }).join(",\n");
+  const toggle = product => setSelected(current => current.includes(product) ? current.filter(value => value !== product) : [...current, product]);
+  const pillStyle = on => on ? {
+    backgroundColor: "#7c3aed",
+    color: "#ffffff",
+    border: "1px solid #7c3aed"
+  } : {
+    backgroundColor: "transparent",
+    color: "#71717a",
+    border: "1px solid rgba(113,113,122,0.40)"
+  };
+  return <div className="not-prose mt-6 mb-2">
+      {hidden.length > 0 && <style>{`${hiddenCss} { display: none !important; }`}</style>}
+      <div className="flex flex-wrap gap-2 mb-3" role="group" aria-label="Filter by product">
+        <button type="button" onClick={() => setSelected([])} aria-pressed={selected.length === 0} className="px-3 py-1 rounded-full text-sm font-medium transition-colors" style={pillStyle(selected.length === 0)}>
+          All
+        </button>
+        {PRODUCTS.map(product => <button key={product} type="button" onClick={() => toggle(product)} aria-pressed={selected.includes(product)} className="px-3 py-1 rounded-full text-sm font-medium transition-colors" style={pillStyle(selected.includes(product))}>
+            {product}
+          </button>)}
+      </div>
+      <div className="relative">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="absolute left-3 text-zinc-400 pointer-events-none" style={{
+    top: "50%",
+    transform: "translateY(-50%)"
+  }}>
+          <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
+          <path d="M20 20l-3.5-3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+        <input type="search" value={query} onChange={event => setQuery(event.target.value)} onKeyDown={event => {
+    if (event.key === "Escape") setQuery("");
+  }} placeholder="Search updates, e.g. GLM, deprecation, rate limits" aria-label="Search the changelog" className="w-full rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 py-2 pl-9 pr-9 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 focus:outline-none focus:border-primary dark:focus:border-primary-light [&::-webkit-search-cancel-button]:hidden" />
+        {query && <button type="button" onClick={() => setQuery("")} aria-label="Clear search" className="absolute right-2 rounded-md p-1 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200" style={{
+    top: "50%",
+    transform: "translateY(-50%)"
+  }}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          </button>}
+      </div>
+      <p aria-live="polite" className="mt-2 min-h-[1.25rem] text-xs text-zinc-500 dark:text-zinc-400">
+        {active && (shown === 0 ? "No updates match these filters." : `Showing ${shown} of ${entries.length} updates.`)}
+      </p>
+    </div>;
+};
+
+<ChangelogSearch />
+
+<Update label="2026-10-02">
+  <Badge color="blue">Inference</Badge>
+
+  # Higher serverless rate limits for Small models
+
+  We increased the adaptive rate-limit ceilings for **Small** serverless models and expanded the Small tier to cover models with **less than 600B total parameters**.
+
+  The Small tier now has these ceilings:
+
+  * **Total Prompt TPM:** 108M
+  * **Uncached Prompt TPM:** 27M
+  * **Generated TPM:** 1.08M
+
+  This applies to Small-tier serverless models such as [GLM 5.3 Flash](https://app.fireworks.ai/models/fireworks/glm-5p3-flash), [DeepSeek V4.1 Flash](https://app.fireworks.ai/models/fireworks/deepseek-v4p1-flash), and [OpenAI GPT OSS 120B](https://app.fireworks.ai/models/fireworks/gpt-oss-120b). Medium and Large model ceilings are unchanged.
+
+  See [Serverless rate limits](/serverless/rate-limits) for the full tier table.
+</Update>
+
+<Update label="2026-10-01">
+  <Badge color="purple">Training</Badge>
+
+  # Managed RFT is paused; try RL on the Training API
+
+  **Managed reinforcement fine-tuning (RFT) is paused.** Managed Training no longer accepts new RFT jobs from the Fireworks UI, `firectl`, or the REST API. Existing jobs stay visible in your dashboard, and models you already trained with managed RFT keep serving.
+
+  Try RL on the [Training API](/fine-tuning/training-api/introduction), where you write the rollout and training loop yourself and Fireworks runs the GPUs. Compared with managed RFT, you also get:
+
+  * **Full-parameter RL** on most current models, not just LoRA
+  * **The training shape's full context length**, up to 524K tokens, instead of managed RFT's fixed 32K limit
+  * **Other methods** such as on-policy distillation (OPD) and custom objectives
+
+  Your evaluator logic carries over. Start with [Cookbook: Reinforcement Learning](/fine-tuning/training-api/cookbook/rl).
+
+  **Managed SFT and DPO are unaffected.**
+
+  ## Models no longer available for fine-tuning
+
+  The 70 models below were tunable only through managed RFT. With managed RFT paused, none of them can be fine-tuned on Fireworks anymore, and they no longer appear on the [Models](/fine-tuning/models) page. Inference on these models is not affected by this change.
+
+  <Accordion title="Full list (70 models)">
+    * **DeepSeek:** `deepseek-r1`, `deepseek-r1-basic`, `deepseek-r1-0528`, `deepseek-r1-0528-distill-qwen3-8b`, `deepseek-r1-distill-llama-8b`, `deepseek-r1-distill-llama-70b`, `deepseek-r1-distill-qwen-14b`, `deepseek-r1-distill-qwen-32b`, `deepseek-v3`, `deepseek-v3-0324`, `deepseek-v3p1`, `deepseek-v3p1-terminus`, `deepseek-prover-v2`, `deepseek-coder-1b-base`
+    * **Kimi:** `kimi-k2-instruct`, `kimi-k2-instruct-0905`, `kimi-k2-thinking`
+    * **GLM:** `glm-4p5`, `glm-4p6`, `glm-4p7`
+    * **Qwen 3:** `qwen3-1p7b`, `qwen3-30b-a3b`, `qwen3-30b-a3b-thinking-2507`, `qwen3-235b-a22b`, `qwen3-235b-a22b-thinking-2507`, `qwen3-coder-30b-a3b-instruct`, `qwen3-vl-30b-a3b-instruct`, `qwen3-vl-30b-a3b-thinking`, `qwen3-vl-235b-a22b-instruct`, `qwen3-vl-235b-a22b-thinking`
+    * **Qwen 2.5 and QwQ:** `qwen2p5-14b`, `qwen2p5-14b-instruct`, `qwen-v2p5-14b-instruct`, `qwen2p5-32b`, `qwen2p5-coder-14b`, `qwen2p5-coder-14b-instruct`, `qwen2p5-coder-32b`, `qwen2p5-coder-32b-instruct`, `qwen2p5-coder-32b-instruct-32k-rope`, `qwen2p5-coder-32b-instruct-64k`, `qwen2p5-coder-32b-instruct-128k`, `qwen2p5-vl-7b-instruct`, `qwq-32b`, `qwen-qwq-32b-preview`
+    * **Llama:** `llama-v3-8b`, `llama-v3-8b-instruct`, `llama-v3-8b-instruct-hf`, `llama-v3-70b-instruct`, `llama-v3-70b-instruct-hf`, `llama-v3p1-70b-instruct`, `llama-v3p1-nemotron-70b-instruct`, `llama-v3p2-1b`, `llama-v3p2-1b-instruct`, `llama-guard-2-8b`, `llama-guard-3-1b`, `llama-guard-3-8b`
+    * **gpt-oss:** `gpt-oss-20b`, `gpt-oss-120b`, `gpt-oss-safeguard-20b`, `gpt-oss-safeguard-120b`
+    * **Gemma:** `gemma-3-27b-it`
+    * **Other:** `cogito-v1-preview-llama-8b`, `cogito-v1-preview-llama-70b`, `cogito-v1-preview-qwen-14b`, `cogito-v1-preview-qwen-32b`, `fare-20b`, `firefunction-v2`, `kat-dev-32b`, `mirothinker-1p7`, `rolm-ocr`
+  </Accordion>
+</Update>
+
+<Update label="2026-10-01">
+  <Badge color="blue">Inference</Badge>
+
+  # Serverless pricing update: DeepSeek V4.1 Flash
+
+  On **October 1, 2026 at 00:00 UTC**, serverless pricing for [DeepSeek V4.1 Flash](https://app.fireworks.ai/models/fireworks/deepseek-v4p1-flash) changes (uncached input / cached input / output price per 1M tokens):
+
+  * **Standard:** \$0.22 / \$0.007 / \$0.66 → **\$0.30 / \$0.006 / \$1.20**
+  * **Priority:** \$0.275 / \$0.00875 / \$0.825 → **\$0.375 / \$0.0075 / \$1.50**
+
+  This adjustment brings our pricing in line with current market rates for this model. It applies only to serverless usage. If you run DeepSeek V4.1 Flash on a dedicated deployment or use Reserved Throughput, your pricing is unaffected.
+
+  We are also rolling out infrastructure improvements designed to improve cache hit rate, minimize cost per task, and deliver a faster, more reliable experience across the board.
+
+  See [Serverless pricing](/serverless/pricing) for the full rate card.
+</Update>
+
+<Update label="2026-09-28">
+  <Badge color="purple">Training</Badge>
+
+  # New training model: DeepSeek V4.1 Flash
+
+  **[DeepSeek V4.1 Flash](https://app.fireworks.ai/models/fireworks/deepseek-v4p1-flash)** is now available for LoRA training on the [Dedicated Training API](/fine-tuning/training-api/dedicated), with up to 262K context. It's a strong base for agentic coding, terminal automation, and tool use. SFT is supported at launch, and RL support is coming soon.
+
+  See the [training model catalog](/fine-tuning/models) for current availability.
+</Update>
+
+<Update label="2026-09-26">
+  <Badge color="blue">Inference</Badge>
+
+  # Serverless deprecation: DeepSeek V4 Pro (0813), DeepSeek V4 Flash (0731), and related models
+
+  The serverless deprecation announced for **September 25, 2026** is now in effect. The models below are no longer available on public serverless, including Fast and US-only serverless endpoints where those existed. Dedicated deployments are unaffected.
+
+  ## **Recommended migrations**
+
+  * **[DeepSeek V4 Pro (0813)](https://app.fireworks.ai/models/fireworks/deepseek-v4-pro-0813)** — migrate to **[DeepSeek V4.1 Flash](https://app.fireworks.ai/models/fireworks/deepseek-v4p1-flash)**
+  * **[DeepSeek V4 Flash (0731)](https://app.fireworks.ai/models/fireworks/deepseek-v4-flash-0731)** — migrate to **[DeepSeek V4.1 Flash](https://app.fireworks.ai/models/fireworks/deepseek-v4p1-flash)**
+  * **[DeepSeek V4 Flash Vision Exp](https://app.fireworks.ai/models/fireworks/deepseek-v4-flash-vision-exp)** — migrate to **[DeepSeek V4.1 Flash](https://app.fireworks.ai/models/fireworks/deepseek-v4p1-flash)**
+  * **[Muse Glimmer 30B](https://app.fireworks.ai/models/fireworks/muse-glimmer-30b)** — migrate to **[NVIDIA Nemotron 3.5 Lightning 30B A3B](https://app.fireworks.ai/models/fireworks/nemotron-lightning-3p5-30b-a3b)**
+  * **[Kimi K2.6](https://app.fireworks.ai/models/fireworks/kimi-k2p6)** — migrate to **[GLM 5.3](https://app.fireworks.ai/models/fireworks/glm-5p3)** or **[Kimi K3](https://app.fireworks.ai/models/fireworks/kimi-k3)**
+  * **[Kimi K2.7 Code](https://app.fireworks.ai/models/fireworks/kimi-k2p7-code)** — migrate to **[GLM 5.3](https://app.fireworks.ai/models/fireworks/glm-5p3)** or **[Kimi K3](https://app.fireworks.ai/models/fireworks/kimi-k3)**
+  * **[GLM 5.2](https://app.fireworks.ai/models/fireworks/glm-5p2)**, including **GLM 5.2 Fast**, **GLM 5.2 Fast US**, and **GLM 5.2 US** — migrate to **[GLM 5.3](https://app.fireworks.ai/models/fireworks/glm-5p3)**
+
+  See [Serverless pricing](/serverless/pricing) and [Which model should I use?](/guides/recommended-models).
+</Update>
+
+<Update label="2026-09-22">
+  <Badge color="purple">Training</Badge>
+
+  # New Serverless Training model: GLM 5.3 Flash
+
+  **[GLM 5.3 Flash](https://app.fireworks.ai/models/fireworks/glm-5p3-flash)** is now available for LoRA workloads on the shared Serverless Training pool, with up to 200K context and both text and vision inputs.
+
+  See the [Serverless Training guide](/fine-tuning/training-api/serverless) for setup and the [training model catalog](/fine-tuning/models) for current availability.
+</Update>
+
+<Update label="2026-09-16">
+  <Badge color="purple">Training</Badge>
+
+  # New Serverless Training model: GLM 5.3
+
+  **[GLM 5.3](https://app.fireworks.ai/models/fireworks/glm-5p3)** is now available for LoRA workloads on the shared Serverless Training pool, with up to 262K context. There's no capacity to reserve and you pay per token. Move the same loop to [Dedicated Training](/fine-tuning/training-api/dedicated) for your most demanding workloads.
+
+  See the [Serverless Training guide](/fine-tuning/training-api/serverless) for setup and the [training model catalog](/fine-tuning/models) for current availability.
+</Update>
+
+<Update label="2026-09-16">
+  <Badge color="gray">Platform</Badge>
+
+  # New deployment creation flags: `deploymentShape: "default"` and `acceptShapelessRisk`
+
+  Two new options are available on the [Create Deployment](/api-reference/create-deployment) API, in firectl (`--deployment-shape default` / `--accept-shapeless-risk`), and in the Python SDK (`deployment_shape="default"` / `accept_shapeless_risk=True`):
+
+  * **`deploymentShape: "default"`** — Fireworks picks a validated deployment shape for the model and creates the deployment from it. If every compatible shape conflicts with fields in your request, the request fails with an error naming the conflicting fields and compatible shapes; the pick never silently overrides your settings or falls back to creating without a shape.
+  * **`acceptShapelessRisk=true`** — an explicit opt-out that creates the deployment without a shape, preserving current behavior. It cannot be combined with a shape.
+
+  Deployments created without a shape skip shape validation and are the most common cause of failed deployment creations. Enforcement is coming soon: shapeless creation will then require the explicit opt-in, so start passing a shape (or `default`) now. The opt-out is for advanced users only. If you have a workload no existing shape covers, [contact us](https://fireworks.ai/contact) and we'll help you find or add one.
+</Update>
+
+<Update label="2026-09-13">
+  <Badge color="purple">Training</Badge>
+
+  # New training model: GLM 5.3 Flash
+
+  **[GLM 5.3 Flash](https://app.fireworks.ai/models/fireworks/glm-5p3-flash)** is now available for LoRA training on the [Dedicated Training API](/fine-tuning/training-api/dedicated), including vision training, with up to 262K context. It performs well on agentic coding, document analysis, and tool use, and is cost-efficient to serve.
+
+  See the [training model catalog](/fine-tuning/models) for current availability.
+</Update>
+
+<Update label="2026-09-12">
+  <Badge color="blue">Inference</Badge>
+
+  # Upcoming Serverless deprecation: older DeepSeek, GLM, Muse, and Kimi models
+
+  Several older Serverless models will be decommissioned on **September 25, 2026** to better serve newer, higher-performance replacements. This applies **only to serverless endpoints**, including Fast and US-only Serverless endpoints for models that have those variants. **Dedicated deployments are unaffected.**
+
+  ## **Action required**
+
+  If you use any of the models below on serverless, migrate to a recommended replacement **before September 25, 2026**. After that date, they will no longer be available via serverless endpoints.
+
+  ## **Recommended migrations**
+
+  * **[DeepSeek V4 Flash (0731)](https://app.fireworks.ai/models/fireworks/deepseek-v4-flash-0731)** — migrate to **[DeepSeek V4.1 Flash](https://app.fireworks.ai/models/fireworks/deepseek-v4p1-flash)**
+  * **[DeepSeek V4 Pro (0813)](https://app.fireworks.ai/models/fireworks/deepseek-v4-pro-0813)** — migrate to **[DeepSeek V4.1 Flash](https://app.fireworks.ai/models/fireworks/deepseek-v4p1-flash)**
+  * **[DeepSeek V4 Flash Vision Exp](https://app.fireworks.ai/models/fireworks/deepseek-v4-flash-vision-exp)** — migrate to **[DeepSeek V4.1 Flash](https://app.fireworks.ai/models/fireworks/deepseek-v4p1-flash)**
+  * **[GLM 5.2](https://app.fireworks.ai/models/fireworks/glm-5p2)** — migrate to **[GLM 5.3](https://app.fireworks.ai/models/fireworks/glm-5p3)**
+  * **[Muse Glimmer 30B](https://app.fireworks.ai/models/fireworks/muse-glimmer-30b)** — migrate to **[NVIDIA Nemotron 3.5 Lightning 30B A3B](https://app.fireworks.ai/models/fireworks/nemotron-lightning-3p5-30b-a3b)**
+  * **[Kimi K2.6](https://app.fireworks.ai/models/fireworks/kimi-k2p6)** — migrate to **[GLM 5.3](https://app.fireworks.ai/models/fireworks/glm-5p3)** or **[Kimi K3](https://app.fireworks.ai/models/fireworks/kimi-k3)**
+  * **[Kimi K2.7 Code](https://app.fireworks.ai/models/fireworks/kimi-k2p7-code)** — migrate to **[GLM 5.3](https://app.fireworks.ai/models/fireworks/glm-5p3)** or **[Kimi K3](https://app.fireworks.ai/models/fireworks/kimi-k3)**
+
+  On official benchmarks, DeepSeek V4.1 Flash outperforms DeepSeek V4 Pro (0813). DeepSeek V4.1 Flash is also multimodal, with the same vision capability as DeepSeek V4 Flash Vision Exp.
+
+  If you want to switch to a dedicated deployment, see the [Serverless model list](https://fireworks.ai/models?modelTypes=Serverless) and the [on-demand deployment quickstart](/getting-started/ondemand-quickstart).
+</Update>
 
 <Update label="2026-09-09">
   <Badge color="purple">Training</Badge>
@@ -40,12 +283,22 @@
   See [Deployment Tags](/deployments/deployment-tags) for commands, REST examples, validation rules, and migration guidance.
 </Update>
 
+<Update label="2026-09-07">
+  <Badge color="purple">Training</Badge>
+
+  # New training model: GLM 5.3
+
+  **[GLM 5.3](https://app.fireworks.ai/models/fireworks/glm-5p3)** is now available for LoRA training on the [Dedicated Training API](/fine-tuning/training-api/dedicated), with up to 204K context. It's built for complex coding and long-horizon agents.
+
+  See the [training model catalog](/fine-tuning/models) for current availability.
+</Update>
+
 <Update label="2026-09-01">
   <Badge color="blue">Inference</Badge>
 
   # Serverless rate limit ceilings now scale by model size
 
-  Serverless adaptive rate limit ceilings now vary by model size tier. Smaller models (\< 400B parameters) get higher ceilings; medium models (400B – \< 1.6T) get intermediate ceilings; large models (≥ 1.6T) keep the previous base ceilings. See [Serverless rate limits](/serverless/rate-limits#model-size-tiers) for tier thresholds and ceiling values.
+  Serverless adaptive rate limit ceilings now vary by model size tier. Smaller models get higher ceilings, medium models get intermediate ceilings, and large models use lower ceilings. See [Serverless rate limits](/serverless/rate-limits#model-size-tiers) for current tier thresholds and ceiling values.
 </Update>
 
 <Update label="2026-08-30">
@@ -73,8 +326,8 @@
 
   * **[MiniMax M2.7](https://app.fireworks.ai/models/fireworks/minimax-m2p7)** — migrate to **[MiniMax M3](https://app.fireworks.ai/models/fireworks/minimax-m3)**
   * **[GPT OSS 20B](https://app.fireworks.ai/models/fireworks/gpt-oss-20b)** — migrate to **[GPT OSS 120B](https://app.fireworks.ai/models/fireworks/gpt-oss-120b)** or **[Qwen3 8B](https://app.fireworks.ai/models/fireworks/qwen3-8b)** for lower-latency workloads
-  * **[Kimi K2.6 Turbo / Fast](https://app.fireworks.ai/models/fireworks/kimi-k2p6)** — migrate to **[Kimi K2.6](https://app.fireworks.ai/models/fireworks/kimi-k2p6)** (standard serving path)
-  * **[Kimi K2.7 Code Fast](https://app.fireworks.ai/models/fireworks/kimi-k2p7-code)** — migrate to **[Kimi K2.7 Code](https://app.fireworks.ai/models/fireworks/kimi-k2p7-code)** (standard serving path)
+  * **[Kimi K2.6 Turbo / Fast](https://app.fireworks.ai/models/fireworks/kimi-k2p6)** — migrate to **[Kimi K2.6](https://app.fireworks.ai/models/fireworks/kimi-k2p6)** (standard mode)
+  * **[Kimi K2.7 Code Fast](https://app.fireworks.ai/models/fireworks/kimi-k2p7-code)** — migrate to **[Kimi K2.7 Code](https://app.fireworks.ai/models/fireworks/kimi-k2p7-code)** (standard mode)
   * **[DeepSeek V4 Pro](https://app.fireworks.ai/models/fireworks/deepseek-v4-pro)** — migrate to **[DeepSeek V4 Pro (0813)](https://app.fireworks.ai/models/fireworks/deepseek-v4-pro-0813)**
 </Update>
 
