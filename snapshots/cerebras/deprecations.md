@@ -7,11 +7,11 @@
 > A list of all deprecations, with the most recent announcements appearing first.
 
 <Update label="2026-09-03">
-  **Gemma 4 31B availability changes on public endpoints**
+  **Gemma 4 31B availability changes with Shared Inference**
 
-  Starting September 3, 2026, `gemma-4-31b` is no longer available on Cerebras public endpoints. This change doesn't affect [Dedicated Endpoints](/dedicated/overview), where Gemma 4 31B remains available.
+  Starting September 3, 2026, `gemma-4-31b` is no longer available with Cerebras Shared Inference. This change doesn't affect [Dedicated Inference](/dedicated/overview), where Gemma 4 31B remains available.
 
-  Use [`qwen-3.8-27b`](/models/qwen-3.8-27b) for public endpoint workloads. To continue using Gemma 4 31B, [contact us](https://www.cerebras.ai/contact) to set up a dedicated endpoint.
+  Use [`qwen-3.8-27b`](/models/qwen-3.8-27b) for Shared Inference workloads. To continue using Gemma 4 31B, [contact us](https://www.cerebras.ai/contact) to set up Dedicated Inference.
 </Update>
 
 <Update label="2026-08-17">

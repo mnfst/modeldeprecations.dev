@@ -1,3 +1,8 @@
+> This page is for version v2 API (default).
+> For other versions, use one of these documentation indexes:
+> - v2 API (default): https://docs.cohere.com/v2/llms.txt
+> - v1 API: https://docs.cohere.com/v1/llms.txt
+
 > For clean Markdown of any page, append .md to the page URL.
 > For a complete documentation index, see https://docs.cohere.com/llms.txt.
 > For AI client integration (Claude Code, Cursor, etc.), connect to the MCP server at https://docs.cohere.com/_mcp/server.
@@ -48,7 +53,8 @@ are.
 * The North family includes purpose-built models such as
   [North Small Translate](north-small-translate-1.0) for machine translation and
   [North Mini Code](north-mini-code-1.0) for agentic coding. Both are available through the
-  [Chat](../reference/chat) endpoint and support production deployment through Model Vault.
+  [Chat](../reference/chat) endpoint. North Mini Code also supports production deployment through
+  [Model Vault](../../v2/docs/model-vault).
 
 ## Command
 
@@ -92,7 +98,8 @@ In this table, we provide some important context for using Cohere Command models
 ## North
 
 North is Cohere's family of purpose-built generative models. North models are available on the Cohere API for
-evaluation and through [Model Vault](../../v2/docs/model-vault) for production deployment.
+evaluation. [North Mini Code](north-mini-code-1.0) also supports production deployment through
+[Model Vault](../../v2/docs/model-vault).
 
 | Model Name                  | Status | Description                                                                                                                                                              | Modality | Context Length | Maximum Output Tokens | Endpoints                 |
 | --------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | -------------- | --------------------- | ------------------------- |
@@ -103,28 +110,32 @@ evaluation and through [Model Vault](../../v2/docs/model-vault) for production d
 
 These models can be used to generate embeddings from text or classify it based on various parameters. Embeddings can be used for estimating semantic similarity between two sentences, choosing a sentence which is most likely to follow another sentence, or categorizing user feedback. The Representation model comes with a variety of helper functions, such as for detecting the language of an input.
 
-| Model Name                      | Description                                                                                                               | Modalities                                   | Dimensions                                 | Context Length | Similarity Metric                                             | Endpoints                                                           |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | ------------------------------------------ | -------------- | ------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `embed-v4.0`                    | A model that allows for text and images to be classified or turned into embeddings                                        | Text, Images, Mixed texts/images (i.e. PDFs) | One of '\[256, 512, 1024, 1536 (default)]' | 128k           | Cosine Similarity, Dot Product Similarity, Euclidean Distance | [Embed](../reference/embed),  [Embed Jobs](../reference/embed-jobs) |
-| `embed-english-v3.0`            | A model that allows for text to be classified or turned into embeddings. English only.                                    | Text, Images                                 | 1024                                       | 512            | Cosine Similarity                                             | [Embed](../reference/embed),  [Embed Jobs](../reference/embed-jobs) |
-| `embed-english-light-v3.0`      | A smaller, faster version of `embed-english-v3.0`. Almost as capable, but a lot faster. English only.                     | Text, Images                                 | 384                                        | 512            | Cosine Similarity                                             | [Embed](../reference/embed),  [Embed Jobs](../reference/embed-jobs) |
-| `embed-multilingual-v3.0`       | Provides multilingual classification and embedding support. [See supported languages here.](/docs/supported-languages)    | Text, Images                                 | 1024                                       | 512            | Cosine Similarity                                             | [Embed](../reference/embed), [Embed Jobs](../reference/embed-jobs)  |
-| `embed-multilingual-light-v3.0` | A smaller, faster version of `embed-multilingual-v3.0`. Almost as capable, but a lot faster. Supports multiple languages. | Text, Images                                 | 384                                        | 512            | Cosine Similarity                                             | [Embed](../reference/embed),  [Embed Jobs](../reference/embed-jobs) |
+| Model Name                      | Description                                                                                                               | Modalities                                   | Dimensions                                            | Context Length | Similarity Metric                                             | Endpoints                                                           |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | ----------------------------------------------------- | -------------- | ------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `embed-v5.0-pro`                | Our most capable embedding model, for text and images. Higher quality than `embed-v5.0-fast`, at higher latency.          | Text, Images, Mixed texts/images (i.e. PDFs) | One of '\[256, 512, 768, 1024, 1536, 2048 (default)]' | 128k           | Cosine Similarity, Dot Product Similarity, Euclidean Distance | [Embed](../reference/embed)                                         |
+| `embed-v5.0-fast`               | A faster, lighter version of `embed-v5.0-pro`. Allows for text and images to be classified or turned into embeddings      | Text, Images, Mixed texts/images (i.e. PDFs) | One of '\[256, 512, 768, 1024, 1536, 2048 (default)]' | 128k           | Cosine Similarity, Dot Product Similarity, Euclidean Distance | [Embed](../reference/embed)                                         |
+| `embed-v4.0`                    | A model that allows for text and images to be classified or turned into embeddings                                        | Text, Images, Mixed texts/images (i.e. PDFs) | One of '\[256, 512, 1024, 1536 (default)]'            | 128k           | Cosine Similarity, Dot Product Similarity, Euclidean Distance | [Embed](../reference/embed),  [Embed Jobs](../reference/embed-jobs) |
+| `embed-english-v3.0`            | A model that allows for text to be classified or turned into embeddings. English only.                                    | Text, Images                                 | 1024                                                  | 512            | Cosine Similarity                                             | [Embed](../reference/embed),  [Embed Jobs](../reference/embed-jobs) |
+| `embed-english-light-v3.0`      | A smaller, faster version of `embed-english-v3.0`. Almost as capable, but a lot faster. English only.                     | Text, Images                                 | 384                                                   | 512            | Cosine Similarity                                             | [Embed](../reference/embed),  [Embed Jobs](../reference/embed-jobs) |
+| `embed-multilingual-v3.0`       | Provides multilingual classification and embedding support. [See supported languages here.](/docs/supported-languages)    | Text, Images                                 | 1024                                                  | 512            | Cosine Similarity                                             | [Embed](../reference/embed), [Embed Jobs](../reference/embed-jobs)  |
+| `embed-multilingual-light-v3.0` | A smaller, faster version of `embed-multilingual-v3.0`. Almost as capable, but a lot faster. Supports multiple languages. | Text, Images                                 | 384                                                   | 512            | Cosine Similarity                                             | [Embed](../reference/embed),  [Embed Jobs](../reference/embed-jobs) |
 
 ### Using Embed Models on Different Platforms
 
 In this table, we provide some important context for using Cohere Embed models on Amazon Bedrock, Amazon SageMaker, and more.
 
-| Model Name                      | Amazon Bedrock Model ID        | Amazon SageMaker      | Azure AI Foundry        | Oracle OCI Generative AI Service                                                                             |
-| :------------------------------ | :----------------------------- | :-------------------- | :---------------------- | :----------------------------------------------------------------------------------------------------------- |
-| `embed-v4.0`                    | (Coming Soon)                  | Unique per deployment | `cohere-embed-v-4-plan` | (Coming Soon)                                                                                                |
-| `embed-english-v3.0`            | `cohere.embed-english-v3`      | Unique per deployment | Unique per deployment   | `cohere.embed-english-image-v3.0` (for images), `cohere.embed-english-v3.0` (for text)                       |
-| `embed-english-light-v3.0`      | N/A                            | Unique per deployment | N/A                     | `cohere.embed-english-light-image-v3.0` (for images), `cohere.embed-english-light-v3.0` (for text)           |
-| `embed-multilingual-v3.0`       | `cohere.embed-multilingual-v3` | Unique per deployment | Unique per deployment   | `cohere.embed-multilingual-image-v3.0` (for images), `cohere.embed-multilingual-v3.0` (for text)             |
-| `embed-multilingual-light-v3.0` | N/A                            | Unique per deployment | N/A                     | `cohere.embed-multilingual-light-image-v3.0` (for images), `cohere.embed-multilingual-light-v3.0` (for text) |
-| `embed-english-v2.0`            | N/A                            | Unique per deployment | N/A                     | N/A                                                                                                          |
-| `embed-english-light-v2.0`      | N/A                            | Unique per deployment | N/A                     | `cohere.embed-english-light-v2.0`                                                                            |
-| `embed-multilingual-v2.0`       | N/A                            | Unique per deployment | N/A                     | N/A                                                                                                          |
+| Model Name                      | Amazon Bedrock Model ID        | Amazon SageMaker      | Azure AI Foundry                                                                   | Oracle OCI Generative AI Service                                                                             |
+| :------------------------------ | :----------------------------- | :-------------------- | :--------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------- |
+| `embed-v5.0-pro`                | N/A                            | Unique per deployment | [`Cohere-Embed-V5-Pro`](https://ai.azure.com/catalog/models/Cohere-Embed-V5-Pro)   | N/A                                                                                                          |
+| `embed-v5.0-fast`               | N/A                            | Unique per deployment | [`Cohere-Embed-V5-Fast`](https://ai.azure.com/catalog/models/Cohere-Embed-V5-Fast) | N/A                                                                                                          |
+| `embed-v4.0`                    | (Coming Soon)                  | Unique per deployment | `cohere-embed-v-4-plan`                                                            | (Coming Soon)                                                                                                |
+| `embed-english-v3.0`            | `cohere.embed-english-v3`      | Unique per deployment | Unique per deployment                                                              | `cohere.embed-english-image-v3.0` (for images), `cohere.embed-english-v3.0` (for text)                       |
+| `embed-english-light-v3.0`      | N/A                            | Unique per deployment | N/A                                                                                | `cohere.embed-english-light-image-v3.0` (for images), `cohere.embed-english-light-v3.0` (for text)           |
+| `embed-multilingual-v3.0`       | `cohere.embed-multilingual-v3` | Unique per deployment | Unique per deployment                                                              | `cohere.embed-multilingual-image-v3.0` (for images), `cohere.embed-multilingual-v3.0` (for text)             |
+| `embed-multilingual-light-v3.0` | N/A                            | Unique per deployment | N/A                                                                                | `cohere.embed-multilingual-light-image-v3.0` (for images), `cohere.embed-multilingual-light-v3.0` (for text) |
+| `embed-english-v2.0`            | N/A                            | Unique per deployment | N/A                                                                                | N/A                                                                                                          |
+| `embed-english-light-v2.0`      | N/A                            | Unique per deployment | N/A                                                                                | `cohere.embed-english-light-v2.0`                                                                            |
+| `embed-multilingual-v2.0`       | N/A                            | Unique per deployment | N/A                                                                                | N/A                                                                                                          |
 
 ## Rerank
 
@@ -153,7 +164,9 @@ In this table, we provide some important context for using Cohere Rerank models 
 \
 
 
-Rerank accepts full strings rather than tokens, so the token limit works a little differently. Rerank will automatically chunk documents longer than 510 tokens, and there is therefore no explicit limit to how long a document can be when using rerank. See our [best practice guide](/docs/reranking-best-practices) for more info about formatting documents for the Rerank endpoint.
+> **Note**
+>
+> Rerank accepts full strings rather than tokens, so the token limit works a little differently. Rerank will automatically chunk documents longer than 510 tokens, and there is therefore no explicit limit to how long a document can be when using rerank. See our [best practice guide](/docs/reranking-best-practices) for more info about formatting documents for the Rerank endpoint.
 
 ## Parse
 
