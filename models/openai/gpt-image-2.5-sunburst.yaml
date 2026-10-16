@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-image-2.5-sunburst
+name: GPT Image 2.5 Sunburst
+aliases: [gpt-image-2.5-sunburst-2026-09-08]
+description: >-
+  The precise half of the GPT Image 2.5 pair, which OpenAI pitches as its most
+  capable model for generation and editing, for work where getting an edit
+  exactly right matters more than speed. It is the first replacement OpenAI
+  names for gpt-image-1, its mini and 1.5 variants, and the chatgpt-image-latest
+  pointer, and it adds xhigh and max quality settings above gpt-image-2's.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst
+    title: GPT Image 2.5 Sunburst model page
+    accessed: 2026-10-16
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-10-16
+last_verified: 2026-10-16

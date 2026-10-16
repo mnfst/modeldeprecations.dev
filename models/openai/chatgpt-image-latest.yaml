@@ -12,13 +12,18 @@ shutdown_on: 2026-12-01
 status: deprecated
 replacements:
   - provider: openai
-    model: gpt-image-2
+    model: gpt-image-2.5-sunburst
     recommended: true
     note: >-
-      Move to a pinned id. Every floating pointer in this catalog — chat, codex
-      and image alike — has now been deprecated at least once.
+      Move to a pinned id. OpenAI names Sunburst or Flare; each has a dated
+      snapshot (-2026-09-08) to pin to.
+  - provider: openai
+    model: gpt-image-2.5-flare
+    note: >-
+      The other replacement OpenAI names: its fastest model for everyday image
+      generation, at the same token rates as Sunburst.
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-07-30
-last_verified: 2026-07-30
+    accessed: 2026-10-16
+last_verified: 2026-10-16

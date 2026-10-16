@@ -11,13 +11,19 @@ shutdown_on: 2026-12-01
 status: deprecated
 replacements:
   - provider: openai
-    model: gpt-image-2
+    model: gpt-image-2.5-sunburst
     recommended: true
     note: >-
-      There is no mini id in the gpt-image-2 generation. Cost control moves to
-      the size and quality parameters instead of a separate model.
+      OpenAI names Sunburst or Flare; there is no mini id in the 2.5
+      generation, so cost control moves to the quality setting. Flare, the
+      faster of the two, is the closer fit for drafts and thumbnails.
+  - provider: openai
+    model: gpt-image-2.5-flare
+    note: >-
+      The other replacement OpenAI names: its fastest model for everyday image
+      generation, at the same token rates as Sunburst.
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-07-30
-last_verified: 2026-07-30
+    accessed: 2026-10-16
+last_verified: 2026-10-16

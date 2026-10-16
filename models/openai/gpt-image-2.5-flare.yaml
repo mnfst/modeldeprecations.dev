@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-image-2.5-flare
+name: GPT Image 2.5 Flare
+aliases: [gpt-image-2.5-flare-2026-09-08]
+description: >-
+  The fast half of the GPT Image 2.5 pair, meant for everyday generation at
+  volume rather than careful edits. It bills image tokens at the same rates as
+  Sunburst and gpt-image-2, so picking between the two 2.5 models is a speed
+  and precision call, not a pricing one.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/models/gpt-image-2.5-flare
+    title: GPT Image 2.5 Flare model page
+    accessed: 2026-10-16
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-10-16
+last_verified: 2026-10-16
