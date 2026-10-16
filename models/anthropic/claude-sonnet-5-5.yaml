@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-sonnet-5-5
+name: Claude Sonnet 5.5
+description: >-
+  The Sonnet Anthropic names as the replacement for Sonnet 4.5, and the model
+  every Sonnet retirement on Anthropic's deprecations page now points to. Fully
+  supported, with a published earliest retirement of September 28, 2027.
+earliest_shutdown_on: 2027-09-28
+status: active
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-10-16
+last_verified: 2026-10-16

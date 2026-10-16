@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-6-luna
+name: GPT-6 Luna
+description: >-
+  The small model of the GPT-6 generation, and the one OpenAI names as the
+  replacement for the whole October 2026 GPT-4 series deprecation: GPT-4o,
+  GPT-4o mini, GPT-4.1 and GPT-4.1 mini all point here, as does gpt-5.4-nano.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-10-16
+last_verified: 2026-10-16

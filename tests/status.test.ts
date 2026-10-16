@@ -41,7 +41,17 @@ describe("statusOn", () => {
     expect(statusOn(m, TODAY)).toBe("active");
   });
 
-  it("reports retired once even a soft date has passed", () => {
+  it("keeps an active model active after its soft date passes", () => {
+    const m = model({
+      deprecated_on: undefined,
+      shutdown_on: undefined,
+      earliest_shutdown_on: "2026-06-01",
+      status: "active",
+    });
+    expect(statusOn(m, TODAY)).toBe("active");
+  });
+
+  it("reports retired when the authored status says so, soft date or not", () => {
     const m = model({
       deprecated_on: undefined,
       shutdown_on: undefined,

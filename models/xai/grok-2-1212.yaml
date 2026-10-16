@@ -5,13 +5,14 @@ name: Grok 2
 description: >-
   The model that took xAI's API out of beta in December 2024, replacing
   grok-beta with better instruction-following and multilingual coverage at $2 per
-  million input tokens. It is gone: the id is absent from xAI's model list and
-  its documentation page returns a 404. xAI never published a retirement date for
-  it, and this catalogue will not invent one.
+  million input tokens. xAI dropped it from its model list and its documentation
+  page, but never published a deprecation or a retirement date, so this page
+  carries none and cannot say whether the id still answers or is redirected, as
+  xAI did with the models it retired on May 15, 2026.
 aliases:
   - grok-2
   - grok-2-latest
-status: retired
+status: deprecated
 replacements:
   - provider: xai
     model: grok-4.3
@@ -22,5 +23,8 @@ replacements:
 sources:
   - url: https://docs.x.ai/developers/models
     title: xAI models and pricing (no longer lists this model)
-    accessed: 2026-08-03
-last_verified: 2026-08-03
+    accessed: 2026-10-16
+  - url: https://docs.x.ai/developers/migration/may-15-retirement
+    title: xAI model retirement, May 15, 2026 (does not list this model)
+    accessed: 2026-10-16
+last_verified: 2026-10-16

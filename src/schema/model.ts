@@ -159,15 +159,17 @@ export function modelId(model: Pick<Model, "provider" | "model">): string {
  * announced deprecation means deprecated. A soft `earliest_shutdown_on` in the
  * future does *not* make a model deprecated — providers publish those for
  * healthy current models as a routine lifecycle guarantee, and calling those
- * models deprecated would be wrong. Once such a date is in the past, though,
- * the model is gone: that is what the date meant.
+ * models deprecated would be wrong. Nor does such a date passing retire the
+ * model: it is the earliest a provider may retire it, not a retirement, and
+ * models keep serving well past it (claude-sonnet-4-5 was still active weeks
+ * after its earliest date). Only a committed `shutdown_on`, or the authored
+ * status, says a model is gone.
  */
 export function statusOn(
   model: Pick<Model, "deprecated_on" | "shutdown_on" | "earliest_shutdown_on" | "status">,
   on: string,
 ): Status {
   if (model.shutdown_on && model.shutdown_on <= on) return "retired";
-  if (model.earliest_shutdown_on && model.earliest_shutdown_on <= on) return "retired";
   if (model.deprecated_on && model.deprecated_on <= on) return "deprecated";
   if (model.shutdown_on) return "deprecated";
   if (model.deprecated_on) return "deprecated";

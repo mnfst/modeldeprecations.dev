@@ -2,14 +2,24 @@
 provider: openai
 model: gpt-4.1-mini
 name: GPT-4.1 mini
+aliases: [gpt-4.1-mini-2025-04-14]
 description: >-
-  The mid-size GPT-4.1 variant, and one of the few 2025-era ids that has
-  survived the 2026 deprecation waves untouched. It is not listed on the OpenAI
-  deprecations page in any announcement, unlike gpt-4.1-nano.
+  The mid-size GPT-4.1 variant, which survived the April 2026 deprecation wave
+  that took gpt-4.1-nano. It did not survive the next one: OpenAI deprecated it
+  on October 14, 2026 and removes it from the API on January 14, 2027.
 released_on: 2025-04-14
-status: active
+deprecated_on: 2026-10-14
+shutdown_on: 2027-01-14
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-6-luna
+    recommended: true
+    note: >-
+      Fine-tuned versions follow the same shutdown schedule as the base model,
+      so a fine-tune has to be re-run on the new base before January 14, 2027.
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-07-30
-last_verified: 2026-07-30
+    accessed: 2026-10-16
+last_verified: 2026-10-16

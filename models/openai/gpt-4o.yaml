@@ -2,16 +2,26 @@
 provider: openai
 model: gpt-4o
 name: GPT-4o
+aliases: [gpt-4o-2024-08-06, gpt-4o-2024-11-20]
 description: >-
   The omni model that made multimodal input routine and halved the price of
-  GPT-4 Turbo at the same time. It is still the default many production stacks
-  reach for, and OpenAI has kept the floating gpt-4o pointer alive even as the
-  dated snapshot behind it changed. The May 2024 snapshot is deprecated; the
-  pointer itself is not.
+  GPT-4 Turbo at the same time, and still the default many production stacks
+  reach for. On October 14, 2026 OpenAI deprecated GPT-4o, both remaining
+  snapshots (2024-08-06 and 2024-11-20) included, for removal from the API on
+  January 14, 2027. The May 2024 snapshot has its own, earlier date.
 released_on: 2024-05-13
-status: active
+deprecated_on: 2026-10-14
+shutdown_on: 2027-01-14
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-6-luna
+    recommended: true
+    note: >-
+      Fine-tuned versions follow the same shutdown schedule as the base model,
+      so a fine-tune has to be re-run on the new base before January 14, 2027.
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-07-30
-last_verified: 2026-07-30
+    accessed: 2026-10-16
+last_verified: 2026-10-16

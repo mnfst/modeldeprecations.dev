@@ -2,14 +2,25 @@
 provider: openai
 model: gpt-4.1
 name: GPT-4.1
+aliases: [gpt-4.1-2025-04-14]
 description: >-
   The 2025 refresh that fixed what GPT-4o was weakest at — instruction following
   and long-context recall — and became the default non-reasoning model for a
-  year. Its nano sibling has been deprecated; gpt-4.1 and gpt-4.1-mini have not.
+  year. Its nano sibling went first; OpenAI deprecated gpt-4.1 itself on October
+  14, 2026, for removal from the API on January 14, 2027.
 released_on: 2025-04-14
-status: active
+deprecated_on: 2026-10-14
+shutdown_on: 2027-01-14
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-6-luna
+    recommended: true
+    note: >-
+      Fine-tuned versions follow the same shutdown schedule as the base model,
+      so a fine-tune has to be re-run on the new base before January 14, 2027.
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-07-30
-last_verified: 2026-07-30
+    accessed: 2026-10-16
+last_verified: 2026-10-16

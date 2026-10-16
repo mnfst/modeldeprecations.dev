@@ -4,14 +4,20 @@ model: claude-sonnet-4-5-20250929
 name: Claude Sonnet 4.5
 aliases: [claude-sonnet-4-5]
 description: >-
-  The September 2025 Sonnet, still active but with the second-nearest earliest
-  retirement date of any live Anthropic model. It is the last Sonnet to use
-  explicit extended thinking rather than the adaptive thinking introduced in 4.6.
+  The September 2025 Sonnet, and the last Sonnet to use explicit extended
+  thinking rather than the adaptive thinking introduced in 4.6. Anthropic
+  deprecated it on September 30, 2026 and retires it from the Claude API on
+  November 30, 2026; until then it still answers.
 released_on: 2025-09-29
-earliest_shutdown_on: 2026-09-29
-status: active
+deprecated_on: 2026-09-30
+shutdown_on: 2026-11-30
+status: deprecated
+replacements:
+  - provider: anthropic
+    model: claude-sonnet-5-5
+    recommended: true
 sources:
   - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
     title: Anthropic model deprecations
-    accessed: 2026-07-30
-last_verified: 2026-07-30
+    accessed: 2026-10-16
+last_verified: 2026-10-16
