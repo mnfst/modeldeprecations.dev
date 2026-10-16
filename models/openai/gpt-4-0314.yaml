@@ -12,16 +12,21 @@ deprecated_on: 2025-09-26
 shutdown_on: 2026-03-26
 status: retired
 replacements:
-  [
-    {
-      provider: openai,
-      model: gpt-4,
-      recommended: true,
-      note: "The undated gpt-4 id is the smallest change, though it is itself deprecated with an October 2026 shutdown. For a migration that lasts, go to gpt-5.6-sol.",
-    },
-  ]
+  - provider: openai
+    model: gpt-5
+    recommended: true
+    note: >-
+      The successor OpenAI named when this snapshot was retired.
+      gpt-5 is itself deprecated and shuts down on December 11, 2026,
+      with gpt-5.6-sol as its named successor, so a migration made now should
+      go straight on to gpt-5.6-sol.
+  - provider: openai
+    model: gpt-4.1
+    note: >-
+      OpenAI's alternative for latency-sensitive work that does not need
+      reasoning.
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-07-30
-last_verified: 2026-07-30
+    accessed: 2026-10-16
+last_verified: 2026-10-16
