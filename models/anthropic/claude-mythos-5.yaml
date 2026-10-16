@@ -9,9 +9,13 @@ description: >-
   one current Claude id you cannot reach by signing up - access runs through an
   Anthropic, AWS or Google Cloud account team.
 released_on: 2026-06-09
+earliest_shutdown_on: 2027-06-09
 status: active
 sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-10-16
   - url: https://platform.claude.com/docs/en/about-claude/models/overview
     title: Anthropic models overview
-    accessed: 2026-08-03
-last_verified: 2026-08-03
+    accessed: 2026-10-16
+last_verified: 2026-10-16

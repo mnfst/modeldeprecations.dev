@@ -14,9 +14,9 @@ replacements:
     recommended: true
     note: >-
       Google points every 2.5 Pro preview at 3.1 Pro rather than at stable 2.5
-      Pro, which is itself scheduled for retirement in October 2026.
+      Pro, which it now serves only to projects that used it before.
 sources:
   - url: https://ai.google.dev/gemini-api/docs/deprecations
     title: Gemini API deprecations
-    accessed: 2026-07-30
-last_verified: 2026-07-30
+    accessed: 2026-10-16
+last_verified: 2026-10-16

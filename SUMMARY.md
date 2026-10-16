@@ -38,10 +38,11 @@ Every date on the site comes from a provider page, all read on 2026-07-30:
   (`docs.anthropic.com` and `docs.claude.com` both redirect here)
 - Google — https://ai.google.dev/gemini-api/docs/deprecations
 
-**One exception, clearly marked.** The four Gemini 1.x pages cite the community
+**One exception, clearly marked.** The Gemini 1.0 Flash page cites the community
 [`llm-model-deprecation`](https://github.com/techdevsynergy/llm-model-deprecation)
-registry as a second source, because Google has removed those rows from its own
-tables. Those pages say so in prose, and the source is titled
+registry as a second source, because Google has removed its row from its own
+tables. (The other Gemini 1.x pages now cite Google's release notes instead.)
+That page says so in prose, and the source is titled
 "llm-model-deprecation registry (third-party)" so a reader can see the provenance
 is weaker. Nothing else on the site depends on it.
 
@@ -150,7 +151,7 @@ documented as deprecated but carries no dates and is invitation-only.
 ## What I'd do next, in order
 
 1. An archive.org snapshot of Google's deprecations page to replace the
-   third-party citation on the four Gemini 1.x pages.
+   third-party citation on the Gemini 1.0 Flash page.
 2. Verify the Gemini 2.5 shutdown dates against the live API.
 3. Add the reciprocal link from modelparams.dev model pages back to here (planned
    as a follow-up PR in that repo).

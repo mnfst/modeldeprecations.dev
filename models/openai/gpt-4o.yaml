@@ -6,12 +6,13 @@ description: >-
   The omni model that made multimodal input routine and halved the price of
   GPT-4 Turbo at the same time. It is still the default many production stacks
   reach for, and OpenAI has kept the floating gpt-4o pointer alive even as the
-  dated snapshot behind it changed. The May 2024 snapshot is deprecated; the
-  pointer itself is not.
+  dated snapshot behind it changed. Every dated snapshot is now deprecated, the
+  last two shutting down on January 14, 2027, but OpenAI's notice lists only
+  the dated ids, not the pointer.
 released_on: 2024-05-13
 status: active
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-07-30
-last_verified: 2026-07-30
+    accessed: 2026-10-16
+last_verified: 2026-10-16

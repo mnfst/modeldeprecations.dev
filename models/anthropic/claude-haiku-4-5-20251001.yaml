@@ -5,13 +5,14 @@ name: Claude Haiku 4.5
 aliases: [claude-haiku-4-5]
 description: >-
   The fastest Claude with near-frontier quality, and the named replacement for
-  every retired Haiku and Instant model going back to 2024. Active, with an
-  earliest retirement date of October 2026.
+  every retired Haiku and Instant model going back to 2024. Its "not sooner
+  than" date of October 15, 2026 has passed with no deprecation notice, so it is
+  still active; that date was a floor, not a deadline.
 released_on: 2025-10-01
 earliest_shutdown_on: 2026-10-15
 status: active
 sources:
   - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
     title: Anthropic model deprecations
-    accessed: 2026-07-30
-last_verified: 2026-07-30
+    accessed: 2026-10-16
+last_verified: 2026-10-16

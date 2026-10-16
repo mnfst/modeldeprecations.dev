@@ -13,13 +13,13 @@ shutdown_on: 2026-02-19
 status: retired
 replacements:
   - provider: anthropic
-    model: claude-sonnet-4-6
+    model: claude-sonnet-5-5
     recommended: true
     note: >-
-      Sonnet 4.6 uses adaptive thinking rather than an explicit budget, so the
-      thinking.budget_tokens field Sonnet 3.7 introduced no longer applies.
+      Sonnet 5.5 uses adaptive thinking steered by effort and does not accept the
+      thinking.budget_tokens mode Sonnet 3.7 introduced.
 sources:
   - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
     title: Anthropic model deprecations
-    accessed: 2026-07-30
-last_verified: 2026-07-30
+    accessed: 2026-10-16
+last_verified: 2026-10-16

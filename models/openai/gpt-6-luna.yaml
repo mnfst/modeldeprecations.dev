@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-6-luna
+name: GPT-6 Luna
+description: >-
+  The smallest model of the GPT-6 generation, sold as OpenAI's most efficient
+  model for focused, high-volume work at ten cents per million input tokens. It
+  is the one replacement OpenAI names for every GPT-4o and GPT-4.1 snapshot in
+  the October 2026 deprecation, so the whole GPT-4 era funnels into it.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/models/gpt-6-luna
+    title: GPT-6 Luna model page
+    accessed: 2026-10-16
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-10-16
+last_verified: 2026-10-16

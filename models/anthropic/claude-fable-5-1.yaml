@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-fable-5-1
+name: Claude Fable 5.1
+description: >-
+  The September 2026 update to Fable 5, at the same prices but with cache reads
+  cut to a quarter of their old cost. Upgrading is not a drop-in swap: forced
+  tool use now returns an error, and editing earlier turns invalidates the
+  thinking blocks Fable 5.1 produced.
+released_on: 2026-09-01
+earliest_shutdown_on: 2027-09-01
+status: active
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-10-16
+  - url: https://platform.claude.com/docs/en/models/fable-5-1/overview
+    title: Claude Fable 5.1 overview
+    accessed: 2026-10-16
+last_verified: 2026-10-16
