@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-1.5-flash-8b
+name: Gemini 1.5 Flash-8B
+aliases: [gemini-1.5-flash-8b-001]
+description: >-
+  The smallest Gemini API model of its day, an 8-billion-parameter cut of 1.5
+  Flash that spent a few weeks as an experimental id before going stable as
+  gemini-1.5-flash-8b-001 in October 2024. It was shut down with the rest of the
+  1.5 family on September 29, 2025.
+released_on: 2024-10-03
+shutdown_on: 2025-09-29
+status: retired
+replacements:
+  - provider: google
+    model: gemini-3.5-flash-lite
+    recommended: false
+    note: >-
+      Our suggestion, not Google's: the release notes that record the shutdown
+      name no successor. Flash-Lite is the tier that took over the small,
+      cheap slot after 1.5.
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/changelog
+    title: Gemini API release notes
+    accessed: 2026-10-16
+last_verified: 2026-10-16

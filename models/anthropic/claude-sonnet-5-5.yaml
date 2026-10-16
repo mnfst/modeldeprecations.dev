@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: anthropic
+model: claude-sonnet-5-5
+name: Claude Sonnet 5.5
+description: >-
+  The September 2026 Sonnet, billed by Anthropic as the best combination of speed
+  and intelligence in the lineup at $2 in and $10 out per million tokens. It is
+  the named replacement for every retired Sonnet on the deprecations page, from
+  Sonnet 3 through Sonnet 4.5, so most Sonnet migrations now end here.
+released_on: 2026-09-28
+earliest_shutdown_on: 2027-09-28
+status: active
+sources:
+  - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    title: Anthropic model deprecations
+    accessed: 2026-10-16
+  - url: https://platform.claude.com/docs/en/models/sonnet-5-5/overview
+    title: Claude Sonnet 5.5 overview
+    accessed: 2026-10-16
+last_verified: 2026-10-16

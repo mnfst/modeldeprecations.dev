@@ -89,7 +89,7 @@ last_verified: 2026-07-30
 
 CI enforces that, and a second workflow guards against quieter regressions: deleting a page, dropping an alias that used to resolve, pulling sources out from under a date, or changing a date without moving `last_verified` forward. Maintainers can override it with the `allow-data-regression` label.
 
-Sources are the provider's own deprecation pages. The four Gemini 1.x entries are the one exception: Google deleted those rows from its tables, so they also cite the community [`llm-model-deprecation`](https://github.com/techdevsynergy/llm-model-deprecation) registry, and the page says so. Where that registry and a provider page disagree, the provider page wins.
+Sources are the provider's own deprecation pages. Gemini 1.0 Flash is the one exception: Google deleted its row from its tables and its release notes never mention it, so it also cites the community [`llm-model-deprecation`](https://github.com/techdevsynergy/llm-model-deprecation) registry, and the page says so. Where that registry and a provider page disagree, the provider page wins.
 
 Found a wrong date? [File an issue](https://github.com/mnfst/modeldeprecations.dev/issues/new/choose) with the provider URL that proves it, or edit the YAML directly. There is a link to it on every model page. Full conventions are in [CONTRIBUTING.md](CONTRIBUTING.md).
 

@@ -15,9 +15,9 @@ replacements:
     recommended: true
     note: >-
       Google routes this straight to the 3.1 Lite tier rather than to the stable
-      2.5 Flash-Lite, which is itself scheduled for October 2026.
+      2.5 Flash-Lite, which it now serves only to projects that used it before.
 sources:
   - url: https://ai.google.dev/gemini-api/docs/deprecations
     title: Gemini API deprecations
-    accessed: 2026-07-30
-last_verified: 2026-07-30
+    accessed: 2026-10-16
+last_verified: 2026-10-16

@@ -22,5 +22,5 @@ replacements:
 sources:
   - url: https://docs.x.ai/developers/models
     title: xAI models and pricing (no longer lists this model)
-    accessed: 2026-08-03
-last_verified: 2026-08-03
+    accessed: 2026-10-16
+last_verified: 2026-10-16

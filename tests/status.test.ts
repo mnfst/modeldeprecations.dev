@@ -41,7 +41,21 @@ describe("statusOn", () => {
     expect(statusOn(m, TODAY)).toBe("active");
   });
 
-  it("reports retired once even a soft date has passed", () => {
+  // A "not sooner than" date is a floor, not a deadline. Anthropic and Google
+  // keep serving models well past it, so the date passing says nothing about
+  // whether requests still work.
+  it("keeps a model active after its soft date has passed", () => {
+    const m = model({
+      deprecated_on: undefined,
+      shutdown_on: undefined,
+      earliest_shutdown_on: "2026-06-01",
+      status: "active",
+    });
+    expect(statusOn(m, TODAY)).toBe("active");
+    expect(statusOn(m, "2026-06-01")).toBe("active");
+  });
+
+  it("keeps an authored retirement when a soft date has passed", () => {
     const m = model({
       deprecated_on: undefined,
       shutdown_on: undefined,
@@ -49,6 +63,16 @@ describe("statusOn", () => {
       status: "retired",
     });
     expect(statusOn(m, TODAY)).toBe("retired");
+  });
+
+  it("reports a deprecation, not a retirement, once a soft date has passed", () => {
+    const m = model({
+      deprecated_on: "2026-05-01",
+      shutdown_on: undefined,
+      earliest_shutdown_on: "2026-06-01",
+      status: "deprecated",
+    });
+    expect(statusOn(m, TODAY)).toBe("deprecated");
   });
 
   it("honours an authored status when no dates are known at all", () => {

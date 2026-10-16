@@ -12,14 +12,14 @@ shutdown_on: 2026-06-15
 status: retired
 replacements:
   - provider: anthropic
-    model: claude-sonnet-4-6
+    model: claude-sonnet-5-5
     recommended: true
     note: >-
-      Sonnet 4.6 keeps the same pricing and raises the context window to 1M
-      tokens. Its adaptive thinking replaces the explicit thinking budget Sonnet 4
-      used, so any code setting thinking.budget_tokens needs review.
+      Sonnet 5.5 raises the context window to 1M tokens. Its adaptive thinking
+      replaces the explicit thinking budget Sonnet 4 used, so any code setting
+      thinking.budget_tokens needs review.
 sources:
   - url: https://platform.claude.com/docs/en/about-claude/model-deprecations
     title: Anthropic model deprecations
-    accessed: 2026-07-30
-last_verified: 2026-07-30
+    accessed: 2026-10-16
+last_verified: 2026-10-16
