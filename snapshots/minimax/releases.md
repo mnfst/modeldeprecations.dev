@@ -128,12 +128,12 @@
 
 #### Feb. 11, 2025
 
-<Card title="T2V-01-Director / I2V-01-Director" icon="video" href="/docs/api-reference/video-generation-intro" cta="Start Building">
+<Card title="T2V-01-Director / I2V-01-Director" icon="video" href="/docs/api-reference/video-generation-i2v" cta="Start Building">
   Released a video generation model with enhanced camera control, offering superior adherence to camera movement directives and enabling cinematic storytelling through its shot composition.
 </Card>
 
 #### Jan. 15, 2025
 
-<Card title="MiniMax-Text-01 / MiniMax-VL-01" icon="file-text" href="/docs/api-reference/text-intro" cta="Start Building">
+<Card title="MiniMax-Text-01 / MiniMax-VL-01" icon="file-text" href="https://www.minimax.io/news/minimax-01-series-2" cta="Learn More">
   Released the next-generation LLM, MiniMax-Text-01, and the vision-language model, MiniMax-VL-01.
 </Card>

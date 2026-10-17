@@ -9,31 +9,38 @@
 ## Get API Key
 
 * **Pay-as-you-go**：Visit [API Keys > Create new secret key](https://platform.minimax.io/user-center/basic-information/interface-key) to get your **API Key**
-  <Note>Pay-as-you-go supports all modality models, including language, Video, Speech, and Image.</Note>
 
-* **Token Plan**：Visit [Billing > Token Plan](https://platform.minimax.io/user-center/payment/token-plan) to view your **Subscription Key**
-  <Note>The Subscription Key is used for Token Plan subscriptions and purchased Credits. It is separate from pay-as-you-go API Keys. See [Token Plan Overview](/docs/token-plan/intro) for details.</Note>
+* **M Plan**：Visit [Billing > M Plan](https://platform.minimax.io/user-center/payment/token-plan) to view your **Subscription Key**
+  <Note>The Subscription Key is used for M Plan subscriptions and purchased Credits. It is separate from pay-as-you-go API Keys. See [M Plan Overview](https://platform.minimax.io/docs/m-plan/intro) for details.</Note>
 
 ***
 
 ## Large Language Model
 
-The Large Language Model API uses **MiniMax M3**, **MiniMax M2.7**, **MiniMax M2.7 highspeed**, **MiniMax M2.5**, **MiniMax M2.5 highspeed**, **MiniMax M2.1**, **MiniMax M2.1 highspeed**, and **MiniMax M2** to generate conversational content and trigger tool calls based on the provided context.
+The Large Language Model API uses **MiniMax M3.1-Flash-Preview**, **MiniMax M3**, **MiniMax M2.7**, **MiniMax M2.7 highspeed**, **MiniMax M2.5**, **MiniMax M2.5 highspeed**, **MiniMax M2.1**, **MiniMax M2.1 highspeed**, and **MiniMax M2** to generate conversational content and trigger tool calls based on the provided context.
+
+<Note>MiniMax-M3.1-Flash-Preview is available only through M Plan and MiniMax Code for now.</Note>
 
 It can be accessed via **HTTP requests**, the **Anthropic SDK** (Recommended), or the **OpenAI SDK**.
 
 **Supported Models**
 
-| Model Name             | Context Window | Description                                                                                                                                   |
-| :--------------------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
-| MiniMax-M3             | 1,000,000      | **Latest M-series language model for agentic reasoning, tool use, coding, and long-context tasks** (output speed approximately 100+ tps)      |
-| MiniMax-M2.7           | 204,800        | **Beginning the journey of recursive self-improvement. (output speed approximately 60 tps)**                                                  |
-| MiniMax-M2.7-highspeed | 204,800        | **M2.7 highspeed: Same performance, faster and more agile (output speed approximately 100 tps)**                                              |
-| MiniMax-M2.5           | 204,800        | **Peak Performance. Ultimate Value. Master the Complex (output speed approximately 60 tps)**                                                  |
-| MiniMax-M2.5-highspeed | 204,800        | **M2.5 highspeed: Same performance, faster and more agile (output speed approximately 100 tps)**                                              |
-| MiniMax-M2.1           | 204,800        | **Powerful Multi-Language Programming Capabilities with Comprehensively Enhanced Programming Experience (output speed approximately 60 tps)** |
-| MiniMax-M2.1-highspeed | 204,800        | **Faster and More Agile (output speed approximately 100 tps)**                                                                                |
-| MiniMax-M2             | 204,800        | **Agentic capabilities, Advanced reasoning**                                                                                                  |
+| Model Name | Context Window | Description |
+| :- | :- | :- |
+| <span style={{whiteSpace:"nowrap"}}>MiniMax-M3.1-Flash-Preview</span> | 1,000,000 | **Frontier multimodal coding model with 1M context window and tunable thinking depth** |
+| MiniMax-M3 | 1,000,000 | **Frontier multimodal coding model with 1M context window** (output speed approximately 100+ tps) |
+| MiniMax-M2.7 | 204,800 | **Beginning the journey of recursive self-improvement. (output speed approximately 60 tps)** |
+| MiniMax-M2.7-highspeed | 204,800 | **M2.7 highspeed: Same performance, faster and more agile (output speed approximately 100 tps)** |
+
+<Accordion title="Legacy Models">
+  | Model Name | Context Window | Description |
+  | :- | :- | :- |
+  | MiniMax-M2.5 | 204,800 | **Peak Performance. Ultimate Value. Master the Complex (output speed approximately 60 tps)** |
+  | MiniMax-M2.5-highspeed | 204,800 | **M2.5 highspeed: Same performance, faster and more agile (output speed approximately 100 tps)** |
+  | MiniMax-M2.1 | 204,800 | **Powerful Multi-Language Programming Capabilities with Comprehensively Enhanced Programming Experience (output speed approximately 60 tps)** |
+  | MiniMax-M2.1-highspeed | 204,800 | **Faster and More Agile (output speed approximately 100 tps)** |
+  | MiniMax-M2 | 204,800 | **Agentic capabilities, Advanced reasoning** |
+</Accordion>
 
 Please note: The maximum token count refers to the total number of input and output tokens.
 
@@ -55,10 +62,10 @@ This API supports video generation from multimodal input (text, images, video, a
 
 **Supported Models**
 
-| Model          | Description                                                                                                                                                                   |
-| :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| MiniMax-H3     | Multimodal video generation model supporting text / image / first-and-last-frame / reference input, 768P / 2K resolution, 4–15s duration.                                     |
-| MiniMax-H3-Max | Fast generation model. Supports text-to-video and image-to-video (first / last frame) only; reference input is not supported. 480P / 768P resolution (no 2K), 5–15s duration. |
+| Model | Description |
+| :- | :- |
+| MiniMax-H3 | Multimodal video generation model supporting text / image / first-and-last-frame / reference input, 768P / 2K resolution, 4–15s duration. |
+| MiniMax-H3-Max | Fast generation model supporting text-to-video, image-to-video (first / last frame), and reference input. 480P / 768P resolution (no 2K), 5–15s duration. |
 
 **API Usage Guide**
 
@@ -104,14 +111,14 @@ All interfaces are stateless: each call only processes the provided input, does 
 
 **Supported Models**
 
-| Model            | Description                                                                                              |
-| :--------------- | :------------------------------------------------------------------------------------------------------- |
-| speech-2.8-hd    | Latest HD model. Ultra-realistic quality featuring sound tags.                                           |
-| speech-2.8-turbo | Latest Turbo model. Seamless speed meets natural flow.                                                   |
-| speech-2.6-hd    | HD model with outstanding prosody and excellent cloning similarity.                                      |
-| speech-2.6-turbo | Turbo model with support for 40 languages.                                                               |
-| speech-02-hd     | Superior rhythm and stability, with outstanding performance in replication similarity and sound quality. |
-| speech-02-turbo  | Superior rhythm and stability, with enhanced multilingual capabilities and excellent performance.        |
+| Model | Description |
+| :- | :- |
+| speech-2.8-hd | Latest HD model. Ultra-realistic quality featuring sound tags. |
+| speech-2.8-turbo | Latest Turbo model. Seamless speed meets natural flow. |
+| speech-2.6-hd | HD model with outstanding prosody and excellent cloning similarity. |
+| speech-2.6-turbo | Turbo model with support for 40 languages. |
+| speech-02-hd | Superior rhythm and stability, with outstanding performance in replication similarity and sound quality. |
+| speech-02-turbo | Superior rhythm and stability, with enhanced multilingual capabilities and excellent performance. |
 
 **API Overview**
 
@@ -127,22 +134,22 @@ Four capabilities share the models above:
 </Note>
 
 <Accordion title="40 supported languages">
-  | Support Languages |               |               |
-  | ----------------- | ------------- | ------------- |
-  | 1. Chinese        | 15. Turkish   | 28. Malay     |
-  | 2. Cantonese      | 16. Dutch     | 29. Persian   |
-  | 3. English        | 17. Ukrainian | 30. Slovak    |
-  | 4. Spanish        | 18. Thai      | 31. Swedish   |
-  | 5. French         | 19. Polish    | 32. Croatian  |
-  | 6. Russian        | 20. Romanian  | 33. Filipino  |
-  | 7. German         | 21. Greek     | 34. Hungarian |
-  | 8. Portuguese     | 22. Czech     | 35. Norwegian |
-  | 9. Arabic         | 23. Finnish   | 36. Slovenian |
-  | 10. Italian       | 24. Hindi     | 37. Catalan   |
-  | 11. Japanese      | 25. Bulgarian | 38. Nynorsk   |
-  | 12. Korean        | 26. Danish    | 39. Tamil     |
-  | 13. Indonesian    | 27. Hebrew    | 40. Afrikaans |
-  | 14. Vietnamese    |               |               |
+  | Support Languages | | |
+  | - | - | - |
+  | 1. Chinese | 15. Turkish | 28. Malay |
+  | 2. Cantonese | 16. Dutch | 29. Persian |
+  | 3. English | 17. Ukrainian | 30. Slovak |
+  | 4. Spanish | 18. Thai | 31. Swedish |
+  | 5. French | 19. Polish | 32. Croatian |
+  | 6. Russian | 20. Romanian | 33. Filipino |
+  | 7. German | 21. Greek | 34. Hungarian |
+  | 8. Portuguese | 22. Czech | 35. Norwegian |
+  | 9. Arabic | 23. Finnish | 36. Slovenian |
+  | 10. Italian | 24. Hindi | 37. Catalan |
+  | 11. Japanese | 25. Bulgarian | 38. Nynorsk |
+  | 12. Korean | 26. Danish | 39. Tamil |
+  | 13. Indonesian | 27. Hebrew | 40. Afrikaans |
+  | 14. Vietnamese | | |
 </Accordion>
 
 <Columns cols={2}>
@@ -187,8 +194,8 @@ You can generate images by creating an image generation task using text prompts 
 
 **Model List**
 
-| Model    | Description                                                                                                                                                              |
-| :------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Model | Description |
+| :- | :- |
 | image-01 | A high-quality image generation model that produces fine-grained details. Supports both text-to-image and image-to-image generation (with subject reference for people). |
 
 <Columns cols={2}>
@@ -215,8 +222,8 @@ This API generates a vocal song based on a music description (prompt) and lyrics
 
 **Models**
 
-| Model     | Usage                                                                                                                  |
-| :-------- | :--------------------------------------------------------------------------------------------------------------------- |
+| Model | Usage |
+| :- | :- |
 | music-3.0 | The latest music generation model. Supports user-provided musical inspiration and lyrics to create AI-generated music. |
 
 <Card title="Music Generation API" icon="music" href="/docs/api-reference/music-generation" cta="View Docs">

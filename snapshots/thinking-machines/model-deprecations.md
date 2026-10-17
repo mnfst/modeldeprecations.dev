@@ -16,26 +16,28 @@ We suggest the following practices:
 
 ## Recommended replacements
 
-| Retirement date   | Deprecated model              | Recommended replacement                                                         |
-| ----------------- | ----------------------------- | ------------------------------------------------------------------------------- |
-| September 2, 2026 | Qwen3.6-27B                   | Qwen3.8-27B                                                                     |
-| July 12, 2026     | Kimi-K2.5                     | Kimi-K2.6                                                                       |
-| June 12, 2026     | Kimi-K2-Thinking              | Kimi-K2.6                                                                       |
-| June 12, 2026     | Qwen3.5-35B-A3B               | Qwen3.6-35B-A3B                                                                 |
-| June 12, 2026     | Qwen3.5-27B                   | Qwen3.6-27B                                                                     |
-| June 12, 2026     | Qwen3-30B-A3B                 | Qwen3.6-35B-A3B                                                                 |
-| June 12, 2026     | Qwen3-30B-A3B-Instruct-2507   | Qwen3.6-35B-A3B (non-thinking mode)                                             |
-| June 12, 2026     | Qwen3-VL-30B-A3B-Instruct     | Qwen3.6-35B-A3B (includes vision)                                               |
-| June 12, 2026     | Qwen3-32B                     | Qwen3.6-27B                                                                     |
-| June 12, 2026     | Qwen3-235B-A22B-Instruct-2507 | Qwen3.5-397B-A17B (non-thinking mode)                                           |
-| June 12, 2026     | Qwen3-VL-235B-A22B-Instruct   | Qwen3.5-397B-A17B (includes vision)                                             |
-| June 12, 2026     | Qwen3-4B-Instruct-2507        | Qwen3.5-4B (non-thinking mode)                                                  |
-| June 12, 2026     | Llama-3.3-70B-Instruct        | Nemotron-3-Super-120B-A12B, Qwen3.6-27B, or Qwen3.6-35B-A3B (non-thinking mode) |
-| June 12, 2026     | Qwen3-30B-A3B-Base            | Qwen3.5-35B-A3B-Base                                                            |
-| June 12, 2026     | Qwen3-8B-Base                 | Qwen3.5-9B-Base                                                                 |
-| June 12, 2026     | Llama-3.1-8B-Instruct         | Qwen3.5-9B (non-thinking mode)                                                  |
-| June 12, 2026     | Llama-3.1-70B (Base)          | Qwen3.5-35B-A3B-Base                                                            |
-| June 12, 2026     | Llama-3.1-8B (Base)           | Qwen3.5-9B-Base                                                                 |
-| June 12, 2026     | Llama-3.2-3B (Base)           | Qwen3.5-9B-Base                                                                 |
-| June 12, 2026     | Llama-3.2-1B (Base)           | Qwen3.5-9B-Base                                                                 |
-| June 12, 2026     | DeepSeek-V3.1-Base            | Qwen3.5-35B-A3B-Base                                                            |
+| Retirement date  | Deprecated model              | Recommended replacement                                                         |
+| ---------------- | ----------------------------- | ------------------------------------------------------------------------------- |
+| October 23, 2026 | Qwen3.6-27B                   | Qwen3.8-27B                                                                     |
+| October 23, 2026 | DeepSeek-V3.1                 | DeepSeek-V4.1-Flash                                                             |
+| October 23, 2026 | Nemotron-3-Nano-30B-A3B       | Nemotron-3.5-Lightning-30B-A3B                                                  |
+| July 12, 2026    | Kimi-K2.5                     | Kimi-K2.6                                                                       |
+| June 12, 2026    | Kimi-K2-Thinking              | Kimi-K2.6                                                                       |
+| June 12, 2026    | Qwen3.5-35B-A3B               | Qwen3.6-35B-A3B                                                                 |
+| June 12, 2026    | Qwen3.5-27B                   | Qwen3.8-27B                                                                     |
+| June 12, 2026    | Qwen3-30B-A3B                 | Qwen3.6-35B-A3B                                                                 |
+| June 12, 2026    | Qwen3-30B-A3B-Instruct-2507   | Qwen3.6-35B-A3B (non-thinking mode)                                             |
+| June 12, 2026    | Qwen3-VL-30B-A3B-Instruct     | Qwen3.6-35B-A3B (includes vision)                                               |
+| June 12, 2026    | Qwen3-32B                     | Qwen3.8-27B                                                                     |
+| June 12, 2026    | Qwen3-235B-A22B-Instruct-2507 | Qwen3.5-397B-A17B (non-thinking mode)                                           |
+| June 12, 2026    | Qwen3-VL-235B-A22B-Instruct   | Qwen3.5-397B-A17B (includes vision)                                             |
+| June 12, 2026    | Qwen3-4B-Instruct-2507        | Qwen3.5-4B (non-thinking mode)                                                  |
+| June 12, 2026    | Llama-3.3-70B-Instruct        | Nemotron-3-Super-120B-A12B, Qwen3.8-27B, or Qwen3.6-35B-A3B (non-thinking mode) |
+| June 12, 2026    | Qwen3-30B-A3B-Base            | Qwen3.5-35B-A3B-Base                                                            |
+| June 12, 2026    | Qwen3-8B-Base                 | Qwen3.5-9B-Base                                                                 |
+| June 12, 2026    | Llama-3.1-8B-Instruct         | Qwen3.5-9B (non-thinking mode)                                                  |
+| June 12, 2026    | Llama-3.1-70B (Base)          | Qwen3.5-35B-A3B-Base                                                            |
+| June 12, 2026    | Llama-3.1-8B (Base)           | Qwen3.5-9B-Base                                                                 |
+| June 12, 2026    | Llama-3.2-3B (Base)           | Qwen3.5-9B-Base                                                                 |
+| June 12, 2026    | Llama-3.2-1B (Base)           | Qwen3.5-9B-Base                                                                 |
+| June 12, 2026    | DeepSeek-V3.1-Base            | Qwen3.5-35B-A3B-Base                                                            |
