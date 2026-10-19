@@ -17,10 +17,10 @@ replacements:
     recommended: true
     note: >-
       If your code says gpt-4o-mini-transcribe without a date you are already on
-      the December snapshot and nothing breaks. Only the pinned March string is
-      going away.
+      the December snapshot, but that one shuts down on February 26, 2027 too,
+      with gpt-transcribe as its named successor: move straight there.
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI deprecations
-    accessed: 2026-08-03
-last_verified: 2026-08-03
+    accessed: 2026-10-19
+last_verified: 2026-10-19

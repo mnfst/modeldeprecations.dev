@@ -5,14 +5,25 @@ name: GPT-4o
 description: >-
   The omni model that made multimodal input routine and halved the price of
   GPT-4 Turbo at the same time. It is still the default many production stacks
-  reach for, and OpenAI has kept the floating gpt-4o pointer alive even as the
-  dated snapshot behind it changed. Every dated snapshot is now deprecated, the
-  last two shutting down on January 14, 2027, but OpenAI's notice lists only
-  the dated ids, not the pointer.
+  reach for, and OpenAI kept the floating gpt-4o pointer alive even as the
+  dated snapshot behind it changed. The October 2026 notice names GPT-4o with
+  its last two snapshots, and the May 2024 one goes first, so the pointer
+  stops answering with them on January 14, 2027.
 released_on: 2024-05-13
-status: active
+deprecated_on: 2026-10-14
+shutdown_on: 2027-01-14
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-6-luna
+    recommended: true
+    note: >-
+      OpenAI names GPT-6 Luna for every GPT-4o and GPT-4.1 snapshot in this
+      wave. It is a reasoning model: on Chat Completions, function calling works
+      only with reasoning_effort set to none. Luna cannot be fine-tuned, and a
+      fine-tune of GPT-4o shuts down on the same day as its base.
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-10-16
-last_verified: 2026-10-16
+    accessed: 2026-10-19
+last_verified: 2026-10-19

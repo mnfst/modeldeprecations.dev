@@ -4,12 +4,24 @@ model: gpt-4.1-mini
 name: GPT-4.1 mini
 description: >-
   The mid-size GPT-4.1 variant, which survived the April 2026 wave that took
-  out gpt-4.1-nano. The October 2026 wave deprecated its dated snapshot,
-  gpt-4.1-mini-2025-04-14, but OpenAI's notice does not list this bare id.
+  out gpt-4.1-nano. The October 2026 wave names GPT-4.1 mini with its one dated
+  snapshot, gpt-4.1-mini-2025-04-14, and no other snapshot remains, so the bare
+  gpt-4.1-mini id goes with it on January 14, 2027.
 released_on: 2025-04-14
-status: active
+deprecated_on: 2026-10-14
+shutdown_on: 2027-01-14
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-6-luna
+    recommended: true
+    note: >-
+      OpenAI names GPT-6 Luna for every GPT-4.1 and GPT-4o snapshot in this
+      wave. It is a reasoning model: on Chat Completions, function calling works
+      only with reasoning_effort set to none. Luna cannot be fine-tuned, and a
+      fine-tune of GPT-4.1 mini shuts down on the same day as its base.
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-10-16
-last_verified: 2026-10-16
+    accessed: 2026-10-19
+last_verified: 2026-10-19

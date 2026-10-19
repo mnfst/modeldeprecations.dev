@@ -78,6 +78,7 @@ replacements:
     model: gpt-4o
     recommended: true # the successor the provider itself names
     note: Migration hint, including any parameter differences.
+    api_change: Only when more than the id changes (another endpoint, output or data to redo).
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations

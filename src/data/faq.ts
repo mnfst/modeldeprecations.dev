@@ -88,10 +88,19 @@ function migrationFaq(model: Model, catalog: Model[]): ModelFaq | undefined {
   if (!recommended) return undefined;
   const who = modelFullLabel(model);
   const target = recommended.ref.model;
+  const { api_change: apiChange, note } = recommended.ref;
+  if (apiChange) {
+    return {
+      question: `How do I migrate from ${who} to ${target}?`,
+      answer: `Changing the id from "${model.model}" to "${target}" is not enough: ${apiChange}${
+        note ? ` ${note}` : ""
+      }`,
+    };
+  }
   return {
     question: `How do I migrate from ${who} to ${target}?`,
     answer: `Swap the model id in your API call: replace "${model.model}" with "${target}". ${
-      recommended.ref.note ??
+      note ??
       "Keep the rest of the request the same, then re-check the parameters the new model accepts before you ship."
     }`,
   };

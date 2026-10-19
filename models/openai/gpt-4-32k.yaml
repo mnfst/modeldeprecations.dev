@@ -20,11 +20,11 @@ replacements:
     model: gpt-4o
     recommended: true
     note: >-
-      GPT-4o takes 128k of context, so nothing that fit in 32k needs chunking.
-      It is a Chat Completions model with the same message format — the only
-      required change is the id.
+      GPT-4o was the named successor, but it shuts down on January 14, 2027
+      with gpt-6-luna as its named successor, so go straight to gpt-6-luna.
+      Both take far more than 32k of context, so nothing needs chunking.
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-07-30
-last_verified: 2026-07-30
+    accessed: 2026-10-19
+last_verified: 2026-10-19

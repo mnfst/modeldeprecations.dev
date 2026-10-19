@@ -4,13 +4,25 @@ model: gpt-4o-mini
 name: GPT-4o mini
 description: >-
   The model that made GPT-4-class quality cheap enough to put in a loop, and for
-  a long stretch the highest-volume id on the OpenAI platform. Its only dated
-  snapshot, gpt-4o-mini-2024-07-18, shuts down on January 14, 2027, but
-  OpenAI's notice does not list the floating gpt-4o-mini pointer itself.
+  a long stretch the highest-volume id on the OpenAI platform. OpenAI's October
+  2026 notice names GPT-4o mini with its only dated snapshot,
+  gpt-4o-mini-2024-07-18, so the floating gpt-4o-mini pointer shuts down with
+  it on January 14, 2027.
 released_on: 2024-07-18
-status: active
+deprecated_on: 2026-10-14
+shutdown_on: 2027-01-14
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-6-luna
+    recommended: true
+    note: >-
+      OpenAI names GPT-6 Luna for every GPT-4o and GPT-4.1 snapshot in this
+      wave. It is a reasoning model: on Chat Completions, function calling works
+      only with reasoning_effort set to none. Luna cannot be fine-tuned, and a
+      fine-tune of GPT-4o mini shuts down on the same day as its base.
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-10-16
-last_verified: 2026-10-16
+    accessed: 2026-10-19
+last_verified: 2026-10-19

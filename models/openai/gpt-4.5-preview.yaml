@@ -17,11 +17,11 @@ replacements:
       provider: openai,
       model: gpt-4.1,
       recommended: true,
-      note: "gpt-4.1 was the named successor and is still active — one of the few migration targets from this era that has not itself been deprecated.",
+      note: "gpt-4.1 was the named successor, but it shuts down on January 14, 2027 with gpt-6-luna as its named successor, so a migration made now should go straight on to gpt-6-luna.",
     },
   ]
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-07-30
-last_verified: 2026-07-30
+    accessed: 2026-10-19
+last_verified: 2026-10-19

@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-nano-banana-2.1
+name: Gemini Nano Banana 2.1
+description: >-
+  An October 2026 update to Nano Banana 2 (Gemini 3.1 Flash Image), at Flash
+  speed and price with better text rendering and character consistency. It
+  returns images and text, and Google names it as the replacement for the 2.0
+  Flash image-generation preview and for the whole Imagen 4 line.
+released_on: 2026-10-06
+status: active
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1
+    title: Gemini Nano Banana 2.1 model page
+    accessed: 2026-10-19
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-10-19
+last_verified: 2026-10-19

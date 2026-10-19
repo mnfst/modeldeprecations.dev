@@ -108,6 +108,14 @@ Every alias gets a URL that redirects to the canonical page, so the id in
 someone's code still resolves. Removing an alias is a breaking change and the
 data guard rejects it.
 
+A bare id retires with the last of its dated snapshots. When a provider's
+notice names the model together with its snapshots (OpenAI's row "GPT-4.1
+(gpt-4.1-2025-04-14)") and no other snapshot of that model stays live, the bare
+id (`gpt-4.1`) takes the same `deprecated_on`, `shutdown_on` and replacement:
+once the snapshots are gone there is nothing left for it to point at. If any
+snapshot outlives the notice, the bare id keeps its own dates and the page says
+which snapshot it may move to.
+
 ## Replacements
 
 `recommended: true` means _the provider named this successor_, not that we think
@@ -120,6 +128,23 @@ something still active.
 
 Put parameter differences in `note`. "Swap `max_tokens` for
 `max_completion_tokens`" saves a reader an afternoon.
+
+Set `api_change` (one or two sentences, 300 characters at most) when moving to
+the replacement takes more than a new id in the same request: another endpoint
+or API (the Realtime API instead of `/v1/audio/speech`, Chat Completions
+instead of `/v1/completions`), another output (base64 instead of a URL,
+text-only instead of images), or stored data to redo (embeddings from a
+different vector space). Say plainly what changes, and check it on the
+provider's docs, listed in `sources`. Parameter renames stay in `note`. The page
+then stops telling the reader the migration is one string.
+
+## Restricted models
+
+A live model can be closed to some callers without being deprecated: Google
+limits the Gemini 2.5 models to users who already used them. Put who can still
+call it in `restricted` (300 characters at most), quoting the provider where
+you can, and cite the page in `sources`. The status stays what the dates say;
+`restricted` is rendered next to it. A retired model cannot be restricted.
 
 ## Editing an existing date
 

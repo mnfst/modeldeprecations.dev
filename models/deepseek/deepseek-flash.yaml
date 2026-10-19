@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: deepseek
+model: deepseek-flash
+name: DeepSeek Flash
+description: >-
+  DeepSeek's moving id for its current Flash model: V4.1 Flash since September
+  10, 2026, upgraded in place to DeepSeek-V4.1-Flash-1017 a month later. Image
+  understanding is built in, where V4 Flash needed a separate experimental
+  vision id, and the retired deepseek-v4-flash name is routed here, so DeepSeek
+  is back to an undated alias after under five months of versioned ids.
+released_on: 2026-09-10
+status: active
+sources:
+  - url: https://api-docs.deepseek.com/updates/
+    title: DeepSeek API change log
+    accessed: 2026-10-19
+  - url: https://api-docs.deepseek.com/quick_start/pricing
+    title: DeepSeek models and pricing
+    accessed: 2026-10-19
+last_verified: 2026-10-19

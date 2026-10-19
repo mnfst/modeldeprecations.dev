@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: tts-1
+name: TTS-1
+description: >-
+  OpenAI's first text-to-speech model, the low-latency half of the pair behind
+  /v1/audio/speech, trading some audio quality for speed against tts-1-hd. It
+  read text out in a fixed set of voices with no way to steer tone, which is
+  what gpt-4o-mini-tts later added. OpenAI deprecated it on October 1, 2026,
+  together with every other speech-endpoint model.
+deprecated_on: 2026-10-01
+shutdown_on: 2027-01-06
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-realtime-2.1-mini
+    recommended: true
+    api_change: >-
+      gpt-realtime-2.1-mini is not served on /v1/audio/speech: it runs only on
+      the Realtime API (/v1/realtime, over WebRTC or WebSocket). Audio comes
+      back as base64 chunks in response.output_audio.delta events (for example
+      audio/pcm at 24 kHz), not as an mp3 or wav response body.
+    note: >-
+      Every model OpenAI's text-to-speech guide lists for /v1/audio/speech
+      (gpt-4o-mini-tts, tts-1 and tts-1-hd) shuts down on January 6, 2027, so
+      no model is left to keep a speech-endpoint integration on.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-10-19
+  - url: https://developers.openai.com/api/docs/guides/text-to-speech
+    title: OpenAI text to speech guide
+    accessed: 2026-10-19
+  - url: https://developers.openai.com/api/docs/models/gpt-realtime-2.1-mini
+    title: GPT Realtime 2.1 mini model page
+    accessed: 2026-10-19
+  - url: https://developers.openai.com/api/docs/guides/realtime-conversations
+    title: OpenAI Realtime conversations guide
+    accessed: 2026-10-19
+last_verified: 2026-10-19

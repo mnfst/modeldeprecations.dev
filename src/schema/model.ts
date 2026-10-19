@@ -34,6 +34,13 @@ export const Replacement = z
     /** Migration hint. Call out behavioural or parameter differences here. */
     note: z.string().min(1).max(600).optional(),
     /**
+     * Set when moving to this replacement takes more than a new model id in the
+     * same request: another endpoint or API, another output shape, or stored
+     * data (embeddings) to redo. Plain words, what changes. Parameter renames
+     * stay in `note`.
+     */
+    api_change: z.string().min(1).max(300).optional(),
+    /**
      * Set when the successor has no page on this site (a model outside the
      * tracked providers, or one we have not catalogued yet). The data guard
      * requires every non-external replacement to resolve to a real page.
@@ -52,6 +59,70 @@ export const Source = z
   })
   .strict();
 export type Source = z.infer<typeof Source>;
+
+type Issue = (message: string, path: string) => void;
+
+interface ModelFields {
+  model: string;
+  provider: string;
+  aliases: string[];
+  released_on?: string;
+  deprecated_on?: string;
+  shutdown_on?: string;
+  earliest_shutdown_on?: string;
+  restricted?: string;
+  replacements: { provider: string; model: string; recommended: boolean }[];
+  sources: unknown[];
+}
+
+/** Every date cited, and in an order that can happen. */
+function checkDates(model: ModelFields, issue: Issue): void {
+  if (model.shutdown_on && model.earliest_shutdown_on) {
+    issue(
+      "set shutdown_on for a committed date or earliest_shutdown_on for a soft one, not both",
+      "earliest_shutdown_on",
+    );
+  }
+
+  const anyDate = model.deprecated_on ?? model.shutdown_on ?? model.earliest_shutdown_on;
+  if (anyDate && model.sources.length === 0) {
+    issue("a lifecycle date needs at least one source", "sources");
+  }
+
+  if (model.released_on) {
+    for (const field of ["deprecated_on", "shutdown_on", "earliest_shutdown_on"] as const) {
+      const value = model[field];
+      if (value && value < model.released_on) {
+        issue(`${field} (${value}) precedes released_on (${model.released_on})`, field);
+      }
+    }
+  }
+  if (model.deprecated_on && model.shutdown_on && model.shutdown_on < model.deprecated_on) {
+    issue(
+      `shutdown_on (${model.shutdown_on}) precedes deprecated_on (${model.deprecated_on})`,
+      "shutdown_on",
+    );
+  }
+}
+
+/** Aliases, replacements and restrictions that point somewhere sensible. */
+function checkReferences(model: ModelFields, issue: Issue): void {
+  if (model.restricted && model.sources.length === 0) {
+    issue("a restriction needs at least one source", "sources");
+  }
+  if (model.aliases.includes(model.model)) {
+    issue("the canonical id must not repeat in aliases", "aliases");
+  }
+  if (new Set(model.aliases).size !== model.aliases.length) {
+    issue("aliases must be unique", "aliases");
+  }
+  if (model.replacements.filter((r) => r.recommended).length > 1) {
+    issue("at most one replacement can be the recommended successor", "replacements");
+  }
+  if (model.replacements.some((r) => r.provider === model.provider && r.model === model.model)) {
+    issue("a model cannot replace itself", "replacements");
+  }
+}
 
 export const Model = z
   .object({
@@ -76,64 +147,33 @@ export const Model = z
      */
     earliest_shutdown_on: IsoDate.optional(),
     status: Status,
+    /**
+     * Set when a live model is closed to some callers, saying who can still
+     * call it (Google limiting the Gemini 2.5 models to projects that already
+     * used them). Needs a source like any other claim.
+     */
+    restricted: z.string().min(1).max(300).optional(),
     replacements: z.array(Replacement).default([]),
     sources: z.array(Source).default([]),
     last_verified: IsoDate,
   })
   .strict()
   .superRefine((model, ctx) => {
-    const issue = (message: string, path: string): void => {
+    const issue: Issue = (message, path) => {
       ctx.addIssue({ code: z.ZodIssueCode.custom, message, path: [path] });
     };
+    checkDates(model, issue);
+    checkReferences(model, issue);
 
-    if (model.shutdown_on && model.earliest_shutdown_on) {
-      issue(
-        "set shutdown_on for a committed date or earliest_shutdown_on for a soft one, not both",
-        "earliest_shutdown_on",
-      );
-    }
-
-    const anyDate = model.deprecated_on ?? model.shutdown_on ?? model.earliest_shutdown_on;
-    if (anyDate && model.sources.length === 0) {
-      issue("a lifecycle date needs at least one source", "sources");
-    }
-
-    if (model.released_on) {
-      for (const field of ["deprecated_on", "shutdown_on", "earliest_shutdown_on"] as const) {
-        const value = model[field];
-        if (value && value < model.released_on) {
-          issue(`${field} (${value}) precedes released_on (${model.released_on})`, field);
-        }
-      }
-    }
-    if (model.deprecated_on && model.shutdown_on && model.shutdown_on < model.deprecated_on) {
-      issue(
-        `shutdown_on (${model.shutdown_on}) precedes deprecated_on (${model.deprecated_on})`,
-        "shutdown_on",
-      );
-    }
-
-    if (model.aliases.includes(model.model)) {
-      issue("the canonical id must not repeat in aliases", "aliases");
-    }
-    if (new Set(model.aliases).size !== model.aliases.length) {
-      issue("aliases must be unique", "aliases");
-    }
-
-    const recommended = model.replacements.filter((r) => r.recommended);
-    if (recommended.length > 1) {
-      issue("at most one replacement can be the recommended successor", "replacements");
-    }
-    if (model.replacements.some((r) => r.provider === model.provider && r.model === model.model)) {
-      issue("a model cannot replace itself", "replacements");
-    }
-
-    const derived = statusOn(model as Model, model.last_verified);
+    const derived = statusOn(model, model.last_verified);
     if (derived !== model.status) {
       issue(
         `status "${model.status}" contradicts the dates: as of last_verified (${model.last_verified}) this model is "${derived}"`,
         "status",
       );
+    }
+    if (model.restricted && derived === "retired") {
+      issue("a retired model serves no one, so it cannot be restricted", "restricted");
     }
   });
 export type Model = z.infer<typeof Model>;

@@ -9,6 +9,7 @@ interface CatalogReplacement {
   model: string;
   recommended?: boolean;
   note?: string;
+  api_change?: string;
 }
 
 interface CatalogModel {
@@ -22,6 +23,7 @@ interface CatalogModel {
   deprecated_on?: string;
   shutdown_on?: string;
   earliest_shutdown_on?: string;
+  restricted?: string;
   replacements?: CatalogReplacement[];
   sources?: { url: string; accessed: string }[];
   last_verified: string;
@@ -123,8 +125,10 @@ export function deprecationReport(catalog: Catalog, rawId: string, origin = "") 
     deprecated_on: model.deprecated_on,
     shutdown_on: model.shutdown_on,
     earliest_shutdown_on: model.earliest_shutdown_on,
+    restricted: model.restricted,
     replacement: replacement ? `${replacement.provider}/${replacement.model}` : undefined,
     migration_note: replacement?.note,
+    api_change: replacement?.api_change,
     sources: model.sources ?? [],
     last_verified: model.last_verified,
     page: `${origin}/${modelId(model)}`,

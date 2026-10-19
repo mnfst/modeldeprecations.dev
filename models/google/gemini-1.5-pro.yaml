@@ -17,14 +17,24 @@ replacements:
     model: gemini-2.5-pro
     recommended: true
     note: >-
-      The 2.5 generation thinks before answering by default, which changes both
-      latency and token cost. Budget with thinkingConfig rather than assuming
-      1.5-era numbers carry over.
+      Google now limits the 2.5 models to users who already used them, so a
+      project that never called 2.5 Pro cannot move to it; take
+      gemini-3.8-flash instead. 2.5 thinks before answering by default, so
+      budget with thinkingConfig rather than 1.5-era numbers.
+  - provider: google
+    model: gemini-3.8-flash
+    note: >-
+      Not a successor Google names for this model, but one of the two it tells
+      new projects to use (3.5 Flash-Lite or 3.8 Flash) while 2.5 is closed to
+      them.
 sources:
   - url: https://ai.google.dev/gemini-api/docs/deprecations
     title: Gemini API deprecations
-    accessed: 2026-10-16
+    accessed: 2026-10-19
   - url: https://ai.google.dev/gemini-api/docs/changelog
     title: Gemini API release notes
-    accessed: 2026-10-16
-last_verified: 2026-10-16
+    accessed: 2026-10-19
+  - url: https://ai.google.dev/gemini-api/docs/models
+    title: Gemini API models
+    accessed: 2026-10-19
+last_verified: 2026-10-19

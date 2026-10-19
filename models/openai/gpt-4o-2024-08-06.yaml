@@ -5,8 +5,8 @@ name: GPT-4o (2024-08-06)
 description: >-
   The August 2024 GPT-4o snapshot, the first to support Structured Outputs and
   for most of its life the one the floating gpt-4o id pointed at. OpenAI
-  deprecated it on October 14, 2026 alongside the November snapshot. The
-  notice lists the dated ids only, not the gpt-4o alias.
+  deprecated it on October 14, 2026 alongside the November snapshot, which
+  leaves the floating gpt-4o id nothing to point at after January 14, 2027.
 deprecated_on: 2026-10-14
 shutdown_on: 2027-01-14
 status: deprecated
@@ -22,5 +22,5 @@ replacements:
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-10-16
-last_verified: 2026-10-16
+    accessed: 2026-10-19
+last_verified: 2026-10-19
