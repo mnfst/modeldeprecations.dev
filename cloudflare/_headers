@@ -1,0 +1,50 @@
+# Mirrors the `headers` in vercel.json. Keep the two in sync while both hosts are live.
+# Cloudflare joins values when several rules set the same header on one path,
+# so no two rules below may set the same header on overlapping paths.
+
+# Vercel sends this on every static file by default; keep parity.
+/*
+  Access-Control-Allow-Origin: *
+
+/api
+  X-Robots-Tag: noindex, follow
+
+/api/*
+  Cache-Control: public, max-age=300, s-maxage=3600
+  X-Robots-Tag: noindex, follow
+
+/badge/*
+  Cache-Control: public, max-age=300, s-maxage=3600
+  X-Robots-Tag: noindex
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=300, s-maxage=3600
+
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=300, s-maxage=3600
+
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+  X-Robots-Tag: noindex, follow
+
+/calendar.ics
+  Content-Type: text/calendar; charset=utf-8
+  Cache-Control: public, max-age=3600, s-maxage=86400
+
+/changelog.xml
+  Content-Type: application/rss+xml; charset=utf-8
+  Cache-Control: public, max-age=300, s-maxage=3600
+
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/og/*
+  Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800
+
+/assets/styles.css
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/assets/main.js
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800

@@ -1,0 +1,9 @@
+{
+  "name": "modeldeprecations-dev",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    // Serve dist/404.html with a real 404 status for unknown paths.
+    "not_found_handling": "404-page",
+  },
+}

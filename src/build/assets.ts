@@ -4,7 +4,7 @@ import { build as esbuild } from "esbuild";
 import postcss from "postcss";
 import tailwindcss from "tailwindcss";
 import autoprefixer from "autoprefixer";
-import { CLIENT_DIR, DIST_ASSETS_DIR, REPO_ROOT } from "../data/paths.js";
+import { CLIENT_DIR, DIST_ASSETS_DIR, DIST_DIR, REPO_ROOT } from "../data/paths.js";
 
 export async function bundleClientScript(minify = true): Promise<void> {
   await esbuild({
@@ -60,4 +60,8 @@ export async function copyStaticAssets(): Promise<void> {
     path.join(DIST_ASSETS_DIR, "logos"),
     (name) => name.endsWith(".svg") && !name.startsWith("_"),
   );
+
+  // Cloudflare Workers static-assets config (_headers, _redirects) lives at the
+  // dist root. Vercel ignores these files and keeps reading vercel.json.
+  await copyDir(path.join(REPO_ROOT, "cloudflare"), DIST_DIR, (name) => name.startsWith("_"));
 }
