@@ -1,0 +1,13 @@
+# Provider slug renames. Mirrors the `redirects` in vercel.json (permanent: true = 308).
+/amazon /bedrock 308
+/amazon/* /bedrock/:splat 308
+/qwen /alibaba 308
+/qwen/* /alibaba/:splat 308
+/zai /z-ai 308
+/zai/* /z-ai/:splat 308
+/api/v1/models/amazon/* /api/v1/models/bedrock/:splat 308
+/api/v1/models/qwen/* /api/v1/models/alibaba/:splat 308
+/api/v1/models/zai/* /api/v1/models/z-ai/:splat 308
+/badge/amazon/* /badge/bedrock/:splat 308
+/badge/qwen/* /badge/alibaba/:splat 308
+/badge/zai/* /badge/z-ai/:splat 308
