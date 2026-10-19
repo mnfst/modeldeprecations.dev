@@ -15,12 +15,21 @@ replacements:
   - provider: openai
     model: gpt-image-2
     recommended: true
+    api_change: >-
+      gpt-image-2 always returns base64 (data[].b64_json), never a URL:
+      response_format is unsupported, so store or serve the decoded bytes
+      yourself. style (vivid, natural) is unsupported, and quality takes low,
+      medium, high or auto instead of standard or hd.
     note: >-
-      Quality is a clear step up, but the automatic prompt rewriting behaves
-      differently. Anything with prompts tuned against DALL·E 3s rewriter needs
-      re-testing rather than porting.
+      Size takes 1024x1024, 1536x1024, 1024x1536, auto or a custom WIDTHxHEIGHT
+      in multiples of 16. No revised_prompt comes back, so prompts tuned
+      against DALL·E 3's rewriter need re-testing rather than porting. OpenAI
+      also names gpt-image-1 and gpt-image-1-mini, both since deprecated.
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-07-30
-last_verified: 2026-07-30
+    accessed: 2026-10-19
+  - url: https://developers.openai.com/api/reference/resources/images/methods/generate
+    title: OpenAI Images API reference
+    accessed: 2026-10-19
+last_verified: 2026-10-19

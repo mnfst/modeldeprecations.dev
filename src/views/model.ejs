@@ -89,6 +89,12 @@
           <th scope="row" class="bg-warm-tag px-3 py-2.5 font-medium text-slate-600">Status</th>
           <td class="px-3 py-2.5"><%- include("partials/status_pill", { life: life, helpers: helpers }) %></td>
         </tr>
+        <% if (model.restricted && life.status !== "retired") { %>
+        <tr class="border-b border-slate-100">
+          <th scope="row" class="bg-warm-tag px-3 py-2.5 font-medium text-slate-600">Access</th>
+          <td class="px-3 py-2.5 text-slate-700"><span class="font-medium text-amber-800">Restricted.</span> <%= model.restricted %></td>
+        </tr>
+        <% } %>
         <tr>
           <th scope="row" class="bg-warm-tag px-3 py-2.5 font-medium text-slate-600">Last verified</th>
           <td class="px-3 py-2.5 tabular-nums"><%= helpers.formatDate(model.last_verified) %></td>
@@ -116,6 +122,9 @@
         <% } %>
         <% if (item.page) { %><span class="ml-auto"><%- include("partials/status_pill", { life: helpers.lifecycle(item.page, today), helpers: helpers }) %></span><% } %>
       </div>
+      <% if (item.ref.api_change) { %>
+      <p class="mt-2 max-w-2xl text-sm text-slate-700"><span class="font-medium text-amber-800">Not a drop-in:</span> <%= item.ref.api_change %></p>
+      <% } %>
       <% if (item.ref.note) { %>
       <p class="mt-2 max-w-2xl text-sm text-slate-700"><%= item.ref.note %></p>
       <% } %>
@@ -132,10 +141,16 @@
 
   <% if (recommended) { %>
   <h3 class="mt-6 text-slate-900">Change the id</h3>
+  <% if (recommended.ref.api_change) { %>
+  <p class="mt-2 max-w-2xl text-sm text-slate-700">
+    Here the id is not the whole migration: <%= recommended.ref.api_change %>
+  </p>
+  <% } else { %>
   <p class="mt-2 max-w-2xl text-sm text-slate-700">
     In most cases the migration is one string. Check the parameter differences before you ship —
     newer models drop older sampling knobs more often than they add them.
   </p>
+  <% } %>
   <pre class="mt-3 overflow-x-auto border border-slate-200 bg-slate-50 p-4 font-mono text-xs leading-relaxed"><code><span class="text-rose-700">- "model": "<%= model.model %>"</span>
 <span class="text-emerald-700">+ "model": "<%= recommended.ref.model %>"</span></code></pre>
   <% } %>

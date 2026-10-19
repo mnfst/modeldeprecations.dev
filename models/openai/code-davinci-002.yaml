@@ -16,11 +16,11 @@ replacements:
       provider: openai,
       model: gpt-4o,
       recommended: true,
-      note: "For code work today, gpt-5.3-codex is the direct descendant of this line. gpt-4o is what OpenAI named at the time.",
+      note: "gpt-4o is what OpenAI named at the time, and it shuts down on January 14, 2027 with gpt-6-luna as its named successor, so go straight to gpt-6-luna.",
     },
   ]
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-07-30
-last_verified: 2026-07-30
+    accessed: 2026-10-19
+last_verified: 2026-10-19

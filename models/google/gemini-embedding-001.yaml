@@ -14,8 +14,20 @@ replacements:
   - provider: google
     model: gemini-embedding-2
     recommended: true
+    api_change: >-
+      Google: the embedding spaces of gemini-embedding-001 and
+      gemini-embedding-2 are incompatible, so you must re-embed all of your
+      existing data. task_type is not supported; put the task in the prompt.
+    note: >-
+      gemini-embedding-2 returns one aggregated embedding for several inputs in
+      one request; wrap each input in its own Content object (or use the Batch
+      API) to keep one vector per input. Truncated outputs are normalized for
+      you.
 sources:
   - url: https://ai.google.dev/gemini-api/docs/deprecations
     title: Gemini API deprecations
-    accessed: 2026-08-03
-last_verified: 2026-08-03
+    accessed: 2026-10-19
+  - url: https://ai.google.dev/gemini-api/docs/embeddings
+    title: Gemini API embeddings guide
+    accessed: 2026-10-19
+last_verified: 2026-10-19

@@ -5,8 +5,8 @@ name: GPT-4.1 (2025-04-14)
 description: >-
   The single dated snapshot behind GPT-4.1, the April 2025 model built to fix
   GPT-4o's instruction following and long-context recall. OpenAI deprecated it
-  on October 14, 2026, six months after its nano sibling; the notice names
-  this dated id, not the bare gpt-4.1 alias.
+  on October 14, 2026, six months after its nano sibling. As the only GPT-4.1
+  snapshot, it takes the bare gpt-4.1 id down with it.
 deprecated_on: 2026-10-14
 shutdown_on: 2027-01-14
 status: deprecated
@@ -22,5 +22,5 @@ replacements:
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-10-16
-last_verified: 2026-10-16
+    accessed: 2026-10-19
+last_verified: 2026-10-19

@@ -67,6 +67,10 @@ function guideApi(siteUrl: string): string[] {
     "Each entry carries `computed_status`, the lifecycle state recomputed against the build",
     "date — so a model whose shutdown has passed reads `retired` without anyone editing data.",
     "",
+    "A replacement with `api_change` is not a drop-in: moving to it needs another endpoint,",
+    "another output handling, or stored data redone, not just a new id. A live model with",
+    "`restricted` is closed to some callers; the text says who can still call it.",
+    "",
     "## Badges",
     "",
     "A shields.io endpoint per model, for READMEs that should go red when a model dies:",
@@ -204,7 +208,11 @@ function modelSection(siteUrl: string, model: Model, catalog: Model[], today: st
   if (life.shutdown) {
     lines.push(`- Shutdown${life.soft ? " (earliest)" : ""}: ${life.shutdown}`);
   }
+  if (model.restricted && life.status !== "retired") {
+    lines.push(`- Access: restricted. ${model.restricted}`);
+  }
   if (recommended) lines.push(`- Replacement: ${recommended.ref.model}`);
+  if (recommended?.ref.api_change) lines.push(`- API change: ${recommended.ref.api_change}`);
   for (const source of model.sources) lines.push(`- Source: ${source.url} (${source.accessed})`);
   lines.push(`- Page: ${siteUrl}${modelPagePath(model)}`, "", model.description, "");
   return lines;

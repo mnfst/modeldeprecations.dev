@@ -23,9 +23,10 @@ replacements:
     model: gpt-4.1
     note: >-
       OpenAI's alternative for latency-sensitive work that does not need
-      reasoning.
+      reasoning. gpt-4.1 itself shuts down on January 14, 2027, with
+      gpt-6-luna as its named successor, so go straight to gpt-6-luna.
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-10-16
-last_verified: 2026-10-16
+    accessed: 2026-10-19
+last_verified: 2026-10-19

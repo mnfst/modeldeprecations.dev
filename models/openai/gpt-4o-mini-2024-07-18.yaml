@@ -5,8 +5,8 @@ name: GPT-4o mini (2024-07-18)
 description: >-
   The only GPT-4o mini snapshot OpenAI ever shipped, so pinning the date and
   using the floating gpt-4o-mini id have always meant the same model. OpenAI
-  deprecated this dated id on October 14, 2026; its notice does not list the
-  gpt-4o-mini alias itself.
+  deprecated it on October 14, 2026, and the two ids shut down together on
+  January 14, 2027.
 deprecated_on: 2026-10-14
 shutdown_on: 2027-01-14
 status: deprecated
@@ -22,5 +22,5 @@ replacements:
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-10-16
-last_verified: 2026-10-16
+    accessed: 2026-10-19
+last_verified: 2026-10-19

@@ -1,0 +1,49 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: whisper-1
+name: Whisper
+description: >-
+  The hosted version of OpenAI's open-source Whisper, and for two years the only
+  speech-to-text model on the API. It kept its place beside the GPT-4o
+  transcription models because it alone did translation into English, word and
+  segment timestamps and subtitle output. OpenAI deprecated it on August 26,
+  2026 with a February 2027 shutdown; none of the models it names does all three.
+deprecated_on: 2026-08-26
+shutdown_on: 2027-02-26
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-transcribe
+    recommended: true
+    api_change: >-
+      gpt-transcribe has no /v1/audio/translations: OpenAI moves translation to
+      /v1/realtime/translations, a streaming session. It also returns no word or
+      segment timestamps and no srt or vtt subtitles (verbose_json with
+      timestamp_granularities).
+    note: >-
+      Plain transcription stays on /v1/audio/transcriptions. Send `languages`
+      (a list of hints) instead of `language`, never both; the response lists
+      the detected languages.
+  - provider: openai
+    model: gpt-live-transcribe
+    api_change: >-
+      gpt-live-transcribe only runs in Realtime transcription sessions
+      (/v1/realtime/transcription_sessions): audio is streamed in and transcript
+      deltas come back, with no file upload to /v1/audio/transcriptions.
+    note: >-
+      The other replacement OpenAI names, for live audio rather than recorded
+      files.
+sources:
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-10-19
+  - url: https://developers.openai.com/api/docs/guides/speech-to-text
+    title: OpenAI file transcription guide
+    accessed: 2026-10-19
+  - url: https://developers.openai.com/api/docs/models/gpt-transcribe
+    title: GPT Transcribe model page
+    accessed: 2026-10-19
+  - url: https://developers.openai.com/api/docs/models/gpt-live-transcribe
+    title: GPT Live Transcribe model page
+    accessed: 2026-10-19
+last_verified: 2026-10-19

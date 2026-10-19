@@ -20,8 +20,14 @@ replacements:
     note: >-
       deepseek-reasoner routed to V4-Flash with thinking on, which is the
       default, so `model: "deepseek-v4-flash"` reproduces the old behaviour.
-      Use `thinking.reasoning_effort` (`low`, `high`, `max`) to trade depth
-      against cost, and deepseek-v4-pro for the hardest problems.
+      Use the top-level `reasoning_effort` (`low`, `high`, `max`) to trade
+      depth against cost, and deepseek-v4-pro for the hardest problems.
+  - provider: deepseek
+    model: deepseek-flash
+    note: >-
+      Where the path ends today: deepseek-v4-flash was itself retired on
+      September 10, 2026 and is only routed to V4.1 Flash for now. Call
+      deepseek-flash, with the same thinking settings.
 sources:
   - url: https://api-docs.deepseek.com/news/news250120/
     title: DeepSeek-R1 Release
@@ -31,5 +37,8 @@ sources:
     accessed: 2026-08-03
   - url: https://api-docs.deepseek.com/updates/
     title: DeepSeek API change log
-    accessed: 2026-08-03
-last_verified: 2026-08-03
+    accessed: 2026-10-19
+  - url: https://api-docs.deepseek.com/guides/thinking_mode
+    title: DeepSeek thinking mode guide
+    accessed: 2026-10-19
+last_verified: 2026-10-19

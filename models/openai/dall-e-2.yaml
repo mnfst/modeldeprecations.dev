@@ -15,12 +15,20 @@ replacements:
   - provider: openai
     model: gpt-image-2
     recommended: true
+    api_change: >-
+      gpt-image-2 always returns base64 (data[].b64_json), never a URL:
+      response_format is unsupported, so store or serve the decoded bytes
+      yourself. There is no equivalent of the DALL·E 2 variations call
+      (/v1/images/variations).
     note: >-
-      The request shape differs: gpt-image models are called through the images
-      endpoint with a different parameter set, and there is no direct equivalent
-      of the DALL·E 2 variations call.
+      Size takes 1024x1024, 1536x1024, 1024x1536, auto or a custom WIDTHxHEIGHT
+      in multiples of 16 within the model's pixel limits; check any 256x256 or
+      512x512 request against them.
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-07-30
-last_verified: 2026-07-30
+    accessed: 2026-10-19
+  - url: https://developers.openai.com/api/reference/resources/images/methods/generate
+    title: OpenAI Images API reference
+    accessed: 2026-10-19
+last_verified: 2026-10-19

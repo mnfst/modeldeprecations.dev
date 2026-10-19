@@ -17,14 +17,23 @@ replacements:
     model: gemini-2.5-flash
     recommended: true
     note: >-
-      2.5 Flash is the direct successor. Google now limits the 2.5 models to
-      projects that already used them, so a new project should go straight to a
-      current Flash instead.
+      2.5 Flash is the direct successor, but Google now limits the 2.5 models to
+      users who already used them: a project that never called it cannot move
+      to it, and should take gemini-3.8-flash instead.
+  - provider: google
+    model: gemini-3.8-flash
+    note: >-
+      Not a successor Google names for this model, but one of the two it tells
+      new projects to use (3.5 Flash-Lite or 3.8 Flash) while 2.5 is closed to
+      them.
 sources:
   - url: https://ai.google.dev/gemini-api/docs/deprecations
     title: Gemini API deprecations
-    accessed: 2026-10-16
+    accessed: 2026-10-19
   - url: https://ai.google.dev/gemini-api/docs/changelog
     title: Gemini API release notes
-    accessed: 2026-10-16
-last_verified: 2026-10-16
+    accessed: 2026-10-19
+  - url: https://ai.google.dev/gemini-api/docs/models
+    title: Gemini API models
+    accessed: 2026-10-19
+last_verified: 2026-10-19

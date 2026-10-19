@@ -5,8 +5,8 @@ name: GPT-4.1 mini (2025-04-14)
 description: >-
   The only snapshot of GPT-4.1 mini, the mid-size model that survived the
   April 2026 wave that took out GPT-4.1 nano. It fell in the next one: OpenAI
-  deprecated this dated id on October 14, 2026, without listing the bare
-  gpt-4.1-mini alias in the notice.
+  deprecated it on October 14, 2026, and with no other snapshot left the bare
+  gpt-4.1-mini id shuts down on the same day.
 deprecated_on: 2026-10-14
 shutdown_on: 2027-01-14
 status: deprecated
@@ -22,5 +22,5 @@ replacements:
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-10-16
-last_verified: 2026-10-16
+    accessed: 2026-10-19
+last_verified: 2026-10-19

@@ -17,14 +17,23 @@ replacements:
     recommended: true
     note: >-
       DeepSeek's instruction in 2024 was to call deepseek-chat instead, but that
-      id was itself retired in July 2026, so the live end of the path is
-      deepseek-v4-flash. Send `"thinking": {"type": "disabled"}` to keep the
-      non-reasoning behaviour deepseek-coder had.
+      id was itself retired in July 2026, and deepseek-v4-flash in September.
+      Send `"thinking": {"type": "disabled"}` to keep the non-reasoning
+      behaviour deepseek-coder had.
+  - provider: deepseek
+    model: deepseek-flash
+    note: >-
+      Where the path ends today: deepseek-v4-flash was itself retired on
+      September 10, 2026 and is only routed to V4.1 Flash for now. Call
+      deepseek-flash, with the same thinking settings.
 sources:
   - url: https://api-docs.deepseek.com/updates/
     title: DeepSeek API change log
-    accessed: 2026-08-03
+    accessed: 2026-10-19
   - url: https://api-docs.deepseek.com/quick_start/pricing
     title: DeepSeek models and pricing
     accessed: 2026-08-03
-last_verified: 2026-08-03
+  - url: https://api-docs.deepseek.com/guides/thinking_mode
+    title: DeepSeek thinking mode guide
+    accessed: 2026-10-19
+last_verified: 2026-10-19

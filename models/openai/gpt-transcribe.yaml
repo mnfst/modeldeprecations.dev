@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-transcribe
+name: GPT Transcribe
+description: >-
+  OpenAI's current speech-to-text model for recorded audio, the one its
+  transcription guide says to start with. It takes several language hints,
+  keywords and free-form context instead of a single language code, and it is
+  the named successor for whisper-1 and the GPT-4o transcription models, all
+  shutting down in February 2027.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/models/gpt-transcribe
+    title: GPT Transcribe model page
+    accessed: 2026-10-19
+  - url: https://developers.openai.com/api/docs/guides/speech-to-text
+    title: OpenAI file transcription guide
+    accessed: 2026-10-19
+last_verified: 2026-10-19

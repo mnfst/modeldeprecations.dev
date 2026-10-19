@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: google
+model: gemini-3.8-flash
+name: Gemini 3.8 Flash
+description: >-
+  Google's most capable Flash model as of September 2026, aimed at long-running
+  coding agents and enterprise workflows at Flash prices. It is one of the two
+  models Google tells new projects to use while it limits the 2.5 generation to
+  existing users, and gemini-3.7-flash now quietly routes to it.
+released_on: 2026-09-02
+status: active
+sources:
+  - url: https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash
+    title: Gemini 3.8 Flash model page
+    accessed: 2026-10-19
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-10-19
+  - url: https://ai.google.dev/gemini-api/docs/models
+    title: Gemini API models
+    accessed: 2026-10-19
+last_verified: 2026-10-19

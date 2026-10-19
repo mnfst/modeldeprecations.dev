@@ -4,16 +4,20 @@ model: davinci-002
 name: davinci-002
 description: >-
   The larger of the two remaining base completions models, and the last
-  descendant of the original davinci line still callable. Deprecated with a
-  September 2026 shutdown.
+  descendant of the original davinci line still callable until it shut down on
+  September 28, 2026.
 released_on: 2023-08-22
 deprecated_on: 2025-09-26
 shutdown_on: 2026-09-28
-status: deprecated
+status: retired
 replacements:
   - provider: openai
-    model: gpt-5.4-mini
+    model: gpt-5.6-terra
     recommended: true
+    api_change: >-
+      gpt-5.6-terra is not served on /v1/completions. Move the call to Chat
+      Completions (/v1/chat/completions) or the Responses API (/v1/responses):
+      the prompt string becomes messages or input.
     note: >-
       Nothing on the current platform offers raw base-model continuation. If your
       use case depends on it rather than on instruction following, an open-weight
@@ -21,5 +25,5 @@ replacements:
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-07-30
-last_verified: 2026-07-30
+    accessed: 2026-10-19
+last_verified: 2026-10-19

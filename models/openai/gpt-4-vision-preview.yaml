@@ -18,11 +18,11 @@ replacements:
       provider: openai,
       model: gpt-4o,
       recommended: true,
-      note: "Vision is no longer a separate id. The image_url content block carries over unchanged, and function calling now works alongside it.",
+      note: "Vision is no longer a separate id. gpt-4o was the named successor but shuts down on January 14, 2027 with gpt-6-luna as its named successor, so go straight to gpt-6-luna, which also takes image input.",
     },
   ]
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-07-30
-last_verified: 2026-07-30
+    accessed: 2026-10-19
+last_verified: 2026-10-19

@@ -34,6 +34,9 @@ function factsTable(model: Model, today: string): string[] {
       `${formatDate(life.shutdown)}${countdown}`,
     ]);
   }
+  if (model.restricted && life.status !== "retired") {
+    rows.push(["Access", `Restricted. ${model.restricted}`]);
+  }
   rows.push(["Last verified", formatDate(model.last_verified)]);
 
   return [
@@ -51,6 +54,7 @@ function replacementSection(model: Model, catalog: Model[], siteUrl: string): st
     const name = replacementName(model, { ref, page });
     const link = page ? ` — ${absolute(siteUrl, modelPagePath(page))}` : "";
     lines.push(`- **${name}** (\`${ref.model}\`)${ref.recommended ? " · recommended" : ""}${link}`);
+    if (ref.api_change) lines.push(`  - Not a drop-in: ${ref.api_change}`);
     if (ref.note) lines.push(`  - ${ref.note}`);
     lines.push(`  - Parameters it accepts: ${siblingModelUrl(SIBLING_URL, ref)}`);
   }

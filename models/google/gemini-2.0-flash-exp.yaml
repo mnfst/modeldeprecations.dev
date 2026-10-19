@@ -16,11 +16,28 @@ replacements:
   - provider: google
     model: gemini-3.6-flash
     recommended: false
+    api_change: >-
+      gemini-3.6-flash outputs text only: image generation and audio output are
+      not supported, so code that asked this model for images (response
+      modalities including IMAGE) has to call an image model instead.
     note: >-
       Our suggestion, not Google's: the shutdown notice names no successor.
       gemini-3.6-flash is what Google names for the stable gemini-2.0-flash.
+  - provider: google
+    model: gemini-nano-banana-2.1
+    recommended: false
+    note: >-
+      For image output. Google names it for gemini-2.0-flash-preview-image-generation,
+      the 2.0 Flash image-generation preview; it returns images and text but has
+      no function calling, code execution or Live API.
 sources:
   - url: https://ai.google.dev/gemini-api/docs/changelog
     title: Gemini API release notes
-    accessed: 2026-10-16
-last_verified: 2026-10-16
+    accessed: 2026-10-19
+  - url: https://ai.google.dev/gemini-api/docs/models/gemini-3.6-flash
+    title: Gemini 3.6 Flash model page
+    accessed: 2026-10-19
+  - url: https://ai.google.dev/gemini-api/docs/deprecations
+    title: Gemini API deprecations
+    accessed: 2026-10-19
+last_verified: 2026-10-19

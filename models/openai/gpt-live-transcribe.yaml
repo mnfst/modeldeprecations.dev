@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://modeldeprecations.dev/api/v1/schema.json
+provider: openai
+model: gpt-live-transcribe
+name: GPT Live Transcribe
+description: >-
+  The streaming counterpart of gpt-transcribe: audio goes into a Realtime
+  transcription session and transcript deltas come back while people are still
+  speaking, with a latency setting to tune. OpenAI names it beside
+  gpt-transcribe for every transcription model it retires in February 2027,
+  for the live-audio half of that work.
+status: active
+sources:
+  - url: https://developers.openai.com/api/docs/models/gpt-live-transcribe
+    title: GPT Live Transcribe model page
+    accessed: 2026-10-19
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-10-19
+last_verified: 2026-10-19

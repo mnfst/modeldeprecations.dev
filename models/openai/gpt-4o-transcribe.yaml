@@ -3,13 +3,41 @@ provider: openai
 model: gpt-4o-transcribe
 name: GPT-4o Transcribe
 description: >-
-  The full-size speech-to-text model of the GPT-4o generation, still served and
-  still undated. OpenAI's own guidance points at the mini model instead for best
-  results, which leaves this id in the odd position of being the larger, more
-  expensive option that the docs do not recommend.
-status: active
+  The full-size speech-to-text model of the GPT-4o generation. OpenAI's own
+  guidance pointed at the mini model instead, which left this id the larger,
+  more expensive option the docs did not recommend. Both went in the August
+  2026 transcription deprecation, shutting down on February 26, 2027.
+deprecated_on: 2026-08-26
+shutdown_on: 2027-02-26
+status: deprecated
+replacements:
+  - provider: openai
+    model: gpt-transcribe
+    recommended: true
+    note: >-
+      Same /v1/audio/transcriptions call. Send `languages` (a list of hints)
+      instead of `language`, never both; the response lists the detected
+      languages.
+  - provider: openai
+    model: gpt-live-transcribe
+    api_change: >-
+      gpt-live-transcribe only runs in Realtime transcription sessions
+      (/v1/realtime/transcription_sessions): audio is streamed in and transcript
+      deltas come back, with no file upload to /v1/audio/transcriptions.
+    note: >-
+      The other replacement OpenAI names, for live audio rather than recorded
+      files.
 sources:
-  - url: https://developers.openai.com/api/docs/models
-    title: OpenAI models
-    accessed: 2026-08-03
-last_verified: 2026-08-03
+  - url: https://developers.openai.com/api/docs/deprecations
+    title: OpenAI API deprecations
+    accessed: 2026-10-19
+  - url: https://developers.openai.com/api/docs/guides/speech-to-text
+    title: OpenAI file transcription guide
+    accessed: 2026-10-19
+  - url: https://developers.openai.com/api/docs/models/gpt-transcribe
+    title: GPT Transcribe model page
+    accessed: 2026-10-19
+  - url: https://developers.openai.com/api/docs/models/gpt-live-transcribe
+    title: GPT Live Transcribe model page
+    accessed: 2026-10-19
+last_verified: 2026-10-19

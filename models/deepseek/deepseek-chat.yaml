@@ -21,14 +21,23 @@ replacements:
       `thinking.type` parameter defaults to `enabled`, so you get reasoning
       tokens, slower responses and a larger bill unless you send
       `"thinking": {"type": "disabled"}`.
+  - provider: deepseek
+    model: deepseek-flash
+    note: >-
+      Where the path ends today: deepseek-v4-flash was itself retired on
+      September 10, 2026 and is only routed to V4.1 Flash for now. Call
+      deepseek-flash, with the same thinking settings.
 sources:
   - url: https://api-docs.deepseek.com/news/news260424/
     title: DeepSeek V4 Preview Release
     accessed: 2026-08-03
   - url: https://api-docs.deepseek.com/updates/
     title: DeepSeek API change log
-    accessed: 2026-08-03
+    accessed: 2026-10-19
   - url: https://api-docs.deepseek.com/api/create-chat-completion
     title: DeepSeek Create Chat Completion
     accessed: 2026-08-03
-last_verified: 2026-08-03
+  - url: https://api-docs.deepseek.com/guides/thinking_mode
+    title: DeepSeek thinking mode guide
+    accessed: 2026-10-19
+last_verified: 2026-10-19

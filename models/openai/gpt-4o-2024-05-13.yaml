@@ -3,10 +3,10 @@ provider: openai
 model: gpt-4o-2024-05-13
 name: GPT-4o (2024-05-13)
 description: >-
-  The original GPT-4o snapshot, the one that shipped at the May 2024 launch. Only
-  this dated snapshot is deprecated — the floating gpt-4o pointer is not, and now
-  resolves to a later snapshot. If you pinned the date, this is your deadline; if
-  you did not, you have already been migrated.
+  The original GPT-4o snapshot, the one that shipped at the May 2024 launch, and
+  the first to go: it shuts down in October 2026, three months before the later
+  snapshots and the floating gpt-4o pointer. If you pinned the date, this is
+  your deadline; if you did not, yours is January 14, 2027.
 released_on: 2024-05-13
 deprecated_on: 2026-04-22
 shutdown_on: 2026-10-23
@@ -16,10 +16,10 @@ replacements:
     model: gpt-5.6-sol
     recommended: true
     note: >-
-      Moving to the floating gpt-4o id is the smaller change but buys little
-      time: the snapshots behind it shut down on January 14, 2027.
+      Do not move to the floating gpt-4o id: it shuts down on January 14, 2027,
+      with every other GPT-4o snapshot.
 sources:
   - url: https://developers.openai.com/api/docs/deprecations
     title: OpenAI API deprecations
-    accessed: 2026-10-16
-last_verified: 2026-10-16
+    accessed: 2026-10-19
+last_verified: 2026-10-19
