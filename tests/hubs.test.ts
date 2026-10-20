@@ -118,29 +118,15 @@ describe("indexation", () => {
 });
 
 describe("analytics", () => {
-  // It used to be passed by hand and only the homepage ever got it, which left
-  // every model page — the entire long tail — unmeasured.
-  it("tags every page type on Vercel, not just the homepage", async () => {
-    const before = process.env.VERCEL;
-    process.env.VERCEL = "1";
-    try {
-      for (const html of [
-        await renderIndex({ models: catalog, today: TODAY }),
-        await renderModelPage(retired, catalog, TODAY),
-        await renderStatusHubPage("retired", catalog, TODAY),
-        await renderYearHubPage("2026", catalog, TODAY),
-        await renderApiPage(catalog, TODAY),
-      ]) {
-        expect(html).toContain("_vercel/insights/script.js");
-      }
-    } finally {
-      if (before === undefined) delete process.env.VERCEL;
-      else process.env.VERCEL = before;
+  it("ships no analytics script on any page type", async () => {
+    for (const html of [
+      await renderIndex({ models: catalog, today: TODAY }),
+      await renderModelPage(retired, catalog, TODAY),
+      await renderStatusHubPage("retired", catalog, TODAY),
+      await renderYearHubPage("2026", catalog, TODAY),
+      await renderApiPage(catalog, TODAY),
+    ]) {
+      expect(html).not.toContain("_vercel/insights");
     }
-  });
-
-  it("stays off elsewhere, so a local build emits no script tag that 404s", async () => {
-    expect(process.env.VERCEL).not.toBe("1");
-    expect(await renderModelPage(retired, catalog, TODAY)).not.toContain("_vercel/insights");
   });
 });
