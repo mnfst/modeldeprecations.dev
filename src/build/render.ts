@@ -21,7 +21,7 @@ import {
   STATUS_LABELS,
   type Lifecycle,
 } from "../data/status.js";
-import { analyticsEnabled, OG_IMAGE_PATH, SITE_NAME, SITE_URL } from "../data/site.js";
+import { OG_IMAGE_PATH, SITE_NAME, SITE_URL } from "../data/site.js";
 import {
   absolute,
   CALENDAR_PATH,
@@ -99,8 +99,6 @@ export interface ShellMeta {
   robots?: string;
   /** Root-relative Markdown twin, advertised to agents via <link rel="alternate">. */
   markdownUrl?: string;
-  /** Overrides the environment default; tests pin it rather than set VERCEL. */
-  analytics?: boolean;
 }
 
 /** Wrap a rendered body in the shared HTML layout. */
@@ -117,7 +115,6 @@ export async function renderShell(meta: ShellMeta, body: string): Promise<string
     providerHubs: meta.providerHubs,
     helpers: viewHelpers,
     usageGuide: usageGuideMarkdown(SITE_URL),
-    analytics: meta.analytics ?? analyticsEnabled(),
     body,
   });
 }
@@ -148,7 +145,6 @@ export function homeDescription(modelCount: number, upcoming: number, providerCo
 export interface IndexOptions {
   models: Model[];
   today: string;
-  analytics?: boolean;
 }
 
 export async function renderIndex(opts: IndexOptions): Promise<string> {
@@ -184,7 +180,6 @@ export async function renderIndex(opts: IndexOptions): Promise<string> {
         today,
       ),
       providerHubs: hubLinks(models, today),
-      analytics: opts.analytics,
     },
     body,
   );
