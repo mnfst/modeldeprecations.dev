@@ -7,6 +7,8 @@
 
 > An open, community-maintained catalog of AI model deprecations.
 
+> **Moved to [okapi.bot](https://www.okapi.bot/models/).** Every page of this site redirects (301) to the okapi.bot page answering the same question: a model to the same model there, a provider to its models, the rest to okapi.bot's hubs (`src/redirects/okapi.ts`, served by `src/worker/index.ts`). The JSON API, the badges, the images, `robots.txt` and the sitemap are still served from here. `npm run redirects:generate` reads okapi.bot's model pages again and rewrites the map (`src/redirects/okapi-map.json`).
+
 [![CI](https://github.com/mnfst/modeldeprecations.dev/actions/workflows/ci.yml/badge.svg)](https://github.com/mnfst/modeldeprecations.dev/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 

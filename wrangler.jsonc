@@ -1,9 +1,15 @@
 {
   "name": "modeldeprecations-dev",
   "compatibility_date": "2026-10-01",
+  // Every page redirects to okapi.bot (src/worker/index.ts); the Worker runs
+  // first and serves the JSON API, the badges, the images, robots.txt and the
+  // sitemap from the static files.
+  "main": "src/worker/index.ts",
   "assets": {
     "directory": "./dist",
-    // Serve dist/404.html with a real 404 status for unknown paths.
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    // Serve dist/404.html with a real 404 status for unknown static files.
     "not_found_handling": "404-page",
   },
 }
