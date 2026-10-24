@@ -2,6 +2,38 @@
 
 ---
 
+## Date: 2026-10-17
+
+### Opening up the in-house search API
+
+DeepSeek's web and API search capabilities are powered by our in-house DeepSeek search engine, which reliably handles hundreds of millions of search requests from around the world every day. DeepSeek Search is an AI-native general-purpose search engine that indexes hundreds of billions of web pages, supports multilingual search, and returns highly relevant, authoritative, and timely results in real time. It filters SEO spam, GEO manipulation, and low-quality AIGC through strict detection mechanisms, ensuring authoritative and trustworthy information for users and LLMs. For usage details, see the [Search & Fetch guide](/guides/search).
+
+### DeepSeek-V4.1-Flash-1017 Update
+
+DeepSeek V4.1 Flash has been upgraded to DeepSeek-V4.1-Flash-1017\. The official web and APP models have also been updated to the new version. The API calling method and pricing remain unchanged — simply use `deepseek-flash` to access the latest model.
+
+**Performance–cost Pareto improvement**
+
+Compared with the previous DeepSeek V4.1, the new model delivers substantial improvements across benchmarks:
+
+- HLE (w/o tools): 42.6 (44.0\*)
+- Terminal-Bench 4.0: 42.3
+- DeepSWE v1.1: 77.0
+- ProgramBench: 29.1
+- NL2Repo-Bench: 68.2
+- Automation-Bench v1.0.6: 60.5
+- Agents' Last Exam: 35.4
+- Apex Bench v1.1: 72.1
+- Chartography (w/tools): 83.0
+- BabyVision (w/tools): 92.5
+- ZeroBench-main (w/tools): 51.0
+
+\* Tested only on the pure-text subset of the HLE benchmark set. Terminal-Bench 4.0 was tested with the Claude Code framework, and DeepSWE with the Mini-SWE-V2 framework. ZeroBench-main was evaluated with Pass@5.
+
+While improving performance, we also reduced the model's task runtime and output length, enabling users to complete tasks at lower cost and higher speed and achieving a new performance–cost Pareto optimum across multiple harnesses. We specifically optimized for DeepSeek Harness, Tencent CodeBuddy, WorkBuddy, and other platforms. Please upgrade to DeepSeek Harness 0.2.1-rc.1 or later for the best experience with the new model.
+
+---
+
 ## Date: 2026-09-10
 
 ### DeepSeek-V4.1-Flash Release
@@ -34,7 +66,7 @@ Today, we officially release the DeepSeek-V4.1-Flash model. It is the smallest m
 
 DeepSeek V4.1 Flash is now available on the DeepSeek API with native multimodal support. Change the model name to `deepseek-flash` to call the latest V4.1 Flash model. The previous-generation models V4 Flash and V4 Flash Vision Exp have been retired; for compatibility, the model names `deepseek-v4-flash` and `deepseek-v4-flash-vision-exp` are temporarily routed to V4.1 Flash.
 
-Meanwhile, extensive testing shows that V4.1 Flash now outperforms DeepSeek V4 Pro across performance, cost, speed, and total time, so we plan to retire V4 Pro in an orderly manner. After 12:00 Beijing Time on September 14, 2026, and until the future release of V4.1 Pro, all requests to `deepseek-v4-pro` will be routed to V4.1 Flash and billed at the V4.1 Flash price.
+In response to user demand, we have decided to continue providing API services for DeepSeek V4 Pro after September 14, 2026, with the billing method remaining unchanged. We will provide further notice should there be any changes. Thank you for your understanding and support!
 
 **API pricing adjustment**
 
