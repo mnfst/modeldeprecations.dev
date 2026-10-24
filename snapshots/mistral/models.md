@@ -12,7 +12,7 @@ Featured Models
 
 ## Featured Models
 
-[![Mistral Medium 3.5 icon](/assets/models/Mistral_Medium_3.svg)Mistral Medium 3.5Our frontier-class multimodal model optimized for agentic and coding use cases.](/models/mistral-medium-3-5-26-04)[![OCR 4.1 icon](/assets/models/OCR.svg)OCR 4.1Our latest OCR service with paragraph-level bounding boxes, structural block labels, and block-level confidence scores.](/models/ocr-4-1)[![Z.ai GLM 5.2 icon](/assets/models/Zai_GLM.svg)Z.ai GLM 5.2A third-party open source text model from Z.ai with a 1M-token context window.](/models/zai-glm-5-2)[![Mistral Small 4 icon](/assets/models/Mistral_Small_3.1.svg)Mistral Small 4Hybrid model unifying instruct, reasoning, and coding in a single efficient model.](/models/mistral-small-4-0-26-03)[![Voxtral Mini Transcribe 2 icon](/assets/models/Voxtral.svg)Voxtral Mini Transcribe 2An efficient audio input model, pre-trained and optimized for transcription purposes.](/models/voxtral-mini-transcribe-26-02)[![Voxtral Mini Transcribe Realtime icon](/assets/models/Voxtral.svg)Voxtral Mini Transcribe RealtimeAn efficient audio input model, pre-trained and optimized for live transcription purposes.](/models/voxtral-mini-transcribe-realtime-26-02)
+[![Mistral Large 4 icon](/assets/models/ML4-Lechonk.svg)Mistral Large 4A state-of-the-art, open-weight, general-purpose multimodal model.](/models/mistral-large-4-0)[![OCR 4.1 icon](/assets/models/OCR.svg)OCR 4.1Our latest OCR service with paragraph-level bounding boxes, structural block labels, and block-level confidence scores.](/models/ocr-4-1)[![Z.ai GLM 5.3 icon](/assets/models/Zai_GLM.svg)Z.ai GLM 5.3A third-party open weight text model from Z.ai with a 1M-token context window.](/models/zai-glm-5-3)[![Z.ai GLM 5.3 Flash icon](/assets/models/Zai_GLM.svg)Z.ai GLM 5.3 FlashA third-party multimodal model from Z.ai with a 1M-token context window, optimized for agentic workflows and visual coding.](/models/zai-glm-5-3-flash)[![Mistral Small 4 icon](/assets/models/Mistral_Small_3.1.svg)Mistral Small 4Hybrid model unifying instruct, reasoning, and coding in a single efficient model.](/models/mistral-small-4-0-26-03)[![Voxtral Mini Transcribe 3 icon](/assets/models/Voxtral.svg)Voxtral Mini Transcribe 3Strong transcription and diarization at a competitive price point.](/models/voxtral-mini-transcribe-3-0)[![Voxtral TTS 3 icon](/assets/models/Voxtral.svg)Voxtral TTS 3State-of-the-art TTS with zero-shot and professional voice cloning, 9 languages, and streaming.](/models/voxtral-mini-tts-3-0)
 
 All models
 
@@ -26,7 +26,7 @@ Generalist models
 
 Text and multimodal models for broad reasoning, coding, tool use, and agentic tasks.
 
-[![Z.ai GLM 5.2 icon](/assets/models/Zai_GLM.svg)Z.ai GLM 5.2A third-party open source text model from Z.ai with a 1M-token context window.v5.2](/models/zai-glm-5-2)[![Mistral Medium 3.5 icon](/assets/models/Mistral_Medium_3.svg)Mistral Medium 3.5Our frontier-class multimodal model optimized for agentic and coding use cases.v26.04](/models/mistral-medium-3-5-26-04)[![Mistral Small 4 icon](/assets/models/Mistral_Small_3.1.svg)Mistral Small 4Hybrid model unifying instruct, reasoning, and coding in a single efficient model.v26.03](/models/mistral-small-4-0-26-03)[![Mistral Large 3 icon](/assets/models/Mistral_Large_2.svg)Mistral Large 3A state-of-the-art, open-weight, general-purpose multimodal model.v25.12](/models/mistral-large-3-25-12)[![Ministral 3 14B icon](/assets/models/Ministral.svg)Ministral 3 14BA powerful model offering best-in-class text and vision capabilities.v25.12](/models/ministral-3-14b-25-12)[![Ministral 3 8B icon](/assets/models/Ministral.svg)Ministral 3 8BA powerful and efficient model offering best-in-class text and vision capabilities.v25.12](/models/ministral-3-8b-25-12)[![Ministral 3 3B icon](/assets/models/Ministral.svg)Ministral 3 3BA tiny and efficient model offering best-in-class text and vision capabilities.v25.12](/models/ministral-3-3b-25-12)
+[![Z.ai GLM 5.3 Flash icon](/assets/models/Zai_GLM.svg)Z.ai GLM 5.3 FlashA third-party multimodal model from Z.ai with a 1M-token context window, optimized for agentic workflows and visual coding.v5.3-flash](/models/zai-glm-5-3-flash)[![Z.ai GLM 5.3 icon](/assets/models/Zai_GLM.svg)Z.ai GLM 5.3A third-party open weight text model from Z.ai with a 1M-token context window.v5.3](/models/zai-glm-5-3)[![Mistral Medium 3.5 icon](/assets/models/Mistral_Medium_3.svg)Mistral Medium 3.5Our frontier-class multimodal model optimized for agentic and coding use cases.v26.04](/models/mistral-medium-3-5-26-04)[![Mistral Small 4 icon](/assets/models/Mistral_Small_3.1.svg)Mistral Small 4Hybrid model unifying instruct, reasoning, and coding in a single efficient model.v26.03](/models/mistral-small-4-0-26-03)[![Mistral Large 4 icon](/assets/models/ML4-Lechonk.svg)Mistral Large 4A state-of-the-art, open-weight, general-purpose multimodal model.v26.10](/models/mistral-large-4-0)[![Mistral Large 3 icon](/assets/models/Mistral_Large_2.svg)Mistral Large 3A state-of-the-art, open-weight, general-purpose multimodal model.v25.12](/models/mistral-large-3-25-12)[![Ministral 3 14B icon](/assets/models/Ministral.svg)Ministral 3 14BA powerful model offering best-in-class text and vision capabilities.v25.12](/models/ministral-3-14b-25-12)[![Ministral 3 8B icon](/assets/models/Ministral.svg)Ministral 3 8BA powerful and efficient model offering best-in-class text and vision capabilities.v25.12](/models/ministral-3-8b-25-12)[![Ministral 3 3B icon](/assets/models/Ministral.svg)Ministral 3 3BA tiny and efficient model offering best-in-class text and vision capabilities.v25.12](/models/ministral-3-3b-25-12)
 
 OCR models
 
@@ -34,7 +34,7 @@ OCR models
 
 Models for document understanding, text extraction, and structured OCR outputs.
 
-[![OCR 4.1 icon](/assets/models/OCR.svg)OCR 4.1Our latest OCR service with paragraph-level bounding boxes, structural block labels, and block-level confidence scores.v4.1](/models/ocr-4-1)[![OCR 4.0 icon](/assets/models/OCR.svg)OCR 4.0Our latest OCR service with paragraph-level bounding boxes and structural block labels.v4.0](/models/ocr-4-0)[![OCR 3 icon](/assets/models/OCR.svg)OCR 3Our OCR service powering our Document AI stack. OCR 4 is available as the newer model. OCR 3 remains available for existing integrations and production workloads.v25.12](/models/ocr-3-25-12)
+[![OCR 4.1 icon](/assets/models/OCR.svg)OCR 4.1Our latest OCR service with paragraph-level bounding boxes, structural block labels, and block-level confidence scores.v4.1](/models/ocr-4-1)[![OCR 3 icon](/assets/models/OCR.svg)OCR 3Our OCR service powering our Document AI stack. OCR 4 is available as the newer model. OCR 3 remains available for existing integrations and production workloads.v25.12](/models/ocr-3-25-12)
 
 Audio models
 
@@ -42,7 +42,7 @@ Audio models
 
 Models for speech transcription, realtime transcription, and speech generation.
 
-[![Voxtral TTS icon](/assets/models/Voxtral.svg)Voxtral TTSState-of-the-art TTS with zero-shot voice cloning and multilingual support.v26.03](/models/voxtral-tts-26-03)[![Voxtral Mini Transcribe 2 icon](/assets/models/Voxtral.svg)Voxtral Mini Transcribe 2An efficient audio input model, pre-trained and optimized for transcription purposes.v26.02](/models/voxtral-mini-transcribe-26-02)[![Voxtral Mini Transcribe Realtime icon](/assets/models/Voxtral.svg)Voxtral Mini Transcribe RealtimeAn efficient audio input model, pre-trained and optimized for live transcription purposes.v26.02](/models/voxtral-mini-transcribe-realtime-26-02)[![Voxtral Small icon](/assets/models/Voxtral.svg)Voxtral SmallOur first model with audio input capabilities for instruct use cases.v25.07](/models/voxtral-small-25-07)
+[![Voxtral TTS icon](/assets/models/Voxtral.svg)Voxtral TTSState-of-the-art TTS with zero-shot voice cloning and multilingual support.v26.03](/models/voxtral-tts-26-03)[![Voxtral Mini Transcribe 3 icon](/assets/models/Voxtral.svg)Voxtral Mini Transcribe 3Strong transcription and diarization at a competitive price point.v3.0](/models/voxtral-mini-transcribe-3-0)[![Voxtral Small Transcribe 3 icon](/assets/models/Voxtral.svg)Voxtral Small Transcribe 3Flagship transcription and diarization model with SOTA accuracy.v3.0](/models/voxtral-small-transcribe-3-0)[![Voxtral Mini Transcribe Realtime 3 icon](/assets/models/Voxtral.svg)Voxtral Mini Transcribe Realtime 3Realtime transcription model for agentic use-cases with configurable latency and turn detection.v3.0](/models/voxtral-mini-transcribe-realtime-3-0)[![Voxtral TTS 3 icon](/assets/models/Voxtral.svg)Voxtral TTS 3State-of-the-art TTS with zero-shot and professional voice cloning, 9 languages, and streaming.v3.0](/models/voxtral-mini-tts-3-0)[![Voxtral Mini Transcribe 2 icon](/assets/models/Voxtral.svg)Voxtral Mini Transcribe 2An efficient audio input model, pre-trained and optimized for transcription purposes.v26.02](/models/voxtral-mini-transcribe-26-02)[![Voxtral Mini Transcribe Realtime icon](/assets/models/Voxtral.svg)Voxtral Mini Transcribe RealtimeAn efficient audio input model, pre-trained and optimized for live transcription purposes.v26.02](/models/voxtral-mini-transcribe-realtime-26-02)[![Voxtral Small icon](/assets/models/Voxtral.svg)Voxtral SmallOur first model with audio input capabilities for instruct use cases.v25.07](/models/voxtral-small-25-07)
 
 Code models
 
@@ -58,7 +58,7 @@ Embedding models
 
 Models that turn text or code into vectors for retrieval and similarity search.
 
-[![Codestral Embed icon](/assets/models/Codestral_Embed.svg)Codestral EmbedOur state-of-the-art semantic for extracting representation of code extractsv25.05](/models/codestral-embed-25-05)[![Mistral Embed icon](/assets/models/Mistral_Embed.svg)Mistral EmbedOur state-of-the-art semantic for extracting representation of code extractsv23.12](/models/mistral-embed-23-12)
+[![Codestral Embed icon](/assets/models/Codestral_Embed.svg)Codestral EmbedOur state-of-the-art semantic for extracting representation of code extractsv25.05](/models/codestral-embed-25-05)[![Mistral Embed icon](/assets/models/Mistral_Embed.svg)Mistral EmbedA general-purpose text embedding model for retrieval and similarity search.v23.12](/models/mistral-embed-23-12)
 
 Moderation and safety models
 
@@ -68,13 +68,13 @@ Models for safety filtering, moderation, and policy checks.
 
 [![Shieldstral 1.0 icon](/assets/models/Shieldstral.svg)Shieldstral 1.0Compact multimodal moderation model for text and image safety classification.v1.0](/models/shieldstral-1-0)[![Mistral Moderation 2 icon](/assets/models/Moderation.svg)Mistral Moderation 2Our latest moderation model with 128k context window and jailbreaking detection.v26.03](/models/mistral-moderation-26-03)
 
-Other specialist models
+Time series models
 
-### Other specialist models
+### Time series models
 
-Specialized models for focused domains and task-specific workloads.
+Models for zero-shot time series forecasting with covariate support and probabilistic outputs.
 
-[![Leanstral 1.5 icon](/assets/models/Leanstral.svg)Leanstral 1.5Updated code agent for Lean 4 formal proof engineering and automated theorem proving.v1.5](/models/leanstral-1-5)
+[![Timestral 1.0 209M icon](/assets/models/Timestral.svg)Timestral 1.0 209MA time series foundation model for zero-shot forecasting with covariate support and probabilistic outputs.v1.0](/models/timestral-1-0-209m)[![Timestral 1.0 123M icon](/assets/models/Timestral.svg)Timestral 1.0 123MA time series foundation model for zero-shot forecasting with covariate support and probabilistic outputs.v1.0](/models/timestral-1-0-123m)[![Timestral 1.0 28M icon](/assets/models/Timestral.svg)Timestral 1.0 28MA time series foundation model for zero-shot forecasting with covariate support and probabilistic outputs.v1.0](/models/timestral-1-0-28m)[![Timestral 1.0 5M icon](/assets/models/Timestral.svg)Timestral 1.0 5MA time series foundation model for zero-shot forecasting with covariate support and probabilistic outputs.v1.0](/models/timestral-1-0-5m)
 
 Deprecated
 
@@ -86,9 +86,12 @@ Older models that have been deprecated or retired.
 
 | Model                                                              | Version | API                         | Deprecation | Retirement | Alternative                                                        |
 | ------------------------------------------------------------------ | ------- | --------------------------- | ----------- | ---------- | ------------------------------------------------------------------ |
+| [Z.ai GLM 5.2 ↗](/models/zai-glm-5-2)                              | 5.2     | zai-glm-5-2                 | 9/29/2026   | 10/31/2026 | [Z.ai GLM 5.3](/models/zai-glm-5-3)                                |
+| [Leanstral 1.5 ↗](/models/leanstral-1-5)                           | 1.5     | labs-leanstral-1-5          | 9/29/2026   | 9/30/2026  |                                                                    |
 | [Leanstral ↗](/models/leanstral-26-03)                             | 26.03   | labs-leanstral-2603         | 5/22/2026   | 6/30/2026  | [Leanstral 1.5](/models/leanstral-1-5)                             |
 | [Mistral Medium 3.1 ↗](/models/mistral-medium-3-1-25-08)           | 25.08   | mistral-medium-2508         | 5/22/2026   | 8/31/2026  | [Mistral Medium 3.5](/models/mistral-medium-3-5-26-04)             |
 | [Mistral Small 3.2 ↗](/models/mistral-small-3-2-25-06)             | 25.06   | mistral-small-2506          | 4/30/2026   | 7/31/2026  | [Mistral Small 4](/models/mistral-small-4-0-26-03)                 |
+| [OCR 4.0 ↗](/models/ocr-4-0)                                       | 4.0     | mistral-ocr-4-0             | 9/29/2026   | 9/30/2026  | [OCR 4.1](/models/ocr-4-1)                                         |
 | [Voxtral Mini Transcribe ↗](/models/voxtral-mini-transcribe-25-07) | 25.07   | voxtral-mini-2507           | 2/27/2026   | 5/31/2026  | [Voxtral Mini Transcribe 2](/models/voxtral-mini-transcribe-26-02) |
 | [Devstral 2 ↗](/models/devstral-2-25-12)                           | 25.12   | devstral-2512               | 5/22/2026   | 7/31/2026  | [Mistral Medium 3.5](/models/mistral-medium-3-5-26-04)             |
 | [Magistral Medium 1.1 ↗](/models/magistral-medium-1-1-25-07)       | 25.07   | magistral-medium-2507       | 10/31/2025  | 11/30/2025 | [Mistral Medium 3.5](/models/mistral-medium-3-5-26-04)             |
