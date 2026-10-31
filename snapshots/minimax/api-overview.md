@@ -9,43 +9,34 @@
 ## Get API Key
 
 * **Pay-as-you-go**：Visit [API Keys > Create new secret key](https://platform.minimax.io/user-center/basic-information/interface-key) to get your **API Key**
-  <Note>Pay-as-you-go supports all modality models, including language, Video, Speech, and Image.</Note>
 
-* **Token Plan**：Visit [Billing > Token Plan](https://platform.minimax.io/user-center/payment/token-plan) to view your **Subscription Key**
-  <Note>The Subscription Key is used for Token Plan subscriptions and purchased Credits. It is separate from pay-as-you-go API Keys. See [Token Plan Overview](/docs/token-plan/intro) for details.</Note>
+* **M Plan**：Visit [Billing > M Plan](https://platform.minimax.io/user-center/payment/token-plan) to view your **Subscription Key**
+  \[!NOTE] The Subscription Key is used for M Plan subscriptions and purchased Credits. It is separate from pay-as-you-go API Keys. See [M Plan Overview](https://platform.minimax.io/docs/m-plan/intro.md) for details.
 
 ***
 
 ## Large Language Model
 
-The Large Language Model API uses **MiniMax M3**, **MiniMax M2.7**, **MiniMax M2.7 highspeed**, **MiniMax M2.5**, **MiniMax M2.5 highspeed**, **MiniMax M2.1**, **MiniMax M2.1 highspeed**, and **MiniMax M2** to generate conversational content and trigger tool calls based on the provided context.
+The Large Language Model API uses **MiniMax M3.1-Flash** and **MiniMax M3** to generate conversational content and trigger tool calls based on the provided context.
 
 It can be accessed via **HTTP requests**, the **Anthropic SDK** (Recommended), or the **OpenAI SDK**.
 
 **Supported Models**
 
-| Model Name             | Context Window | Description                                                                                                                                   |
-| :--------------------- | :------------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
-| MiniMax-M3             | 1,000,000      | **Latest M-series language model for agentic reasoning, tool use, coding, and long-context tasks** (output speed approximately 100+ tps)      |
-| MiniMax-M2.7           | 204,800        | **Beginning the journey of recursive self-improvement. (output speed approximately 60 tps)**                                                  |
-| MiniMax-M2.7-highspeed | 204,800        | **M2.7 highspeed: Same performance, faster and more agile (output speed approximately 100 tps)**                                              |
-| MiniMax-M2.5           | 204,800        | **Peak Performance. Ultimate Value. Master the Complex (output speed approximately 60 tps)**                                                  |
-| MiniMax-M2.5-highspeed | 204,800        | **M2.5 highspeed: Same performance, faster and more agile (output speed approximately 100 tps)**                                              |
-| MiniMax-M2.1           | 204,800        | **Powerful Multi-Language Programming Capabilities with Comprehensively Enhanced Programming Experience (output speed approximately 60 tps)** |
-| MiniMax-M2.1-highspeed | 204,800        | **Faster and More Agile (output speed approximately 100 tps)**                                                                                |
-| MiniMax-M2             | 204,800        | **Agentic capabilities, Advanced reasoning**                                                                                                  |
+| Model Name | Context Window | Description |
+| :- | :- | :- |
+| MiniMax-M3.1-Flash | 1,000,000 | **Frontier multimodal coding model with 1M context window and tunable thinking depth** |
+| MiniMax-M3 | 1,000,000 | **Frontier multimodal coding model with 1M context window** |
 
 Please note: The maximum token count refers to the total number of input and output tokens.
 
-<Columns cols={2}>
-  <Card title="Anthropic API Compatible (Recommended)" icon="book-open" href="/docs/api-reference/text-anthropic-api" cta="View Docs">
-    Use Anthropic SDK with MiniMax models
-  </Card>
+> [card] [Anthropic API Compatible (Recommended)](https://platform.minimax.io/docs/api-reference/text-anthropic-api.md)
+>
+> Use Anthropic SDK with MiniMax models
 
-  <Card title="OpenAI API Compatible" icon="book-open" href="/docs/api-reference/text-openai-api" cta="View Docs">
-    Use OpenAI SDK with MiniMax models
-  </Card>
-</Columns>
+> [card] [OpenAI API Compatible](https://platform.minimax.io/docs/api-reference/text-openai-api.md)
+>
+> Use OpenAI SDK with MiniMax models
 
 ***
 
@@ -55,44 +46,44 @@ This API supports video generation from multimodal input (text, images, video, a
 
 **Supported Models**
 
-| Model          | Description                                                                                                                                                                   |
-| :------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| MiniMax-H3     | Multimodal video generation model supporting text / image / first-and-last-frame / reference input, 768P / 2K resolution, 4–15s duration.                                     |
-| MiniMax-H3-Max | Fast generation model. Supports text-to-video and image-to-video (first / last frame) only; reference input is not supported. 480P / 768P resolution (no 2K), 5–15s duration. |
+| Model | Description |
+| :- | :- |
+| MiniMax-H3 | Multimodal video generation model supporting text / image / first-and-last-frame / reference input, 768P / 2K resolution, 4–15s duration. |
+| MiniMax-H3-Highspeed | Balances generation quality and speed, supporting text / image / first-and-last-frame / reference input. 480P / 768P resolution (no 2K), 4–15s duration. |
+| MiniMax-H3-Lite | Lightweight model supporting text-to-video, image-to-video (first / last frame), and reference input. 480P / 768P resolution (no 2K), 4–15s duration. |
+| MiniMax-H3-Max | Fast generation model supporting text-to-video, image-to-video (first / last frame), and reference input. 480P / 768P resolution (no 2K), 5–15s duration. |
 
 **API Usage Guide**
 
-Both models share the same `content[]` request protocol and query endpoints — switching models only requires changing the `model` field. MiniMax-H3 tasks are asynchronous. There are three creation endpoints—**Create Video Generation Task**, **Create H3-Context-IR Task**, and **Create Video Regeneration Task**—and shared endpoints for querying, listing, and cancelling or deleting tasks; MiniMax-H3-Max supports the **Create Video Generation Task** endpoint only. The workflow is as follows:
+All four models share the same `content[]` request protocol and query endpoints — switching models only requires changing the `model` field. MiniMax-H3 tasks are asynchronous. There are three creation endpoints—**Create Video Generation Task**, **Create H3-Context-IR Task**, and **Create Video Regeneration Task**—and shared endpoints for querying, listing, and cancelling or deleting tasks; MiniMax-H3-Highspeed, MiniMax-H3-Lite, and MiniMax-H3-Max support the **Create Video Generation Task** endpoint only. The workflow is as follows:
 
 1. Create a video generation task, create an H3-Context-IR task with the same multimodal input, or create a video regeneration task for a source video that meets the MiniMax-H3 768P output specifications. A regeneration request must contain exactly one source-video item with `role=base_video`. All three endpoints return a `task_id` on success.
 2. Use **Query Task** with the `task_id` to retrieve its status and result. When a video task succeeds, get its output URL from `content.url`; when an H3-Context-IR task succeeds, get the enhanced prompt from `content.prompt`. You can also use **List Tasks** and distinguish `generation`, `h3_context_ir`, and `regeneration` with `task_type`.
 3. Use **Cancel or Delete Task** to cancel a queued task or delete a succeeded or failed task record.
 
-<Columns cols={2}>
-  <Card title="Create Video Generation Task" icon="circle-play" href="/docs/api-reference/video-generation-v2-create" cta="View Docs">
-    Create a video generation task from multimodal content input
-  </Card>
+> [card] [Create Video Generation Task](https://platform.minimax.io/docs/api-reference/video-generation-v2-create.md)
+>
+> Create a video generation task from multimodal content input
 
-  <Card title="Create H3-Context-IR Task" icon="pen-to-square" href="/docs/api-reference/video-generation-v2-h3-context-ir" cta="View Docs">
-    Deeply interpret multimodal video-generation context and produce a structured, enhanced prompt
-  </Card>
+> [card] [Create H3-Context-IR Task](https://platform.minimax.io/docs/api-reference/video-generation-v2-h3-context-ir.md)
+>
+> Deeply interpret multimodal video-generation context and produce a structured, enhanced prompt
 
-  <Card title="Create Video Regeneration Task" icon="wand-magic-sparkles" href="/docs/api-reference/video-generation-v2-regeneration" cta="View Docs">
-    Regenerate a video that meets the MiniMax-H3 768P output specifications as a 2K video
-  </Card>
+> [card] [Create Video Regeneration Task](https://platform.minimax.io/docs/api-reference/video-generation-v2-regeneration.md)
+>
+> Regenerate a video that meets the MiniMax-H3 768P output specifications as a 2K video
 
-  <Card title="Query Task" icon="search" href="/docs/api-reference/video-generation-v2-query" cta="View Docs">
-    Query task status by task\_id and get the video download URL
-  </Card>
+> [card] [Query Task](https://platform.minimax.io/docs/api-reference/video-generation-v2-query.md)
+>
+> Query task status by task\_id and get the video download URL
 
-  <Card title="List Tasks" icon="list" href="/docs/api-reference/video-generation-v2-list" cta="View Docs">
-    List tasks from the last 7 days and filter by task type
-  </Card>
+> [card] [List Tasks](https://platform.minimax.io/docs/api-reference/video-generation-v2-list.md)
+>
+> List tasks from the last 7 days and filter by task type
 
-  <Card title="Cancel or Delete Task" icon="trash" href="/docs/api-reference/video-generation-v2-delete" cta="View Docs">
-    Cancel a queued task or delete a succeeded or failed task record
-  </Card>
-</Columns>
+> [card] [Cancel or Delete Task](https://platform.minimax.io/docs/api-reference/video-generation-v2-delete.md)
+>
+> Cancel a queued task or delete a succeeded or failed task record
 
 ***
 
@@ -104,14 +95,14 @@ All interfaces are stateless: each call only processes the provided input, does 
 
 **Supported Models**
 
-| Model            | Description                                                                                              |
-| :--------------- | :------------------------------------------------------------------------------------------------------- |
-| speech-2.8-hd    | Latest HD model. Ultra-realistic quality featuring sound tags.                                           |
-| speech-2.8-turbo | Latest Turbo model. Seamless speed meets natural flow.                                                   |
-| speech-2.6-hd    | HD model with outstanding prosody and excellent cloning similarity.                                      |
-| speech-2.6-turbo | Turbo model with support for 40 languages.                                                               |
-| speech-02-hd     | Superior rhythm and stability, with outstanding performance in replication similarity and sound quality. |
-| speech-02-turbo  | Superior rhythm and stability, with enhanced multilingual capabilities and excellent performance.        |
+| Model | Description |
+| :- | :- |
+| speech-2.8-hd | Latest HD model. Ultra-realistic quality featuring sound tags. |
+| speech-2.8-turbo | Latest Turbo model. Seamless speed meets natural flow. |
+| speech-2.6-hd | HD model with outstanding prosody and excellent cloning similarity. |
+| speech-2.6-turbo | Turbo model with support for 40 languages. |
+| speech-02-hd | Superior rhythm and stability, with outstanding performance in replication similarity and sound quality. |
+| speech-02-turbo | Superior rhythm and stability, with enhanced multilingual capabilities and excellent performance. |
 
 **API Overview**
 
@@ -122,58 +113,56 @@ Four capabilities share the models above:
 3. **Voice cloning**: upload the audio to clone to get a `file_id` (optionally upload sample audio to improve quality), then call the cloning API to produce a custom `voice_id`. Individual or enterprise verification is required.
 4. **Voice design**: generate a personalized voice from a description prompt; the resulting `voice_id` can be used directly with the synthesis APIs above.
 
-<Note>
-  Voices produced by cloning and voice design are **temporary**: the fee is charged only on first use in speech synthesis (previews within those APIs do not count). If the voice is not used by any speech synthesis API within **168 hours (7 days)**, it is deleted.
-</Note>
+> [!NOTE]
+>
+> Voices produced by cloning and voice design are **temporary**: the fee is charged only on first use in speech synthesis (previews within those APIs do not count). If the voice is not used by any speech synthesis API within **168 hours (7 days)**, it is deleted.
 
-<Accordion title="40 supported languages">
-  | Support Languages |               |               |
-  | ----------------- | ------------- | ------------- |
-  | 1. Chinese        | 15. Turkish   | 28. Malay     |
-  | 2. Cantonese      | 16. Dutch     | 29. Persian   |
-  | 3. English        | 17. Ukrainian | 30. Slovak    |
-  | 4. Spanish        | 18. Thai      | 31. Swedish   |
-  | 5. French         | 19. Polish    | 32. Croatian  |
-  | 6. Russian        | 20. Romanian  | 33. Filipino  |
-  | 7. German         | 21. Greek     | 34. Hungarian |
-  | 8. Portuguese     | 22. Czech     | 35. Norwegian |
-  | 9. Arabic         | 23. Finnish   | 36. Slovenian |
-  | 10. Italian       | 24. Hindi     | 37. Catalan   |
-  | 11. Japanese      | 25. Bulgarian | 38. Nynorsk   |
-  | 12. Korean        | 26. Danish    | 39. Tamil     |
-  | 13. Indonesian    | 27. Hebrew    | 40. Afrikaans |
-  | 14. Vietnamese    |               |               |
-</Accordion>
+> [accordion] 40 supported languages
+>
+> | Support Languages | | |
+> | - | - | - |
+> | 1. Chinese | 15. Turkish | 28. Malay |
+> | 2. Cantonese | 16. Dutch | 29. Persian |
+> | 3. English | 17. Ukrainian | 30. Slovak |
+> | 4. Spanish | 18. Thai | 31. Swedish |
+> | 5. French | 19. Polish | 32. Croatian |
+> | 6. Russian | 20. Romanian | 33. Filipino |
+> | 7. German | 21. Greek | 34. Hungarian |
+> | 8. Portuguese | 22. Czech | 35. Norwegian |
+> | 9. Arabic | 23. Finnish | 36. Slovenian |
+> | 10. Italian | 24. Hindi | 37. Catalan |
+> | 11. Japanese | 25. Bulgarian | 38. Nynorsk |
+> | 12. Korean | 26. Danish | 39. Tamil |
+> | 13. Indonesian | 27. Hebrew | 40. Afrikaans |
+> | 14. Vietnamese | | |
 
-<Columns cols={2}>
-  <Card title="HTTP T2A API" icon="globe" href="/docs/api-reference/speech-t2a-http" cta="View Docs">
-    Synchronous speech synthesis via HTTP
-  </Card>
+> [card] [HTTP T2A API](https://platform.minimax.io/docs/api-reference/speech-t2a-http.md)
+>
+> Synchronous speech synthesis via HTTP
 
-  <Card title="WebSocket T2A API" icon="plug" href="/docs/api-reference/speech-t2a-websocket" cta="View Docs">
-    Streaming speech synthesis via WebSocket
-  </Card>
+> [card] [WebSocket T2A API](https://platform.minimax.io/docs/api-reference/speech-t2a-websocket.md)
+>
+> Streaming speech synthesis via WebSocket
 
-  <Card title="Create Async Task" icon="circle-play" href="/docs/api-reference/speech-t2a-async-create" cta="View Docs">
-    Create a long-text speech generation task
-  </Card>
+> [card] [Create Async Task](https://platform.minimax.io/docs/api-reference/speech-t2a-async-create.md)
+>
+> Create a long-text speech generation task
 
-  <Card title="Query Async Task Status" icon="search" href="/docs/api-reference/speech-t2a-async-query" cta="View Docs">
-    Query speech generation task status
-  </Card>
+> [card] [Query Async Task Status](https://platform.minimax.io/docs/api-reference/speech-t2a-async-query.md)
+>
+> Query speech generation task status
 
-  <Card title="Upload Clone Audio" icon="upload" href="/docs/api-reference/voice-cloning-uploadcloneaudio" cta="View Docs">
-    Upload audio file to clone
-  </Card>
+> [card] [Upload Clone Audio](https://platform.minimax.io/docs/api-reference/voice-cloning-uploadcloneaudio.md)
+>
+> Upload audio file to clone
 
-  <Card title="Clone Voice" icon="mic" href="/docs/api-reference/voice-cloning-clone" cta="View Docs">
-    Execute voice cloning
-  </Card>
+> [card] [Clone Voice](https://platform.minimax.io/docs/api-reference/voice-cloning-clone.md)
+>
+> Execute voice cloning
 
-  <Card title="Voice Design" icon="wand-magic-sparkles" href="/docs/api-reference/voice-design-design" cta="View Docs">
-    Generate personalized voices from descriptions
-  </Card>
-</Columns>
+> [card] [Voice Design](https://platform.minimax.io/docs/api-reference/voice-design-design.md)
+>
+> Generate personalized voices from descriptions
 
 ***
 
@@ -187,41 +176,39 @@ You can generate images by creating an image generation task using text prompts 
 
 **Model List**
 
-| Model    | Description                                                                                                                                                              |
-| :------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Model | Description |
+| :- | :- |
 | image-01 | A high-quality image generation model that produces fine-grained details. Supports both text-to-image and image-to-image generation (with subject reference for people). |
 
-<Columns cols={2}>
-  <Card title="Text to Image" icon="file-text" href="/docs/api-reference/image-generation-t2i" cta="View Docs">
-    Generate image from text description
-  </Card>
+> [card] [Text to Image](https://platform.minimax.io/docs/api-reference/image-generation-t2i.md)
+>
+> Generate image from text description
 
-  <Card title="Image to Image" icon="image-plus" href="/docs/api-reference/image-generation-i2i" cta="View Docs">
-    Generate image from reference image
-  </Card>
-</Columns>
+> [card] [Image to Image](https://platform.minimax.io/docs/api-reference/image-generation-i2i.md)
+>
+> Generate image from reference image
 
 ***
 
 ## Music Generation
 
-<Note title="Music API Service Adjustment Notice">
-  Starting August 20, 2026, the paid APIs (Music Generation and Lyrics Generation) will no longer be available to new users; existing paying users can continue to use the current API services. The free music generation APIs (Music-3.0-free, Music-2.6-free, music-cover-free) will be discontinued.
-
-  To experience or use music generation capabilities, please visit [MiniMax Audio](https://www.minimax.io/audio), or use the open-source [MiniMax Music 3 model on Hugging Face](https://huggingface.co/MiniMaxAI/MiniMax-Music3).
-</Note>
+> [!NOTE]
+>
+> Starting August 20, 2026, the paid APIs (Music Generation and Lyrics Generation) will no longer be available to new users; existing paying users can continue to use the current API services. The free music generation APIs (Music-3.0-free, Music-2.6-free, music-cover-free) will be discontinued.
+>
+> To experience or use music generation capabilities, please visit [MiniMax Audio](https://www.minimax.io/audio), or use the open-source [MiniMax Music 3 model on Hugging Face](https://huggingface.co/MiniMaxAI/MiniMax-Music3).
 
 This API generates a vocal song based on a music description (prompt) and lyrics.
 
 **Models**
 
-| Model     | Usage                                                                                                                  |
-| :-------- | :--------------------------------------------------------------------------------------------------------------------- |
+| Model | Usage |
+| :- | :- |
 | music-3.0 | The latest music generation model. Supports user-provided musical inspiration and lyrics to create AI-generated music. |
 
-<Card title="Music Generation API" icon="music" href="/docs/api-reference/music-generation" cta="View Docs">
-  Generate music from description and lyrics
-</Card>
+> [card] [Music Generation API](https://platform.minimax.io/docs/api-reference/music-generation.md)
+>
+> Generate music from description and lyrics
 
 ***
 
@@ -233,17 +220,15 @@ This API is for file management and is used with other MiniMax APIs.
 
 This API includes 5 endpoints: **Upload**, **List**, **Retrieve**, **Retrieve Content**, **Delete**.
 
-Supported file formats, capacity, and size limits are defined by the **Upload File** API documentation — see [Upload File](/docs/api-reference/file-management-upload).
+Supported file formats, capacity, and size limits are defined by the **Upload File** API documentation — see [Upload File](https://platform.minimax.io/docs/api-reference/file-management-upload.md).
 
-<Columns cols={2}>
-  <Card title="Upload File" icon="upload" href="/docs/api-reference/file-management-upload" cta="View Docs">
-    Upload files to the platform
-  </Card>
+> [card] [Upload File](https://platform.minimax.io/docs/api-reference/file-management-upload.md)
+>
+> Upload files to the platform
 
-  <Card title="List Files" icon="list" href="/docs/api-reference/file-management-list" cta="View Docs">
-    Get list of uploaded files
-  </Card>
-</Columns>
+> [card] [List Files](https://platform.minimax.io/docs/api-reference/file-management-list.md)
+>
+> Get list of uploaded files
 
 ***
 
@@ -251,7 +236,7 @@ Supported file formats, capacity, and size limits are defined by the **Upload Fi
 
 **Web Search**
 
-`web_search` is a server-side web search tool hosted and executed by MiniMax. The model can retrieve up-to-date information while generating a response and answer based on the search results. It is available through both the Anthropic Messages API and the OpenAI Responses API. See [Web Search](/docs/guides/server-tools#web_search) for interface details and examples.
+`web_search` is a server-side web search tool hosted and executed by MiniMax. The model can retrieve up-to-date information while generating a response and answer based on the search results. It is available through both the Anthropic Messages API and the OpenAI Responses API. See [Web Search](https://platform.minimax.io/docs/guides/server-tools.md#web_search) for interface details and examples.
 
 **Official MCP**
 
@@ -260,4 +245,4 @@ MiniMax provides official Model Context Protocol (MCP) server implementations:
 * [Python version](https://github.com/MiniMax-AI/MiniMax-MCP)
 * [JavaScript version](https://github.com/MiniMax-AI/MiniMax-MCP-JS)
 
-Both support speech synthesis, voice cloning, video generation, and music generation. For details, refer to the [MiniMax MCP User Guide](/docs/guides/mcp-guide).
+Both support speech synthesis, voice cloning, video generation, and music generation. For details, refer to the [MiniMax MCP User Guide](https://platform.minimax.io/docs/guides/mcp-guide.md).
