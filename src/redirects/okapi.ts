@@ -16,7 +16,7 @@ export const PROVIDER_APIS: Record<string, string[]> = {
   openai: ["openai"],
   anthropic: ["anthropic"],
   google: ["gemini-api"],
-  vertex: ["vertex-ai", "vertex-ai-2"],
+  vertex: ["vertex-ai"],
   mistral: ["mistral"],
   cohere: ["cohere"],
   xai: ["xai"],

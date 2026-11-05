@@ -1,0 +1,72 @@
+name: Okapi redirects
+
+# okapi.bot rebuilds every day, and a model page there can move or go. This
+# reads okapi.bot's API JSONs again, rewrites src/redirects/okapi-map.json,
+# fails if a target of the new map is not a page they list, and opens a pull
+# request when the map changed.
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: okapi-redirects
+  cancel-in-progress: false
+
+jobs:
+  regenerate:
+    name: Regenerate the redirect map
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Check out the default branch without credentials
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Regenerate the map and check every target
+        run: |
+          npm run redirects:generate -- --report "$RUNNER_TEMP/redirects.md"
+          cat "$RUNNER_TEMP/redirects.md" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Test the redirects
+        run: npx vitest run tests/okapi-redirects.test.ts
+
+      - name: Write the pull request body
+        run: |
+          {
+            echo "### What changed"
+            echo "Regenerates \`src/redirects/okapi-map.json\` from okapi.bot's API JSONs (\`npm run redirects:generate\`)."
+            echo
+            cat "$RUNNER_TEMP/redirects.md"
+            echo "### Checked"
+            echo "Every target of the new map is a page okapi.bot's API JSONs list, an API's models hub or one of okapi.bot's hubs, and \`tests/okapi-redirects.test.ts\` passes. Merging deploys the Worker."
+          } > "$RUNNER_TEMP/body.md"
+
+      - name: Create or update the redirects pull request
+        uses: peter-evans/create-pull-request@22a9089034f40e5a961c8808d113e2c98fb63676 # v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: ${{ github.event.repository.default_branch }}
+          branch: automation/okapi-redirects
+          delete-branch: true
+          commit-message: "chore: regenerate the okapi.bot redirect map"
+          title: "chore: regenerate the okapi.bot redirect map"
+          add-paths: src/redirects/okapi-map.json
+          body-path: ${{ runner.temp }}/body.md

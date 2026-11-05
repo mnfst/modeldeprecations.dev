@@ -19,6 +19,7 @@
   "scripts": {
     "build": "tsx src/build/build.ts",
     "redirects:generate": "tsx src/redirects/generate.ts",
+    "redirects:check": "tsx src/redirects/generate.ts --check",
     "dev": "tsx watch src/server/dev.ts",
     "validate": "tsx src/data/validate.ts",
     "guard:data": "tsx src/data/check-regressions.ts",
