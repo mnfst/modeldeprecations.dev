@@ -1,3 +1,4 @@
+import fs from "node:fs/promises";
 import { describe, expect, it } from "vitest";
 import committed from "../src/redirects/okapi-map.json";
 import {
@@ -7,6 +8,7 @@ import {
   redirectTarget,
   servedAsIs,
 } from "../src/redirects/okapi.js";
+import { apiModels, missingTargets } from "../src/redirects/targets.js";
 import worker from "../src/worker/index.js";
 
 const OKAPI = "https://www.okapi.bot";
@@ -96,6 +98,87 @@ describe("the redirects to okapi.bot", () => {
     const targets = Object.values(committed as Record<string, string>);
     expect(targets.length).toBeGreaterThan(400);
     for (const t of targets) expect(t).toMatch(/^\/(models|breaking-changes)\//);
+  });
+});
+
+describe("reading okapi.bot and checking the map", () => {
+  // The trimmed shape okapi.bot publishes: of each change, title, kind, model, status, effectiveAt, url.
+  const json = {
+    slug: "xai",
+    name: "xAI",
+    host: "api.x.ai",
+    url: `${OKAPI}/providers/xai/`,
+    breakingChanges: [
+      {
+        title: "",
+        kind: "model_retirement",
+        model: "Grok-3",
+        status: "in_effect",
+        effectiveAt: null,
+        url: `${OKAPI}/models/xai/grok-3/`,
+      },
+      {
+        title: "",
+        kind: "model_retirement",
+        model: "grok-3",
+        status: "deprecated",
+        effectiveAt: null,
+        url: `${OKAPI}/providers/xai/breaking-changes/grok-3-dup/`,
+      },
+      {
+        title: "",
+        kind: "model_retirement",
+        model: "grok-4",
+        status: "deprecated",
+        effectiveAt: null,
+        url: `${OKAPI}/providers/xai/breaking-changes/grok-4/`,
+      },
+      {
+        title: "",
+        kind: "endpoint_removal",
+        model: null,
+        status: "deprecated",
+        effectiveAt: null,
+        url: `${OKAPI}/providers/xai/breaking-changes/x/`,
+      },
+    ],
+  };
+
+  it("keeps a model's own page from the trimmed JSON, never a change page that may redirect", () => {
+    expect(apiModels("xai", json)).toEqual({ "grok-3": `${OKAPI}/models/xai/grok-3/` });
+    expect(() => apiModels("xai", { slug: "xai" })).toThrow(/breakingChanges/);
+  });
+
+  it("flags a target okapi.bot no longer lists, and accepts its pages, their Markdown and the hubs", () => {
+    const okapiNow = { xai: apiModels("xai", json) };
+    const stale = {
+      "/xai": "/models/xai/",
+      "/xai/grok-3": "/models/xai/grok-3/",
+      "/xai/grok-3.md": "/models/xai/grok-3.md",
+      "/z-ai/glm-4.5": "/models/",
+      "/xai/grok-imagine-image-quality": "/models/xai/grok-imagine-image-quality/",
+      "/vertex": "/models/vertex-ai-2/",
+    };
+    expect(missingTargets(stale, okapiNow)).toEqual([
+      "/xai/grok-imagine-image-quality → /models/xai/grok-imagine-image-quality/",
+      "/vertex → /models/vertex-ai-2/",
+    ]);
+    expect(missingTargets(buildRedirectMap([], okapiNow), okapiNow)).toEqual([]);
+    expect(missingTargets(map, okapi)).toEqual([]);
+  });
+
+  it("regenerates on a schedule with pinned actions and opens a pull request", async () => {
+    const file = new URL("../.github/workflows/redirects.yml", import.meta.url);
+    const workflow = await fs.readFile(file, "utf8");
+    expect(workflow).toMatch(/schedule:\n\s+- cron: "[^"]+"/);
+    expect(workflow).toContain("permissions: {}\n");
+    expect(workflow).toContain("persist-credentials: false");
+    expect(workflow).toContain("npm run redirects:generate");
+    expect(workflow).toContain("branch: automation/okapi-redirects");
+    expect(workflow).toContain("add-paths: src/redirects/okapi-map.json");
+    const uses = [...workflow.matchAll(/uses: [^@\n]+@([^\s#]+)/g)].map((m) => m[1]);
+    expect(uses.length).toBeGreaterThan(0);
+    expect(uses.every((ref) => /^[a-f0-9]{40}$/.test(ref!))).toBe(true);
   });
 });
 
