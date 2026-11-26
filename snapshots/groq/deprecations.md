@@ -58,6 +58,23 @@ When a model is marked for deprecation, we follow this standardized process:
 
 ## [Deprecation History](#deprecation-history)
 
+### [September 21, 2026: groq/compound and groq/compound-mini](#september-21-2026-groqcompound-and-groqcompoundmini)
+
+On August 24, 2026, we announced the deprecation of `groq/compound` and `groq/compound-mini`. Both systems will be decommissioned on September 21, 2026\. Beginning on that date, requests to these model IDs will return errors. Historical overviews are available for [Compound](https://console.groq.com/docs/compound/systems/compound) and [Compound Mini](https://console.groq.com/docs/compound/systems/compound-mini), along with the [Compound changelog](https://console.groq.com/docs/changelog/compound).
+
+| Deprecated Model   | Shutdown Date | Recommended Replacement Model ID |
+| ------------------ | ------------- | -------------------------------- |
+| groq/compound      | 09/21/26      | —                                |
+| groq/compound-mini | 09/21/26      | —                                |
+
+### [September 14, 2026: qwen/qwen3.6-27b](#september-14-2026-qwenqwen3627b)
+
+In line with our commitment to bringing you cutting-edge models, we announced the deprecation of `qwen/qwen3.6-27b` in favor of `qwen/qwen3.8-27b`. Qwen 3.8 27B is the direct successor: a 27B multimodal model with the same 131K context window, thinking and instruct modes, tunable reasoning effort, tool use, and JSON mode. This deprecation applies to free and developer-tier usage; enterprise customers with a committed-spend contract are not affected.
+
+| Deprecated Model | Shutdown Date | Recommended Replacement Model ID |
+| ---------------- | ------------- | -------------------------------- |
+| qwen/qwen3.6-27b | 09/14/26      | qwen/qwen3.8-27b                 |
+
 ### [August 16, 2026: llama-3.1-8b-instant and llama-3.3-70b-versatile](#august-16-2026-llama318binstant-and-llama3370bversatile)
 
 In line with our commitment to bringing you cutting-edge models, on June 17, 2026, we emailed users to announce the deprecation of `llama-3.1-8b-instant` and `llama-3.3-70b-versatile`. We recommend migrating to `openai/gpt-oss-20b` (for Llama 3.1 8B Instant) and `openai/gpt-oss-120b` or `qwen/qwen3.6-27b` (for Llama 3.3 70B Versatile), which deliver exceptional performance with faster inference. This deprecation applies to free and developer-tier usage; enterprise customers with a committed-spend contract are not affected.
